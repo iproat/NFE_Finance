@@ -1,0 +1,5374 @@
+Array
+(
+)
+OUT PUNCH.03-07-2023 02:53:34 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:01 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:02 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:03 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:05 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:06 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:07 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:09 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:10 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:11 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:13 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:14 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:15 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:17 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:18 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:19 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:21 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:22 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:23 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:25 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:26 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:27 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:28 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:30 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:31 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:33 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:34 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:35 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:36 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:38 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:39 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:40 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:42 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:43 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:45 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:46 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:47 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:48 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:50 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:51 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:52 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:54 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:55 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:56 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:58 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:54:59 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:00 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:01 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:03 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:04 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:05 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:07 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:08 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:09 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:10 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:12 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:13 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:14 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:15 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:17 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:18 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:19 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:20 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:22 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:23 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:24 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:25 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:27 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:28 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:29 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:31 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:32 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:33 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:34 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:36 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:37 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:38 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:39 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:41 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:42 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:43 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:44 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:46 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:47 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:48 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:49 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:51 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:52 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:53 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:54 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:56 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:57 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:58 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:55:59 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	166,
+		"employeeNoString":	"1778",
+		"serialNo":	10389,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10388,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:01 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:19.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10390,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10389,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:01 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:24+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10391,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10390,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:01 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:33+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	104,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	172,
+		"employeeNoString":	"1778",
+		"serialNo":	10392,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10391,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:02 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:33.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:50+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	174,
+		"employeeNoString":	"1778",
+		"serialNo":	10393,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10392,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:02 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:50:50.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:51+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10394,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10393,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:03 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:50:56+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10395,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10394,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:03 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:21+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	104,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	180,
+		"employeeNoString":	"1778",
+		"serialNo":	10396,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10395,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:03 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:51:21.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:37+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	104,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	182,
+		"employeeNoString":	"1778",
+		"serialNo":	10397,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10396,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:04 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:51:37.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:45+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	184,
+		"employeeNoString":	"1778",
+		"serialNo":	10398,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10397,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:04 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:51:45.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:45+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10399,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10398,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:05 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:50+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10400,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10399,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:05 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:52+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	190,
+		"employeeNoString":	"1778",
+		"serialNo":	10401,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10400,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:06 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:51:52.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:52+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10402,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10401,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:06 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:57+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10403,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10402,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:07 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:58+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	196,
+		"employeeNoString":	"1778",
+		"serialNo":	10404,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10403,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:07 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:51:58.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:51:58+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10405,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10404,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:07 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:03+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10406,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10405,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:08 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:04+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	202,
+		"employeeNoString":	"1778",
+		"serialNo":	10407,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10406,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:08 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:52:04.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:04+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10408,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10407,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:09 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:09+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10409,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10408,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:09 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:10+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	208,
+		"employeeNoString":	"1778",
+		"serialNo":	10410,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10409,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:09 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:52:10.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:10+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10411,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10410,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:10 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:15+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10412,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10411,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:10 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:16+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	214,
+		"employeeNoString":	"1778",
+		"serialNo":	10413,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10412,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:11 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:52:16.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:16+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10414,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10413,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:11 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:21+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10415,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10414,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:11 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:22+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	220,
+		"employeeNoString":	"1778",
+		"serialNo":	10416,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10415,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:12 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:52:22.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:22+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10417,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10416,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:12 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:52:27+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10418,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10417,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:13 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:53:50+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	226,
+		"employeeNoString":	"1778",
+		"serialNo":	10419,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10418,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:13 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:53:50.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:53:50+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10420,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10419,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:14 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:53:55+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10421,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10420,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:14 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:53:56+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	232,
+		"employeeNoString":	"1778",
+		"serialNo":	10422,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10421,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:56:14 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:53:56.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:53:56+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10423,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10422,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:15 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:54:01+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10424,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10423,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:56:15 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:02+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	238,
+		"employeeNoString":	"1778",
+		"serialNo":	10425,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10424,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:57:17 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:57:02.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:02+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10426,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10425,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:57:18 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:07+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10427,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10426,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:57:22 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:08+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	244,
+		"employeeNoString":	"1778",
+		"serialNo":	10428,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10427,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:57:22 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:57:08.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:08+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10429,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10428,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:57:23 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:13+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10430,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10429,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:57:27 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:14+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	250,
+		"employeeNoString":	"1778",
+		"serialNo":	10431,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10430,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 02:57:28 PM.
+EMPSS ID.1778.
+Time2023-07-03 14:57:14.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:14+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10432,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10431,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:57:29 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T14:57:19+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10433,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10432,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 02:57:33 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T15:57:01+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	75,
+		"name":	"Ramiz",
+		"cardReaderKind":	1,
+		"cardReaderNo":	1,
+		"verifyNo":	129,
+		"employeeNoString":	"1778",
+		"serialNo":	10434,
+		"userType":	"normal",
+		"currentVerifyMode":	"face",
+		"currentEvent":	false,
+		"frontSerialNo":	10433,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"no",
+		"picturesNumber":	1,
+		"purePwdVerifyEnable":	true
+	}
+}
+
+)
+OUT PUNCH.03-07-2023 03:57:25 PM.
+EMPSS ID.1778.
+Time2023-07-03 15:57:01.
+End
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T15:57:01+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	21,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10435,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10434,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 03:57:25 PM.
+Array
+(
+    [event_log] => {
+	"ipAddress":	"192.168.0.230",
+	"portNo":	74,
+	"protocol":	"HTTP",
+	"channelID":	1,
+	"dateTime":	"2023-07-03T15:57:06+05:30",
+	"activePostCount":	1,
+	"eventType":	"AccessControllerEvent",
+	"eventState":	"active",
+	"eventDescription":	"Access Controller Event",
+	"AccessControllerEvent":	{
+		"deviceName":	"Access Controller",
+		"majorEventType":	5,
+		"subEventType":	22,
+		"cardReaderKind":	1,
+		"doorNo":	1,
+		"serialNo":	10436,
+		"currentVerifyMode":	"invalid",
+		"currentEvent":	false,
+		"frontSerialNo":	10435,
+		"attendanceStatus":	"undefined",
+		"label":	"",
+		"statusValue":	0,
+		"mask":	"unknown",
+		"purePwdVerifyEnable":	true
+	}
+}
+)
+OUT PUNCH.03-07-2023 03:57:26 PM.
