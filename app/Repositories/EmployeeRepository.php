@@ -38,6 +38,16 @@ class EmployeeRepository
         }
         return $options;
     }
+    public function workHours()
+    {
+        $results = ['08:00', '12:00'];
+        $options = ['' => '---- Please select ----'];
+        foreach ($results as $key => $value) {
+            $options[$key + 1] = $value;
+        }
+
+        return $options;
+    }
 
     public function makeEmployeeAccountDataFormat($data, $action = false)
     {
@@ -113,8 +123,9 @@ class EmployeeRepository
 
         $employeeData['supervisor_id'] = $data['supervisor_id'];
 
-        $employeeData['work_shift_id'] = $data['work_shift_id'];
-        $employeeData['work_shift'] = $data['work_shift'];
+        // $employeeData['work_shift_id'] = $data['work_shift_id'];
+        // $employeeData['work_shift'] = $data['work_shift'];
+        $employeeData['work_hours'] = $data['work_hours'];
 
         // $employeeData['esi_card_number'] = $data['esi_card_number'];
 

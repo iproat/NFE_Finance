@@ -21,6 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('designation_id')->default(1)->index();
             $table->integer('branch_id')->unsigned()->nullable()->index();
             $table->tinyInteger('incentive')->default(0)->nullable()->index();
+            $table->tinyInteger('work_hour')->nullable()->index();
             $table->tinyInteger('work_shift')->default(0)->nullable()->index();
             $table->integer('supervisor_id')->nullable()->index();
             $table->integer('work_shift_id')->unsigned()->index();

@@ -33,7 +33,8 @@ class EmployeeRequest extends FormRequest
                 'finger_id'      => 'required|unique:employee,finger_id,' . $this->employee . ',employee_id',
                 'department_id'  => 'required',
                 'designation_id' => 'required',
-                'work_shift'     => 'required',
+                'work_hours' => 'required',
+                // 'work_shift'     => 'required',
                 // 'email'             => 'nullable|unique:employee,email,'.$this->employee.',employee_id',
                 // 'phone'             => 'required',
                 'gender'         => 'required',
@@ -61,7 +62,8 @@ class EmployeeRequest extends FormRequest
             'finger_id'      => 'required|unique:employee',
             'department_id'  => 'required',
             'designation_id' => 'required',
-            'work_shift'       => 'required',
+            'work_hours' => 'required',
+            // 'work_shift'       => 'required',
             // 'email'               => 'nullable|unique:employee',
             // 'phone'               => 'required',
             'gender'         => 'required',
@@ -93,7 +95,8 @@ class EmployeeRequest extends FormRequest
             'organization_name*.required' => 'The organization name field is required.',
             'from_date*.required'         => 'The from date field is required.',
             'to_date*.required'           => 'The to date field is required.',
-            'work_shift*.required'           => 'The Work Shift field is required.',
+            // 'work_shift*.required'           => 'The Work Shift field is required.',
+            'work_hours*.required'           => 'The Work hour field is required.',
         ];
     }
 }

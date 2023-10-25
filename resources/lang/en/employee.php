@@ -69,6 +69,7 @@ return [
     'incentive' => 'Incentive',
     'salary_limit' => 'Salary Limit',
     'work_shift' => 'Work Shift',
+    'work_hours' => 'Work Hour',
 
     // new added
 

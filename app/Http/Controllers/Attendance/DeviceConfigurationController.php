@@ -9,6 +9,7 @@ use App\Model\Employee;
 use App\Components\Common;
 use App\Model\AccessControl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DeviceConfigRequest;
 
@@ -418,75 +419,66 @@ class DeviceConfigurationController extends Controller
     }
     public function logs(Request $request)
     {
-
         $myfile = fopen("logdata.txt", "a+") or die("Unable to open file!");
+
+        // Logging the request data
         $txt = print_r($_REQUEST, 1);
         fwrite($myfile, $txt);
-        $txt = "OUT PUNCH." . DATE('d-m-Y h:i:s A') . ".\n";
+        $txt = "OUT PUNCH." . date('d-m-Y h:i:s A') . ".\n";
         fwrite($myfile, $txt);
-        //exit;
-        //return true;
 
-        $eventLog = $_REQUEST['event_log'];
-        $eventLog = json_decode($eventLog);
-        if (isset($eventLog->AccessControllerEvent->employeeNoString)) { //&& isset($Data->attendanceStatus)
-            $txt = "EMPSS ID." . $eventLog->AccessControllerEvent->employeeNoString . ".\n";
-            fwrite($myfile, $txt);
+        $eventLog = json_decode($request->input('event_log'));
 
-
+        if (isset($eventLog->AccessControllerEvent->employeeNoString)) {
             $device = Device::where('name', $eventLog->AccessControllerEvent->deviceName)->first();
-
-            /*$txt = "DEvice.".print_r($device,1).".\n";
-            fwrite($myfile, $txt);*/
 
             $time = $eventLog->dateTime;
 
-            $txt = "Time" . DATE('Y-m-d H:i:s', strtotime($time)) . ".\n";
-            fwrite($myfile, $txt);
+            $log = DB::table('ms_sql')
+                ->where('device_employee_id', $eventLog->AccessControllerEvent->employeeNoString)
+                ->where('device', $device->id)
+                ->where('datetime', date('Y-m-d H:i:s', strtotime($time)))
+                ->first();
 
-            $log           = MsSql::where('device_employee_id', $eventLog->AccessControllerEvent->employeeNoString)->where('device', $device->id)->where('datetime', DATE('Y-m-d H:i:s', strtotime($time)))->first();
-            $last_record   = MsSql::where('device_employee_id', $eventLog->AccessControllerEvent->employeeNoString)->orderBy('datetime', 'Desc')->first();
+            $last_record = DB::table('ms_sql')
+                ->where('device_employee_id', $eventLog->AccessControllerEvent->employeeNoString)
+                ->orderBy('datetime', 'desc')
+                ->first();
+
             $employee_data = Employee::where('finger_id', $eventLog->AccessControllerEvent->employeeNoString)->first();
 
-
-
-            /* $txt = "emp.".print_r($employee_data,1).".\n";
-            fwrite($myfile, $txt);*/
-
             if (!$log && $employee_data) {
-                $log_insert                     = new MsSql;
-                $log_insert->ID    = $employee_data->finger_id;
-                $log_insert->employee        = $employee_data->employee_id;
-                $log_insert->device             = $device->id;
-                $log_insert->device_employee_id = $eventLog->AccessControllerEvent->employeeNoString;
-                $log_insert->status             = 0;
-
-
+                $log_insert = [
+                    'ID' => $employee_data->finger_id,
+                    'employee' => $employee_data->employee_id,
+                    'branch_id' => $employee_data->branch_id,
+                    'device' => $device->id,
+                    'device_employee_id' => $eventLog->AccessControllerEvent->employeeNoString,
+                    'status' => 0,
+                ];
 
                 if (isset($last_record)) {
-                    $last_datetime        = new \Datetime($last_record->datetime);
-                    $current_log_datetime = new \Datetime(DATE('Y-m-d H:i:s', strtotime($time)));
-                    $diff                 = $last_datetime->diff($current_log_datetime);
+                    $last_datetime = new \Datetime($last_record->datetime);
+                    $current_log_datetime = new \Datetime(date('Y-m-d H:i:s', strtotime($time)));
+                    $diff = $last_datetime->diff($current_log_datetime);
                 }
-                $txt = "End\n";
-                fwrite($myfile, $txt);
 
                 if ($last_record && (date('Y-m-d', strtotime($last_record->datetime)) != date('Y-m-d', strtotime($time)))) {
-                    $log_insert->type = 'IN';
+                    $log_insert['type'] = 'IN';
                 } elseif ($last_record && $last_record->type == 'IN') {
-                    $log_insert->type = 'OUT';
+                    $log_insert['type'] = 'OUT';
                 } else {
-                    $log_insert->type = 'IN';
+                    $log_insert['type'] = 'IN';
                 }
 
+                $log_insert['datetime'] = date('Y-m-d H:i:s', strtotime($time));
 
-                $log_insert->datetime = DATE('Y-m-d H:i:s', strtotime($time));
-                $log_insert->save();
+                DB::table('ms_sql')->insert($log_insert);
             }
         }
 
         fclose($myfile);
-        return \response()->json([
+        return response()->json([
             'message' => 'success',
         ], 200);
     }

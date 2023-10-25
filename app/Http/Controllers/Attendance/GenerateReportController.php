@@ -75,7 +75,6 @@ class GenerateReportController extends Controller
                             }
                         }
                     });
-
             } else {
                 Employee::select('finger_id', 'employee_id')->status(UserStatus::$ACTIVE)->chunk(5, function ($employeeData) use ($datePeriod) {
                     foreach ($employeeData as $key => $employee) {
@@ -108,7 +107,6 @@ class GenerateReportController extends Controller
             echo 'error';
             // return redirect()->back()->with('error', 'Something went wrong, Please try again!' . $bug);
         }
-
     }
 
     public function generateAttendanceReportForAnEmployee($finger_id, $date)
@@ -122,7 +120,6 @@ class GenerateReportController extends Controller
         $recompute = true;
 
         dispatch(new ReportJob($employee->finger_id, $employee->employee_id, $date, $in_time, $out_time, $manualAttendance, $recompute));
-
     }
 
     public function generateAttendanceReport($date, $id = null)
@@ -168,7 +165,6 @@ class GenerateReportController extends Controller
                     $if_exists->save();
                     return true;
                 }
-
             } else {
 
                 $tempArray = [];
@@ -179,7 +175,6 @@ class GenerateReportController extends Controller
                 if ($data_format['date'] > date("Y-m-d")) {
 
                     $tempArray['attendance_status'] = AttendanceStatus::$FUTURE;
-
                 } else {
 
                     $ifHoliday = $this->ifHoliday($govtHolidays, $data_format['date']);
@@ -192,7 +187,6 @@ class GenerateReportController extends Controller
                     } else {
                         $tempArray['attendance_status'] = AttendanceStatus::$ABSENT;
                     }
-
                 }
 
                 if (!$if_exists) {
@@ -204,7 +198,6 @@ class GenerateReportController extends Controller
                     $if_exists->save();
                 }
             }
-
         } else {
             info('Manual override skipped when calculating reports for an employee - ' . $data_format['finger_print_id'] . ' on ' . $data_format['date'] . '...........');
         }
@@ -228,13 +221,11 @@ class GenerateReportController extends Controller
                 info('manualAttenadance ' . $finger_id);
                 $dataSet = $this->manualAttendanceReport($in_time, $out_time, $date, $finger_id);
             }
-
         } else {
 
             if ($shift && $shift->$day != null) {
                 info('shiftBasedReport ' . $finger_id);
                 $dataSet = $this->shiftBasedReport($shift, $date, $month, $day, $finger_id);
-
             } else {
 
                 info('autoGenReport ' . $finger_id);
@@ -269,7 +260,6 @@ class GenerateReportController extends Controller
                 ->where('ID', $finger_id->finger_id)
                 ->orderby('datetime', 'ASC')
                 ->get();
-
         } else {
             $results = DB::table('ms_sql')
                 ->whereRaw("datetime >= '" . $date_from . "' AND datetime <= '" . $date_to . "'")
@@ -297,7 +287,6 @@ class GenerateReportController extends Controller
             $attendance_data['in_out_time'] = null;
 
             $dataSet = $attendance_data;
-
         } elseif (count($results) == 1) {
 
             $attendance_data['date'] = date('Y-m-d', strtotime($date_from));
@@ -316,7 +305,6 @@ class GenerateReportController extends Controller
             $attendance_data['in_out_time'] = date('d/m/y H:i', strtotime($results[0]->datetime)) . ":" . ('IN');
 
             $dataSet = $this->overtimeLateEarlyCalc($attendance_data);
-
         } elseif (count($results) >= 2) {
 
             $attendance_data['date'] = date('Y-m-d', strtotime($date_from));
@@ -374,7 +362,7 @@ class GenerateReportController extends Controller
 
     public function shiftBasedReport($shift, $date, $month, $day, $finger_id)
     {
-        // info('Shift Based Report function.....................');
+        info('Shift Based Report function.....................');
 
         $attendance_data = [];
         $dataSet = [];
@@ -406,11 +394,12 @@ class GenerateReportController extends Controller
             $outTime = DB::table('ms_sql')->whereRaw("datetime >= '" . $fdatetime . "' AND datetime <= '" . $tdatetime . "'")
                 ->where('ID', $finger_id)->max('datetime');
         }
-
         if ($inTime != null && isset($outTime)) {
 
             $working_time = $this->workingtime($inTime, $outTime);
-            $hour = explode(':', $working_time);
+            $shiftWorkingTime = $this->workingtime($shiftStartTime, $shiftEndTime);
+           
+
 
             $rawData = [
                 'date' => date('Y-m-d', strtotime($date)),
@@ -428,9 +417,7 @@ class GenerateReportController extends Controller
             ];
 
             $attendance_data = $this->reportDataFormat($rawData);
-            // $dataSet = $this->overtimeLateEarlyCalc($attendance_data, $shift->$day);
             $dataSet = $this->overtimeLateEarlyCalc($attendance_data);
-
         } elseif ($inTime != null) {
 
             $rawData = [
@@ -449,7 +436,6 @@ class GenerateReportController extends Controller
             ];
 
             $dataSet = $this->reportDataFormat($rawData);
-
         } else {
 
             $rawData = [
@@ -468,7 +454,6 @@ class GenerateReportController extends Controller
             ];
 
             $dataSet = $this->reportDataFormat($rawData);
-
         }
 
         return $dataSet;
@@ -476,6 +461,7 @@ class GenerateReportController extends Controller
 
     public function reportDataFormat($data)
     {
+
         $attendance_data = [];
         $dataSet = [];
 
@@ -509,7 +495,7 @@ class GenerateReportController extends Controller
 
         $dataSet = [];
         $tempArray = [];
-
+        // dd($data_format);
         // if ($data_format != [] && isset($data_format['working_time']) && $data_format['working_time'] != null) {
         if ($data_format != []) {
 
@@ -522,7 +508,7 @@ class GenerateReportController extends Controller
                 $in_datetime = new DateTime($data_format['in_time']);
                 $start_datetime = new DateTime($data_format['date'] . ' ' . $shift_list->start_time);
                 $late_count_time = date('H:i', strtotime($shift_list->late_count_time));
-                info($late_count_time);
+                
                 if ($in_datetime >= $start_datetime) {
 
                     $interval = $in_datetime->diff($start_datetime);
@@ -533,7 +519,6 @@ class GenerateReportController extends Controller
                     $tempArray['end_time'] = $shift_list->end_time;
                     $tempArray['early_by'] = null;
                     $tempArray['late_by'] = $interval->format('%H') . ":" . $interval->format('%I') . ":" . $interval->format('%S');
-
                 } elseif ($in_datetime <= $start_datetime) {
 
                     $interval = $start_datetime->diff($in_datetime);
@@ -544,9 +529,7 @@ class GenerateReportController extends Controller
                     $tempArray['end_time'] = $shift_list->end_time;
                     $tempArray['early_by'] = $interval->format('%H') . ":" . $interval->format('%I') . ":" . $interval->format('%S');
                     $tempArray['late_by'] = null;
-
                 }
-
             } else {
 
                 $shift_list = WorkShift::orderBy('start_time', 'ASC')->get();
@@ -592,7 +575,6 @@ class GenerateReportController extends Controller
                                     $tempArray['end_time'] = $value->end_time;
                                     $late_by = $interval->format('%H') . ":" . $interval->format('%I') . ":" . $interval->format('%S');
                                     $tempArray['late_by'] = strtotime($late_by) > strtotime($late_time) ? $late_by : null;
-
                                 } elseif ($in_time <= $start_time) {
 
                                     $interval = $start_time->diff($in_time);
@@ -603,21 +585,15 @@ class GenerateReportController extends Controller
                                     $tempArray['end_time'] = $value->end_time;
                                     $early_by = $interval->format('%H') . ":" . $interval->format('%I') . ":" . $interval->format('%S');
                                     $tempArray['early_by'] = strtotime($early_by) > strtotime($late_time) ? $early_by : null;
-
                                 }
 
                                 break;
-
                             } else {
                                 $interval += 30;
                             }
-
                         }
-
                     }
-
                 }
-
             }
 
             // find employee over time
@@ -628,6 +604,8 @@ class GenerateReportController extends Controller
                 $shiftEndTime = new DateTime(date('H:i:s', strtotime($tempArray['end_time'])));
                 $shiftEndTimeForAtt = new DateTime(date('H:i:s', strtotime('-5 minutes', strtotime($tempArray['end_time']))));
                 $shiftEndTimeForAtt = date('H:i:s', strtotime('-5 minutes', strtotime($tempArray['end_time'])));
+              
+              
 
                 if ($shiftStartTime < $shiftEndTime) {
                     $employeeOutTime = new DateTime(date('H:i:s', strtotime($data_format['out_time'])));
@@ -648,11 +626,9 @@ class GenerateReportController extends Controller
 
                     $over_time = $shiftEndTime->diff($employeeOutTime);
                     $tempArray['over_time'] = $this->check_overtime($over_time);
-
                 } else {
                     $tempArray['over_time'] = null;
                 }
-
             } else if (!isset($tempArray['work_shift_id']) || $tempArray['work_shift_id'] == null) {
 
                 $workingTime = new DateTime($data_format['working_time']);
@@ -669,7 +645,6 @@ class GenerateReportController extends Controller
                     $over_time = $naShiftDuration->diff($workingTime);
 
                     $tempArray['over_time'] = $this->check_overtime($over_time);
-
                 } else {
                     $tempArray['over_time'] = null;
                 }
@@ -678,6 +653,7 @@ class GenerateReportController extends Controller
             $dataSet = array_merge($data_format, $tempArray);
             unset($dataSet['start_time']);
             unset($dataSet['end_time']);
+            // dd($dataSet);
             return $dataSet;
         }
     }

@@ -144,38 +144,13 @@ class DepartmentController extends Controller
 
         try {
             $department = Department::FindOrFail($id);
-            $department->delete();
+            $department->delete();         
 
-            $pushStatus =  DB::table('sync_to_live')->first();
-
-            if ($pushStatus->status == 1) {
-                //Push to LIVE
-
-                $form_data = [];
-                $form_data['id'] = $id;
-                unset($form_data['_method']);
-                unset($form_data['_token']);
-
-                $data_set = [];
-                foreach ($form_data as $key => $value) {
-                    if ($value)
-                        $data_set[$key] = $value;
-                    else
-                        $data_set[$key] = '';
-                }
-
-                $client   = new \GuzzleHttp\Client(['verify' => false]);
-                $response = $client->request('POST', Common::liveurl() . "deleteDepartment", [
-                    'form_params' => $data_set
-                ]);
-
-                // PUSH TO LIVE END
-            }
 
 
             $bug = 0;
         } catch (\Exception $e) {
-            dd($e);
+            
             $bug = 1;
         }
 

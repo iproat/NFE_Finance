@@ -37,7 +37,6 @@ class ManualAttendanceController extends Controller
         $branch = $request->get('branch_id');
         $branchList = [];
         $results = [];
-
         if (decrypt(session('logged_session_data.role_id')) == 1 || decrypt(session('logged_session_data.role_id')) == 2) {
             $branchList = $this->commonRepository->branchList();
         }
@@ -83,7 +82,6 @@ class ManualAttendanceController extends Controller
             $results = $this->generateReportController->generateManualAttendanceReport($request->finger_print_id, date('Y-m-d', strtotime($request->in_time)), date('Y-m-d H:i:s', strtotime($request->in_time)), date('Y-m-d H:i:s', strtotime($request->out_time)), $manual, $recompute);
 
             echo $results ? 'success' : 'error';
-
         } catch (\Throwable $th) {
             info($th);
             echo $th->getMessage();
@@ -96,11 +94,13 @@ class ManualAttendanceController extends Controller
         $employee = $request->get('employee_id');
         $employeeList = Employee::where('status', UserStatus::$ACTIVE)->get();
 
-        if (decrypt(session('logged_session_data.role_id')) == 1 || decrypt(session('logged_session_data.role_id')) == 2) {
+        if (session('logged_session_data.role_id') == 1 || session('logged_session_data.role_id') == 2) {
             $employeeList = Employee::where('status', UserStatus::$ACTIVE)->get();
         }
 
-        $attendanceData = Employee::select('employee.finger_id', 'employee.employee_id',
+        $attendanceData = Employee::select(
+            'employee.finger_id',
+            'employee.employee_id',
             DB::raw('CONCAT(COALESCE(employee.first_name,\'\'),\' \',COALESCE(employee.last_name,\'\')) as fullName'),
             DB::raw('(SELECT DATE_FORMAT(MIN(view_employee_in_out_data.in_time), \'%Y-%m-%d %H:%i:%s\')  FROM view_employee_in_out_data WHERE view_employee_in_out_data.date = "' . $data . '" AND view_employee_in_out_data.finger_print_id = employee.finger_id ) AS inTime'),
             DB::raw('(SELECT DATE_FORMAT(MAX(view_employee_in_out_data.out_time), \'%Y-%m-%d %H:%i:%s\') FROM view_employee_in_out_data WHERE view_employee_in_out_data.date =  "' . $data . '" AND view_employee_in_out_data.finger_print_id = employee.finger_id ) AS outTime'),
@@ -112,7 +112,8 @@ class ManualAttendanceController extends Controller
             DB::raw('(SELECT view_employee_in_out_data.working_time FROM view_employee_in_out_data WHERE view_employee_in_out_data.date =  "' . $data . '" AND view_employee_in_out_data.finger_print_id = employee.finger_id) AS workingTime'),
             DB::raw('(SELECT view_employee_in_out_data.over_time FROM view_employee_in_out_data WHERE view_employee_in_out_data.date =  "' . $data . '" AND view_employee_in_out_data.finger_print_id = employee.finger_id) AS overTime'),
             DB::raw('(SELECT view_employee_in_out_data.early_by FROM view_employee_in_out_data WHERE view_employee_in_out_data.date =  "' . $data . '" AND view_employee_in_out_data.finger_print_id = employee.finger_id) AS earlyBy'),
-            DB::raw('(SELECT view_employee_in_out_data.late_by FROM view_employee_in_out_data WHERE view_employee_in_out_data.date =  "' . $data . '" AND view_employee_in_out_data.finger_print_id = employee.finger_id) AS lateBy'))
+            DB::raw('(SELECT view_employee_in_out_data.late_by FROM view_employee_in_out_data WHERE view_employee_in_out_data.date =  "' . $data . '" AND view_employee_in_out_data.finger_print_id = employee.finger_id) AS lateBy')
+        )
             ->where('employee.employee_id', $employee)
             ->where('employee.status', 1)
             ->get();
@@ -134,10 +135,10 @@ class ManualAttendanceController extends Controller
             $emp = Employee::where('employee_id', $employee)->select('finger_id')->first();
 
             $result = json_decode(DB::table('manual_attendance')
-                    ->where('ID', $emp->finger_id)
-                    ->select('manual_attendance.primary_id')
-                    ->whereRaw('manual_attendance.datetime >= "' . $start . '" AND manual_attendance.datetime <=  "' . $end . '"')
-                    ->get()->toJson(), true);
+                ->where('ID', $emp->finger_id)
+                ->select('manual_attendance.primary_id')
+                ->whereRaw('manual_attendance.datetime >= "' . $start . '" AND manual_attendance.datetime <=  "' . $end . '"')
+                ->get()->toJson(), true);
 
             DB::table('manual_attendance')->whereIn('primary_id', array_values($result))->delete();
 
@@ -188,7 +189,6 @@ class ManualAttendanceController extends Controller
             $bug = $e->getMessage();
             return redirect('manualAttendance')->with('error', 'Something Error Found !, Please try again. ' . $bug);
         }
-
     }
 
     // ip attendance

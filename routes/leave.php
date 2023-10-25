@@ -91,12 +91,20 @@ Route::group(['middleware' => ['preventbackbutton', 'auth']], function () {
         Route::get('/{requestedApplication}/viewDetails', ['as' => 'requestedApplication.viewDetails', 'uses' => 'Leave\RequestedApplicationController@viewDetails']);
         Route::put('/{requestedApplication}', ['as' => 'requestedApplication.update', 'uses' => 'Leave\RequestedApplicationController@update']);
     });
-
+    Route::group(['prefix' => 'applyForPermission'], function () {
+        Route::get('/', ['as' => 'applyForPermission.index', 'uses' => 'Leave\ApplyForPermissionController@index']);
+        Route::get('/create', ['as' => 'applyForPermission.create', 'uses' => 'Leave\ApplyForPermissionController@create']);
+        Route::post('/store', ['as' => 'applyForPermission.store', 'uses' => 'Leave\ApplyForPermissionController@store']);
+        Route::get('/request', ['as' => 'applyForPermission.permissionRequest', 'uses' => 'Leave\ApplyForPermissionController@permissionrequest']);
+        Route::post('getEmployeeLeaveBalance', 'Leave\ApplyForLeaveController@getEmployeeLeaveBalance');
+        Route::post('applyForTotalNumberOfPermissions', 'Leave\ApplyForPermissionController@applyForTotalNumberOfPermissions');
+        Route::get('/{applyForLeave}', ['as' => 'applyForLeave.show', 'uses' => 'ApplyForLeaveController\applyForTotalNumberOfDays@show']);
+    });
     // Route::group(['prefix' => 'requestedPaidLeaveApplication'], function () {
     //     Route::get('/', ['as' => 'requestedPaidLeaveApplication.index', 'uses' => 'Leave\RequestedPaidLeaveApplicationController@index']);
     //     Route::get('/{requestedPaidLeaveApplication}/viewDetails', ['as' => 'requestedPaidLeaveApplication.viewDetails', 'uses' => 'Leave\RequestedPaidLeaveApplicationController@viewDetails']);
     //     Route::put('/{requestedPaidLeaveApplication}', ['as' => 'requestedPaidLeaveApplication.update', 'uses' => 'Leave\RequestedPaidLeaveApplicationController@update']);
-    // });
+
 
     Route::get('leaveReport', ['as' => 'leaveReport.leaveReport', 'uses' => 'Leave\ReportController@employeeLeaveReport']);
     Route::post('leaveReport', ['as' => 'leaveReport.leaveReport', 'uses' => 'Leave\ReportController@employeeLeaveReport']);

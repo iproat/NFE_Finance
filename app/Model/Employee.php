@@ -11,12 +11,12 @@ class Employee extends Model
 {
     // use BranchTrait;
     // use EncryptedAttribute;
-    
+
     protected $table = 'employee';
     protected $primaryKey = 'employee_id';
     protected $fillable = [
         'employee_id', 'branch_id', 'user_id', 'finger_id', 'department_id', 'incentive', 'salary_limit', 'designation_id', 'branch_id', 'work_shift', 'supervisor_id', 'work_shift_id', 'email', 'first_name',
-        'last_name', 'date_of_birth', 'date_of_joining', 'date_of_leaving', 'gender', 'marital_status',
+        'last_name', 'date_of_birth', 'date_of_joining', 'date_of_leaving', 'gender', 'marital_status', 'work_hours',
         'photo', 'address', 'emergency_contacts', 'phone', 'document_title', 'document_name', 'document_expiry', 'document_title2', 'document_name2', 'document_expiry2', 'document_title3', 'document_name3', 'document_expiry3', 'document_title4', 'document_name4', 'document_expiry4', 'document_title5', 'document_name5', 'document_expiry5', 'status', 'created_by', 'updated_by', 'religion', 'pay_grade_id', 'hourly_salaries_id', 'esi_card_number', 'pf_account_number', 'device_employee_id',
     ];
 

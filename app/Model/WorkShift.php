@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WorkShift extends Model
 {
-    use BranchTrait;
+    // use BranchTrait;
 
     protected $table = 'work_shift';
     protected $primaryKey = 'work_shift_id';

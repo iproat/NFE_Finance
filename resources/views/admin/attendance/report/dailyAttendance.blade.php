@@ -136,9 +136,9 @@
                                             <th style="font-size:12px;">@lang('attendance.duration')</th>
                                             <th style="font-size:12px;">@lang('attendance.early_by')</th>
                                             <th style="font-size:12px;">@lang('attendance.late_by')</th>
-                                            <th style="font-size:12px;">@lang('attendance.over_time')</th>
+                                            {{-- <th style="font-size:12px;">@lang('attendance.over_time')</th>
                                             <th style="font-size:12px;">@lang('attendance.comp_off')</th>
-                                            <th style="font-size:12px;">@lang('attendance.incentive')</th>
+                                            <th style="font-size:12px;">@lang('attendance.incentive')</th> --}}
                                             <th style="font-size:12px;">@lang('attendance.history_of_records')</th>
                                             <th style="font-size:12px;;">@lang('attendance.status')</th>
                                         </tr>
@@ -206,7 +206,7 @@
                                                             }
                                                         @endphp
                                                     </td>
-                                                    <td style="font-size:12px;">
+                                                    {{-- <td style="font-size:12px;">
                                                         @php
                                                             if (isset($value->overtime_approval->actual_overtime) && $value->overtime_approval->actual_overtime != null) {
                                                                 echo 'OT Hr: ' . date('H:i', strtotime($value->overtime_approval->actual_overtime)) . '<br>' . 'Appr. Hr: ' . date('H:i', strtotime($value->overtime_approval->approved_overtime)) . '<br>' . 'Remark: ' . $value->overtime_approval->remark;
@@ -214,8 +214,8 @@
                                                                 echo 'OT Hr: ' . ($value->over_time ? date('H:i', strtotime($value->over_time)) : '-') . '<br>' . 'Appr. Hr: ' . '-' . '<br>' . 'Remark: ' . '-';
                                                             }
                                                         @endphp
-                                                    </td>
-                                                    <td style="font-size:12px;">
+                                                    </td> --}}
+                                                    {{-- <td style="font-size:12px;">
                                                         @php
                                                             if (isset($value->comp_off->off_date) && $value->comp_off->working_date != null) {
                                                                 echo 'Off Date: ' . dateConvertDBtoForm($value->comp_off->off_date) . '<br>' . 'Wrk.Date: ' . dateConvertDBtoForm($value->comp_off->working_date) . '<br>' . 'Day: ' . fullOrHalfDay($value->comp_off->off_timing) . '<br>' . 'Comment: ' . $value->comp_off->comment;
@@ -223,8 +223,8 @@
                                                                 echo 'Off Date: ' . '-' . '<br>' . 'Wrk.Date: ' . '-' . '<br>' . 'Day: ' . '' . '<br>' . 'Comment: ' . '-';
                                                             }
                                                         @endphp
-                                                    </td>
-                                                    <td style="font-size:12px;">
+                                                    </td> --}}
+                                                    {{-- <td style="font-size:12px;">
                                                         @php
                                                             if (isset($value->incentive->incentive_date) && $value->incentive->working_date != null) {
                                                                 echo 'Incentive Date: ' . dateConvertDBtoForm($value->incentive->incentive_date) . '<br>' . 'Wrk.Date: ' . dateConvertDBtoForm($value->incentive->working_date) . '<br>' . 'Comment: ' . $value->incentive->comment;
@@ -232,7 +232,7 @@
                                                                 echo 'Incentive Date: ' . '-' . '<br>' . 'Wrk. Date: ' . '-' . '<br>'  . 'Comment: ' . '-';
                                                             }
                                                         @endphp
-                                                    </td>
+                                                    </td> --}}
                                                     <td style="font-size:12px;">
                                                         @php
                                                             if ($value->in_out_time != null) {

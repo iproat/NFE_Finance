@@ -108,5 +108,7 @@ return [
     'comp_off'                         => 'Comp Off',
     '2fa'                              => '2FA',
     'incentive'                        => 'Incentive',
+    'permission_application'           => 'Permission Application',
+    'apply_for_permission'           => 'Apply For Permission',
 
 ];

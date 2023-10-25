@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
 
-    use BranchTrait;
+    // use BranchTrait;
     
     protected $table = 'department';
     protected $primaryKey = 'department_id';

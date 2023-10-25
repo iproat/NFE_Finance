@@ -103,7 +103,8 @@ class EmployeeController extends Controller
         $incentive = $this->employeeRepositories->incentive();
         $salaryLimit = $this->employeeRepositories->salaryLimit();
         $workShift = $this->employeeRepositories->workShift();
-        
+        $workHours = $this->employeeRepositories->workHours();
+
         $data = [
             'userList' => $userList,
             'roleList' => $roleList,
@@ -117,6 +118,7 @@ class EmployeeController extends Controller
             'incentive' => $incentive,
             'salaryLimit' => $salaryLimit,
             'workShift' => $workShift,
+            'workHours' => $workHours,
 
         ];
 
@@ -125,7 +127,7 @@ class EmployeeController extends Controller
 
     public function store(EmployeeRequest $request)
     {
-
+        // dd($request->all());
         $photo = $request->file('photo');
         $document = $request->file('document_file');
         $document2 = $request->file('document_file2');
@@ -193,33 +195,7 @@ class EmployeeController extends Controller
                 EmployeeExperience::insert($employeeExperienceData);
             }
 
-            $pushStatus = DB::table('sync_to_live')->first();
 
-            if ($pushStatus->status == 1) {
-                //Push to LIVE
-                $form_data = $request->all();
-                $form_data['device_employee_id'] = $childData->finger_id;
-                $form_data['employee_id'] = $childData->employee_id;
-                $form_data['user_id'] = $childData->user_id;
-
-                unset($form_data['_method']);
-                unset($form_data['_token']);
-
-                $data_set = [];
-                foreach ($form_data as $key => $value) {
-                    if ($value) {
-                        $data_set[$key] = $value;
-                    } else {
-                        $data_set[$key] = '';
-                    }
-                }
-                //dd($data_set);
-                $client = new \GuzzleHttp\Client(['verify' => false]);
-                $response = $client->request('POST', Common::liveurl() . "addEmployee", [
-                    'form_params' => $data_set,
-                ]);
-                // PUSH TO LIVE END
-            }
 
             DB::commit();
             $bug = 0;
@@ -252,6 +228,7 @@ class EmployeeController extends Controller
         $incentive = $this->employeeRepositories->incentive();
         $salaryLimit = $this->employeeRepositories->salaryLimit();
         $workShift = $this->employeeRepositories->workShift();
+        $workHours = $this->employeeRepositories->workHours();
 
         $employeeAccountEditModeData = User::where('user_id', $editModeData->user_id)->first();
         $educationQualificationEditModeData = EmployeeEducationQualification::where('employee_id', $id)->get();
@@ -275,6 +252,7 @@ class EmployeeController extends Controller
             'incentive' => $incentive,
             'salaryLimit' => $salaryLimit,
             'workShift' => $workShift,
+            'workHours' => $workHours,
 
         ];
 

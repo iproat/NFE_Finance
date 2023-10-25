@@ -20,7 +20,7 @@
 
                 <th hidden>@lang('paygrade.pay_grade_name')</th>
 
-                <th>@lang('employee.date_of_joining')</th>
+                <th hidden>@lang('employee.date_of_joining')</th>
 
                 <th>@lang('common.status')</th>
 
@@ -38,11 +38,11 @@
                     <td>
 
                         @if ($value->photo != '' && file_exists('uploads/employeePhoto/' . $value->photo))
-                            <a href="{!! route('employee.show', $value->employee_id) !!}"><img style=" width: 70px; height:70px" src="{!! asset('uploads/employeePhoto/' . $value->photo) !!}"
-                                    alt="user-img" class="img-circle"></a>
+                            <a href="{!! route('employee.show', $value->employee_id) !!}"><img style=" width: 70px; height:70px"
+                                    src="{!! asset('uploads/employeePhoto/' . $value->photo) !!}" alt="user-img" class="img-circle"></a>
                         @else
-                            <a href="{!! route('employee.show', $value->employee_id) !!}"> <img style=" width: 70px; height:70px" src="{!! asset('admin_assets/img/default.png') !!}"
-                                    alt="user-img" class="img-circle"></a>
+                            <a href="{!! route('employee.show', $value->employee_id) !!}"> <img style=" width: 70px; height:70px"
+                                    src="{!! asset('admin_assets/img/default.png') !!}" alt="user-img" class="img-circle"></a>
                         @endif
 
                     </td>
@@ -146,7 +146,7 @@
 
                     </td>
 
-                    <td>
+                    <td hidden>
 
                         <span class="font-medium">
 

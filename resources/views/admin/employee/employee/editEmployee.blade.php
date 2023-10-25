@@ -302,6 +302,13 @@
                                     </div>
 
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="exampleInput">@lang('employee.work_hours')<span
+                                                class="validateRq">*</span></label>
+                                        {{ Form::select('work_hours', $workHours, Input::old('work_hours'), ['class' => 'form-control work_hours select2 required']) }}
+                                    </div>
+                                </div>
 
                                 <div class="col-md-3" hidden>
 
@@ -326,7 +333,7 @@
 
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-3" hidden>
                                     <div class="form-group">
                                         <label for="exampleInput">@lang('employee.work_shift')<span
                                                 class="validateRq">*</span></label>
@@ -411,7 +418,7 @@
 
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-3" hidden>
 
                                     <div class="form-group">
 
@@ -453,6 +460,18 @@
                                         <input class="form-control number phone" id="phone"
                                             placeholder="@lang('employee.phone')" name="phone" type="number"
                                             value="{{ $editModeData->phone }}">
+
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3">
+
+                                    <div class="form-group">
+
+                                        <label for="exampleInput">@lang('employee.address')</label>
+
+                                        <textarea class="form-control address" id="address" placeholder="@lang('employee.address')" cols="30"
+                                            rows="2" name="address">{{ $editModeData->address }}</textarea>
 
                                     </div>
 
@@ -501,7 +520,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3" hidden>
 
                                     <label for="exampleInput">@lang('employee.date_of_leaving')</label>
 
@@ -537,6 +556,18 @@
                                                 @lang('employee.married')</option>
 
                                         </select>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3">
+
+                                    <div class="form-group">
+
+                                        <label for="exampleInput">@lang('employee.emergency_contact')</label>
+
+                                        <textarea class="form-control emergency_contacts" id="emergency_contacts" placeholder="@lang('employee.emergency_contact')"
+                                            cols="30" rows="2" name="emergency_contacts">{{ $editModeData->emergency_contacts }}</textarea>
 
                                     </div>
 
@@ -580,14 +611,14 @@
 
 
 
-                                <div class="col-md-3">
+                                <div class="col-md-3" hidden>
                                     <div class="form-group">
                                         <label for="exampleInput">@lang('employee.incentive')<span
                                                 class="validateRq">*</span></label>
                                         {{ Form::select('incentive', $incentive, Input::old('incentive'), ['class' => 'form-control incentive select2 required']) }}
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3" hidden>
                                     <div class="form-group">
                                         <label for="exampleInput">@lang('employee.salary_limit')<span
                                                 class="validateRq">*</span></label>
@@ -614,7 +645,7 @@
 
                             </div>
 
-                            <div class="row">
+                            <div class="row" hidden>
 
                                 <div class="col-md-3">
 
@@ -1132,7 +1163,8 @@
                                                     <label for="exampleInput">@lang('employee.skill')<span
                                                             class="validateRq">*</span></label>
 
-                                                    <textarea name="skill[]" class="form-control skill" placeholder="@lang('employee.skill')" cols="30" rows="2">{{ $experienceValue->skill }}</textarea>
+                                                    <textarea name="skill[]" class="form-control skill" placeholder="@lang('employee.skill')" cols="30"
+                                                        rows="2">{{ $experienceValue->skill }}</textarea>
 
                                                 </div>
 

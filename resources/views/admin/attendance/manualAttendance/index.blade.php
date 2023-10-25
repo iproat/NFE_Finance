@@ -3,19 +3,7 @@
 @section('title')
     @lang('attendance.employee_attendance')
 @endsection
-
 <style>
-    .datepicker table tr td.disabled,
-    .datepicker table tr td.disabled:hover {
-        background: none;
-        color: red !important;
-        cursor: default;
-    }
-
-    td {
-        color: black !important;
-    }
-
     .branchName {
         position: relative;
     }
@@ -89,8 +77,8 @@
                         <div class="row">
                             <div id="searchBox">
                                 {{ Form::open(['route' => 'manualAttendance.filter', 'id' => 'employeeAttendance', 'method' => 'POST']) }}
-                                <div class="col-md-1"></div>
-                                <div class="col-md-4">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-3">
                                     <label class="control-label" for="email">@lang('common.branch')<span
                                             class="validateRq">*</span></label>
                                     <div class="form-group">
@@ -110,7 +98,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label class="control-label" for="email">@lang('common.date')<span
                                             class="validateRq">*</span></label>
                                     <div class="input-group">
@@ -130,12 +118,10 @@
                                 {{ Form::close() }}
                             </div>
                         </div>
-                        <hr>
-
                         @if (count($results) > 0)
-
-                            <br>
-                            @include('admin.attendance.manualAttendance.pagination')
+                            <div>
+                                @include('admin.attendance.manualAttendance.pagination')
+                            </div>
                         @endif
                     </div>
                 </div>
@@ -146,27 +132,6 @@
 @endsection
 
 @section('page_scripts')
-{{-- <script>
-    $(document).ready(function() {
-        window.d = new DateTime(document.getElementsByClassName('in_time'), {
-            format: 'YYYY-MM-DD HH:mm:ss'
-        });
-        window.d = new DateTime(document.getElementsByClassName('out_time'), {
-            format: 'YYYY-MM-DD HH:mm:ss'
-        });
-    });
-</script> --}}
-
-{{-- <script>
-    var j = jQuery.noConflict();
-    j(function() {
-        j('.datetime').datetimepicker({
-            format: 'L',
-            disabledHours: true,
-        });
-    });
-</script> --}}
-
 <script>
     $(document).ready(function() {
 
@@ -180,10 +145,12 @@
         end_date = prefix + end_date + ' 00:00:00';
         end_date = new Date();
 
-        $('.datetime').datetimepicker({
+        $('.bootstrap-datetimepicker-widget').datetimepicker({
             format: 'YYYY-MM-DD HH:mm:ss',
             minDate: start_date,
             maxDate: end_date,
+            // minDate: moment().subtract(60, 'days'),
+            // maxDate: moment().add(0, 'days')
         }).on('dp.change', function(e) {
             var formatedValue = e.date.format(e.date._f);
             var id = $(this).attr('data-id');
@@ -191,7 +158,30 @@
             var name = $(this).attr('name');
             var fdate = $('.intime' + id).val();
             var tdate = $('.outtime' + id).val();
+
+            // var splitFdate = fdate.split('-');
+            // splitFdate = splitFdate[0] + '-' + splitFdate[1] + '-' + splitFdate[2];
+            // var splitTdate = tdate.split('-');
+            // splitTdate = splitTdate[0] + '-' + splitTdate[1] + '-' + splitTdate[2];
+
+            // if (tdate != "" && tdate != "" && fdate > tdate) {
+            //     if (name == 'in_time') {
+            //         $('.intime' + id).val(value)
+            //     } else {
+            //         $('.outtime' + id).val(value)
+            //     }
+            //     $.toast({
+            //         heading: 'Error',
+            //         text: 'Wrong Datetime time',
+            //         position: 'top-right',
+            //         loaderBg: '#ff6849',
+            //         icon: 'warning',
+            //         hideAfter: 3000,
+            //         stack: 6
+            //     });
+            // }
         });
+
     });
 </script>
 

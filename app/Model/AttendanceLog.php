@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AttendanceLog extends Model
 {
 
-    use BranchTrait;
+    // use BranchTrait;
     protected $table = "attendance_log";
     protected $primaryKey = 'attendance_log_id';
     

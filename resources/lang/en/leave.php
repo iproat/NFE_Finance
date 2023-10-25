@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 
@@ -50,4 +50,15 @@ return [
     'paid_leave_configuration' => 'Paid Leave Configuration',
     'rules_of_paid_leave' => 'Rules Of Paid Leave',
     'employee_id' => 'Employee ID',
+    'leave_permission_form'           => 'Leave Permission Form',
+    'already_approved_permission_count'           => 'Approved Permission Count',
+    'permission_from_time'           => 'Permission FromTime',
+    'permission_to_time'           => 'Permission ToTime',
+    'permission_duration'           => 'Permission Duration',
+    'view_leave_permission'           => 'View Leave Permission',
+    'apply_for_permission'           => 'Apply For Permission',
+    'permission_status'           => 'Permission Status',
+    'approved_permission_count'           => 'Approved Permission Count',
+    'date'           => 'Date',
+    'permission_list'           => 'Permission List',
 ];
