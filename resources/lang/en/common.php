@@ -96,8 +96,9 @@ return [
     'full_day' => "Full Day",
     'contractor' => "Contractor",
     'see_all_languages' => "See all languages ",
-    'employee_id' => "EmployeeID" ,   
-    'in_out_shift' => "IN/OUT/Shift" ,   
+    'employee_id' => "EmployeeID",
+    'in_out_shift' => "IN/OUT/Shift",
+    'permission_duration' => "Permission Duration",
 
 
 

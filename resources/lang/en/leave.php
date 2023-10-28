@@ -64,4 +64,11 @@ return [
     'permission_requests'           => 'Permission Requests',
     'already_applied_permission_count'           => 'Applied Permission Count',
     'department_head_status'           => 'Action',
+    'permissiom_duration'           => 'Permission Duration',
+    'onduty_list'         => 'OnDuty List',
+    'apply_for_on_duty'         => 'Apply For OnDuty',
+    'onduty_application_form'         => 'OnDuty Application Form',
+    'view_on_duty_applicaiton'         => 'View OnDuty Application',
+    'application_date'         => 'Application Date',
+
 ];

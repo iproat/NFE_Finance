@@ -11,7 +11,7 @@ class LeavePermission extends Model
 
   protected $fillable = [
     'leave_permission_id', 'employee_id', 'permission_duration', 'leave_permission_date', 'leave_permission_purpose', 'status',
-    'from_time', 'to_time', 'remarks', 'approved_by', 'approve_date'
+    'from_time', 'to_time', 'remarks', 'approved_by', 'approve_date', 'reject_by', 'reject_date'
   ];
   public function employee()
   {

@@ -109,7 +109,10 @@ return [
     '2fa'                              => '2FA',
     'incentive'                        => 'Incentive',
     'permission_application'           => 'Permission Application',
+    'onduty_application'           => 'OnDuty Application',
     'apply_for_permission'           => 'Apply For Permission',
-    'req_permission_application'         => 'Requests Permission',
+    'req_permission_application'         => 'Requested Permission',
+    'apply_for_onduty'         => 'Apply For OnDuty',
+    'req_onduty_application'         => 'Requested OnDuty',
 
 ];
