@@ -214,7 +214,7 @@
     }
 
     .sidebar .nav-second-level {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 200;
         /* background: #394a5a; */
 
@@ -256,7 +256,7 @@
     }
 
     .tiMenu {
-        color: #7f7f7f;
+        color: #fff;
     }
 
     .sidebar {
@@ -266,7 +266,7 @@
     }
 
     .hideMenu {
-        color: #7f7f7f;
+        color: #fff;
     }
 
     #side-menu ul>li>a.active {
