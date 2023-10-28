@@ -91,6 +91,11 @@ Route::group(['middleware' => ['preventbackbutton', 'auth']], function () {
         Route::get('/{requestedApplication}/viewDetails', ['as' => 'requestedApplication.viewDetails', 'uses' => 'Leave\RequestedApplicationController@viewDetails']);
         Route::put('/{requestedApplication}', ['as' => 'requestedApplication.update', 'uses' => 'Leave\RequestedApplicationController@update']);
     });
+    Route::group(['prefix' => 'requestedPermissionApplication'], function () {
+        Route::get('/', ['as' => 'requestedPermissionApplication.index', 'uses' => 'Leave\RequestedPermissionApplicationController@index']);
+        Route::get('/{requestedPermissionApplication}/viewDetails', ['as' => 'requestedPermissionApplication.viewDetails', 'uses' => 'Leave\RequestedPermissionApplicationController@viewDetails']);
+        Route::put('/{requestedPermissionApplication}', ['as' => 'requestedPermissionApplication.update', 'uses' => 'Leave\RequestedPermissionApplicationController@update']);
+    });
     Route::group(['prefix' => 'applyForPermission'], function () {
         Route::get('/', ['as' => 'applyForPermission.index', 'uses' => 'Leave\ApplyForPermissionController@index']);
         Route::get('/create', ['as' => 'applyForPermission.create', 'uses' => 'Leave\ApplyForPermissionController@create']);

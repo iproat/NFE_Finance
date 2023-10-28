@@ -61,4 +61,7 @@ return [
     'approved_permission_count'           => 'Approved Permission Count',
     'date'           => 'Date',
     'permission_list'           => 'Permission List',
+    'permission_requests'           => 'Permission Requests',
+    'already_applied_permission_count'           => 'Applied Permission Count',
+    'department_head_status'           => 'Action',
 ];

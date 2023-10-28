@@ -25,34 +25,29 @@ class ApplyForPermissionController extends Controller
 
     public function index()
     {
-        if (session('logged_session_data.employee_id') != 1) {
-            $results = LeavePermission::with(['employee'])
-                ->where('employee_id', session('logged_session_data.employee_id'))
-                ->orderBy('leave_permission_date', 'desc')
-                ->paginate(10);
-        } elseif (session('logged_session_data.employee_id') == 1) {
-            $results = LeavePermission::with(['employee'])
-                ->orderBy('leave_permission_date', 'desc')
-                ->paginate(10);
-        }
+        $results = LeavePermission::with(['employee', 'approveBy'])
+            ->where('employee_id', decrypt(session('logged_session_data.employee_id')))
+            ->orderBy('leave_permission_date', 'desc')
+            ->paginate(10);
+
         return view('admin.leave.applyForPermission.index', ['results' => $results]);
     }
 
     public function create()
     {
         $getEmployeeInfo = $this->commonRepository->getEmployeeInfo(Auth::user()->user_id);
-        
+
         $Year  = Carbon::now()->year;
         $Month = DATE('m');
-        // $takenpermissions = LeavePermission::whereMonth('leave_permission_date', '=', $Month)->whereYear('leave_permission_date', '=', $Year)
-        //     ->where('employee_id', $getEmployeeInfo->employee_id)
-        //     ->where('status', 1)->count();
-        // $appliedpermissions = LeavePermission::whereMonth('leave_permission_date', '=', $Month)->whereYear('leave_permission_date', '=', $Year)
-        //     ->where('employee_id', $getEmployeeInfo->employee_id)->count();
+        $takenpermissions = LeavePermission::whereMonth('leave_permission_date', '=', $Month)->whereYear('leave_permission_date', '=', $Year)
+            ->where('employee_id', $getEmployeeInfo->employee_id)
+            ->where('status', 1)->count();
+        $appliedpermissions = LeavePermission::whereMonth('leave_permission_date', '=', $Month)->whereYear('leave_permission_date', '=', $Year)
+            ->where('employee_id', $getEmployeeInfo->employee_id)->count();
 
         return view('admin.leave.applyForPermission.leave_permission_form', [
             'getEmployeeInfo' => $getEmployeeInfo,
-            // 'takenPermissions' => $takenpermissions, 'appliedpermissions' => $appliedpermissions
+            'takenPermissions' => $takenpermissions, 'appliedpermissions' => $appliedpermissions
         ]);
     }
 
@@ -60,6 +55,7 @@ class ApplyForPermissionController extends Controller
 
     public function applyForTotalNumberOfPermissions(Request $request)
     {
+
         $permission_date = dateConvertFormtoDB($request->permission_date);
         $employee_id = $request->employee_id;
         $Year  = date("Y", strtotime($permission_date));
@@ -81,10 +77,7 @@ class ApplyForPermissionController extends Controller
         $input['to_time']                 = $request->to_time;
         $input['created_at']      = date('Y-m-d H:i:s');
         $input['updated_at']      = date('Y-m-d H:i:s');
-        $input['approved_by'] = 1;
-        $input['approve_date'] = date('Y-m-d');
-        $input['remarks'] = 'approved';
-        $input['status'] = 2;
+        $input['status'] = 1;
 
 
         $if_exists = LeavePermission::where('employee_id', $request->employee_id)->where('leave_permission_date', dateConvertFormtoDB($request->permission_date))->first();
@@ -110,12 +103,8 @@ class ApplyForPermissionController extends Controller
     }
     public function permissionrequest()
     {
-        // $departmentresults = LeavePermission::where('department_head',Auth::user()->user_id)->where('department_approval_status',0)->where('status',1)->paginate(10);
-        // $plantresults = LeavePermission::where('plant_head',Auth::user()->user_id)->where('plant_approval_status',0)->where('status',1)->paginate(10);
-        $departmentresults = LeavePermission::where('department_head', Auth::user()->user_id)->where('department_approval_status', 0)->where('plant_approval_status', 0)->where('status', 1)->paginate(10);
-        $plantresults = LeavePermission::where('plant_head', Auth::user()->user_id)->where('plant_approval_status', 0)->where('department_approval_status', 1)->where('status', 1)->paginate(10);
+        $permissionresults = LeavePermission::where('status', 1)->paginate(10);
 
-
-        return view('admin.leave.applyForPermission.permission_requests', ['departmentlist' => $departmentresults], ['plantlist' => $plantresults]);
+        return view('admin.leave.applyForPermission.permission_requests', ['permissionresults' => $permissionresults]);
     }
 }

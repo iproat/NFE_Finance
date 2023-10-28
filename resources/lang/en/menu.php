@@ -110,5 +110,6 @@ return [
     'incentive'                        => 'Incentive',
     'permission_application'           => 'Permission Application',
     'apply_for_permission'           => 'Apply For Permission',
+    'req_permission_application'         => 'Requests Permission',
 
 ];
