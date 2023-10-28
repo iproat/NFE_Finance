@@ -19,7 +19,7 @@
 }
 /*Just change your choise color here its theme Colors*/
 body {
-  background: #2f323e;
+  background: #e3d6fd;
 }
 /*Top Header Part*/
 .logo i {
@@ -41,8 +41,8 @@ body {
 }
 /*Sidebar*/
 .sidebar {
-  background: #2f323e;
-  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+  background: #e3d6fd;
+  box-shadow: 1px 0px 20px rgba(252, 246, 246, 0.08);
 }
 .sidebar .label-custom {
   background: #01c0c8;
@@ -52,7 +52,7 @@ body {
 }
 #side-menu li a {
   color: #97999f;
-  border-left: 0px solid #2f323e;
+  border-left: 0px solid #e3d6fd;
 }
 #side-menu > li > a:hover,
 #side-menu > li > a:focus {
