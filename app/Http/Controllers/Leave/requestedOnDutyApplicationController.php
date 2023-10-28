@@ -62,7 +62,7 @@ class requestedOnDutyApplicationController extends Controller
                 ->get();
         }
         // dd($results);
-        return view('admin.leave.onDutyApplication.OnDutyApplicationList', ['results' => $results]);
+        return view('admin.leave.onDutyApplication.onDutyApplicationList', ['results' => $results]);
     }
     public function viewDetails($id)
     {
