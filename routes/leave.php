@@ -133,6 +133,8 @@ Route::group(['middleware' => ['preventbackbutton', 'auth']], function () {
     Route::get('downloadMyLeaveReport', 'Leave\ReportController@downloadMyLeaveReport');
 
     Route::post('approveOrRejectLeaveApplication', 'Leave\RequestedApplicationController@approveOrRejectLeaveApplication');
+    Route::post('approveOrRejectPermissionApplication', 'Leave\RequestedPermissionApplicationController@approveOrRejectPermissionApplication');
+    Route::post('approveOrRejectOnDutyApplication', 'Leave\requestedOnDutyApplicationController@approveOrRejectOnDutyApplication');
 
     Route::get('/weeklyHolidayTemplate', ['as' => 'weeklyHoliday.weeklyHolidayTemplate', 'uses' => 'Leave\WeeklyHolidayController@weeklyHolidayTemplate']);
 

@@ -422,9 +422,9 @@
                                         @php
                                             $date_of_birth = $employee_birthdate->date_of_birth;
                                             $separate_date = explode('-', $date_of_birth);
-                                            
+
                                             $date_current_year = date('Y') . '-' . $separate_date[1] . '-' . $separate_date[2];
-                                            
+
                                             $create_date = date_create($date_current_year);
                                         @endphp
 
@@ -520,17 +520,115 @@
                 </div>
             </div>
         @endif
+        @if (count($permissionApplication) > 0)
+            <div class="col-md-6">
+                <div class="white-box">
+                    <h3 class="box-title">@lang('dashboard.recent_permission_application')</h3>
+                    <hr>
+                    <div class="permissionApplication">
+                        @foreach ($permissionApplication as $permissionApplication)
+                            <div class="comment-center p-t-10 {{ $permissionApplication->leave_permission_id }}">
+                                <div class="comment-body">
+                                    @if ($permissionApplication->employee->photo != '')
+                                        <div class="user-img"> <img src="{!! asset('uploads/employeePhoto/' . $permissionApplication->employee->photo) !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @else
+                                        <div class="user-img"> <img src="{!! asset('admin_assets/img/default.png') !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @endif
+                                    <div class="mail-contnet">
+                                        @php
+                                            $d = strtotime($permissionApplication->created_at);
+                                        @endphp
+                                        <h5>{{ $permissionApplication->employee->first_name }}
+                                            {{ $permissionApplication->employee->last_name }}</h5><span
+                                            class="time">{{ date('d M Y h:i: a', $d) }}</span>
+                                        <span class="label label-rouded label-info">PENDING</span>
+                                        <br /><span class="mail-desc" style="max-height: none">
+
+                                            @lang('leave.request_duration') :
+                                            {{ $permissionApplication->from_time }}
+                                            To
+                                            {{ $permissionApplication->to_time }}<br>
+                                            @lang('leave.total_duration') :
+                                            {{ $permissionApplication->permission_duration }}
+                                            <br>
+                                            @lang('leave.purpose') :
+                                            {{ $permissionApplication->leave_permission_purpose }}
+                                        </span>
+
+                                        <a href="javacript:void(0)" data-status=2
+                                            data-leave_permission_id="{{ $permissionApplication->leave_permission_id }}"
+                                            class="btn remarksForPermission btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
+                                        <a href="javacript:void(0)" data-status=3
+                                            data-leave_permission_id="{{ $permissionApplication->leave_permission_id }}"
+                                            class="btn-rounded remarksForPermission btn btn-danger btn-outline"><i
+                                                class="ti-close text-danger m-r-5"></i>@lang('common.reject')</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if (count($ondutyApplication) > 0)
+            <div class="col-md-6">
+                <div class="white-box">
+                    <h3 class="box-title">@lang('dashboard.recent_onduty_application')</h3>
+                    <hr>
+                    <div class="OnDutyApplication">
+                        @foreach ($ondutyApplication as $ondutyApplication)
+                            <div class="comment-center p-t-10 {{ $ondutyApplication->on_duty_id }}">
+                                <div class="comment-body">
+                                    @if ($ondutyApplication->employee->photo != '')
+                                        <div class="user-img"> <img src="{!! asset('uploads/employeePhoto/' . $ondutyApplication->employee->photo) !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @else
+                                        <div class="user-img"> <img src="{!! asset('admin_assets/img/default.png') !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @endif
+                                    <div class="mail-contnet">
+                                        @php
+                                            $d = strtotime($ondutyApplication->created_at);
+                                        @endphp
+                                        <h5>{{ $ondutyApplication->employee->first_name }}
+                                            {{ $ondutyApplication->employee->last_name }}</h5><span
+                                            class="time">{{ date('d M Y h:i: a', $d) }}</span>
+                                        <span class="label label-rouded label-info">PENDING</span>
+                                        <br /><span class="mail-desc" style="max-height: none">
+
+                                            @lang('leave.request_duration') :
+                                            {{ dateConvertDBtoForm($ondutyApplication->application_from_date) }}
+                                            To
+                                            {{ dateConvertDBtoForm($ondutyApplication->application_to_date) }}<br>
+                                            @lang('leave.number_of_day') : {{ $ondutyApplication->no_of_days }}
+                                            <br>
+                                            @lang('leave.purpose') : {{ $ondutyApplication->purpose }}
+                                        </span>
+
+                                        <a href="javacript:void(0)" data-status=2
+                                            data-on_duty_id="{{ $ondutyApplication->on_duty_id }}"
+                                            class="btn remarksForOnDuty btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
+                                        <a href="javacript:void(0)" data-status=3
+                                            data-on_duty_id="{{ $ondutyApplication->on_duty_id }}"
+                                            class="btn-rounded remarksForOnDuty btn btn-danger btn-outline"><i
+                                                class="ti-close text-danger m-r-5"></i>@lang('common.reject')</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 @endsection
 
 @section('page_scripts')
-{{-- <script>
-    $(window).load(function() {
-        $("#preloaders").fadeOut(2000);
-    });
-</script> --}}
-
 <script type="text/javascript">
     document.onreadystatechange = function() {
         switch (document.readyState) {
@@ -546,7 +644,6 @@
     }
 
     function loading($bool) {
-        // $("#preloaders").fadeOut(1000);
         if ($bool == true) {
             $.toast({
                 heading: 'success',
@@ -563,60 +660,11 @@
         }
         $("#preloaders").fadeOut(1000);
     }
-
-
-    // if (window.documentLoading = true) {
-    //     $("#preloaders").fadeOut(1000);
-    // }
-
-    // $(document).on('click', '.loading', function() {
-    //     $("#preloaders").fadeOut(1000);
-    // });
 </script>
 
 <link href="{!! asset('admin_assets/plugins/bower_components/news-Ticker-Plugin/css/site.css') !!}" rel="stylesheet" type="text/css" />
 <script src="{!! asset('admin_assets/plugins/bower_components/news-Ticker-Plugin/scripts/jquery.bootstrap.newsbox.min.js') !!}"></script>
 <script type="text/javascript">
-    (function() {
-
-        $(".demo1").bootstrapNews({
-            newsPerPage: 2,
-            autoplay: true,
-            pauseOnHover: true,
-            direction: 'up',
-            newsTickerInterval: 4000,
-            onToDo: function() {
-                //console.log(this);
-            }
-        });
-
-    })();
-
-    // $(document).on('click', '.importLog', function(event) {
-    //     var action = "{{ URL::to('cronjob/manualLogrun') }}";
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: action,
-    //         data: {
-    //             '_token': $('input[name=_token]').val()
-    //         },
-    //         success: function() {
-    //             $.toast({
-    //                 heading: 'success',
-    //                 text: 'Peocessing Please Wait !',
-    //                 position: 'top-right',
-    //                 loaderBg: '#ff6849',
-    //                 icon: 'success',
-    //                 hideAfter: 3000,
-    //                 stack: 6
-    //             });
-    //             window.setTimeout(function() {
-    //                 location.reload()
-    //             }, 3000);
-    //         }
-    //     });
-    // });
-
     $(document).on('click', '.remarksForLeave', function() {
 
         var actionTo = "{{ URL::to('approveOrRejectLeaveApplication') }}";
@@ -686,14 +734,144 @@
         return false;
 
     });
+    $(document).on('click', '.remarksForPermission', function() {
 
-    /* document.getElementById('absentDetail').addEventListener('click', function() {
-        document.getElementById('show_details').classList.toggle('hidden');
-    }); */
-    /* 
-        if ($('.pagination').find('li.active span').html() != 1) {
-            $('#absentDetail').trigger('click');
-        } */
+        var actionTo = "{{ URL::to('approveOrRejectPermissionApplication') }}";
+        var leave_permission_id = $(this).attr('data-leave_permission_id');
+        var status = $(this).attr('data-status');
+
+        if (status == 2) {
+            var statusText = "Are you want to approve Permission application?";
+            var btnColor = "#2cabe3";
+        } else {
+            var statusText = "Are you want to reject Permission application?";
+            var btnColor = "red";
+        }
+
+        swal({
+                title: "",
+                text: statusText,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: btnColor,
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                var token = '{{ csrf_token() }}';
+                if (isConfirm) {
+                    $.ajax({
+                        type: 'POST',
+                        url: actionTo,
+                        data: {
+                            leave_permission_id: leave_permission_id,
+                            status: status,
+                            _token: token
+                        },
+                        success: function(data) {
+                            if (data == 'approve') {
+                                swal({
+                                        title: "Approved!",
+                                        text: "Permission application approved.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + leave_permission_id).fadeOut();
+                                        }
+                                    });
+
+                            } else {
+                                swal({
+                                        title: "Rejected!",
+                                        text: "Permission application rejected.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + leave_permission_id).fadeOut();
+                                        }
+                                    });
+                            }
+                        }
+
+                    });
+                } else {
+                    swal("Cancelled", "Your data is safe .", "error");
+                }
+            });
+        return false;
+
+    });
+    $(document).on('click', '.remarksForOnDuty', function() {
+
+        var actionTo = "{{ URL::to('approveOrRejectOnDutyApplication') }}";
+        var on_duty_id = $(this).attr('data-on_duty_id');
+        var status = $(this).attr('data-status');
+
+        if (status == 2) {
+            var statusText = "Are you want to approve OnDuty application?";
+            var btnColor = "#2cabe3";
+        } else {
+            var statusText = "Are you want to reject OnDuty application?";
+            var btnColor = "red";
+        }
+
+        swal({
+                title: "",
+                text: statusText,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: btnColor,
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                var token = '{{ csrf_token() }}';
+                if (isConfirm) {
+                    $.ajax({
+                        type: 'POST',
+                        url: actionTo,
+                        data: {
+                            on_duty_id: on_duty_id,
+                            status: status,
+                            _token: token
+                        },
+                        success: function(data) {
+                            if (data == 'approve') {
+                                swal({
+                                        title: "Approved!",
+                                        text: "OnDuty application approved.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + on_duty_id).fadeOut();
+                                        }
+                                    });
+
+                            } else {
+                                swal({
+                                        title: "Rejected!",
+                                        text: "OnDuty application rejected.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + on_duty_id).fadeOut();
+                                        }
+                                    });
+                            }
+                        }
+
+                    });
+                } else {
+                    swal("Cancelled", "Your data is safe .", "error");
+                }
+            });
+        return false;
+
+    });
 </script>
 <script>
     $(function() {
@@ -745,6 +923,4 @@
         });
     </script>
 @endif
-
-
 @endsection

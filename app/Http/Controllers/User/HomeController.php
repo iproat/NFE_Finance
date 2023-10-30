@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Model\Department;
-use App\Model\Employee;
-use App\Model\EmployeeAttendance;
-use App\Model\EmployeeAward;
-use App\Model\EmployeeEducationQualification;
-use App\Model\EmployeeExperience;
-use App\Model\EmployeePerformance;
-use App\Model\IpSetting;
-use App\Model\LeaveApplication;
-use App\Model\LeaveType;
+use DateTime;
 use App\Model\MsSql;
 use App\Model\Notice;
-use App\Model\Termination;
 use App\Model\Warning;
+use App\Model\Employee;
+use App\Model\IpSetting;
+use App\Model\LeaveType;
 use App\Model\WorkShift;
-use App\Repositories\AttendanceRepository;
-use DateTime;
+use App\Model\Department;
+use App\Model\Termination;
+use App\Model\EmployeeAward;
 use Illuminate\Http\Request;
+use App\Model\LeavePermission;
+use App\Model\LeaveApplication;
+use App\Model\EmployeeAttendance;
+use App\Model\EmployeeExperience;
+use App\Model\EmployeePerformance;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Repositories\AttendanceRepository;
+use App\Model\EmployeeEducationQualification;
+use App\Model\OnDuty;
 
 class HomeController extends Controller
 {
@@ -34,12 +36,12 @@ class HomeController extends Controller
         LeaveApplication $leaveApplication,
         Notice $notice,
         EmployeeExperience
-         $employeeExperience,
+        $employeeExperience,
         Department
-         $department,
+        $department,
         Employee $employee,
         EmployeeAward
-         $employeeAward,
+        $employeeAward,
         AttendanceRepository $attendanceRepository,
         Warning $warning,
         Termination $termination
@@ -164,12 +166,25 @@ class HomeController extends Controller
         $hasSupervisorWiseEmployee = $this->employee->select('employee_id')->where('supervisor_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
         if (count($hasSupervisorWiseEmployee) == 0) {
             $leaveApplication = [];
+            $permissionApplication = [];
+            $ondutyApplication = [];
         } else {
             $leaveApplication = $this->leaveApplication->with(['employee', 'leaveType'])
                 ->whereIn('employee_id', array_values($hasSupervisorWiseEmployee))
                 ->where('status', 1)
                 ->orderBy('status', 'asc')
                 ->orderBy('leave_application_id', 'desc')
+                ->get();
+
+            $permissionApplication = LeavePermission::with(['employee'])
+                ->where('status', 1)
+                ->orderBy('status', 'asc')
+                ->orderBy('leave_permission_id', 'desc')
+                ->get();
+            $ondutyApplication = OnDuty::with(['employee'])
+                ->where('status', 1)
+                ->orderBy('status', 'asc')
+                ->orderBy('on_duty_id', 'desc')
                 ->get();
         }
 
@@ -234,6 +249,8 @@ class HomeController extends Controller
             'employeeAward' => $employeeAward,
             'notice' => $notice,
             'leaveApplication' => $leaveApplication,
+            'permissionApplication' => $permissionApplication,
+            'ondutyApplication' => $ondutyApplication,
             'upcoming_birtday' => $upcoming_birtday,
             'ip_attendance_status' => $ip_attendance_status,
             'ip_check_status' => $ip_check_status,

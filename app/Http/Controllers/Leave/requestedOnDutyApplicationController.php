@@ -106,10 +106,9 @@ class requestedOnDutyApplicationController extends Controller
         }
     }
 
-    public function approveOrRejectLeaveApplication(Request $request)
+    public function approveOrRejectOnDutyApplication(Request $request)
     {
-
-        $data = OnDuty::findOrFail($request->leave_application_id);
+        $data = OnDuty::findOrFail($request->on_duty_id);
         $input = $request->all();
 
         if ($request->status == 2) {

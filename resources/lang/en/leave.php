@@ -70,5 +70,6 @@ return [
     'onduty_application_form'         => 'OnDuty Application Form',
     'view_on_duty_applicaiton'         => 'View OnDuty Application',
     'application_date'         => 'Application Date',
+    'total_duration'         => 'Total Duration',
 
 ];

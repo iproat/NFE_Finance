@@ -109,9 +109,8 @@ class RequestedPermissionApplicationController extends Controller
         }
     }
 
-    public function approveOrRejectLeaveApplication(Request $request)
+    public function approveOrRejectPermissionApplication(Request $request)
     {
-
         $data = LeavePermission::findOrFail($request->leave_permission_id);
         $input = $request->all();
 
