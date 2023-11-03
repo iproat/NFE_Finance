@@ -48,7 +48,9 @@
                                         <th>@lang('leave.application_date')</th>
                                         <th>@lang('leave.number_of_day')</th>
                                         <th>@lang('leave.purpose')</th>
-                                        <th>@lang('common.status')</th>
+                                        <th>@lang('common.headdepartmentstatus')</th>
+                                        <th>@lang('common.hrstatus')</th>
+                                        <th>@lang('common.managerstatus')</th>
                                         {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
@@ -94,7 +96,9 @@
                                                         {!! dateConvertDBtoForm($value->reject_date) !!}</span>
                                                 @endif
                                             </td> --}}
-
+                                            @php
+                                                dd($value);
+                                            @endphp
                                             @if ($value->status == 1)
                                                 <td style="width: 100px;">
                                                     <span class="label label-warning">@lang('common.pending')</span>

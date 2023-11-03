@@ -61,7 +61,7 @@ class ApplyForPermissionController extends Controller
         $Year  = date("Y", strtotime($permission_date));
         $Month = (int)date("m", strtotime($permission_date));
         $checkpermissions = LeavePermission::whereMonth('leave_permission_date', '=', $Month)->whereYear('leave_permission_date', '=', $Year)
-            ->where('employee_id', $employee_id)->where('status', 1)->count();
+            ->where('employee_id', $employee_id)->where('status', 2)->count();
 
         return $checkpermissions;
     }

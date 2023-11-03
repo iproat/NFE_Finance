@@ -50,7 +50,7 @@ class LeaveRepository
                 $countDay++;
             }
         }
-        Log::info($countDay);
+        
         return $countDay;
     }
 

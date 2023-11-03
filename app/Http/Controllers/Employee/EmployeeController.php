@@ -98,13 +98,16 @@ class EmployeeController extends Controller
         $branchList = Branch::get();
         $workShiftList = WorkShift::get();
         $supervisorList = Employee::where('status', 1)->get();
+        $operationManagerList = User::with('employee')->get();
+        $hrList = User::with('employee')->get();
+
+
         $payGradeList = PayGrade::all();
         $hourlyPayGradeList = HourlySalary::all();
         $incentive = $this->employeeRepositories->incentive();
         $salaryLimit = $this->employeeRepositories->salaryLimit();
         $workShift = $this->employeeRepositories->workShift();
         $workHours = $this->employeeRepositories->workHours();
-
         $data = [
             'userList' => $userList,
             'roleList' => $roleList,
@@ -112,6 +115,8 @@ class EmployeeController extends Controller
             'designationList' => $designationList,
             'branchList' => $branchList,
             'supervisorList' => $supervisorList,
+            'operationManagerList' => $operationManagerList,
+            'hrList' => $hrList,
             'workShiftList' => $workShiftList,
             'payGradeList' => $payGradeList,
             'hourlyPayGradeList' => $hourlyPayGradeList,
@@ -127,7 +132,7 @@ class EmployeeController extends Controller
 
     public function store(EmployeeRequest $request)
     {
-        // dd($request->all());
+        //  dd($request->all());
         $photo = $request->file('photo');
         $document = $request->file('document_file');
         $document2 = $request->file('document_file2');
@@ -220,6 +225,8 @@ class EmployeeController extends Controller
         $designationList = Designation::get();
         $branchList = Branch::get();
         $supervisorList = Employee::where('status', 1)->get();
+        $operationManagerList = User::with('employee')->get();
+        $hrList = User::with('employee')->get();
         $editModeData = Employee::findOrFail($id);
         $workShiftList = WorkShift::get();
         $payGradeList = PayGrade::all();
@@ -233,7 +240,7 @@ class EmployeeController extends Controller
         $employeeAccountEditModeData = User::where('user_id', $editModeData->user_id)->first();
         $educationQualificationEditModeData = EmployeeEducationQualification::where('employee_id', $id)->get();
         $experienceEditModeData = EmployeeExperience::where('employee_id', $id)->get();
-
+        // dd($editModeData);
         $data = [
             'userList' => $userList,
             'roleList' => $roleList,
@@ -241,6 +248,8 @@ class EmployeeController extends Controller
             'designationList' => $designationList,
             'branchList' => $branchList,
             'supervisorList' => $supervisorList,
+            'operationManagerList' => $operationManagerList,
+            'hrList' => $hrList,
             'workShiftList' => $workShiftList,
             'payGradeList' => $payGradeList,
             'editModeData' => $editModeData,

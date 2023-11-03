@@ -253,6 +253,7 @@
 
                                 </div>
 
+
                             </div>
 
 
@@ -647,6 +648,54 @@
                                         <input class="form-control photo" id="photo"
                                             accept="image/png, image/jpeg, image/gif,image/jpg" name="photo"
                                             type="file">
+
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3">
+
+                                    <div class="form-group">
+
+                                        <label for="exampleInput">@lang('employee.operation_manager')</label>
+
+                                        <select name="operation_manager_id"
+                                            class="form-control operation_manager_id required select2">
+
+                                            <option value="">--- @lang('common.please_select') ---</option>
+
+                                            @foreach ($operationManagerList as $value)
+                                                <option value="{{ $value->employee->employee_id }}"
+                                                    @if ($value->employee->employee_id == old('employee_id')) {{ 'selected' }} @endif>
+                                                    {{ $value->employee->first_name }}
+                                                    {{ $value->employee->last_name }}
+                                                </option>
+                                            @endforeach
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    <div class="form-group">
+
+                                        <label for="exampleInput">@lang('employee.hr')</label>
+
+                                        <select name="hr_id" class="form-control hr_id required select2">
+
+                                            <option value="">--- @lang('common.please_select') ---</option>
+
+                                            @foreach ($hrList as $value)
+                                                <option value="{{ $value->employee->employee_id }}"
+                                                    @if ($value->employee->employee_id == old('employee_id')) {{ 'selected' }} @endif>
+                                                    {{ $value->employee->first_name }}
+                                                    {{ $value->employee->last_name }}
+                                                </option>
+                                            @endforeach
+
+                                        </select>
 
                                     </div>
 

@@ -86,7 +86,7 @@ class RolePermissionController extends Controller
 
             $role_id    =  $request->role_id;
             DB::table('menu_permission')->where('role_id', '=', $role_id)->delete();
-            $menu       = count($request->menu_id);
+            $menu       = is_array($request->menu_id) ? count($request->menu_id) : '0';
 
             if ($menu == 0) {
                 DB::commit();

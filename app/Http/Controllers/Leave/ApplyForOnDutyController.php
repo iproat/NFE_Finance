@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Leave;
 
+use mail;
 use DateTime;
 use Carbon\Carbon;
 use App\Model\OnDuty;
 use App\Model\Employee;
+use App\Components\Common;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\LeaveRepository;
@@ -34,30 +36,21 @@ class ApplyForOnDutyController extends Controller
 
     public function create()
     {
-        // $employeeList   = $this->commonRepository->employeeList();
         $getEmployeeInfo = $this->commonRepository->getEmployeeInfo(auth()->user()->user_id);
 
         $totalLeaveTaken       = OnDuty::where('employee_id', auth()->user()->user_id)->where('status', 2)->whereYear('created_at', Carbon::now()->year)->pluck('no_of_days');
         $sumOfLeaveTaken       = (int)$totalLeaveTaken->sum();
-        // $checkLeaveEligibility = $sumOfLeaveTaken <= $permissableLeave;
-        // $leaveBalance          = $leaveType - $sumOfLeaveTaken;
 
         $data = [
-            // 'checkLeaveEligibility' => $checkLeaveEligibility == true ? 'Eligibile' : 'Not Eligibile',
-            // 'leaveType'             => $leaveType,
             'sumOfLeaveTaken'       => $sumOfLeaveTaken,
-            // 'leaveBalance'          => $leaveBalance,
-            // 'leaveTypeList'         => $leaveTypeList,
-            // 'permissableLeave'      => $permissableLeave,
             'totalLeaveTaken'      => $totalLeaveTaken,
-            // 'totalPaidLeaveTaken'      => $totalPaidLeaveTaken,
-            // 'employeeList' => $employeeList
         ];
 
         return view('admin.leave.applyForOnduty.form', ['getEmployeeInfo' => $getEmployeeInfo, 'data' => $data]);
     }
     public function store(Request $request)
     {
+        // info($request->all());
         try {
             $input = $request->all();
             $employee = Employee::where('employee_id', $request->employee_id)->first();
@@ -70,10 +63,7 @@ class ApplyForOnDutyController extends Controller
             } else {
                 $input['is_work_from_home'] = 0;
             }
-            $input['accepted_admin'] = null;
-            $input['approve_date'] = null;
-            $input['remark_admin'] = null;
-            $input['status'] = 1;
+
 
             $fromDate = new DateTime($input['application_from_date']);
             $toDate = new DateTime($input['application_to_date']);
@@ -88,11 +78,32 @@ class ApplyForOnDutyController extends Controller
             $input['no_of_days'] = $no_of_days;
 
             $ifExists = OnDuty::where('application_from_date', '>=', $input['application_from_date'])
-                ->where('application_to_date', '<=', $input['application_to_date'])->where('employee_id', $input['employee_id'])->first();
+                ->where('application_to_date', '<=', $input['application_to_date'])->where('employee_id', $input['employee_id'])->where('status', '!=', 3)->first();
 
             if ($ifExists) {
                 return redirect(route('applyForOnDuty.index'))->with('error', 'On Duty application exists between selected dates. Try different dates.');
             }
+            $emp = Employee::find($request->employee_id);
+            $hod = Employee::where('employee_id', $emp->supervisor_id)->first();
+            $operationManager = Employee::where('employee_id', $emp->operation_manager_id)->first();
+            $hr = Employee::where('employee_id', $emp->hr_id)->first();
+            info([$hod->email, $operationManager->email, $hr->email]);
+            try {
+
+                if ($hod->email) {
+                    $maildata = Common::mail('emails/mail', $hod->email, 'OnDuty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for Permission (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                }
+                if ($operationManager->email) {
+                    $maildata = Common::mail('emails/mail', $operationManager->email, 'OnDuty Request Notification', ['head_name' => $operationManager->first_name . ' ' . $operationManager->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for Permission (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                }
+                if ($hr->email) {
+                    $maildata = Common::mail('emails/mail', $hr->email, 'OnDuty Request Notification', ['head_name' => $hr->first_name . ' ' . $hr->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for Permission (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                }
+            } catch (\Exception $ex) {
+
+                return redirect(route('applyForOnDuty.index'))->with('error',  'Something went wrong!' . $ex->getMessage());
+            }
+
             OnDuty::create($input);
             return redirect(route('applyForOnDuty.index'))->with('success', 'On Duty application sent successfully');
         } catch (\Throwable $th) {

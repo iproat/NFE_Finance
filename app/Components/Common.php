@@ -2,8 +2,9 @@
 
 namespace App\Components;
 
-use App\Model\Device;
 use Exception;
+use App\Model\Device;
+use Illuminate\Support\Facades\Mail;
 
 class Common
 {
@@ -138,5 +139,12 @@ class Common
         // tata smartfood
         // return "https://ipro-people.com/tatasmartfoodz/api/";
         return "https://localhost/tatasmartfoodz/api/";
+    }
+    public static function mail($template, $to, $subject, $data)
+    {
+        $mail = Mail::send($template, $data, function ($message) use ($to, $subject) {
+            $message->from('ebulientcatcoc01@gmail.com', 'NFE Finance');
+            $message->to($to, 'NFE Finance')->subject($subject);
+        });
     }
 }

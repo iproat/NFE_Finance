@@ -428,7 +428,7 @@ class DeviceConfigurationController extends Controller
         fwrite($myfile, $txt);
 
         $eventLog = json_decode($request->input('event_log'));
-
+        info($eventLog);
         if (isset($eventLog->AccessControllerEvent->employeeNoString)) {
             $device = Device::where('name', $eventLog->AccessControllerEvent->deviceName)->first();
 

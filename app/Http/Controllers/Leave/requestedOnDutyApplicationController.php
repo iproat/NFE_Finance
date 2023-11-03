@@ -20,49 +20,49 @@ class requestedOnDutyApplicationController extends Controller
     public function index()
     {
 
-        $results = [];
 
-        $isAuthorizedPerson = Employee::where('employee_id', decrypt(session('logged_session_data.employee_id')))
-            ->whereHas('userName', function ($q) {
-                return $q->whereIn('role_id', [1, 2, 3]);
-            })->exists();
-
-        $isHod = Employee::where('employee_id', decrypt(session('logged_session_data.employee_id')))
-            ->whereHas('userName', function ($q) {
-                return $q->where('role_id', 4);
-            })->exists();
-
-        $departmentWiseEmployee = Employee::select('employee_id')
-            ->where('department_id', decrypt(session('logged_session_data.department_id')))
-            ->get()->toArray();
-
-        $totalEmployee = Employee::select('employee_id')->get()->toArray();
-
-        $hasSupervisorWiseEmployee = Employee::select('employee_id')
-            ->where('supervisor_id', decrypt(session('logged_session_data.employee_id')))
-            ->get()->toArray();
-
-        if ($isAuthorizedPerson) {
-            $results = OnDuty::with(['employee'])
-                ->whereIn('employee_id', array_values($totalEmployee))
+        $hasSupervisor = Employee::select('employee_id')->where('supervisor_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
+        if (count($hasSupervisor) == 0) {
+            $adminResults = [];
+        } else {
+            $adminResults  = OnDuty::with('employee')
+                ->whereIn('employee_id', array_values($hasSupervisor))
+                ->where('status', 1)
+                ->where('primary_approval', 0)
                 ->orderBy('status', 'asc')
                 ->orderBy('on_duty_id', 'desc')
-                ->get();
-        } elseif ($isHod) {
-            $results = OnDuty::with(['employee'])
-                ->whereIn('employee_id', array_values($departmentWiseEmployee))
-                ->orderBy('status', 'asc')
-                ->orderBy('on_duty_id', 'desc')
-                ->get();
-        } elseif (count($hasSupervisorWiseEmployee) > 0) {
-            $results = OnDuty::with(['employee'])
-                ->whereIn('employee_id', array_values($hasSupervisorWiseEmployee))
-                ->orderBy('status', 'asc')
-                ->orderBy('on_duty_id', 'desc')
-                ->get();
+                ->paginate();
         }
-        // dd($results);
-        return view('admin.leave.onDutyApplication.onDutyApplicationList', ['results' => $results]);
+        $hasOperationManager = Employee::select('employee_id')->where('operation_manager_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
+        if (count($hasOperationManager) == 0) {
+            $operationManagerResults = [];
+        } else {
+            $operationManagerResults  =  OnDuty::with('employee')
+                ->whereIn('employee_id', array_values($hasOperationManager))
+                ->where('status', 1)
+                ->where('primary_approval', 1)
+                ->orderBy('status', 'asc')
+                ->orderBy('on_duty_id', 'desc')
+                ->paginate();
+        }
+        $hasHr = Employee::select('employee_id')->where('hr_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
+
+        if (count($hasHr) == 0) {
+            $hrResults = [];
+        } else {
+            $hrResults  =  OnDuty::with('employee')
+                ->whereIn('employee_id', array_values($hasHr))
+                ->where('status', 1)
+                ->where('primary_approval', 1)
+                ->orderBy('status', 'asc')
+                ->orderBy('on_duty_id', 'desc')
+                ->paginate();
+        }
+        return view('admin.leave.onDutyApplication.onDutyApplicationList',   [
+            'adminResults' => $adminResults,
+            'operationManagerResults' => $operationManagerResults,
+            'hrResults' => $hrResults,
+        ]);
     }
     public function viewDetails($id)
     {
@@ -82,11 +82,16 @@ class requestedOnDutyApplicationController extends Controller
         $data = OnDuty::findOrFail($id);
         $input = $request->all();
         if ($request->status == 2) {
-            $input['approve_date'] = date('Y-m-d');
-            $input['approve_by'] = decrypt(session('logged_session_data.employee_id'));
+            $input['approve_date']     = date('Y-m-d');
+            $input['status']           = 1;
+            $input['primary_approval'] = 1;
+            $input['approve_by']       = decrypt(session('logged_session_data.employee_id'));
+            $input['head_remarks']     = $request->leave_remark;
         } else {
             $input['reject_date'] = date('Y-m-d');
             $input['reject_by'] = decrypt(session('logged_session_data.employee_id'));
+            $input['primary_approval'] = 2;
+            $input['head_remarks']     = $request->leave_remark;
         }
 
         try {

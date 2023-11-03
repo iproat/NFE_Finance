@@ -38,14 +38,7 @@
                 <div class="panel-heading"><i class="mdi mdi-clipboard-text fa-fw"></i>@lang('leave.leave_permission_form')</div>
                 <div class="panel-wrapper collapse in" aria-expanded="true">
 
-                    {{-- <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-2"><b> Total Permission Per Month : {{ '2' }} </b></div>
-                        <div class="col-md-2"><b>Applied Permission : {{ $appliedpermissions }} </b></div>
-                        <div class="col-md-2"><b>Approved : {{ $takenPermissions }} </b></div>
-                        <div class="col-md-2"><b>Balance : {{ 2 - $takenPermissions }} </b></div>
-                        <div class="col-md-2"></div>
-                    </div> --}}
+
 
                     <div class="panel-body">
                         @if ($errors->any())
@@ -283,6 +276,7 @@
             var permission_date = `${day}/${month}/${year}`;
             $(".permission_date").val(permission_date);
             var employee_id = $('.employee_id').val();
+
             var action = "{{ URL::to('applyForPermission/applyForTotalNumberOfPermissions') }}";
 
             $.ajax({
@@ -293,14 +287,17 @@
                     'employee_id': employee_id,
                     '_token': $('input[name=_token]').val()
                 },
+
                 dataType: 'json',
                 success: function(data) {
+
                     $('.current_balance').val(data);
 
-                    if (data == 2) {
+                    if (data >= 2) {
                         $.toast({
                             heading: 'Warning',
-                            text: 'You have already applied for ' + data + ' days!',
+                            text: 'You already applied ' + $('.current_balance')
+                                .val() + ' days!',
                             position: 'top-right',
                             loaderBg: '#ff6849',
                             icon: 'warning',
@@ -308,6 +305,7 @@
                             stack: 6
                         });
                         $('body').find('#formSubmit').attr('disabled', true);
+                        $('.current_balance').val(data);
                     } else {
                         $('.current_balance').val(data);
                         $('body').find('#formSubmit').attr('disabled', false);

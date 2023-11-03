@@ -113,7 +113,6 @@ Route::group(['middleware' => ['preventbackbutton', 'auth']], function () {
         Route::get('/create', ['as' => 'applyForOnDuty.create', 'uses' => 'Leave\ApplyForOnDutyController@create']);
         Route::post('/store', ['as' => 'applyForOnDuty.store', 'uses' => 'Leave\ApplyForOnDutyController@store']);
         Route::get('/request', ['as' => 'applyForOnDuty.onDutyRequest', 'uses' => 'Leave\ApplyForOnDutyController@permissionrequest']);
-        Route::post('applyForTotalNumberOfPermissions', 'Leave\ApplyForOnDutyController@applyForTotalNumberOfPermissions');
     });
     // Route::group(['prefix' => 'requestedPaidLeaveApplication'], function () {
     //     Route::get('/', ['as' => 'requestedPaidLeaveApplication.index', 'uses' => 'Leave\RequestedPaidLeaveApplicationController@index']);

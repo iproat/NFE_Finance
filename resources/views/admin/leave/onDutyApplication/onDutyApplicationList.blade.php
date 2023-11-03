@@ -34,26 +34,85 @@
                                     class="glyphicon glyphicon-remove"></i>&nbsp;<strong>{{ session()->get('error') }}</strong>
                             </div>
                         @endif
-                        <div class="table-responsive">
-                            <table id="myDataTable" class="table table-bordered table-hover ">
-                                <thead class="tr_header">
+
+
+
+                        @if (count($adminResults) > 0)
+                            <div class="">
+                                <table class="table table-hover manage-u-table">
+                                    <thead>
+                                        <tr>
+
+                                            <th>@lang('common.serial')</th>
+                                            <th>@lang('common.employee_name')</th>
+                                            <th>@lang('leave.request_duration')</th>
+                                            <th>@lang('leave.request_date')</th>
+                                            <th>@lang('leave.number_of_day')</th>
+                                            <th>@lang('leave.purpose')</th>
+                                            <th>@lang('leave.department_head_status')</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {!! $sl = null !!}
+                                        @foreach ($adminResults as $value)
+                                            <tr>
+                                                <td style="width: 100px;">{!! ++$sl !!}</td>
+                                                <td>
+                                                    @if (isset($value->employee->first_name))
+                                                        {!! $value->employee->first_name !!}
+                                                    @endif
+                                                    @if (isset($value->employee->last_name))
+                                                        {!! $value->employee->last_name !!}
+                                                    @endif
+                                                </td>
+
+                                                <td>{!! dateConvertDBtoForm($value->application_from_date) !!} <b>to</b> {!! dateConvertDBtoForm($value->application_to_date) !!}</td>
+                                                <td>{!! dateConvertDBtoForm($value->application_date) !!}</td>
+                                                <td>{!! $value->no_of_days !!}</td>
+                                                <td>{!! $value->purpose !!}</td>
+
+
+                                                <td style="width: 100px;"> <a href="javacript:void(0)" data-status=2
+                                                        data-on_duty_id="{{ $value->on_duty_id }}"
+                                                        class="btn remarksForLeave btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                            class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
+                                                    <a href="javacript:void(0)" data-status=3
+                                                        data-on_duty_id="{{ $value->on_duty_id }}"
+                                                        class="btn-rounded remarksForLeave btn btn-danger btn-outline"><i
+                                                            class="ti-close text-danger m-r-5"></i>
+                                                        @lang('common.reject')</a>
+                            </div>
+                            </td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                        </table>
+                        <div class="text-center">
+                            {{ $adminResults->links() }}
+                        </div>
+                    </div>
+                    @endif
+                    @if (count($operationManagerResults) > 0)
+                        <div class="">
+                            <table class="table table-hover manage-u-table">
+                                <thead>
                                     <tr>
+
                                         <th>@lang('common.serial')</th>
                                         <th>@lang('common.employee_name')</th>
                                         <th>@lang('leave.request_duration')</th>
                                         <th>@lang('leave.request_date')</th>
                                         <th>@lang('leave.number_of_day')</th>
-                                        <th style="width: 300px;word-wrap: break-word;">@lang('leave.purpose')</th>
-                                        <th>@lang('common.status')</th>
-                                        <th>@lang('common.action')</th>
+                                        <th>@lang('leave.purpose')</th>
+                                        <th>@lang('leave.department_head_status')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {!! $sl = null !!}
-                                    @foreach ($results as $value)
-                                       
+                                    @foreach ($operationManagerResults as $value)
                                         <tr>
-                                            <td style="width: 50px;">{!! ++$sl !!}</td>
+                                            <td style="width: 100px;">{!! ++$sl !!}</td>
                                             <td>
                                                 @if (isset($value->employee->first_name))
                                                     {!! $value->employee->first_name !!}
@@ -62,44 +121,93 @@
                                                     {!! $value->employee->last_name !!}
                                                 @endif
                                             </td>
-                                            
+
                                             <td>{!! dateConvertDBtoForm($value->application_from_date) !!} <b>to</b> {!! dateConvertDBtoForm($value->application_to_date) !!}</td>
                                             <td>{!! dateConvertDBtoForm($value->application_date) !!}</td>
                                             <td>{!! $value->no_of_days !!}</td>
                                             <td>{!! $value->purpose !!}</td>
-                                            @if ($value->status == 1)
-                                                <td style="width: 100px;">
-                                                    <span class="label label-warning">@lang('common.pending')</span>
-                                                </td>
-                                            @elseif($value->status == 2)
-                                                <td style="width: 100px;">
-                                                    <span class="label label-success">@lang('common.approved')</span>
-                                                </td>
-                                            @else
-                                                <td style="width: 100px;">
-                                                    <span class="label label-danger">@lang('common.rejected')</span>
-                                                </td>
-                                            @endif
 
-                                            <td>
-                                                @if ($value->status == 1)
-                                                    <a href="{!! route('requestedOnDutyApplication.viewDetails', $value->on_duty_id) !!}" title="View leave details!"
-                                                        class="btn btn-info btn-md btnColor">
-                                                        <i class="fa fa-arrow-circle-right"></i>
-                                                    </a>
-                                                @else
-                                                    <i class="btn btn-success btn-sm fa fa-check"></i>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+
+                                            <td style="width: 100px;"> <a href="javacript:void(0)" data-status=2
+                                                    data-on_duty_id="{{ $value->on_duty_id }}"
+                                                    class="btn remarksForLeave btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                        class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
+                                                <a href="javacript:void(0)" data-status=3
+                                                    data-on_duty_id="{{ $value->on_duty_id }}"
+                                                    class="btn-rounded remarksForLeave btn btn-danger btn-outline"><i
+                                                        class="ti-close text-danger m-r-5"></i>
+                                                    @lang('common.reject')</a>
                         </div>
+                        </td>
+                        </tr>
+                    @endforeach
+
+                    </tbody>
+                    </table>
+                    <div class="text-center">
+                        {{ $operationManagerResults->links() }}
                     </div>
                 </div>
+                @endif
+             
+                @if (count($hrResults ) > 0)
+                    <div class="">
+                        <table class="table table-hover manage-u-table">
+                            <thead>
+                                <tr>
+                                    <th>@lang('common.serial')</th>
+                                    <th>@lang('common.employee_name')</th>
+                                    <th>@lang('leave.request_duration')</th>
+                                    <th>@lang('leave.request_date')</th>
+                                    <th>@lang('leave.number_of_day')</th>
+                                    <th>@lang('leave.purpose')</th>
+                                    <th>@lang('leave.department_head_status')</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {!! $sl = null !!}
+                                @foreach ($hrResults as $value)
+                                    <tr>
+                                        <td style="width: 100px;">{!! ++$sl !!}</td>
+                                        <td>
+                                            @if (isset($value->employee->first_name))
+                                                {!! $value->employee->first_name !!}
+                                            @endif
+                                            @if (isset($value->employee->last_name))
+                                                {!! $value->employee->last_name !!}
+                                            @endif
+                                        </td>
+
+                                        <td>{!! dateConvertDBtoForm($value->application_from_date) !!} <b>to</b> {!! dateConvertDBtoForm($value->application_to_date) !!}</td>
+                                        <td>{!! dateConvertDBtoForm($value->application_date) !!}</td>
+                                        <td>{!! $value->no_of_days !!}</td>
+                                        <td>{!! $value->purpose !!}</td>
+
+                                        <td style="width: 100px;"> <a href="javacript:void(0)" data-status=2
+                                                data-on_duty_id="{{ $value->on_duty_id }}"
+                                                class="btn remarksForLeave btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                    class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
+                                            <a href="javacript:void(0)" data-status=3
+                                                data-on_duty_id="{{ $value->on_duty_id }}"
+                                                class="btn-rounded remarksForLeave btn btn-danger btn-outline"><i
+                                                    class="ti-close text-danger m-r-5"></i>
+                                                @lang('common.reject')</a>
+                    </div>
+                    </td>
+                    </tr>
+                @endforeach
+
+                </tbody>
+                </table>
+                <div class="text-center">
+                    {{ $hrResults->links() }}
+                </div>
             </div>
+            @endif
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 @endsection

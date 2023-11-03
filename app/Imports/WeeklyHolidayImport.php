@@ -59,13 +59,11 @@ class WeeklyHolidayImport  implements ToModel, WithValidation, WithStartRow
 
         $week_days =  $this->findWeekdays($month, $day_name);
 
-        // Log::info($day_name);
-        // Log::info('Create/Update');
+       
 
         $ifExists = WeeklyHoliday::where('employee_id', $employee->employee_id)->where('month',  $row[1])->first();
 
         if (!$ifExists) {
-            // Log::info($week_days);
             $holidayData = WeeklyHoliday::create([
                 'employee_id' => $employee->employee_id,
                 'month' =>  $row[1],
@@ -76,7 +74,6 @@ class WeeklyHolidayImport  implements ToModel, WithValidation, WithStartRow
                 'updated_by' => auth()->user()->user_id,
             ]);
         } else {
-            // Log::info($week_days);
             $holidayData =  WeeklyHoliday::where('employee_id', $employee->employee_id)->where('month',  $row[1])->update([
                 'employee_id' => $employee->employee_id,
                 'month' =>  $row[1],
@@ -90,7 +87,7 @@ class WeeklyHolidayImport  implements ToModel, WithValidation, WithStartRow
 
         $holidayData ? Employee::where('employee_id', $employee->employee_id)->update(['weekoff_updated_at' => date('Y-m-d', \strtotime($month))]) : '';
 
-        // Log::info($holidayData);
+        
     }
 
     public function findWeekdays($month, $day_name)

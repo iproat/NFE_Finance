@@ -34,6 +34,8 @@ class EmployeeRequest extends FormRequest
                 'department_id'  => 'required',
                 'designation_id' => 'required',
                 'work_hours' => 'required',
+                'hr_id' => 'required',
+                'operation_manager_id' => 'required',
                 // 'work_shift'     => 'required',
                 // 'email'             => 'nullable|unique:employee,email,'.$this->employee.',employee_id',
                 // 'phone'             => 'required',
@@ -97,6 +99,8 @@ class EmployeeRequest extends FormRequest
             'to_date*.required'           => 'The to date field is required.',
             // 'work_shift*.required'           => 'The Work Shift field is required.',
             'work_hours*.required'           => 'The Work hour field is required.',
+            'hr_id*.required'           => 'The Hr Name field is required.',
+            'operation_manager_id*.required'           => 'The Operation Manager field is required.',
         ];
     }
 }

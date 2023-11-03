@@ -103,5 +103,7 @@ return [
     'conntected_device' => 'Connected Devices',
     'employee_id' => 'Employee ID',
     'status' => 'Status',
+    'hr' => 'HR',
+    'operation_manager' => 'Operation Manager',
 
 ];

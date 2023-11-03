@@ -122,6 +122,8 @@ class EmployeeRepository
         $employeeData['branch_id'] = $data['branch_id'];
 
         $employeeData['supervisor_id'] = $data['supervisor_id'];
+        $employeeData['hr_id'] = $data['hr_id'];
+        $employeeData['operation_manager_id'] = $data['operation_manager_id'];
 
         // $employeeData['work_shift_id'] = $data['work_shift_id'];
         // $employeeData['work_shift'] = $data['work_shift'];

@@ -119,6 +119,17 @@
             }]
 
         });
+        $('#myDataTableAlter').DataTable({
+            ordering: false,
+            processing: true,
+            aLengthMenu: [
+                [10, 25, 50, 100, 200, -1],
+                [10, 25, 50, 100, 200, "All"]
+            ],
+          
+           
+
+        });
 
         var table = $('#myCustomDataTable').DataTable({
             autoFill: true,

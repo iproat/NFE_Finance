@@ -1,6 +1,6 @@
 <div class="table-responsive">
 
-    <table id="myDataTable" class="table table-bordered table-hover manage-u-table">
+    <table id="myDataTableAlter" class="table table-bordered table-hover manage-u-table">
 
         <thead class="tr_header">
 
