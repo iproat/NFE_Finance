@@ -163,7 +163,7 @@ class ShiftFormatExport implements WithHeadings, FromCollection, WithProperties,
 
                 $cellRange = $this->extraData['cellRange'];
                 $cellRange = 'A1:' . $cellRange[count($cellRange) - 1] . '1'; // All headers
-    
+
                 $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setSize(11);
                 // $event->sheet->getStyle($cellRange)->ApplyFromArray($styleArray);
                 $event->sheet->getStyle($cellRange)->ApplyFromArray($styleArray1);
@@ -172,7 +172,7 @@ class ShiftFormatExport implements WithHeadings, FromCollection, WithProperties,
                 $event->sheet->getStyle($cellRange)->ApplyFromArray($styleArray8);
                 // $event->sheet->getStyle($cellRange)->ApplyFromArray($styleArray4);
                 // $event->sheet->getStyle($cellRange)->ApplyFromArray($styleArray5);
-    
+
                 // get layout counts (add 1 to rows for heading row)
                 $row_count = count($this->data);
 
@@ -185,7 +185,7 @@ class ShiftFormatExport implements WithHeadings, FromCollection, WithProperties,
 
                 foreach ($cell_range as $drop_column) {
                     // set dropdown list for first data row
-    
+
                     for ($i = 0; $i < $row_count; $i++) {
                         $j = $i + 2;
                         // if ($j % 2 == 0) {
@@ -238,24 +238,22 @@ class ShiftFormatExport implements WithHeadings, FromCollection, WithProperties,
                     $column = Coordinate::stringFromColumnIndex($i);
                     $event->sheet->getColumnDimension($column)->setAutoSize(true);
                 }
-
             },
         ];
-
     }
 
     public function properties(): array
     {
         return [
-            'creator' => 'DUROFLEX PVT LTD, FRN.',
-            'lastModifiedBy' => 'DUROFLEX PVT LTD, FRN.',
+            'creator' => 'NFE Finance',
+            'lastModifiedBy' => 'NFE Finance',
             'title' => 'EmployeeShiftInfo',
-            'description' => 'DUROFLEX PVT LTD, FRN. - EmployeeShiftInfo',
-            'subject' => 'DUROFLEX PVT LTD, FRN. - EmployeeShiftInfo',
+            'description' => 'NFE Finance - EmployeeShiftInfo',
+            'subject' => 'NFE Finance - EmployeeShiftInfo',
             'keywords' => 'EmployeeShiftInfo,export,spreadsheet',
             'category' => 'EmployeeShiftInfo',
-            'manager' => 'DUROFLEX PVT LTD',
-            'company' => 'DUROFLEX PVT LTD , FRN.',
+            'manager' => 'NFE Finance',
+            'company' => 'NFE Finance',
         ];
     }
 }

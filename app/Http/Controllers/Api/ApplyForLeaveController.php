@@ -52,7 +52,6 @@ class ApplyForLeaveController extends Controller
             // $leaveType = LeaveType::get();
 
             return $this->controller->successdualdata("Datas Successfully Received !!!", $results, $leaveType);
-
         } catch (\Throwable $th) {
             //throw $th;
             return $this->controller->custom_error("Something went wrong! please try again.");
@@ -129,7 +128,6 @@ class ApplyForLeaveController extends Controller
         if (\strtotime($request_data['application_date']) > \strtotime($request_data['application_from_date'])) {
 
             return $this->controller->custom_error("Leave cannot be applied for completed days.");
-
         } elseif (!$if_exists) {
 
             try {
@@ -346,13 +344,13 @@ class ApplyForLeaveController extends Controller
         $body = LeaveApplication::join('employee', 'employee.employee_id', '=', 'leave_application.employee_id')
             ->join('leave_type', 'leave_type.leave_type_id', '=', 'leave_application.leave_type_id')
             ->where('leave_application_id', $leave_application_id)->select(
-            'leave_type.*',
-            'leave_application.*',
-            'employee.first_name',
-            'employee.email',
-            'employee.employee_id',
-            'employee.finger_id'
-        )->first();
+                'leave_type.*',
+                'leave_application.*',
+                'employee.first_name',
+                'employee.email',
+                'employee.employee_id',
+                'employee.finger_id'
+            )->first();
 
         $employee_id = decrypt(session('logged_session_data.employee_id'));
 
@@ -413,13 +411,13 @@ class ApplyForLeaveController extends Controller
         $body = LeaveApplication::join('employee', 'employee.employee_id', '=', 'leave_application.employee_id')
             ->join('leave_type', 'leave_type.leave_type_id', '=', 'leave_application.leave_type_id')
             ->where('leave_application_id', $leave_application_id)->select(
-            'leave_type.*',
-            'leave_application.*',
-            'employee.first_name',
-            'employee.email',
-            'employee.employee_id',
-            'employee.finger_id'
-        )->first();
+                'leave_type.*',
+                'leave_application.*',
+                'employee.first_name',
+                'employee.email',
+                'employee.employee_id',
+                'employee.finger_id'
+            )->first();
 
         if ($bool && decrypt(session('logged_session_data.role_id')) == 1) {
             LeaveApplication::where('leave_application_id', $leave_application_id)->update($data);
@@ -433,23 +431,7 @@ class ApplyForLeaveController extends Controller
         }
     }
 
-    public function sample(Request $request)
-    {
-        // $path =  Request::path();
-        // $getQueryString =  Request::getPathInfo();
-        // $url = Request::url();
-        $getFacadeRoot = Route::getFacadeRoot()->current()->uri();
-        $getCurrentRoute = Route::getCurrentRoute()->getActionName();
-        $request = $request->is('api/*');
 
-        // $array = array($path, $getQueryString, $url);
-        $array = array($getFacadeRoot, $getCurrentRoute, $request);
-
-        return response()->json([
-            'message' => "API works fine",
-            'array' => $array,
-        ], 200);
-    }
 
     public function approve1(Request $request)
     {

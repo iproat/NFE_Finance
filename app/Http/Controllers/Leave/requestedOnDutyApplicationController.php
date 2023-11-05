@@ -41,22 +41,10 @@ class requestedOnDutyApplicationController extends Controller
                 ->orderBy('on_duty_id', 'desc')
                 ->paginate();
         }
-        $hasHr = Employee::select('employee_id')->where('hr_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
 
-        if (count($hasHr) == 0) {
-            $hrResults = [];
-        } else {
-            $hrResults  =  OnDuty::with('employee')
-                ->whereIn('employee_id', array_values($hasHr))
-                ->where('hr_status', 1)
-                ->orderBy('status', 'asc')
-                ->orderBy('on_duty_id', 'desc')
-                ->paginate();
-        }
         return view('admin.leave.onDutyApplication.onDutyApplicationList',   [
             'adminResults' => $adminResults,
             'operationManagerResults' => $operationManagerResults,
-            'hrResults' => $hrResults,
         ]);
     }
     public function viewDetails($id)
@@ -73,7 +61,6 @@ class requestedOnDutyApplicationController extends Controller
     }
     public function update(Request $request, $id)
     {
-        dd($request->all());
         $data = OnDuty::findOrFail($id);
         $input = $request->all();
         if ($request->status == 2) {
@@ -108,7 +95,6 @@ class requestedOnDutyApplicationController extends Controller
 
     public function approveOrRejectOnDutyApplication(Request $request)
     {
-        info($request->all());
         $data = OnDuty::findOrFail($request->on_duty_id);
         $input = $request->all();
 
@@ -142,7 +128,6 @@ class requestedOnDutyApplicationController extends Controller
     }
     public function approveOrRejectManagerOnDutyApplication(Request $request)
     {
-        info($request->all());
         $data = OnDuty::findOrFail($request->on_duty_id);
         $input = $request->all();
 
@@ -154,40 +139,6 @@ class requestedOnDutyApplicationController extends Controller
         } else {
             $input['manager_status'] = 3;
 
-            // $input['remarks']     = $request->head_remark;
-            // $input['reject_date'] = date('Y-m-d');
-            // $input['reject_by'] = (session('logged_session_data.employee_id'));
-        }
-
-        try {
-            $data->update($input);
-            $bug = 0;
-        } catch (\Exception $e) {
-            $bug = 1;
-        }
-        if ($bug == 0) {
-            if ($request->status == 2) {
-                echo "approve";
-            } else {
-                echo "reject";
-            }
-        } else {
-            echo "error";
-        }
-    }
-    public function approveOrRejectHrOnDutyApplication(Request $request)
-    {
-        info($request->all());
-        $data = OnDuty::findOrFail($request->on_duty_id);
-        $input = $request->all();
-
-        if ($request->status == 2) {
-            $input['hr_status'] = 2;
-            // $input['remarks']    = $request->head_remark;
-            // $input['approve_date'] = date('Y-m-d');
-            // $input['approve_by'] = (session('logged_session_data.employee_id'));
-        } else {
-            $input['hr_status'] = 3;
             // $input['remarks']     = $request->head_remark;
             // $input['reject_date'] = date('Y-m-d');
             // $input['reject_by'] = (session('logged_session_data.employee_id'));

@@ -136,8 +136,8 @@
                                             <th style="font-size:12px;">@lang('attendance.duration')</th>
                                             <th style="font-size:12px;">@lang('attendance.early_by')</th>
                                             <th style="font-size:12px;">@lang('attendance.late_by')</th>
-                                            {{-- <th style="font-size:12px;">@lang('attendance.over_time')</th>
-                                            <th style="font-size:12px;">@lang('attendance.comp_off')</th>
+                                            {{-- <th style="font-size:12px;">@lang('attendance.over_time')</th> --}}
+                                            {{-- <th style="font-size:12px;">@lang('attendance.comp_off')</th>
                                             <th style="font-size:12px;">@lang('attendance.incentive')</th> --}}
                                             <th style="font-size:12px;">@lang('attendance.history_of_records')</th>
                                             <th style="font-size:12px;;">@lang('attendance.status')</th>

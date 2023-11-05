@@ -39,7 +39,7 @@ class Employee extends Model
 
     public function userName()
     {
-        return $this->belongsTo(User::class, 'user_id')->where('role_id', 3);
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function user()
     {

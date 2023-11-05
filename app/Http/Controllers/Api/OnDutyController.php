@@ -6,6 +6,7 @@ use App\Model\OnDuty;
 use App\Model\Employee;
 use App\Components\Common;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Repositories\CommonRepository;
 
@@ -49,6 +50,15 @@ class OnDutyController extends Controller
 
     public function store(Request $request)
     {
+        $fromDate = dateConvertFormtoDB($request->application_from_date);
+        $toDate = dateConvertFormtoDB($request->application_to_date);
+
+        if ($fromDate > $toDate) {
+            return response()->json([
+                'message' => "The from date must be earlier than the application to date.",
+                'status' => false,
+            ], 200);
+        }
         $employee = Employee::where('employee_id', $request->employee_id)->first();
         $input = $request->all();
         $input['application_from_date'] = dateConvertFormtoDB($request->application_from_date);
@@ -86,16 +96,22 @@ class OnDutyController extends Controller
             ], 200);
         } else {
             try {
-                // DB::beginTransaction();
+                DB::beginTransaction();
                 $checkOD = OnDuty::where('application_from_date', '>=', $input['application_from_date'])->where('application_to_date', '<=', $input['application_to_date'])
-                    ->where('employee_id', $employee->employee_id)->where('status', '!=', 3)->first();
+                    ->where('employee_id', $employee->employee_id)->where('status', '!=', 3)->where('manager_status', '!=', 3)->first();
 
                 if (!$checkOD) {
                     $data = OnDuty::create($input);
                     $hod = Employee::where('employee_id', $employee->supervisor_id)->first();
+                    $manager = Employee::where('employee_id', $employee->manager_id)->first();
                     if ($hod != '') {
                         if ($hod->email) {
                             $maildata = Common::mail('emails/mail', $hod->email, 'On Duty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ', have requested for on duty (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                        }
+                    }
+                    if ($manager != '') {
+                        if ($manager->email) {
+                            $maildata = Common::mail('emails/mail', $manager->email, 'On Duty Request Notification', ['head_name' => $manager->first_name . ' ' . $manager->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ', have requested for on duty (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
                         }
                     }
 
@@ -111,10 +127,11 @@ class OnDutyController extends Controller
                         'status' => false,
                     ], 200);
                 }
+                DB::commit();
             } catch (\Exception $e) {
-
+                DB::rollBack();
                 return response()->json([
-                    'message' => 'Something Went Wrong',
+                    'message' => $e->getMessage(),
                     'status' => false,
 
                 ], 200);

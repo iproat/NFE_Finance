@@ -33,7 +33,7 @@ class ShiftDetailsController extends Controller
             $results = EmployeeShift::with('updated_user')->where('month', $request->yearAndMonth)->orderBy('employee_shift_id', 'desc')->get();
         }
 
-        return view('admin.attendance.employeeShift.  index', ['results' => $results, 'month' => $request->month, 'yearAndMonth' => $request->yearAndMonth, 'shift' => $shift]);
+        return view('admin.attendance.employeeShift.index', ['results' => $results, 'month' => $request->month, 'yearAndMonth' => $request->yearAndMonth, 'shift' => $shift]);
     }
 
     public function import(Request $request)
@@ -84,7 +84,6 @@ class ShiftDetailsController extends Controller
             Excel::import(new EmployeeShiftImport($month, $validation, $message, $shift, $mon), $file);
 
             return back()->with('success', 'Shift information saved successfully.');
-
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             // dd($e->);
             $import = new EmployeeShiftImport($month, $validation, $message, $shift, $mon);
@@ -96,11 +95,9 @@ class ShiftDetailsController extends Controller
                 $failure->errors(); // Actual error messages from Laravel validator
                 $failure->values(); // The values of the row that has failed.
             }
-
         }
 
         return back();
-
     }
 
     public function employeeShiftTemplate()
@@ -190,7 +187,6 @@ class ShiftDetailsController extends Controller
         $filename = 'Employee Shift Information-' . DATE('d-m-Y His') . '.xlsx';
 
         return Excel::download(new ShiftFormatExport($dataSet, $extraData), $filename);
-
     }
 
     public function download(Request $request)
@@ -277,7 +273,6 @@ class ShiftDetailsController extends Controller
         $filename = 'Employee Shift Information ' . DATE('d-m-Y His') . '.xlsx';
 
         return Excel::download(new ShiftFormatExport($dataSet, $extraData), $filename);
-
     }
 
     public function cellRange($countDays)
@@ -317,5 +312,4 @@ class ShiftDetailsController extends Controller
         }
         return false;
     }
-
 }

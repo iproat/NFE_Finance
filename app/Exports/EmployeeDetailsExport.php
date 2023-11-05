@@ -235,7 +235,7 @@ class EmployeeDetailsExport implements WithHeadings, FromCollection, WithPropert
                 $options7 = ['General', 'Rotational'];
                 $drop_column = [
                     ['cell' => 'O', 'options' => $options3], ['cell' => 'Q', 'options' => $options4], ['cell' => 'T', 'options' => $options5],
-                     ['cell' => 'U', 'options' => $options6], ['cell' => 'V', 'options' => $options7], ['cell' => 'W', 'options' => $options1],
+                    ['cell' => 'U', 'options' => $options6], ['cell' => 'V', 'options' => $options7], ['cell' => 'W', 'options' => $options1],
 
                 ];
                 for ($i = 2; $i <= $RowLength; $i++) {
@@ -272,15 +272,15 @@ class EmployeeDetailsExport implements WithHeadings, FromCollection, WithPropert
     public function properties(): array
     {
         return [
-            'creator' => 'TATA' . auth()->user()->user_name,
-            'lastModifiedBy' => 'TATA ' . auth()->user()->user_name,
+            'creator' => 'NFE Finance' . auth()->user()->user_name,
+            'lastModifiedBy' => 'NFE Finance ' . auth()->user()->user_name,
             'title' => 'EmployeeInfo',
-            'description' => 'TATA  - EmployeeInfo',
-            'subject' => 'TATA - EmployeeInfo',
+            'description' => 'NFE Finance  - EmployeeInfo',
+            'subject' => 'NFE Finance - EmployeeInfo',
             'keywords' => 'EmployeeInfo,export,spreadsheet',
             'category' => 'EmployeeInfo',
-            'manager' => 'TATA',
-            'company' => 'TATA',
+            'manager' => 'NFE Finance',
+            'company' => 'NFE Finance',
         ];
     }
 }

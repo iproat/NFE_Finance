@@ -93,7 +93,7 @@ class ApplyForPermissionController extends Controller
         $input['department_head']         = $employee_data->supervisor_id;
         $input['from_time']               = $request->from_time;
         $input['to_time']                 = $request->to_time;
-        $input['branch_id'] = $employee_data->branch_id;
+        // $input['branch_id'] = $employee_data->branch_id;
 
         if ($employee_data->supervisor_id == '') {
             return response()->json([

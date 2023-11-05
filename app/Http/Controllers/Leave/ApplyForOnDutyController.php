@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Leave;
 
-use mail;
 use DateTime;
 use Carbon\Carbon;
 use App\Model\OnDuty;
 use App\Model\Employee;
 use App\Components\Common;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Repositories\LeaveRepository;
 use App\Repositories\CommonRepository;
@@ -50,6 +50,8 @@ class ApplyForOnDutyController extends Controller
     }
     public function store(Request $request)
     {
+        DB::beginTransaction();
+
         try {
             $input = $request->all();
             $employee = Employee::where('employee_id', $request->employee_id)->first();
@@ -75,20 +77,17 @@ class ApplyForOnDutyController extends Controller
 
             $input['no_of_days'] = $no_of_days;
 
-            $ifExists = OnDuty::where('application_from_date', '>=', $input['application_from_date'])
-                ->where('application_to_date', '<=', $input['application_to_date'])->where('employee_id', $input['employee_id'])->where('status', '!=', 3)
-                ->where('manager_status', '!=', 3)->first();
-
-            if ($ifExists) {
-                return redirect(route('applyForOnDuty.index'))->with('error', 'On Duty application exists between selected dates. Try different dates.');
-            }
-            $emp = Employee::find($request->employee_id);
-            $hod = Employee::where('employee_id', $emp->supervisor_id)->first();
-            $operationManager = Employee::where('employee_id', $emp->operation_manager_id)->first();
-            $hr = Employee::where('employee_id', $emp->hr_id)->first();
-            info([$hod->email, $operationManager->email, $hr->email]);
             try {
+                $ifExists = OnDuty::where('application_from_date', '>=', $input['application_from_date'])
+                    ->where('application_to_date', '<=', $input['application_to_date'])->where('employee_id', $input['employee_id'])->where('status', '!=', 3)
+                    ->where('manager_status', '!=', 3)->first();
 
+                if ($ifExists) {
+                    return redirect(route('applyForOnDuty.index'))->with('error', 'On Duty application exists between selected dates. Try different dates.');
+                }
+                $emp = Employee::find($request->employee_id);
+                $hod = Employee::where('employee_id', $emp->supervisor_id)->first();
+                $operationManager = Employee::where('employee_id', $emp->operation_manager_id)->first();
                 if ($hod->email) {
                     $maildata = Common::mail('emails/mail', $hod->email, 'OnDuty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for Permission (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
                 }
@@ -96,13 +95,15 @@ class ApplyForOnDutyController extends Controller
                     $maildata = Common::mail('emails/mail', $operationManager->email, 'OnDuty Request Notification', ['head_name' => $operationManager->first_name . ' ' . $operationManager->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for Permission (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
                 }
             } catch (\Exception $ex) {
-
                 return redirect(route('applyForOnDuty.index'))->with('error',  'Something went wrong!' . $ex->getMessage());
             }
 
             OnDuty::create($input);
             return redirect(route('applyForOnDuty.index'))->with('success', 'On Duty application sent successfully');
+            DB::commit();
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect(route('applyForOnDuty.index'))->with('error',  'Something went wrong!' . $th->getMessage());
         }
     }
