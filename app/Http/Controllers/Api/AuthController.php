@@ -20,7 +20,7 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register', 'migrate', 'sample']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'migrate', 'sample', 'forgetPassword']]);
     }
 
     public function login(Request $request)
@@ -59,7 +59,6 @@ class AuthController extends Controller
                     'checked_in_data' => $is_checked_in,
                     'user' => $user_data,
                 ], 200);
-
             } elseif ($userStatus == UserStatus::$INACTIVE) {
 
                 Auth::logout();
@@ -168,6 +167,80 @@ class AuthController extends Controller
             'user' => $user_data,
         ], 200);
     }
+    public function changePassword(Request $request)
+    {
 
-   
+        $user = User::where('user_id', $request->user_id)->update([
+            'password'  => Hash::make($request['password']),
+        ]);
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Password Reset successfully',
+            'user'    => $user,
+        ], 201);
+    }
+
+
+    public function forgetPassword(Request $request)
+    {
+
+        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+        $pass = array();
+        $alphaLength = strlen($alphabet) - 1;
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        $new_password = implode($pass);
+
+        $user_data = User::where('user_name', $request->user_name)->first();
+        if ($user_data == '') {
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid User ID',
+                'user'    => $user_data,
+            ], 201);
+        }
+        if ($user_data->user_name != 'admin') {
+            $input['password'] = Hash::make($new_password);
+            $userupdate = User::where('user_id', $user_data->user_id)->update($input);
+            if ($userupdate) {
+                try {
+
+                    $emp = Employee::where('user_id', $user_data->user_id)->first();
+                    $admin = Employee::where('employee_id', 1)->first();
+
+                    if ($admin->email != '') {
+                        \App\Components\Common::mail('emails/forgetPassword', $admin->email, 'New Password Notification', ['new_password' => $new_password, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for a new password at-' . date("F j, Y, g:i a")]);
+                        return response()->json([
+                            'status' => true,
+                            'message' => 'New Password Sent To Admin Email !',
+                            'user'    => $user_data,
+                        ], 201);
+                    } elseif ($admin->email == '') {
+                        return response()->json([
+                            'status' => false,
+                            'message' => 'Admin Email Not Given !',
+                            'user'    => $user_data,
+                        ], 201);
+                    }
+                } catch (\Exception $ex) {
+                    return $ex;
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'Something Went Wrong !',
+                        'user'    => $user_data,
+                    ], 201);
+                }
+            }
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Admin Password Can Not Change !',
+                'user'    => $user_data,
+            ], 201);
+        }
+    }
 }

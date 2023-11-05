@@ -303,12 +303,35 @@
 
                                 </div>
                                 <div class="col-md-3">
+
+                                    <div class="form-group">
+
+                                        <label for="exampleInput">@lang('employee.operation_manager')</label>
+
+                                        <select name="operation_manager_id"
+                                            class="form-control operation_manager_id required select2">
+
+                                            <option value="">--- @lang('common.please_select') ---</option>
+
+                                            @foreach ($operationManagerList as $value)
+                                                <option value="{{ $value->employee_id }}"
+                                                    @if ($value->employee_id == $editModeData->operation_manager_id) {{ 'selected' }} @endif>
+                                                    {{ $value->first_name }}
+                                                    {{ $value->last_name }}</option>
+                                            @endforeach
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                                {{-- <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="exampleInput">@lang('employee.work_hours')<span
                                                 class="validateRq">*</span></label>
                                         {{ Form::select('work_hours', $workHours, Input::old('work_hours'), ['class' => 'form-control work_hours select2 required']) }}
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-3" hidden>
 
@@ -642,30 +665,8 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-3">
 
-                                    <div class="form-group">
-
-                                        <label for="exampleInput">@lang('employee.operation_manager')</label>
-
-                                        <select name="operation_manager_id"
-                                            class="form-control operation_manager_id required select2">
-
-                                            <option value="">--- @lang('common.please_select') ---</option>
-
-                                            @foreach ($operationManagerList as $value)
-                                                <option value="{{ $value->employee->employee_id }}"
-                                                    @if ($value->employee->employee_id == $editModeData->operation_manager_id) {{ 'selected' }} @endif>
-                                                    {{ $value->employee->first_name }}
-                                                    {{ $value->employee->last_name }}</option>
-                                            @endforeach
-
-                                        </select>
-
-                                    </div>
-
-                                </div>
-                                <div class="col-md-3">
+                                {{-- <div class="col-md-3">
 
                                     <div class="form-group">
 
@@ -676,17 +677,17 @@
                                             <option value="">--- @lang('common.please_select') ---</option>
 
                                             @foreach ($hrList as $value)
-                                                <option value="{{ $value->employee->employee_id }}"
-                                                    @if ($value->employee->employee_id == $editModeData->hr_id) {{ 'selected' }} @endif>
-                                                    {{ $value->employee->first_name }}
-                                                    {{ $value->employee->last_name }}</option>
+                                                <option value="{{ $value->employee_id }}"
+                                                    @if ($value->employee_id == $editModeData->hr_id) {{ 'selected' }} @endif>
+                                                    {{ $value->first_name }}
+                                                    {{ $value->last_name }}</option>
                                             @endforeach
 
                                         </select>
 
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                             </div>
 

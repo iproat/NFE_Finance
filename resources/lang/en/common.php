@@ -99,6 +99,9 @@ return [
     'employee_id' => "EmployeeID",
     'in_out_shift' => "IN/OUT/Shift",
     'permission_duration' => "Permission Duration",
+    'headdepartmentstatus' => "HOD Status",
+    'hrstatus' => "HR Status",
+    'managerstatus' => "Manager Status",
 
 
 

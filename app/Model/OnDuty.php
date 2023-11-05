@@ -21,6 +21,8 @@ class OnDuty extends Model
         'remark_admin',
         'remark_superadmin',
         'status',
+        'hr_status',
+        'manager_status',
         'accepted_admin',
         'rejected_admin',
         'accepted_superadmin',

@@ -49,9 +49,8 @@
                                         <th>@lang('leave.number_of_day')</th>
                                         <th>@lang('leave.purpose')</th>
                                         <th>@lang('common.headdepartmentstatus')</th>
-                                        <th>@lang('common.hrstatus')</th>
                                         <th>@lang('common.managerstatus')</th>
-                                        {{-- <th>Action</th> --}}
+                                        <th>@lang('common.hrstatus')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,49 +73,45 @@
                                                     {!! dateConvertDBtoForm($value->application_date) !!}</span>
                                             </td>
                                             <td>
-
                                                 {!! $value->no_of_days !!}
-
 
                                             </td>
                                             <td>
                                                 {!! $value->purpose !!}
                                             </td>
-                                            {{-- <td>
-                                                @if (isset($value->approveBy->first_name))
-                                                    {!! $value->approveBy->first_name !!} {!! $value->approveBy->last_name !!}
-                                                    <br /><span class="text-muted">@lang('leave.approve_date') :
-                                                        {!! dateConvertDBtoForm($value->approve_date) !!}</span>
-                                                @endif
-                                            </td> --}}
-                                            {{-- <td>
-                                                @if (isset($value->rejectBy->first_name))
-                                                    {!! $value->rejectBy->first_name !!} {!! $value->rejectBy->last_name !!}
-                                                    <br /><span class="text-muted">@lang('common.reject_date') :
-                                                        {!! dateConvertDBtoForm($value->reject_date) !!}</span>
-                                                @endif
-                                            </td> --}}
-                                            @php
-                                                dd($value);
-                                            @endphp
-                                            @if ($value->status == 1)
-                                                <td style="width: 100px;">
+
+
+                                            <td style="width: 100px;">
+                                                @if ($value->status == 1)
                                                     <span class="label label-warning">@lang('common.pending')</span>
-                                                </td>
-                                            @elseif($value->status == 2)
-                                                <td style="width: 100px;">
+                                                @elseif ($value->status == 2)
                                                     <span class="label label-success">@lang('common.approved')</span>
-                                                </td>
-                                            @else
-                                                <td style="width: 100px;">
+                                                @else
                                                     <span class="label label-danger">@lang('common.rejected')</span>
-                                                </td>
-                                            @endif
-                                            <td>
-                                                {{-- <a  title="View Details" href="{{route('applyForLeave.show',$value->leave_application_id)}}" class="btn btn-primary btn-xs btnColor"> --}}
-                                                {{-- <i class="glyphicon glyphicon-th-large" aria-hidden="true"></i> --}}
-                                                {{-- </a> --}}
+                                                @endif
                                             </td>
+
+                                            <td style="width: 100px;">
+                                                @if ($value->manager_status == 1)
+                                                    <span class="label label-warning">@lang('common.pending')</span>
+                                                @elseif ($value->manager_status == 2)
+                                                    <span class="label label-success">@lang('common.approved')</span>
+                                                @else
+                                                    <span class="label label-danger">@lang('common.rejected')</span>
+                                                @endif
+                                            </td>
+
+                                            <td style="width: 100px;">
+                                                @if ($value->hr_status == 1)
+                                                    <span class="label label-warning">@lang('common.pending')</span>
+                                                @elseif ($value->hr_status == 2)
+                                                    <span class="label label-success">@lang('common.approved')</span>
+                                                @else
+                                                    <span class="label label-danger">@lang('common.rejected')</span>
+                                                @endif
+                                            </td>
+
+
                                         </tr>
                                     @endforeach
                                 </tbody>

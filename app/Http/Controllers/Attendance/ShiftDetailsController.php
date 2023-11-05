@@ -33,7 +33,7 @@ class ShiftDetailsController extends Controller
             $results = EmployeeShift::with('updated_user')->where('month', $request->yearAndMonth)->orderBy('employee_shift_id', 'desc')->get();
         }
 
-        return view('admin.attendance.employeeShift.index', ['results' => $results, 'month' => $request->month, 'yearAndMonth' => $request->yearAndMonth, 'shift' => $shift]);
+        return view('admin.attendance.employeeShift.  index', ['results' => $results, 'month' => $request->month, 'yearAndMonth' => $request->yearAndMonth, 'shift' => $shift]);
     }
 
     public function import(Request $request)

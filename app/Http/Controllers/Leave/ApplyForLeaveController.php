@@ -95,7 +95,7 @@ class ApplyForLeaveController extends Controller
         })->get();
 
         try {
-            $data = LeaveApplication::create($input);
+            LeaveApplication::create($input);
             $leaveType = LeaveType::where('leave_type_id', $input['leave_type_id'])->first();
 
             $dataSet = [

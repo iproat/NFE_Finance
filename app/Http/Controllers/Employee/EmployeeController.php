@@ -98,16 +98,13 @@ class EmployeeController extends Controller
         $branchList = Branch::get();
         $workShiftList = WorkShift::get();
         $supervisorList = Employee::where('status', 1)->get();
-        $operationManagerList = User::with('employee')->get();
-        $hrList = User::with('employee')->get();
-
-
+        $operationManagerList = Employee::where('status', 1)->get();
         $payGradeList = PayGrade::all();
         $hourlyPayGradeList = HourlySalary::all();
         $incentive = $this->employeeRepositories->incentive();
         $salaryLimit = $this->employeeRepositories->salaryLimit();
         $workShift = $this->employeeRepositories->workShift();
-        $workHours = $this->employeeRepositories->workHours();
+        // $workHours = $this->employeeRepositories->workHours();
         $data = [
             'userList' => $userList,
             'roleList' => $roleList,
@@ -116,14 +113,13 @@ class EmployeeController extends Controller
             'branchList' => $branchList,
             'supervisorList' => $supervisorList,
             'operationManagerList' => $operationManagerList,
-            'hrList' => $hrList,
             'workShiftList' => $workShiftList,
             'payGradeList' => $payGradeList,
             'hourlyPayGradeList' => $hourlyPayGradeList,
             'incentive' => $incentive,
             'salaryLimit' => $salaryLimit,
             'workShift' => $workShift,
-            'workHours' => $workHours,
+            // 'workHours' => $workHours,
 
         ];
 
@@ -225,8 +221,8 @@ class EmployeeController extends Controller
         $designationList = Designation::get();
         $branchList = Branch::get();
         $supervisorList = Employee::where('status', 1)->get();
-        $operationManagerList = User::with('employee')->get();
-        $hrList = User::with('employee')->get();
+        $operationManagerList = Employee::where('status', 1)->get();
+        // $hrList = Employee::where('status', 1)->get();
         $editModeData = Employee::findOrFail($id);
         $workShiftList = WorkShift::get();
         $payGradeList = PayGrade::all();
@@ -235,12 +231,11 @@ class EmployeeController extends Controller
         $incentive = $this->employeeRepositories->incentive();
         $salaryLimit = $this->employeeRepositories->salaryLimit();
         $workShift = $this->employeeRepositories->workShift();
-        $workHours = $this->employeeRepositories->workHours();
+        // $workHours = $this->employeeRepositories->workHours();
 
         $employeeAccountEditModeData = User::where('user_id', $editModeData->user_id)->first();
         $educationQualificationEditModeData = EmployeeEducationQualification::where('employee_id', $id)->get();
         $experienceEditModeData = EmployeeExperience::where('employee_id', $id)->get();
-        // dd($editModeData);
         $data = [
             'userList' => $userList,
             'roleList' => $roleList,
@@ -249,7 +244,7 @@ class EmployeeController extends Controller
             'branchList' => $branchList,
             'supervisorList' => $supervisorList,
             'operationManagerList' => $operationManagerList,
-            'hrList' => $hrList,
+            // 'hrList' => $hrList,
             'workShiftList' => $workShiftList,
             'payGradeList' => $payGradeList,
             'editModeData' => $editModeData,
@@ -261,7 +256,7 @@ class EmployeeController extends Controller
             'incentive' => $incentive,
             'salaryLimit' => $salaryLimit,
             'workShift' => $workShift,
-            'workHours' => $workHours,
+            // 'workHours' => $workHours,
 
         ];
 

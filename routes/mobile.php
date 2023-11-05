@@ -13,6 +13,8 @@ Route::group(['middleware' => 'api', 'prefix' => 'mobile'], function () {
         Route::get('my_attendance_report', 'Api\AttendanceReportController@myAttendanceReport');
         Route::get('download_my_attendance', 'Api\AttendanceReportController@downloadMyAttendance');
     });
+    Route::post('change_password', 'Api\AuthController@changePassword');
+    Route::post('forgetpassword', 'Api\AuthController@forgetPassword');
 
     Route::group(['prefix' => 'leave'], function () {
         Route::get('index', 'Api\ApplyForLeaveController@index');
@@ -20,5 +22,15 @@ Route::group(['middleware' => 'api', 'prefix' => 'mobile'], function () {
         Route::post('store', 'Api\ApplyForLeaveController@store');
         Route::post('update', 'Api\ApplyForLeaveController@update');
     });
-   
+    Route::group(['prefix' => 'permission'], function () {
+        Route::get('index', 'Api\ApplyForPermissionController@index');
+        Route::get('create', 'Api\ApplyForPermissionController@create');
+        Route::post('store', 'Api\ApplyForPermissionController@store');
+    });
+
+    Route::group(['prefix' => 'onduty'], function () {
+        Route::get('index', 'Api\OnDutyController@index');
+        Route::get('create', 'Api\OnDutyController@create');
+        Route::post('store', 'Api\OnDutyController@store');
+    });
 });

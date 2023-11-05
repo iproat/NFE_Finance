@@ -74,11 +74,11 @@
 
                                                 <td style="width: 100px;"> <a href="javacript:void(0)" data-status=2
                                                         data-on_duty_id="{{ $value->on_duty_id }}"
-                                                        class="btn remarksForLeave btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                        class="btn remarksForOnDuty btn btn-rounded btn-success btn-outline m-r-5"><i
                                                             class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
                                                     <a href="javacript:void(0)" data-status=3
                                                         data-on_duty_id="{{ $value->on_duty_id }}"
-                                                        class="btn-rounded remarksForLeave btn btn-danger btn-outline"><i
+                                                        class="btn-rounded remarksForOnDuty btn btn-danger btn-outline"><i
                                                             class="ti-close text-danger m-r-5"></i>
                                                         @lang('common.reject')</a>
                             </div>
@@ -130,11 +130,11 @@
 
                                             <td style="width: 100px;"> <a href="javacript:void(0)" data-status=2
                                                     data-on_duty_id="{{ $value->on_duty_id }}"
-                                                    class="btn remarksForLeave btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                    class="btn managerRemarksForOnDuty btn btn-rounded btn-success btn-outline m-r-5"><i
                                                         class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
                                                 <a href="javacript:void(0)" data-status=3
                                                     data-on_duty_id="{{ $value->on_duty_id }}"
-                                                    class="btn-rounded remarksForLeave btn btn-danger btn-outline"><i
+                                                    class="btn-rounded managerRemarksForOnDuty btn btn-danger btn-outline"><i
                                                         class="ti-close text-danger m-r-5"></i>
                                                     @lang('common.reject')</a>
                         </div>
@@ -149,8 +149,8 @@
                     </div>
                 </div>
                 @endif
-             
-                @if (count($hrResults ) > 0)
+
+                @if (count($hrResults) > 0)
                     <div class="">
                         <table class="table table-hover manage-u-table">
                             <thead>
@@ -185,11 +185,11 @@
 
                                         <td style="width: 100px;"> <a href="javacript:void(0)" data-status=2
                                                 data-on_duty_id="{{ $value->on_duty_id }}"
-                                                class="btn remarksForLeave btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                class="btn hrRemarksForOnDuty btn btn-rounded btn-success btn-outline m-r-5"><i
                                                     class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
                                             <a href="javacript:void(0)" data-status=3
                                                 data-on_duty_id="{{ $value->on_duty_id }}"
-                                                class="btn-rounded remarksForLeave btn btn-danger btn-outline"><i
+                                                class="btn-rounded hrRemarksForOnDuty btn btn-danger btn-outline"><i
                                                     class="ti-close text-danger m-r-5"></i>
                                                 @lang('common.reject')</a>
                     </div>
@@ -210,4 +210,224 @@
 </div>
 </div>
 </div>
+@endsection
+@section('page_scripts')
+<link href="{!! asset('admin_assets/plugins/bower_components/news-Ticker-Plugin/css/site.css') !!}" rel="stylesheet" type="text/css" />
+<script src="{!! asset('admin_assets/plugins/bower_components/news-Ticker-Plugin/scripts/jquery.bootstrap.newsbox.min.js') !!}"></script>
+
+<script type="text/javascript">
+    $(document).on('click', '.remarksForOnDuty', function() {
+
+        var actionTo = "{{ URL::to('approveOrRejectOnDutyApplication') }}";
+        var on_duty_id = $(this).attr('data-on_duty_id');
+        var status = $(this).attr('data-status');
+
+        if (status == 2) {
+            var statusText = "Are you want to approve OnDuty application?";
+            var btnColor = "#2cabe3";
+        } else {
+            var statusText = "Are you want to reject OnDuty application?";
+            var btnColor = "red";
+        }
+
+        swal({
+                title: "",
+                text: statusText,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: btnColor,
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                var token = '{{ csrf_token() }}';
+                if (isConfirm) {
+                    $.ajax({
+                        type: 'POST',
+                        url: actionTo,
+                        data: {
+                            on_duty_id: on_duty_id,
+                            status: status,
+                            _token: token
+                        },
+                        success: function(data) {
+                            if (data == 'approve') {
+                                swal({
+                                        title: "Approved!",
+                                        text: "OnDuty application approved.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + on_duty_id).fadeOut();
+                                            location.reload();
+                                        }
+                                    });
+
+                            } else {
+                                swal({
+                                        title: "Rejected!",
+                                        text: "OnDuty application rejected.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + on_duty_id).fadeOut();
+                                            location.reload();
+                                        }
+                                    });
+                            }
+                        }
+
+                    });
+                } else {
+                    swal("Cancelled", "Your data is safe .", "error");
+                }
+            });
+        return false;
+
+    });
+    $(document).on('click', '.managerRemarksForOnDuty', function() {
+
+        var actionTo = "{{ URL::to('approveOrRejectManagerOnDutyApplication') }}";
+        var on_duty_id = $(this).attr('data-on_duty_id');
+        var status = $(this).attr('data-status');
+
+        if (status == 2) {
+            var statusText = "Are you want to approve OnDuty application?";
+            var btnColor = "#2cabe3";
+        } else {
+            var statusText = "Are you want to reject OnDuty application?";
+            var btnColor = "red";
+        }
+
+        swal({
+                title: "",
+                text: statusText,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: btnColor,
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                var token = '{{ csrf_token() }}';
+                if (isConfirm) {
+                    $.ajax({
+                        type: 'POST',
+                        url: actionTo,
+                        data: {
+                            on_duty_id: on_duty_id,
+                            status: status,
+                            _token: token
+                        },
+                        success: function(data) {
+                            if (data == 'approve') {
+                                swal({
+                                        title: "Approved!",
+                                        text: "OnDuty application approved.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + on_duty_id).fadeOut();
+                                            location.reload();
+                                        }
+                                    });
+
+                            } else {
+                                swal({
+                                        title: "Rejected!",
+                                        text: "OnDuty application rejected.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + on_duty_id).fadeOut();
+                                            location.reload();
+                                        }
+                                    });
+                            }
+                        }
+
+                    });
+                } else {
+                    swal("Cancelled", "Your data is safe .", "error");
+                }
+            });
+        return false;
+
+    });
+    $(document).on('click', '.hrRemarksForOnDuty', function() {
+
+        var actionTo = "{{ URL::to('approveOrRejectHrOnDutyApplication') }}";
+        var on_duty_id = $(this).attr('data-on_duty_id');
+        var status = $(this).attr('data-status');
+
+        if (status == 2) {
+            var statusText = "Are you want to approve OnDuty application?";
+            var btnColor = "#2cabe3";
+        } else {
+            var statusText = "Are you want to reject OnDuty application?";
+            var btnColor = "red";
+        }
+
+        swal({
+                title: "",
+                text: statusText,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: btnColor,
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                var token = '{{ csrf_token() }}';
+                if (isConfirm) {
+                    $.ajax({
+                        type: 'POST',
+                        url: actionTo,
+                        data: {
+                            on_duty_id: on_duty_id,
+                            status: status,
+                            _token: token
+                        },
+                        success: function(data) {
+                            if (data == 'approve') {
+                                swal({
+                                        title: "Approved!",
+                                        text: "OnDuty application approved.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + on_duty_id).fadeOut();
+                                            location.reload();
+                                        }
+                                    });
+
+                            } else {
+                                swal({
+                                        title: "Rejected!",
+                                        text: "OnDuty application rejected.",
+                                        type: "success"
+                                    },
+                                    function(isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + on_duty_id).fadeOut();
+                                            location.reload();
+                                        }
+                                    });
+                            }
+                        }
+
+                    });
+                } else {
+                    swal("Cancelled", "Your data is safe .", "error");
+                }
+            });
+        return false;
+
+    });
+</script>
 @endsection
