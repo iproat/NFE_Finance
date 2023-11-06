@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ApplyForLeaveRequest;
-use App\Mail\LeaveApplicationMail;
-use App\Model\EarnLeaveRule;
-use App\Model\Employee;
-use App\Model\LeaveApplication;
-use App\Model\LeaveType;
-use App\Model\PaidLeaveApplication;
-use App\Model\PaidLeaveRule;
-use App\Repositories\CommonRepository;
-use App\Repositories\LeaveRepository;
-use Carbon\Carbon;
 use DateTime;
+use Carbon\Carbon;
+use App\Model\Employee;
+use App\Model\LeaveType;
+use App\Components\Common;
+use App\Model\EarnLeaveRule;
+use App\Model\PaidLeaveRule;
 use Illuminate\Http\Request;
+use App\Model\LeaveApplication;
+use App\Mail\LeaveApplicationMail;
 use Illuminate\Support\Facades\DB;
+use App\Model\PaidLeaveApplication;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Repositories\LeaveRepository;
 use Illuminate\Support\Facades\Route;
+use App\Repositories\CommonRepository;
+use App\Http\Requests\ApplyForLeaveRequest;
 
 class ApplyForLeaveController extends Controller
 {
@@ -37,7 +38,6 @@ class ApplyForLeaveController extends Controller
 
     public function index(Request $request)
     {
-        // $request->validate(['employee_id' => 'required']);
 
         $employee_id = $request->employee_id;
 
@@ -48,23 +48,13 @@ class ApplyForLeaveController extends Controller
                 ->orderBy('leave_application_id', 'desc')
                 ->get();
 
-            $leaveType = LeaveType::whereNotIn('leave_type_id', [1, 2])->get();
-            // $leaveType = LeaveType::get();
+            $leaveType = LeaveType::get();
 
             return $this->controller->successdualdata("Datas Successfully Received !!!", $results, $leaveType);
         } catch (\Throwable $th) {
-            //throw $th;
             return $this->controller->custom_error("Something went wrong! please try again.");
             $bug = 1;
         }
-
-        // if (count($results) > 0) {
-        //     return $this->controller->successdualdata("Datas Successfully Received !!!", $results, $leaveType);
-        // } elseif (count($results) == 0) {
-        //     return $this->controller->custom_error("Leave Application Not Found.");
-        // } else {
-        //     return $this->controller->custom_error("Something went wrong! please try again.");
-        // }
     }
 
     public function create(Request $request)
@@ -103,90 +93,71 @@ class ApplyForLeaveController extends Controller
 
     public function store(Request $request)
     {
+        $applicationFromDate = date('Y-m-d', strtotime(dateConvertFormtoDB($request->application_from_date)));
+        $applicationToDate = date('Y-m-d', strtotime(dateConvertFormtoDB($request->application_to_date)));
 
-        $request_data = [
+        if ($applicationFromDate > $applicationToDate) {
+            return $this->controller->custom_error("The application from date must be earlier than the application to date.");
+        }
+
+        $employeeId = $request->employee_id;
+        $leaveTypeId = $request->leave_type_id;
+        
+        $number_of_day = $this->applyForTotalNumberOfDays($applicationFromDate, $applicationToDate, $employeeId);
+        $leave_balance = $this->getEmployeeLeaveBalance($leaveTypeId, $employeeId);
+        $leave_application = [
+            'number_of_day' => $number_of_day,
             'application_date' => date('Y-m-d'),
-            'application_from_date' => $request->application_from_date,
-            'application_to_date' => $request->application_to_date,
-            'leave_type_id' => $request->leave_type_id,
-            'employee_id' => $request->employee_id,
+            'application_from_date' => $applicationFromDate,
+            'application_to_date' => $applicationToDate,
+            'leave_type_id' => $leaveTypeId,
+            'employee_id' => $employeeId,
             'purpose' => $request->purpose,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
-        $number_of_day = $this->applyForTotalNumberOfDays($request_data['application_from_date'], $request_data['application_to_date']);
-
-        $leave_balance = $this->getEmployeeLeaveBalance($request_data['leave_type_id'], $request_data['employee_id']);
-
-        $leave_application = array('number_of_day' => $number_of_day, 'leave_balance' => $leave_balance);
-
-        $leave_application = \array_merge(array('number_of_day' => $number_of_day), $request_data);
-
-        $if_exists = LeaveApplication::where('application_from_date', $request_data['application_from_date'])->where('application_to_date', $request_data['application_to_date'])
-            ->where('employee_id', $request_data['employee_id'])->whereIn('status', [1, 2])->first();
-
-        if (\strtotime($request_data['application_date']) > \strtotime($request_data['application_from_date'])) {
-
+        if (strtotime($leave_application['application_date']) > strtotime($leave_application['application_from_date'])) {
             return $this->controller->custom_error("Leave cannot be applied for completed days.");
-        } elseif (!$if_exists) {
+        }
 
-            try {
+        $if_exists = LeaveApplication::where('application_from_date', '>=', $applicationFromDate)
+            ->where('application_to_date', '<=', $applicationToDate)
+            ->where('employee_id', $employeeId)
+            ->whereIn('status', [1, 2])
+            ->first();
 
-                if ($number_of_day <= $leave_balance) {
+        if ($if_exists) {
+            return $this->controller->custom_error("Leave application already exists, try different date ranges.");
+        }
 
-                    DB::beginTransaction();
-                    $leave_application_id = DB::table('leave_application')->insertGetID($leave_application);
-                    DB::commit();
+        DB::beginTransaction();
 
-                    $leave_data = LeaveApplication::join('leave_type', 'leave_type.leave_type_id', '=', 'leave_application.leave_type_id')
-                        ->join('employee', 'employee.employee_id', '=', 'leave_application.employee_id')
-                        ->where('leave_application_id', $leave_application_id)
-                        ->first();
+        try {
+            if ($number_of_day <= $leave_balance) {
+                DB::table('leave_application')->insertGetID($leave_application);
 
-                    $application_from_date = dateConvertFormtoDB($request->application_from_date);
-                    $application_to_date = dateConvertFormtoDB($request->application_to_date);
-                    $application_date = date('Y-m-d');
+                $employee_data = Employee::where('employee_id', $request->employee_id)->first();
+                $hod = Employee::where('employee_id', $employee_data->supervisor_id)->first();
 
-                    $email = Employee::where('employee_id', $request->employee_id)->select('email')->first();
-
-                    // dd($email);
-
-                    // if ($email['email'] != null) {
-                    //     $mail = $this->sendLeaveMail(
-                    //         $leave_application_id,
-                    //         $request->employee_id,
-                    //         '1001',
-                    //         // $leave_data->finger_id,
-                    //         $leave_data->first_name,
-                    //         'hari9578@gmail.com',
-                    //         // $leave_data->email,
-                    //         $application_from_date,
-                    //         $application_to_date,
-                    //         $leave_data->leave_type_name,
-                    //         $leave_data->number_of_day,
-                    //         $application_date
-                    //     );
-                    // }
-
-                    $responce = $this->controller->success("Leave Application Sent Successfully !", $leave_application);
-                } else {
-
-                    $responce = $this->controller->custom_error("Leave balance does not  exists for selected leave type.");
+                if ($hod != '') {
+                    if ($hod->email) {
+                        $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee_data->first_name . ' ' . $employee_data->last_name . ', have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    }
                 }
-            } catch (\Throwable $e) {
 
-                DB::rollback();
-                $message = $e->getMessage();
-                $responce = $this->controller->custom_error($message);
-            } finally {
+                DB::commit();
 
-                return $responce;
+                return $this->controller->success("Leave Application Sent Successfully!", $leave_application);
+            } else {
+                return $this->controller->custom_error("Leave balance does not exist for the selected leave type.");
             }
-        } else {
-
-            return $this->controller->custom_error("Leave application already exists, try different dates ranges.");
+        } catch (\Throwable $e) {
+            DB::rollback();
+            $message = $e->getMessage();
+            return $this->controller->custom_error($message);
         }
     }
+
 
     public function update(Request $request)
     {
@@ -232,11 +203,12 @@ class ApplyForLeaveController extends Controller
         }
     }
 
-    public function applyForTotalNumberOfDays($from_date, $to_date)
+    public function applyForTotalNumberOfDays($from_date, $to_date, $employee_id)
     {
         $application_from_date = dateConvertFormtoDB($from_date);
         $application_to_date = dateConvertFormtoDB($to_date);
-        return $this->leaveRepository->calculateTotalNumberOfLeaveDays($application_from_date, $application_to_date);
+        $data = $this->leaveRepository->calculateTotalNumberOfLeaveDays($application_from_date, $application_to_date, $employee_id);
+        return $data['countDay'];
     }
 
     public function applyForLeave(ApplyForLeaveRequest $request)
@@ -352,11 +324,11 @@ class ApplyForLeaveController extends Controller
                 'employee.finger_id'
             )->first();
 
-        $employee_id = decrypt(session('logged_session_data.employee_id'));
+        $employee_id = (session('logged_session_data.employee_id'));
 
         if (isset($employee_id)) {
 
-            $user_data = decrypt(session('logged_session_data')) != null ? (decrypt(session('logged_session_data'))) : [];
+            $user_data = (session('logged_session_data')) != null ? ((session('logged_session_data'))) : [];
 
             $update_data = [
                 'approve_by' => $employee_id,
@@ -369,12 +341,12 @@ class ApplyForLeaveController extends Controller
             $data = \array_merge($raw_data, $update_data);
         }
 
-        if ($bool && decrypt(session('logged_session_data')) != null && decrypt(session('logged_session_data.role_id')) == 1) {
+        if ($bool && (session('logged_session_data')) != null && (session('logged_session_data.role_id')) == 1) {
 
             LeaveApplication::where('leave_application_id', $leave_application_id)->update($data);
 
             return view('emails.accepted', ['body' => $body, 'user' => $user_data])->with('status', 'success');
-        } elseif ($body->status == 2 && isset($employee_id) && decrypt(session('logged_session_data.role_id')) == 1) {
+        } elseif ($body->status == 2 && isset($employee_id) && (session('logged_session_data.role_id')) == 1) {
 
             return view('emails.accepted', ['body' => $body, 'user' => $user_data])->with('status', 'success');
         } elseif ($employee_id == "" || $employee_id == null) {
@@ -396,10 +368,10 @@ class ApplyForLeaveController extends Controller
             'updated_at' => date('Y-m-d H:i:s'),
         ];
 
-        $employee_id = decrypt(session('logged_session_data.employee_id'));
+        $employee_id = (session('logged_session_data.employee_id'));
 
         if (isset($employee_id)) {
-            $user_data = (decrypt(session('logged_session_data')));
+            $user_data = ((session('logged_session_data')));
         }
 
         $bool = LeaveApplication::where('leave_application_id', $leave_application_id)->where('status', 1)->first();
@@ -419,10 +391,10 @@ class ApplyForLeaveController extends Controller
                 'employee.finger_id'
             )->first();
 
-        if ($bool && decrypt(session('logged_session_data.role_id')) == 1) {
+        if ($bool && (session('logged_session_data.role_id')) == 1) {
             LeaveApplication::where('leave_application_id', $leave_application_id)->update($data);
             return view('emails.rejected', ['body' => $body, 'user' => $user_data])->with('status', 'success');
-        } elseif ($body->status == 3 && isset($employee_id) && decrypt(session('logged_session_data.role_id')) == 1) {
+        } elseif ($body->status == 3 && isset($employee_id) && (session('logged_session_data.role_id')) == 1) {
             return view('emails.rejected', ['body' => $body, 'user' => $user_data])->with('status', 'success');
         } elseif ($employee_id == "" || $employee_id == null) {
             return \view('admin.login');
@@ -431,7 +403,23 @@ class ApplyForLeaveController extends Controller
         }
     }
 
+    // public function sample(Request $request)
+    // {
+    //     // $path =  Request::path();
+    //     // $getQueryString =  Request::getPathInfo();
+    //     // $url = Request::url();
+    //     $getFacadeRoot = Route::getFacadeRoot()->current()->uri();
+    //     $getCurrentRoute = Route::getCurrentRoute()->getActionName();
+    //     $request = $request->is('api/*');
 
+    //     // $array = array($path, $getQueryString, $url);
+    //     $array = array($getFacadeRoot, $getCurrentRoute, $request);
+
+    //     return response()->json([
+    //         'message' => "API works fine",
+    //         'array' => $array,
+    //     ], 200);
+    // }
 
     public function approve1(Request $request)
     {

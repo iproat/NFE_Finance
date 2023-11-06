@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Log;
 class LeaveRepository
 {
 
-    public function calculateTotalNumberOfLeaveDays($application_from_date, $application_to_date)
+    public function calculateTotalNumberOfLeaveDays($application_from_date, $application_to_date, $employee_id)
     {
 
-        $holidays = DB::select(DB::raw('call SP_getHoliday("' . $application_from_date . '","' . $application_to_date . '")'));
+        $holidays = DB::select(DB::raw('call SP_getHoliday("' . date('Y-m-d', strtotime('- 30 days', strtotime($application_from_date))) . '","' . date('Y-m-d', strtotime('+ 30 days', strtotime($application_to_date))) . '")'));
         $public_holidays = [];
+
         foreach ($holidays as $holidays) {
             $start_date = $holidays->from_date;
             $end_date = $holidays->to_date;
@@ -28,14 +29,34 @@ class LeaveRepository
             }
         }
 
-        $weeklyHolidays = DB::select(DB::raw('call SP_getWeeklyHoliday()'));
+        $weeklyHolidays = DB::select(DB::raw('call SP_getWeeklyHoliday("' . $employee_id . '","' . date('Y-m', strtotime($application_from_date)) . '")'));
         $weeklyHolidayArray = [];
+
         foreach ($weeklyHolidays as $weeklyHoliday) {
-            $weeklyHolidayArray[] = $weeklyHoliday->day_name;
+            $dateArray = json_decode($weeklyHoliday->weekoff_days, true);
+            foreach ($dateArray as $key => $value) {
+                $weeklyHolidayArray[] = $value;
+            }
+        }
+        $leaveApplications = LeaveApplication::where('employee_id', $employee_id)->where('status', 2)->get();
+        $leave_days = [];
+        foreach ($leaveApplications as $leaveApplication) {
+
+
+            $start_date = $leaveApplication->application_from_date;
+            $end_date = $leaveApplication->application_to_date;
+            while (strtotime($start_date) <= strtotime($end_date)) {
+                $leave_days[] = $start_date;
+                $start_date = date("Y-m-d", strtotime("+1 day", strtotime($start_date)));
+            }
         }
 
         $target = strtotime($application_from_date);
+
         $countDay = 0;
+        $date_range = [];
+        $holiday_dates = [];
+
         while ($target <= strtotime(date("Y-m-d", strtotime($application_to_date)))) {
 
             $value = date("Y-m-d", $target);
@@ -45,13 +66,98 @@ class LeaveRepository
             $timestamp = strtotime($value);
             $dayName = date("l", $timestamp);
 
+            $date_range[] = $value;
+
             //if not in holidays and not in weekly  holidays
-            if (!in_array($value, $public_holidays) && !in_array($dayName, $weeklyHolidayArray)) {
+            if (!in_array($value, $public_holidays) && !in_array($value, $weeklyHolidayArray)) {
+            } elseif (in_array($value, $public_holidays) || in_array($value, $weeklyHolidayArray)) {
+                $holiday_dates[] = $value;
+            }
+        }
+
+        if (count($holiday_dates) <= 0) {
+            $countDay = count($date_range);
+        } elseif (count($holiday_dates) > 0) {
+            $holiday_count = 0;
+            foreach ($holiday_dates as $h_date) {
+                $previous_date = date("Y-m-d", strtotime("+1 day", strtotime($h_date)));
+                $next_date = date("Y-m-d", strtotime("+1 day", strtotime($h_date)));
+
+                if ((in_array($previous_date, $leave_days) || in_array($previous_date, $date_range)) && (in_array($next_date, $leave_days) || in_array($next_date, $date_range))) {
+                    $holiday_count += 1;
+                }
+            }
+            $countDay = (count($date_range) - count($holiday_dates)) + $holiday_count;
+        }
+
+
+        $data = [
+            'public_holidays' => $public_holidays,
+            'weekly_holidays' => $weeklyHolidayArray,
+            'date_range' => $date_range,
+            'holiday_dates' => $holiday_dates,
+            'countDay' => $countDay,
+            'leave_days' => $leave_days,
+        ];
+
+        return $data;
+    }
+
+    public function calculateTotalNumberOfLeaveDays1($application_from_date, $application_to_date, $employee_id)
+    {
+
+        $holidays = DB::select(DB::raw('call SP_getHoliday("' . $application_from_date . '","' . $application_to_date . '")'));
+        $public_holidays = [];
+
+        foreach ($holidays as $holidays) {
+            $start_date = $holidays->from_date;
+            $end_date = $holidays->to_date;
+            while (strtotime($start_date) <= strtotime($end_date)) {
+                $public_holidays[] = $start_date;
+                $start_date = date("Y-m-d", strtotime("+1 day", strtotime($start_date)));
+            }
+        }
+
+        $weeklyHolidays = DB::select(DB::raw('call SP_getWeeklyHoliday("' . $employee_id . '","' . date('Y-m', strtotime($application_from_date)) . '")'));
+        $weeklyHolidayArray = [];
+
+        foreach ($weeklyHolidays as $weeklyHoliday) {
+            $dateArray = json_decode($weeklyHoliday->weekoff_days, true);
+            foreach ($dateArray as $key => $value) {
+                $weeklyHolidayArray[] = $value;
+            }
+        }
+
+        $target = strtotime($application_from_date);
+
+        $countDay = 0;
+        $date_range = [];
+
+        while ($target <= strtotime(date("Y-m-d", strtotime($application_to_date)))) {
+
+            $value = date("Y-m-d", $target);
+            $target += (60 * 60 * 24);
+
+            //get weekly  holiday name
+            $timestamp = strtotime($value);
+            $dayName = date("l", $timestamp);
+
+            $date_range[] = $value;
+
+            //if not in holidays and not in weekly  holidays
+            if (!in_array($value, $public_holidays) && !in_array($value, $weeklyHolidayArray)) {
                 $countDay++;
             }
         }
-        
-        return $countDay;
+
+        $data = [
+            'public_holidays' => $public_holidays,
+            'weekly_holidays' => $weeklyHolidayArray,
+            'date_range' => $date_range,
+            'countDay' => $countDay,
+        ];
+
+        return $data;
     }
 
     public function calculateEmployeeLeaveBalanceArray($leave_type_id, $employee_id)
@@ -66,7 +172,6 @@ class LeaveRepository
             $leaveArr[$key]['totalDays'] = $ltype->num_of_day;
             $leaveArr[$key]['leaveTaken'] = $leaveBalance[0]->totalNumberOfDays;
             $leaveArr[$key]['leaveBalance'] = $ltype->num_of_day - $leaveBalance[0]->totalNumberOfDays;
-
         }
 
         return $leaveArr;
@@ -74,13 +179,11 @@ class LeaveRepository
 
     public function calculateEmployeeLeaveBalance($leave_type_id, $employee_id)
     {
-        // if ($leave_type_id == 1) {
-        //     return $this->calculateEmployeeEarnLeave($leave_type_id, $employee_id);
-        // } else {
-            $leaveType = LeaveType::where('leave_type_id', $leave_type_id)->first();
-            $leaveBalance = DB::select(DB::raw('call SP_calculateEmployeeLeaveBalance(' . $employee_id . ',' . $leave_type_id . ')'));
-            return $leaveType->num_of_day - $leaveBalance[0]->totalNumberOfDays;
-        // }
+
+        $leaveType = LeaveType::where('leave_type_id', $leave_type_id)->first();
+        $leaveBalance = DB::select(DB::raw('call SP_calculateEmployeeLeaveBalance(' . $employee_id . ',' . $leave_type_id . ')'));
+        info($leaveBalance);
+        return $leaveType->num_of_day - $leaveBalance[0]->totalNumberOfDays;
     }
 
     public function getEmployeeTotalLeaveBalancePerYear($leave_type_id, $employee_id)
