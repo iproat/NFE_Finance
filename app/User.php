@@ -6,32 +6,23 @@ use App\Model\Role;
 use App\Model\Employee;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
-use ESolution\DBEncryption\Traits\EncryptedAttribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject
 {
 
     use Notifiable;
-    // use EncryptedAttribute;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $table = 'user';
     protected $primaryKey = 'user_id';
 
-    protected $fillable = ['user_id', 'role_id', 'user_name', 'password', 'status', 'created_by', 'updated_by', 'device_employee_id','google2fa_secret'];
- 
+    protected $fillable = ['user_id', 'role_id', 'user_name', 'password', 'status', 'created_by', 'updated_by', 'device_employee_id', 'google2fa_secret'];
+
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    // protected $encryptable = [
-    //     'user_name'
-    // ];
+
 
     public static function scopeUserRole($query, $role)
     {
@@ -62,5 +53,4 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-
 }

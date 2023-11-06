@@ -942,14 +942,12 @@ class EmployeeController extends Controller
     {
 
         $employees = Employee::where('status', UserStatus::$ACTIVE)->with('department', 'branch', 'designation', 'workshift', 'userName', 'supervisor')->get();
-        // dd($employees);
 
         $extraData = [];
         $inc = 1;
         $supervisor_name = null;
 
         foreach ($employees as $key => $Data) {
-
             $user = User::find($Data->user_id);
             $role = Role::find($user->role_id);
 
@@ -957,16 +955,22 @@ class EmployeeController extends Controller
                 $supervisor = User::find($Data->supervisor_id);
                 $supervisor_name = $supervisor->user_name;
             }
+            if (isset($Data->operation_manager_id)) {
+                $manager = User::find($Data->operation_manager_id);
+
+                $manager_name = $manager->user_name ?? '';
+            }
 
             $dataset[] = [
                 $inc,
                 $Data->userName->user_name,
-                $role->role_name,
+                $role->role_name ?? '',
                 $Data->finger_id,
                 $Data->department->department_name,
                 $Data->designation->designation_name,
                 $Data->branch->branch_name,
                 $supervisor_name,
+                $manager_name,
                 (string) $Data->phone,
                 $Data->email,
                 $Data->first_name,
@@ -974,13 +978,9 @@ class EmployeeController extends Controller
                 $Data->date_of_birth,
                 $Data->date_of_joining,
                 $Data->gender,
-                $Data->religion,
                 $Data->marital_status,
                 $Data->address,
                 $Data->emergency_contacts,
-                $Data->incentive == 0 ? 'Not Applicable' : 'Applicable',
-                $Data->salary_limit == 0 ? '< 20000' : '> 20000',
-                $Data->work_shift == 0 ? 'General' : 'Rotational',
                 $Data->status == 0 ? 'No' : 'Yes',
 
             ];
@@ -999,20 +999,17 @@ class EmployeeController extends Controller
                 'DESIGNATION',
                 'BRANCH',
                 'HEAD OF THE DEPARTMENT',
+                'OPERATION MANAGER',
                 'PHONE',
-                'PERSONAL EMAIL',
+                'EMAIL',
                 'FIRST NAME',
-                'LASR NAME',
+                'LAST NAME',
                 'DATE OF BIRTH',
                 'DATE OF JOINING',
                 'GENDER',
-                'RELIGION',
                 'MARITAL STATUS',
                 'ADDRESS',
                 'EMERGENCY CONTACT',
-                'INCENTIVE',
-                'SALARY LIMIT',
-                'WORK SHIFT',
                 'STATUS',
             ],
         ];
@@ -1021,7 +1018,6 @@ class EmployeeController extends Controller
 
         $filename = 'EmployeeInformation-' . DATE('dmYHis') . '.xlsx';
 
-        // dd($filename, $extraData, $dataset);
 
         return Excel::download(new EmployeeDetailsExport($dataset, $extraData), $filename);
     }

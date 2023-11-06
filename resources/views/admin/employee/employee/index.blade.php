@@ -90,7 +90,8 @@
                             <div class="row hidden-xs hidden-sm">
                                 <p class="border" style="margin-left:18px">
                                     <span><i class="fa fa-upload"></i></span>
-                                    <span style="margin-left: 4px"> Import employee info excel file.</span>
+                                    <span style="margin-left: 4px"> Import employee info excel file.Default
+                                        Password(demo1234)</span>
                                 </p>
                                 <form action="{{ route('employee.import') }}" method="post"
                                     enctype="multipart/form-data">
@@ -113,158 +114,13 @@
                             </div>
                         </div>
 
-                        {{-- <div class="bg-title border" style="margin: 12px;padding:12px">
-                            <div class="border col-sm-12 col-md-12">
-                                <div class="border" style="margin-left: 12px;margin-right: 12px">
-                                    <p class="border"><span><i class="fa fa-upload"></i></span><span
-                                            style="margin-left: 8px"> Upload Employee Excel
-                                            File Here</span></p>
-                                    <form action="{{ route('employee.import') }}" method="post"
-                                        enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-
-                                        <div class="row">
-                                            <div class="col-md-5" style="margin-left: 46px;  margin-bottom: 2px;">
-                                                <input type="file" name="select_file" class="form-control">
-                                            </div>
-                                            <div class="col-sm-1">
-                                                <input class="btn btn-success" style="margin-top: 2px;width:120px"
-                                                    type="submit" value="Upload">
-                                            </div>
-                                            <div class="text-right">
-                                                @php
-                                                    $path = 'app\public\templates\employee_details.xlsx';
-                                                @endphp
-                                                <a href="{{ route('employee.downloadFile') }}">
-                                                    <div id="template1" class="btn btn-info template1"
-                                                        value="Sample Format" type="submit"
-                                                        style="margin-left: 12px;margin-top: 2px;">
-                                                        <i class="fa fa-download" aria-hidden="true"></i><span
-                                                            style="margin-left: 12px;"> sample format</span>
-                                                    </div>
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div> --}}
-                        {{-- <br> --}}
-
-                        {{-- <div class="row" style="margin: 0px;padding:0px">
-
-                            <div class="col-md-3">
-
-                                <div class="form-group">
-
-                                    <label for="exampleInput">@lang('employee.name')</label>
-
-                                    <div id="custom-search-input">
-
-                                        <div class="input-group col-md-12">
-
-                                            <input type="text" class="search-query form-control employee_name"
-                                                placeholder="@lang('employee.search_by_employee_name')" onkeyup="getData(1)" />
-
-                                            <span class="input-group-btn">
-
-                                                <button class="btn btn-danger" type="button">
-
-                                                    <span class=" glyphicon glyphicon-search"></span>
-
-                                                </button>
-
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-3">
-
-                                <div class="form-group">
-
-                                    <label for="exampleInput">@lang('employee.department')</label>
-
-                                    <select name="department_id" class="form-control department_id  select2"
-                                        onchange="getData(1)" required>
-
-                                        <option value="">--- @lang('employee.select_department') ---</option>
-
-                                        @foreach ($departmentList as $value)
-                                            <option value="{{ $value->department_id }}"
-                                                @if ($value->department_id == old('department_id')) {{ 'selected' }} @endif>
-                                                {{ $value->department_name }}</option>
-                                        @endforeach
-
-                                    </select>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-3">
-
-                                <div class="form-group">
-
-                                    <label for="exampleInput">@lang('employee.designation')</label>
-
-                                    <select name="designation_id" class="form-control designation_id select2"
-                                        onchange="getData(1)" required>
-
-                                        <option value="">--- @lang('employee.select_designation') ---</option>
-
-                                        @foreach ($designationList as $value)
-                                            <option value="{{ $value->designation_id }}"
-                                                @if ($value->designation_id == old('designation_id')) {{ 'selected' }} @endif>
-                                                {{ $value->designation_name }}</option>
-                                        @endforeach
-
-                                    </select>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-3">
-
-                                <div class="form-group">
-
-                                    <label for="exampleInput">@lang('employee.role')</label>
-
-                                    <select name="department_id" class="form-control role_id  select2"
-                                        onchange="getData(1)" required>
-
-                                        <option value="">--- @lang('common.please_select') ---</option>
-
-                                        @foreach ($roleList as $value)
-                                            <option value="{{ $value->role_id }}">
-                                                {{ $value->role_name }}</option>
-                                        @endforeach
-
-                                    </select>
-
-                                </div>
-
-                            </div>
-
-                        </div> --}}
-
-
-
                         <br>
 
                         <div class="row">
                             <div class="pull-right" style="padding-right:32px;">
-                                <a href="{{ route('employee.export') }}"> <button
-                                        class="btn btn-success btn-sm"><span>
+                                <a href="{{ route('employee.export') }}"> <button class="btn btn-success btn-sm"><span>
                                             <i class="fa fa-download" aria-hidden="true"></i>
-                                        </span>Download Template</button></a>
+                                        </span>Export Employee Details</button></a>
                             </div>
                         </div>
 

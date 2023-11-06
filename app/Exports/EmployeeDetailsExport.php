@@ -200,13 +200,13 @@ class EmployeeDetailsExport implements WithHeadings, FromCollection, WithPropert
 
                 for ($x = 'A'; $x < 'ZZ'; $x++) {
                     array_push($cellLength, $x);
-                    if ($x == 'W') {
+                    if ($x == 'T') {
                         break;
                     }
                 }
 
                 for ($i = 1; $i <= $RowLength; $i++) {
-                    $cellRange = "A{$i}:W{$i}";
+                    $cellRange = "A{$i}:T{$i}";
                     $event->sheet->getStyle($cellRange)->getAlignment()
                         ->setHorizontal(Alignment::HORIZONTAL_LEFT);
                     info($cellRange);
@@ -230,12 +230,9 @@ class EmployeeDetailsExport implements WithHeadings, FromCollection, WithPropert
                 $options1 = ['Yes', 'No'];
                 $options3 = ['Male', 'Female', 'NoDisclosure'];
                 $options4 = [null, 'Married', 'Unmarried', 'NoDisclosure'];
-                $options5 = ['Applicable', 'Not Applicable'];
-                $options6 = ['< 20000', '> 20000'];
-                $options7 = ['General', 'Rotational'];
+
                 $drop_column = [
-                    ['cell' => 'O', 'options' => $options3], ['cell' => 'Q', 'options' => $options4], ['cell' => 'T', 'options' => $options5],
-                    ['cell' => 'U', 'options' => $options6], ['cell' => 'V', 'options' => $options7], ['cell' => 'W', 'options' => $options1],
+                    ['cell' => 'P', 'options' => $options3], ['cell' => 'Q', 'options' => $options4],  ['cell' => 'T', 'options' => $options1],
 
                 ];
                 for ($i = 2; $i <= $RowLength; $i++) {

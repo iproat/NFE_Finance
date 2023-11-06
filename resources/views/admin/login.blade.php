@@ -58,6 +58,12 @@
                                 <p>{!! session()->get('success') !!}</p>
                             </div>
                         @endif
+                        @if ($message = Session::get('error'))
+                            <div class="alert alert-danger alert-block alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                         <div class="form-group  m-t-20">
                             <div class="col-xs-12">
                                 <label>User Name</label>

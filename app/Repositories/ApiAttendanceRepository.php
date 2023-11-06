@@ -19,9 +19,6 @@ class ApiAttendanceRepository
         try {
             $recent_data = EmployeeAttendance::where('finger_print_id', $data['finger_id'])->whereDate('in_out_time', date('Y-m-d', \strtotime($data['datetime'])))->orderByDesc('employee_attendance_id')->first();
 
-            Log::info($recent_data);
-            Log::info('in');
-
             if (count($recent_data) == 0) {
                 $employeeData['check_type'] = 'IN';
             } elseif ($recent_data['check_type'] == 'OUT') {
@@ -57,19 +54,11 @@ class ApiAttendanceRepository
     }
     public function makeBulkEmployeeAttendacneInformationDataFormat($data)
     {
-        $recent_data = MsSql::where('ID', $data->finger_id)->whereDate('datetime', date('Y-m-d', \strtotime($data->datetime)))->latest('primary_id')->first();
-
-        if (!$recent_data) {
+        if ($data->check_type == '0') {
             $employeeData['check_type'] = 'IN';
-        } elseif ($recent_data && $recent_data['check_type'] == 'OUT') {
-            $employeeData['check_type'] = 'IN';
-        } elseif ($recent_data && $recent_data['check_type'] == 'IN') {
-            $employeeData['check_type'] = 'OUT';
         } else {
             $employeeData['check_type'] = 'OUT';
         }
-
-        // dd($recent_data,$employeeData['check_type']);
 
         $latlngOfCompany = [
             'lat' => '13.5119982',
@@ -110,8 +99,6 @@ class ApiAttendanceRepository
         $employeeData['longitude'] = $data->longitude;
 
         $employeeData['uri'] = 'api';
-
-        $employeeData['inout_status'] = $inout_status;
 
         return $employeeData;
     }
@@ -374,7 +361,7 @@ class ApiAttendanceRepository
         $lon1 = $latlngOfCompany['lng'];
         $lat2 = $latlngOfCurrentLocation['lat'];
         $lon2 = $latlngOfCurrentLocation['lng'];
-        
+
         if (($lat1 == $lat2) && ($lon1 == $lon2)) {
             return 0;
         } else {
@@ -391,7 +378,7 @@ class ApiAttendanceRepository
                 return ($miles * 0.8684);
             } else if ($unit == "M") {
                 return ($miles * 1.609344 * 1000);
-            }  else {
+            } else {
                 return $miles;
             }
         }

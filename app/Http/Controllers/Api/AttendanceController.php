@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Lib\Enumerations\AppConstant;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use App\Repositories\ApiAttendanceRepository;
 
 class AttendanceController extends Controller
@@ -64,26 +65,22 @@ class AttendanceController extends Controller
         $this->apiAttendanceRepository = $apiAttendanceRepository;
     }
 
-    public function sample(Request $request)
-    {
-        $full_data = date('Y-m-d');
-        $date = \explode('-', $full_data);
-        return response()->json([
-            'message' => "API works fine",
-            'date' => $date[2],
-        ], 200);
-    }
+
 
     public function apiattendanceList(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'data' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => false, 'message' =>  $validator->getMessageBag()->first()]);
+        }
+
         $attendanceData = [];
 
-        // live fn
         $array = \json_decode($request->data);
-
-        //local postman
-        // $array = \json_encode($request->data);
-        // $array = \json_decode($array);
 
         $count = count($array);
         $bug = null;
@@ -97,17 +94,6 @@ class AttendanceController extends Controller
 
                 $employeeAttendanceDataFormat = $this->apiAttendanceRepository->makeBulkEmployeeAttendacneInformationDataFormat($value);
 
-                $checkData = MsSql::where('ID', $value->finger_id)->where('datetime', '>=', date('Y-m-d') . ' 00:00:00')->groupBy('type')->get();
-
-                if (count($checkData) >= 2) {
-
-                    return response()->json([
-                        'status' => \false,
-                        'refresh' => true,
-                        'message' => 'Your attendance for today has been recorded as closed.',
-                    ], 200);
-
-                }
 
                 if ($base64_image != 'null') {
                     @list($type, $file_data) = explode(';', $base64_image);
@@ -123,24 +109,6 @@ class AttendanceController extends Controller
                     $employeeData = $employeeAttendanceDataFormat;
                 }
 
-                $is_checked_in = MsSql::where('ID', $value->finger_id)->where('datetime', '>=', date('Y-m-d') . ' 00:00:00')->orderByDesc('datetime')
-                    ->select('ms_sql.*', 'datetime as in_out_time')->first();
-
-                info($is_checked_in);
-                info($employeeData['check_type']);
-
-                if (isset($is_checked_in) && $is_checked_in->type != 'IN') {
-
-                    info($is_checked_in->type);
-                    info($employeeData['check_type']);
-
-                    return response()->json([
-                        'status' => false,
-                        'refresh' => true,
-                        'message' => 'You have been checked in using some other devices.',
-                    ], 200);
-
-                }
 
                 try {
 
@@ -157,19 +125,18 @@ class AttendanceController extends Controller
                         'employee' => $employeeData['employee_id'],
                         'device_name' => 'Mobile',
                         'status' => AppConstant::$OKEY,
-                        'inout_status' => $employeeData['inout_status'],
                         'local_primary_id' => $ms_sql_max_local_id,
                         'created_at' => Carbon::now(),
                         'updated_at' =>  Carbon::now(),
                     ];
 
-                    $ms_sql = DB::table('ms_sql')->insert($attDataSet);
-                    // event(new AccessLogEvent($attDataSet));
+                    MsSql::insert($attDataSet);
 
                     DB::commit();
                     $bug = 0;
                 } catch (\Exception $e) {
                     DB::rollback();
+                    info($e->getMessage());
                     $bug = 1;
                 }
             }
@@ -183,7 +150,6 @@ class AttendanceController extends Controller
                 'refresh' => $refresh,
                 'message' => 'Employee attendance successfully saved.',
             ], 200);
-
         } else {
 
             return response()->json([
@@ -192,7 +158,6 @@ class AttendanceController extends Controller
                 'refresh' => $refresh,
                 'message' => 'Something Error Found !, Please try again.',
             ], 200);
-
         }
     }
 
@@ -224,7 +189,6 @@ class AttendanceController extends Controller
             $attendanceData = EmployeeAttendance::create($employeeData);
             DB::commit();
             $bug = 0;
-
         } catch (\Exception $e) {
 
             return $e;
@@ -280,7 +244,8 @@ class AttendanceController extends Controller
         try {
 
             DB::beginTransaction();
-            $attendanceData = EmployeeAttendance::create($employeeData);
+
+            $attendanceData = EmployeeAttendance::updateOrCreate($employeeData);
 
             $ms_sql = MsSql::create([
                 'ID' => $employeeData['finger_print_id'],

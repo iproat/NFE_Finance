@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use DateTime;
+use App\Model\MsSql;
 use App\Model\Employee;
 use App\Model\LeaveType;
 use Illuminate\Http\Request;
 use App\Model\PrintHeadSetting;
-use App\Model\EmployeeAttendance;
 use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Lib\Enumerations\UserStatus;
-use App\Model\MsSql;
 use App\Repositories\ApiAttendanceRepository;
+
 
 class AttendanceReportController extends Controller
 {
@@ -30,7 +28,6 @@ class AttendanceReportController extends Controller
 
     public function myAttendanceReport(Request $request)
     {
-        // $request->validate(['employee_id' => 'required', 'date' => 'required']);
         $emp_id = $request->employee_id;
         $employee = Employee::findOrFail($emp_id);
         $results      = [];
@@ -46,11 +43,6 @@ class AttendanceReportController extends Controller
 
     public function downloadMyAttendance(Request $request)
     {
-        // $request->validate([
-        //     'employee_id' => 'required',
-        //     'from_date' => 'required',
-        //     'to_date' => 'required',
-        // ]);
 
         $emp_id = $request->employee_id;
         $from_date = dateConvertFormtoDB($request->from_date);
@@ -75,46 +67,46 @@ class AttendanceReportController extends Controller
         return $pdf->download("my-attendance.pdf");
     }
 
-    public function attendanceSummaryReport(Request $request)
-    {
-        if ($request->month) {
-            $month = $request->month;
-        } else {
-            $month = date("Y-m");
-        }
+    // public function attendanceSummaryReport(Request $request)
+    // {
+    //     if ($request->month) {
+    //         $month = $request->month;
+    //     } else {
+    //         $month = date("Y-m");
+    //     }
 
-        $monthAndYear = explode('-', $month);
-        $month_data   = $monthAndYear[1];
-        $dateObj      = DateTime::createFromFormat('!m', $month_data);
-        $monthName    = $dateObj->format('F');
+    //     $monthAndYear = explode('-', $month);
+    //     $month_data   = $monthAndYear[1];
+    //     $dateObj      = DateTime::createFromFormat('!m', $month_data);
+    //     $monthName    = $dateObj->format('F');
 
-        $monthToDate = findMonthToAllDate($month);
-        $leaveType   = LeaveType::get();
-        $result      = $this->attendanceRepository->findAttendanceSummaryReport($month);
+    //     $monthToDate = findMonthToAllDate($month);
+    //     $leaveType   = LeaveType::get();
+    //     $result      = $this->attendanceRepository->findAttendanceSummaryReport($month);
 
-        return view('admin.attendance.report.summaryReport', ['results' => $result, 'monthToDate' => $monthToDate, 'month' => $month, 'leaveTypes' => $leaveType, 'monthName' => $monthName]);
-    }
+    //     return view('admin.attendance.report.summaryReport', ['results' => $result, 'monthToDate' => $monthToDate, 'month' => $month, 'leaveTypes' => $leaveType, 'monthName' => $monthName]);
+    // }
 
-    public function downloadAttendanceSummaryReport($month)
-    {
-        $monthToDate = findMonthToAllDate($month);
-        $leaveType   = LeaveType::get();
-        $result      = $this->attendanceRepository->findAttendanceSummaryReport($month);
+    // public function downloadAttendanceSummaryReport($month)
+    // {
+    //     $monthToDate = findMonthToAllDate($month);
+    //     $leaveType   = LeaveType::get();
+    //     $result      = $this->attendanceRepository->findAttendanceSummaryReport($month);
 
-        $monthAndYear = explode('-', $month);
-        $month_data   = $monthAndYear[1];
-        $dateObj      = DateTime::createFromFormat('!m', $month_data);
-        $monthName    = $dateObj->format('F');
+    //     $monthAndYear = explode('-', $month);
+    //     $month_data   = $monthAndYear[1];
+    //     $dateObj      = DateTime::createFromFormat('!m', $month_data);
+    //     $monthName    = $dateObj->format('F');
 
-        $data = [
-            'results'     => $result,
-            'month'       => $month,
-            'monthToDate' => $monthToDate,
-            'leaveTypes'  => $leaveType,
-            'monthName'   => $monthName,
-        ];
-        $pdf = PDF::loadView('admin.attendance.report.pdf.attendanceSummaryReportPdf', $data);
-        $pdf->setPaper('A4', 'landscape');
-        return $pdf->download("attendance-summaryReport.pdf");
-    }
+    //     $data = [
+    //         'results'     => $result,
+    //         'month'       => $month,
+    //         'monthToDate' => $monthToDate,
+    //         'leaveTypes'  => $leaveType,
+    //         'monthName'   => $monthName,
+    //     ];
+    //     $pdf = PDF::loadView('admin.attendance.report.pdf.attendanceSummaryReportPdf', $data);
+    //     $pdf->setPaper('A4', 'landscape');
+    //     return $pdf->download("attendance-summaryReport.pdf");
+    // }
 }

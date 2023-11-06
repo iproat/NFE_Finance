@@ -18,16 +18,12 @@ class EmployeeImportController extends Controller
     {
         $this->employeeRepository = $employeeRepository;
     }
-    
+
     public function import(FileUploadRequest $request)
     {
         try {
             $file = $request->file('select_file');
             Excel::import(new EmployeeImport($request->all()), $file);
-
-            // $path = $request->file('select_file')->getRealPath();
-            // $excel =  Excel::import(new EmployeeImport($request->all()), $path);
-            // return back()->with('success', 'User Imported Successfully.');
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $import = new EmployeeImport();
             $import->import($file);
