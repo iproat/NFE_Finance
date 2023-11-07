@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\EmployeeRequest;
-use App\Http\Requests\UserRequest;
-use App\Lib\Enumerations\UserStatus;
-use App\Model\Employee;
-use App\Model\MsSql;
 use App\User;
 use Carbon\Carbon;
+use App\Model\MsSql;
+use App\Model\Employee;
+use App\Components\Common;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Http\Controllers\Controller;
+use App\Lib\Enumerations\UserStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Http\Requests\EmployeeRequest;
 
 class AuthController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register', 'migrate', 'sample', 'forgetPassword']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'migrate', 'sample', 'changePassword', 'forgetPassword']]);
     }
 
     public function login(Request $request)
@@ -210,10 +211,10 @@ class AuthController extends Controller
                 try {
 
                     $emp = Employee::where('user_id', $user_data->user_id)->first();
-                    $admin = Employee::where('employee_id', 1)->first();
+                    $admin = Employee::where('employee_id', $emp->supervisor_id)->first();
 
                     if ($admin->email != '') {
-                        \App\Components\Common::mail('emails/forgetPassword', $admin->email, 'New Password Notification', ['new_password' => $new_password, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for a new password at-' . date("F j, Y, g:i a")]);
+                        Common::mail('emails/forgetPassword', $admin->email, 'New Password Notification', ['new_password' => $new_password, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for a new password at-' . date("F j, Y, g:i a")]);
                         return response()->json([
                             'status' => true,
                             'message' => 'New Password Sent To Admin Email !',
