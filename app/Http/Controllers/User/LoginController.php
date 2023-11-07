@@ -25,7 +25,7 @@ class LoginController extends Controller
 
     public function Auth(LoginRequest $request)
     {
-
+        info($request->all());
         if (Auth::attempt(['user_name' => $request->user_name, 'password' => $request->user_password])) {
             $userStatus = Auth::user()->status;
             if ($userStatus == UserStatus::$ACTIVE) {
@@ -45,7 +45,6 @@ class LoginController extends Controller
 
                 Session()->put('logged_session_data', $data);
 
-                // return $this->authenticated($request);
                 return redirect()->intended(url('/dashboard'));
             } elseif ($userStatus == UserStatus::$INACTIVE) {
                 Auth::logout();

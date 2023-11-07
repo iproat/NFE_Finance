@@ -44,9 +44,9 @@
                                     '2' => 'Absent',
                                     '3' => 'Leave',
                                     '4' => 'Holiday',
-                                    '11' => 'Comp Off',
+                                    // '12' => 'Half Day',
                                 ];
-                                
+
                             @endphp
 
                             @php

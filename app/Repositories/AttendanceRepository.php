@@ -24,33 +24,34 @@ class AttendanceRepository
         }
 
         $queryResults = DB::select("call `SP_DepartmentDailyAttendance`('" . $data . "', '" . $department_id . "','" . $attendance_status . "')");
+        // dd($queryResults);
         $results = [];
 
         foreach ($queryResults as $value) {
 
             $tempArr = [];
-            $approvedOvertime = null;
-            $compOff = null;
-            $incentive = null;
-          
-            if ($value->approve_over_time_id != null) {
-                $approvedOvertime = ApproveOverTime::find($value->approve_over_time_id);
-            }
-            if ($value->comp_off_details_id != null) {
-                $compOff = CompOff::find($value->comp_off_details_id);
-            }
-            if ($value->incentive_details_id != null) {
-                $incentive = Incentive::find($value->incentive_details_id);
-            }
+            // $approvedOvertime = null;
+            // $compOff = null;
+            // $incentive = null;
+
+            // if ($value->approve_over_time_id != null) {
+            //     $approvedOvertime = ApproveOverTime::find($value->approve_over_time_id);
+            // }
+            // if ($value->comp_off_details_id != null) {
+            //     $compOff = CompOff::find($value->comp_off_details_id);
+            // }
+            // if ($value->incentive_details_id != null) {
+            //     $incentive = Incentive::find($value->incentive_details_id);
+            // }
 
             $tempArr = $value;
-            $tempArr->overtime_approval = $approvedOvertime;
-            $tempArr->comp_off = $compOff;
-            $tempArr->incentive = $incentive;
+            // $tempArr->overtime_approval = $approvedOvertime;
+            // $tempArr->comp_off = $compOff;
+            // $tempArr->incentive = $incentive;
 
             $results[$value->department_name][] = $tempArr;
         }
-        
+
         return $results;
     }
     public function findAttendanceMusterReport($start_date, $end_date, $employee_id = '', $department_id = '', $branch_id = '')
@@ -350,7 +351,7 @@ class AttendanceRepository
             ->join('department', 'department.department_id', 'employee.department_id')
             ->join('branch', 'branch.branch_id', 'employee.branch_id')
             ->orderBy('branch.branch_name', 'ASC')
-        // ->where('status', UserStatus::$ACTIVE)->get();
+            // ->where('status', UserStatus::$ACTIVE)->get();
             ->whereIn('employee.finger_id', $regularEmployeeIds)->get();
 
         $leave = LeaveApplication::select('application_from_date', 'application_to_date', 'employee_id', 'leave_type_name')

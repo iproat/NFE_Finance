@@ -398,7 +398,7 @@ class GenerateReportController extends Controller
 
             $working_time = $this->workingtime($inTime, $outTime);
             $shiftWorkingTime = $this->workingtime($shiftStartTime, $shiftEndTime);
-           
+
 
 
             $rawData = [
@@ -508,7 +508,7 @@ class GenerateReportController extends Controller
                 $in_datetime = new DateTime($data_format['in_time']);
                 $start_datetime = new DateTime($data_format['date'] . ' ' . $shift_list->start_time);
                 $late_count_time = date('H:i', strtotime($shift_list->late_count_time));
-                
+
                 if ($in_datetime >= $start_datetime) {
 
                     $interval = $in_datetime->diff($start_datetime);
@@ -604,8 +604,8 @@ class GenerateReportController extends Controller
                 $shiftEndTime = new DateTime(date('H:i:s', strtotime($tempArray['end_time'])));
                 $shiftEndTimeForAtt = new DateTime(date('H:i:s', strtotime('-5 minutes', strtotime($tempArray['end_time']))));
                 $shiftEndTimeForAtt = date('H:i:s', strtotime('-5 minutes', strtotime($tempArray['end_time'])));
-              
-              
+
+
 
                 if ($shiftStartTime < $shiftEndTime) {
                     $employeeOutTime = new DateTime(date('H:i:s', strtotime($data_format['out_time'])));
