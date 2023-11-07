@@ -130,7 +130,7 @@ class ApplyForLeaveController extends Controller
             return $this->controller->custom_error("Leave application already exists, try different date ranges.");
         }
 
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
         try {
             if ($number_of_day <= $leave_balance) {
@@ -145,14 +145,14 @@ class ApplyForLeaveController extends Controller
                     }
                 }
 
-                DB::commit();
+                // DB::commit();
 
                 return $this->controller->success("Leave Application Sent Successfully!", $leave_application);
             } else {
                 return $this->controller->custom_error("Leave balance does not exist for the selected leave type.");
             }
         } catch (\Throwable $e) {
-            DB::rollback();
+            // DB::rollback();
             $message = $e->getMessage();
             return $this->controller->custom_error($message);
         }

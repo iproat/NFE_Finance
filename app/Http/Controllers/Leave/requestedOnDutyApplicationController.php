@@ -20,6 +20,7 @@ class requestedOnDutyApplicationController extends Controller
     public function index()
     {
         $hasSupervisor = Employee::select('employee_id')->where('supervisor_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
+       
         if (count($hasSupervisor) == 0) {
             $adminResults = [];
         } else {

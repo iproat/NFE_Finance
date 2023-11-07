@@ -118,7 +118,7 @@ class ApplyForPermissionController extends Controller
             return $this->responseWithError('Permission To Time Not Given');
         }
         try {
-            DB::beginTransaction();
+            // DB::beginTransaction();
             $employeeId = $request->employee_id;
             $requestedMonth = date('m', strtotime(dateConvertFormtoDB($request->permission_date)));
             $isManager = Employee::with('user')->where('employee_id', $employeeId)->first();
@@ -154,9 +154,9 @@ class ApplyForPermissionController extends Controller
             } else {
                 return $this->responseWithError("Permission requests are available in the manager category.");
             }
-            DB::commit();
+            // DB::commit();
         } catch (\Throwable $th) {
-            DB::rollBack();
+            // DB::rollBack();
             return $this->responseWithError($th->getMessage());
         }
     }

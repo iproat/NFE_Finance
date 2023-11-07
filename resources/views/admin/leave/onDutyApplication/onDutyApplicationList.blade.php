@@ -152,16 +152,10 @@
 
 
 
-                </tbody>
-                </table>
-                <div class="text-center">
-                    {{ $hrResults->links() }}
-                </div>
+
             </div>
-            @endif
         </div>
     </div>
-</div>
 </div>
 </div>
 </div>

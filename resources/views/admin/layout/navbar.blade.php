@@ -13,18 +13,24 @@
                 <div class="logo-visiability hidden-xs" style="max-width: 240px;min-width:30px;padding:0 18px 0 8px">
                     <!-- Logo -->
                     <a class="logo" href="{{ url('dashboard') }}">
-                        <!-- Logo icon image, you can use font-icon also --><b>
-                            <!--This is dark logo icon-->
-                            <p style="object-fit:fill;" title="Home" class="dark-logo img-fluid img-responsive hidden">
-                                Home</p>
-                            <img style="object-fit:contain;" src="{{ url('admin_assets/img/logo_dark.png') }}"
-                                alt="Home" class="dark-logo img-fluid img-responsive hidden-xs" />
+                        <!-- Logo icon image, you can use a font icon as well -->
+                        <b>
+                            <!-- This is a dark logo icon -->
+                            <p style="object-fit: cover;" title="Home" class="dark-logo img-fluid img-responsive hidden">
+                                Home
+                            </p>
+                            <img src="{{ url('admin_assets/img/nfe_logo.png') }}" alt="Home"
+                                class="dark-logo img-fluid img-responsive hidden-xs"
+                                style="width: 200px; height: 60px; padding-top:5px;" />
+                            <!-- Set the width and height as per your requirements -->
                         </b>
-                        <!-- Logo text image you can use text also -->
+                        <!-- Logo text image - you can use text here -->
                         <span class="hidden-xs">
-                            <!--This is dark logo text-->
+                            <!-- This is dark logo text -->
                         </span>
                     </a>
+
+
                 </div>
             </li>
             <li><a href="javascript:void(0)" class="open-close waves-effect waves-light menuIcon"><i

@@ -421,14 +421,12 @@ class DeviceConfigurationController extends Controller
     {
         $myfile = fopen("logdata.txt", "a+") or die("Unable to open file!");
 
-        // Logging the request data
         $txt = print_r($_REQUEST, 1);
         fwrite($myfile, $txt);
         $txt = "OUT PUNCH." . date('d-m-Y h:i:s A') . ".\n";
         fwrite($myfile, $txt);
 
         $eventLog = json_decode($request->input('event_log'));
-        info($eventLog);
         if (isset($eventLog->AccessControllerEvent->employeeNoString)) {
             $device = Device::where('name', $eventLog->AccessControllerEvent->deviceName)->first();
 

@@ -179,11 +179,13 @@ class LeaveRepository
 
     public function calculateEmployeeLeaveBalance($leave_type_id, $employee_id)
     {
-
+        // if ($leave_type_id == 1) {
+        //     return $this->calculateEmployeeEarnLeave($leave_type_id, $employee_id);
+        // } else {
         $leaveType = LeaveType::where('leave_type_id', $leave_type_id)->first();
         $leaveBalance = DB::select(DB::raw('call SP_calculateEmployeeLeaveBalance(' . $employee_id . ',' . $leave_type_id . ')'));
-        info($leaveBalance);
         return $leaveType->num_of_day - $leaveBalance[0]->totalNumberOfDays;
+        // }
     }
 
     public function getEmployeeTotalLeaveBalancePerYear($leave_type_id, $employee_id)

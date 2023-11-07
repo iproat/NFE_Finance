@@ -71,5 +71,6 @@ return [
     'view_on_duty_applicaiton'         => 'View OnDuty Application',
     'application_date'         => 'Application Date',
     'total_duration'         => 'Total Duration',
+    'department'         => 'Department',
 
 ];

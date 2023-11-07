@@ -49,7 +49,7 @@
                     <div class="white-box">
                         <h3 class="box-title m-b-0">LogIn</h3>
                         <div class="login-logo" style="text-align: center">
-                            <a href="{{ Url('/') }}"><img src="{!! asset('admin_assets/img/logo_dark.png') !!}"
+                            <a href="{{ Url('/') }}"><img src="{!! asset('admin_assets/img/nfe_logo.png') !!}"
                                     style="margin-top: 20px;background:white; width:260px;margin-bottom: 20px;" /></a>
                         </div>
                         {!! Form::open(['url' => 'login', 'class' => 'form-horizontal new-lg-form', 'id' => 'loginform']) !!}

@@ -22,10 +22,11 @@ class OnDutyController extends Controller
 
     public function index(Request $request)
     {
-        $results = OnDuty::with(['employee', 'approveBy', 'rejectBy'])
+        $results = OnDuty::with('employee')
             ->where('employee_id', $request->employee_id)
             ->orderBy('on_duty_id', 'desc')
             ->paginate(10);
+
         if ($results) {
             return response()->json([
                 'message' => 'OnDuty Data Successfully Received',
@@ -61,9 +62,10 @@ class OnDutyController extends Controller
         }
         $employee = Employee::where('employee_id', $request->employee_id)->first();
         $input = $request->all();
-        $input['application_from_date'] = dateConvertFormtoDB($request->application_from_date);
-        $input['application_to_date'] = dateConvertFormtoDB($request->application_to_date);
-        $input['number_of_day'] =  $request->number_of_day;
+
+        $input['application_from_date'] = $fromDate;
+        $input['application_to_date'] = $toDate;
+        $input['no_of_days'] =  $request->number_of_day;
         $input['purpose'] = $request->purpose;
         $input['application_date'] = date('Y-m-d');
         $input['branch_id'] = $employee->branch_id;
@@ -72,6 +74,11 @@ class OnDutyController extends Controller
         if ($employee->supervisor_id == '') {
             return response()->json([
                 'message' => 'Department Head Data Not Given',
+                'status' => false,
+            ], 200);
+        } elseif ($employee->operation_manager_id == '') {
+            return response()->json([
+                'message' => 'Operation Manager Data Not Given',
                 'status' => false,
             ], 200);
         } elseif ($request->application_from_date == '') {
@@ -96,12 +103,13 @@ class OnDutyController extends Controller
             ], 200);
         } else {
             try {
-                DB::beginTransaction();
+                // DB::beginTransaction();
                 $checkOD = OnDuty::where('application_from_date', '>=', $input['application_from_date'])->where('application_to_date', '<=', $input['application_to_date'])
                     ->where('employee_id', $employee->employee_id)->where('status', '!=', 3)->where('manager_status', '!=', 3)->first();
 
                 if (!$checkOD) {
                     $data = OnDuty::create($input);
+                    info($data);
                     $hod = Employee::where('employee_id', $employee->supervisor_id)->first();
                     $manager = Employee::where('employee_id', $employee->manager_id)->first();
                     if ($hod != '') {
@@ -117,6 +125,7 @@ class OnDutyController extends Controller
 
                     if ($data) {
                         return response()->json([
+
                             'message' => 'On Duty application successfully send.',
                             'status' => true,
                         ], 200);
@@ -127,9 +136,10 @@ class OnDutyController extends Controller
                         'status' => false,
                     ], 200);
                 }
-                DB::commit();
+                // DB::commit();
             } catch (\Exception $e) {
-                DB::rollBack();
+                info($e->getMessage());
+                // DB::rollBack();
                 return response()->json([
                     'message' => $e->getMessage(),
                     'status' => false,

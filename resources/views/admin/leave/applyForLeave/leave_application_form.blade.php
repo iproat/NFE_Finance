@@ -41,7 +41,7 @@
                         @if ($errors->any())
                             <div class="alert alert-danger alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">×</span></button>
+                                        aria-hidden="true">Ã—</span></button>
                                 @foreach ($errors->all() as $error)
                                     <strong>{!! $error !!}</strong><br>
                                 @endforeach
@@ -49,14 +49,16 @@
                         @endif
                         @if (session()->has('success'))
                             <div class="alert alert-success alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">Ã—</button>
                                 <i
                                     class="cr-icon glyphicon glyphicon-ok"></i>&nbsp;<strong>{{ session()->get('success') }}</strong>
                             </div>
                         @endif
                         @if (session()->has('error'))
                             <div class="alert alert-danger alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">Ã—</button>
                                 <strong>{{ session()->get('error') }}</strong>
                             </div>
                         @endif
@@ -99,7 +101,7 @@
                                     <div class="form-group">
                                         <label for="exampleInput">@lang('leave.leave_type')<span
                                                 class="validateRq">*</span></label>
-                                        {{ Form::select('leave_type_id', $leaveTypeList, Input::old('leave_type_id'), ['class' => 'form-control leave_type_id select2 required']) }}
+                                        {{ Form::select('leave_type_id', $leaveTypeList, old('leave_type_id'), ['class' => 'form-control leave_type_id select2 required']) }}
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -125,7 +127,7 @@
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         {!! Form::text(
                                             'application_from_date',
-                                            Input::old('application_from_date'),
+                                            old('application_from_date'),
                                             $attributes = [
                                                 'class' => 'form-control application_from_date',
                                                 'readonly' => 'readonly',
@@ -141,7 +143,7 @@
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         {!! Form::text(
                                             'application_to_date',
-                                            Input::old('application_to_date'),
+                                            old('application_to_date'),
                                             $attributes = [
                                                 'class' => 'form-control application_to_date',
                                                 'readonly' => 'readonly',
@@ -173,7 +175,7 @@
                                                 class="validateRq">*</span></label>
                                         {!! Form::textarea(
                                             'purpose',
-                                            Input::old('purpose'),
+                                            old('purpose'),
                                             $attributes = [
                                                 'class' => 'form-control purpose',
                                                 'id' => 'purpose',
@@ -230,8 +232,9 @@
 
         $(document).on("change", ".application_from_date,.application_to_date  ", function() {
 
-            var application_from_date = $('.application_from_date ').val();
-            var application_to_date = $('.application_to_date ').val();
+            var application_from_date = $('.application_from_date').val();
+            var application_to_date = $('.application_to_date').val();
+            var employee_id = $('.employee_id').val();
 
             if (application_from_date != '' && application_to_date != '') {
                 var action = "{{ URL::to('applyForLeave/applyForTotalNumberOfDays') }}";
@@ -241,6 +244,7 @@
                     data: {
                         'application_from_date': application_from_date,
                         'application_to_date': application_to_date,
+                        'employee_id': employee_id,
                         '_token': $('input[name=_token]').val()
                     },
                     dataType: 'json',
