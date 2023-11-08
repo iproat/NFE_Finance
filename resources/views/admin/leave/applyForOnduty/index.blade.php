@@ -50,7 +50,6 @@
                                         <th>@lang('leave.purpose')</th>
                                         <th>@lang('common.headdepartmentstatus')</th>
                                         <th>@lang('common.managerstatus')</th>
-                                        <th>@lang('common.hrstatus')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,15 +100,7 @@
                                                 @endif
                                             </td>
 
-                                            <td style="width: 100px;">
-                                                @if ($value->hr_status == 1)
-                                                    <span class="label label-warning">@lang('common.pending')</span>
-                                                @elseif ($value->hr_status == 2)
-                                                    <span class="label label-success">@lang('common.approved')</span>
-                                                @else
-                                                    <span class="label label-danger">@lang('common.rejected')</span>
-                                                @endif
-                                            </td>
+
 
 
                                         </tr>

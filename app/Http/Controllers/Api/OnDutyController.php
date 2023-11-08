@@ -24,6 +24,7 @@ class OnDutyController extends Controller
     {
         $results = OnDuty::with('employee')
             ->where('employee_id', $request->employee_id)
+            ->select('on_duty.*', DB::raw('no_of_days As number_of_day'))
             ->orderBy('on_duty_id', 'desc')
             ->paginate(10);
 

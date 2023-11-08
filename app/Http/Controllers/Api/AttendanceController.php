@@ -80,8 +80,7 @@ class AttendanceController extends Controller
 
         $attendanceData = [];
 
-        $array = \json_decode($request->data);
-
+        $array = \json_decode($request->data);       
         $count = count($array);
         $bug = null;
         $refresh = false;
