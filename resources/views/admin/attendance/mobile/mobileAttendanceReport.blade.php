@@ -192,11 +192,11 @@
                                                             src="{!! asset('admin_assets/img/404.png') !!}">
                                                     @endif
                                                     <hr>
-                                                    @if (isset($value['check_in']) && isset($value['lat_out']) && isset($value['lng_out']))
+                                                    @if (isset($value['check_out']) && isset($value['lat_out']) && isset($value['lng_out']))
                                                         <div class="">
                                                             <div class="">
                                                                 <iframe height="80" frameborder="0" style="border:0"
-                                                                    src="https://www.google.com/maps/embed/v1/place?key={{ config('services.googlekey.ApiKey') }}&q={{ $value['lat_in'] }},{{ $value['lng_in'] }}">
+                                                                    src="https://www.google.com/maps/embed/v1/place?key={{ config('services.googlekey.ApiKey') }}&q={{ $value['lat_out'] }},{{ $value['lng_out'] }}">
                                                                 </iframe>
                                                             </div>
                                                         </div>
@@ -276,10 +276,10 @@
 @endsection
 
 @php
-    
+
     $mapData = [];
     $count = count($employeeInfo);
-    
+
     foreach ($employeeInfo as $key => $data) {
         $mapData[] = [
             'name' => $data['first_name'],
