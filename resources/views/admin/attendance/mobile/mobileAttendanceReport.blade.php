@@ -115,9 +115,6 @@
                                     $distance_travelled = 0;
                                 @endphp
                                 @forelse ($employeeInfo as $key=> $value)
-                                    @php
-                                        dd($value);
-                                    @endphp
                                     <tbody class="text-center">
                                         @if (count($employeeInfo) > 0)
                                             <tr class="text-center">
@@ -151,7 +148,7 @@
 
                                                 <td class="text-center" style="vertical-align: middle">
                                                     {{ 'Employee ID:' }}
-                                                    {{ $value['finger_id'] }}<br>
+                                                    {{ $value['employee_id'] }}<br>
                                                     <hr>
                                                     {{ 'Name:' }} {{ $value['first_name'] }}<br>
                                                     <hr>
