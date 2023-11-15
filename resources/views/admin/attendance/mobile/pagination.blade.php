@@ -23,7 +23,10 @@
         </thead>
         <tbody>
             {{-- @if (count($attendanceData) > 0) --}}
+            @php
+                dd($dailyAttendance);
 
+            @endphp
             {{ $dailyAttendanceSl = null }}
 
             @foreach ($attendanceData as $key => $dailyAttendance)
@@ -31,9 +34,11 @@
                     <td>{{ ++$dailyAttendanceSl }}</td>
                     <td>
                         @if ($dailyAttendance->photo != '')
-                            <img width="32" height="32"  src="{!! asset('uploads/employeePhoto/' . $dailyAttendance->photo) !!}" alt="user-img" class="img-circle">
+                            <img width="32" height="32" src="{!! asset('uploads/employeePhoto/' . $dailyAttendance->photo) !!}" alt="user-img"
+                                class="img-circle">
                         @else
-                            <img width="32" height="32"  src="{!! asset('admin_assets/img/default.png') !!}" alt="user-img" class="img-circle">
+                            <img width="32" height="32" src="{!! asset('admin_assets/img/default.png') !!}" alt="user-img"
+                                class="img-circle">
                         @endif
                     </td>
                     <td>{{ $dailyAttendance->finger_id }} </td>

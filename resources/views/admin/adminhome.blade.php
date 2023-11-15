@@ -272,7 +272,7 @@
                                 <td class="text-center">#</td>
                                 <td>@lang('dashboard.photo')</td>
                                 <td>Employee Id</td>
-                                <td>Date_Time</td>
+                                <td>Date-Time</td>
                                 <td>Device</td>
                             </tr>
                         </thead>
