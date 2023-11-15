@@ -36,32 +36,12 @@ class LeaveApplication extends Model
 
   public function approveBy()
   {
-    return $this->belongsTo(Employee::class, 'approve_by', 'employee_id')->withDefault(
-      [
-        'employee_id' => 0,
-        'user_id' => 0,
-        'department_id' => 0,
-        'email' => 'unknown email',
-        'first_name' => 'unknown',
-        'last_name' => 'unknown last name'
-
-      ]
-    );
+    return $this->belongsTo(Employee::class, 'approve_by', 'employee_id');
   }
 
   public function rejectBy()
   {
-    return $this->belongsTo(Employee::class, 'reject_by', 'employee_id')->withDefault(
-      [
-        'employee_id' => 0,
-        'user_id' => 0,
-        'department_id' => 0,
-        'email' => 'unknown email',
-        'first_name' => 'unknown',
-        'last_name' => 'unknown last name'
-
-      ]
-    );
+    return $this->belongsTo(Employee::class, 'reject_by', 'employee_id');
   }
 
   public function leaveType()

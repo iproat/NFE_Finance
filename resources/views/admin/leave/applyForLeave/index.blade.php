@@ -83,14 +83,14 @@
                                             <td>
                                                 @if (isset($value->approveBy->first_name))
                                                     {!! $value->approveBy->first_name !!} {!! $value->approveBy->last_name !!}
-                                                    <br /><span class="text-muted">@lang('leave.approve_date') :
+                                                    <br /><span class="text-muted">Approved Date :
                                                         {!! dateConvertDBtoForm($value->approve_date) !!}</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 @if (isset($value->rejectBy->first_name))
                                                     {!! $value->rejectBy->first_name !!} {!! $value->rejectBy->last_name !!}
-                                                    <br /><span class="text-muted">@lang('common.reject_date') :
+                                                    <br /><span class="text-muted">Rejected Date :
                                                         {!! dateConvertDBtoForm($value->reject_date) !!}</span>
                                                 @endif
                                             </td>
