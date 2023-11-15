@@ -272,7 +272,7 @@
                                 <td class="text-center">#</td>
                                 <td>@lang('dashboard.photo')</td>
                                 <td>Employee Id</td>
-                                <td>Datetime</td>
+                                <td>Date_Time</td>
                                 <td>Device</td>
                             </tr>
                         </thead>
@@ -441,7 +441,7 @@
                                                     @else
                                                         Her
                                                     @endif
-                                                    Birtday Wish
+                                                    Birthday Wish
                                                     @if ($employee_birthdate->gender == 'Male')
                                                         Him
                                                     @else

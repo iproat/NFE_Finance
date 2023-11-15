@@ -185,7 +185,7 @@ use App\Model\Device;
                                     </div>
                                 </div>
                                 @php
-                                    // dd($employeeInfo);
+                                    dd($employeeInfo);
                                 @endphp
                                 <div class="row">
                                     <div class="personal_info">
@@ -193,7 +193,7 @@ use App\Model\Device;
                                             <div class="col-xs-2 col-sm-2 col-md-3">@lang('employee.name')</div>
                                             <div class="col-xs-10 col-sm-10 col-md-9">
                                                 :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->first_name }}
-                                                {{ $employeeInfo->last_name }}</div>
+                                                {{ $employeeInfo->last_name ? $employeeInfo->last_name : '' }}</div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-2 col-sm-2 col-md-3">@lang('employee.email')</div>
@@ -208,8 +208,8 @@ use App\Model\Device;
                                         <div class="item">
                                             <div class="col-xs-2 col-sm-2 col-md-3">HOD</div>
                                             <div class="col-xs-10 col-sm-10 col-md-9">
-                                                :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->supervisor->first_name }}
-                                                {{ $employeeInfo->supervisor->last_name }}
+                                                :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->supervisor->first_name ? $employeeInfo->supervisor->first_name : '' }}
+                                                {{ $employeeInfo->supervisor->last_name ? $employeeInfo->supervisor->last_name : '' }}
                                             </div>
                                         </div>
                                         <div class="item">
