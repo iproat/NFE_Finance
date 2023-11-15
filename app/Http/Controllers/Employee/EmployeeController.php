@@ -953,7 +953,7 @@ class EmployeeController extends Controller
 
             if (isset($Data->supervisor_id)) {
                 $supervisor = User::find($Data->supervisor_id);
-                $supervisor_name = $supervisor->user_name;
+                $supervisor_name = $supervisor->user_name ?? '';
             }
             if (isset($Data->operation_manager_id)) {
                 $manager = User::find($Data->operation_manager_id);
