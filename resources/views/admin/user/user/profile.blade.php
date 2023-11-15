@@ -185,7 +185,7 @@ use App\Model\Device;
                                     </div>
                                 </div>
                                 @php
-                                    dd($employeeInfo);
+                                    // dd($employeeInfo);
                                 @endphp
                                 <div class="row">
                                     <div class="personal_info">
