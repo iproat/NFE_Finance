@@ -360,7 +360,6 @@ class AttendanceRepository
             ->where('status', LeaveStatus::$APPROVE)->get();
 
         $govtHolidays = DB::select(DB::raw('call SP_getHoliday("' . $start_date . '","' . $end_date . '")'));
-        $weeklyHolidays = DB::select(DB::raw('call SP_getWeeklyHoliday()'));
         $dataFormat = [];
         $tempArray = [];
 
@@ -382,6 +381,7 @@ class AttendanceRepository
                 $tempArray['day_name'] = $value['day_name'];
 
                 $leftDate = date('Y-m-d', strtotime($employee->updated_at));
+                $weeklyHolidays = DB::select(DB::raw('call SP_getWeeklyHoliday("' . $employee->employee_id . '","' . date('Y-m',  strtotime($start_date)) . '")'));
 
                 $hasAttendance = $this->hasEmployeeAttendance($attendance, $employee->finger_id, $value['date']);
 

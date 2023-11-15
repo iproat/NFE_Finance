@@ -167,9 +167,9 @@
                                         <div class="input-group">
                                             <div id="radioBtn" class="btn-group">
                                                 <a class="btn btn-cancel notActive" data-toggle="is_work_from_home"
-                                                    data-title="Y" style="width: fit-content;">YES</a>
+                                                    data-title="Y" style="width: fit-content;"><strong>YES</strong></a>
                                                 <a class="btn btn-info active" data-toggle="is_work_from_home"
-                                                    data-title="N" style="width: fit-content;">NO</a>
+                                                    data-title="N" style="width: fit-content;"><strong>NO</strong></a>
                                             </div>
                                             <input type="hidden" name="is_work_from_home" id="is_work_from_home">
                                         </div>

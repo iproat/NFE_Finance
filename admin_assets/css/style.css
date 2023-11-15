@@ -1314,8 +1314,8 @@ pre {
 
 .btn-success,
 .btn-success.disabled {
-    background: #e3d6fd;
-    border: 1px solid #e3d6fd;
+    background: #c8ace9;
+    border: 1px solid #c8ace9;
     color: #000;
 }
 
@@ -1421,7 +1421,7 @@ pre {
 }
 
 .btn-success.btn-outline {
-    color: #e3d6fd;
+    color: #c8ace9;
     background-color: transparent
 }
 
@@ -1944,12 +1944,12 @@ table.dataTable thead .sorting:after {
 
 .panel-blue a,
 .panel-info a {
-    color: #e3d6fd
+    color: #c8ace9
 }
 
 .panel-blue a:hover,
 .panel-info a:hover {
-    color: #e3d6fd
+    color: #c8ace9
 }
 
 .panel-danger,

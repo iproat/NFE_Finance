@@ -123,22 +123,20 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group bootstrap-timepicker">
-                                        <label for="exampleInput">@lang('leave.permission_from_time')<span
-                                                class="validateRq">*</span></label>
+                                        <label for="exampleInput">From Time<span class="validateRq">*</span></label>
 
                                         <input class="form-control timePicker required"
-                                            onChange = " findTimeDifference()" type="text"
-                                            placeholder="@lang('leave.permission_from_time')" name="from_time" id = "from_time" readonly>
+                                            onChange = " findTimeDifference()" type="text" placeholder="From Time"
+                                            name="from_time" id = "from_time" readonly>
 
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group bootstrap-timepicker">
-                                        <label for="exampleInput">@lang('leave.permission_to_time') <span
-                                                class="validateRq">*</span></label>
+                                        <label for="exampleInput">To Time <span class="validateRq">*</span></label>
                                         <input class="form-control timePicker required"
-                                            onChange = " findTimeDifference()" type="text"
-                                            placeholder="@lang('leave.permission_to_time')" name="to_time" id = "to_time" readonly>
+                                            onChange = " findTimeDifference()" type="text" placeholder="To Time"
+                                            name="to_time" id = "to_time" readonly>
 
                                     </div>
                                 </div>
@@ -230,8 +228,7 @@
                 var hours = Math.floor(timeDiff / 3600000);
                 var minutes = Math.floor((timeDiff % 3600000) / 60000);
 
-                if (hours > 3 || (hours === 3 && minutes >= 0)) {
-
+                if (hours > 3 || (hours === 3 && minutes > 0)) {
                     $.toast({
                         heading: 'Warning',
                         text: 'Permission only allows a maximum of 3 hours',
@@ -243,6 +240,7 @@
                     });
                     $('#to_time').val('');
                 }
+
                 $('.permission_duration').val(hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2,
                     '0'));
 

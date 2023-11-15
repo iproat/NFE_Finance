@@ -184,6 +184,9 @@ use App\Model\Device;
                                         </div>
                                     </div>
                                 </div>
+                                @php
+                                    // dd($employeeInfo);
+                                @endphp
                                 <div class="row">
                                     <div class="personal_info">
                                         <div class="item">
@@ -196,6 +199,39 @@ use App\Model\Device;
                                             <div class="col-xs-2 col-sm-2 col-md-3">@lang('employee.email')</div>
                                             <div class="col-xs-10 col-sm-10 col-md-9">
                                                 :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->email }}</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-2 col-sm-2 col-md-3">Finger Print ID</div>
+                                            <div class="col-xs-10 col-sm-10 col-md-9">
+                                                :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->finger_id }}</div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-2 col-sm-2 col-md-3">HOD</div>
+                                            <div class="col-xs-10 col-sm-10 col-md-9">
+                                                :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->supervisor->first_name }}
+                                                {{ $employeeInfo->supervisor->last_name }}
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-2 col-sm-2 col-md-3">@lang('employee.department')</div>
+                                            <div class="col-xs-10 col-sm-10 col-md-9">
+                                                :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->department->department_name }}
+
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-2 col-sm-2 col-md-3">@lang('employee.designation')</div>
+                                            <div class="col-xs-10 col-sm-10 col-md-9">
+                                                :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->designation->designation_name }}
+
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-2 col-sm-2 col-md-3">Branch</div>
+                                            <div class="col-xs-10 col-sm-10 col-md-9">
+                                                :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->branch->branch_name }}
+
+                                            </div>
                                         </div>
                                         <div class="item">
                                             <div class="col-xs-2 col-sm-2 col-md-3">@lang('employee.address')</div>
@@ -225,7 +261,7 @@ use App\Model\Device;
                                             <div class="col-xs-10 col-sm-10 col-md-9">
                                                 :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->gender }}</div>
                                         </div>
-                                        <div class="item">
+                                        <div class="item" hidden>
                                             <div class="col-xs-2 col-sm-2 col-md-3">@lang('employee.religion')</div>
                                             <div class="col-xs-10 col-sm-10 col-md-9">
                                                 :&nbsp;&nbsp;&nbsp;&nbsp;{{ $employeeInfo->religion }}</div>

@@ -38,17 +38,17 @@
                                     class="glyphicon glyphicon-remove"></i>&nbsp;<strong>{{ session()->get('error') }}</strong>
                             </div>
                         @endif
-                      
+
                         <div class="">
                             <table class="table table-hover manage-u-table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>@lang('common.employee_name')</th>
-                                        <th>@lang('leave.request_duration')</th>
+                                        <th>Permission Duration</th>
                                         <th>@lang('leave.date')</th>
-                                        <th>@lang('leave.permission_from_time')</th>
-                                        <th>@lang('leave.permission_to_time')</th>
+                                        <th>From Time</th>
+                                        <th>To Time</th>
                                         <th>@lang('leave.approved_permission_count')</th>
                                         <th>@lang('leave.permission_status')</th>
                                     </tr>

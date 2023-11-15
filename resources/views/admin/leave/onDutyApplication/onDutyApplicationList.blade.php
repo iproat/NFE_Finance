@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 @section('title')
-    @lang('leave.requested_application')
+    @lang('leave.requested_onduty')
 @endsection
 
 <div class="container-fluid">

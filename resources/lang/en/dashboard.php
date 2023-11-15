@@ -15,7 +15,7 @@ return [
     'out_time' => 'Out Time',
     'late' => 'Late',
     'date' => 'Date',
-    'upcoming_birthday' => 'Upcomming Birthday',
+    'upcoming_birthday' => 'Upcoming Birthday',
     'recent_permission_application' => 'Recent Permission Application',
     'recent_leave_application' => 'Recent Leave Application',
     'recent_onduty_application' => 'Recent OnDuty Application',

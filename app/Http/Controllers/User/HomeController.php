@@ -187,7 +187,6 @@ class HomeController extends Controller
                 ->orderBy('on_duty_id', 'desc')
                 ->get();
         }
-
         $start_time = WorkShift::orderBy('start_time', 'ASC')->first()->start_time;
         $minTime = date('Y-m-d H:i:s', strtotime('-15 minutes', strtotime($start_time)));
 

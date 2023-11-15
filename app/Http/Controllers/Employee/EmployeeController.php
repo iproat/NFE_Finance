@@ -618,7 +618,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
 
-        $employeeInfo = Employee::where('employee.employee_id', $id)->first();
+        $employeeInfo = Employee::with('department', 'designation', 'branch', 'supervisor', 'role')->where('employee.employee_id', $id)->first();
         $employeeExperience = EmployeeExperience::where('employee_id', $id)->get();
         $employeeEducation = EmployeeEducationQualification::where('employee_id', $id)->get();
         $employeeConDevice = AccessControl::where('employee', $id)->groupBy('device')->get();

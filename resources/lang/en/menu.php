@@ -24,9 +24,9 @@ return [
     'weekly_holiday'                   => 'Weekly Holiday',
     'leave_type'                       => 'Leave Type',
     'earn_leave_configure'             => 'Rule for Earn Leave',
-    'leave_application'                => 'Leave Applicatiton',
+    'leave_application'                => 'Leave Application',
     'apply_for_leave'                  => 'Apply for Leave',
-    'requested_application'            => 'Requested Application',
+    'requested_application'            => 'Requested Applications',
     'report'                           => 'Report',
     'leave_report'                     => 'Leave Report',
     'summary_report'                   => 'Summary',
@@ -111,8 +111,8 @@ return [
     'permission_application'           => 'Permission Application',
     'onduty_application'           => 'OnDuty Application',
     'apply_for_permission'           => 'Apply For Permission',
-    'req_permission_application'         => 'Requested Permission',
+    'req_permission_application'         => 'Requested Permissions',
     'apply_for_onduty'         => 'Apply For OnDuty',
-    'req_onduty_application'         => 'Requested OnDuty',
+    'req_onduty_application'         => 'Requested OnDuties',
 
 ];
