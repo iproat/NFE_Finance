@@ -104,7 +104,7 @@ class EmployeeRequest extends FormRequest
             // 'work_hours*.required'           => 'The Work hour field is required.',
             // 'hr_id*.required'           => 'The Hr Name field is required.',
             'operation_manager_id*.required'           => 'The Operation Manager field is required.',
-            'operation_manager_id*.required'           => 'The HOD field is required.',
+            'supervisor_id*.required'           => 'The HOD field is required.',
         ];
     }
 }
