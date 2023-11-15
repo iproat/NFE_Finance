@@ -143,8 +143,8 @@ class Common
     public static function mail($template, $to, $subject, $data)
     {
         $mail = Mail::send($template, $data, function ($message) use ($to, $subject) {
-            $message->from('ebulientcatcoc01@gmail.com', 'NFE Finance');
-            $message->to($to, 'NFE Finance')->subject($subject);
+            $message->from('ebulientcatcoc01@gmail.com', 'NFE LLC');
+            $message->to($to, 'NFE LLC')->subject($subject);
         });
     }
 }

@@ -245,15 +245,15 @@ class ShiftFormatExport implements WithHeadings, FromCollection, WithProperties,
     public function properties(): array
     {
         return [
-            'creator' => 'NFE Finance',
-            'lastModifiedBy' => 'NFE Finance',
+            'creator' => 'NFE LLC',
+            'lastModifiedBy' => 'NFE LLC',
             'title' => 'EmployeeShiftInfo',
-            'description' => 'NFE Finance - EmployeeShiftInfo',
-            'subject' => 'NFE Finance - EmployeeShiftInfo',
+            'description' => 'NFE LLC - EmployeeShiftInfo',
+            'subject' => 'NFE LLC - EmployeeShiftInfo',
             'keywords' => 'EmployeeShiftInfo,export,spreadsheet',
             'category' => 'EmployeeShiftInfo',
-            'manager' => 'NFE Finance',
-            'company' => 'NFE Finance',
+            'manager' => 'NFE LLC',
+            'company' => 'NFE LLC',
         ];
     }
 }

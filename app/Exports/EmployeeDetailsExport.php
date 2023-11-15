@@ -269,15 +269,15 @@ class EmployeeDetailsExport implements WithHeadings, FromCollection, WithPropert
     public function properties(): array
     {
         return [
-            'creator' => 'NFE Finance' . auth()->user()->user_name,
-            'lastModifiedBy' => 'NFE Finance ' . auth()->user()->user_name,
+            'creator' => 'NFE LLC' . auth()->user()->user_name,
+            'lastModifiedBy' => 'NFE LLC ' . auth()->user()->user_name,
             'title' => 'EmployeeInfo',
-            'description' => 'NFE Finance  - EmployeeInfo',
-            'subject' => 'NFE Finance - EmployeeInfo',
+            'description' => 'NFE LLC  - EmployeeInfo',
+            'subject' => 'NFE LLC - EmployeeInfo',
             'keywords' => 'EmployeeInfo,export,spreadsheet',
             'category' => 'EmployeeInfo',
-            'manager' => 'NFE Finance',
-            'company' => 'NFE Finance',
+            'manager' => 'NFE LLC',
+            'company' => 'NFE LLC',
         ];
     }
 }
