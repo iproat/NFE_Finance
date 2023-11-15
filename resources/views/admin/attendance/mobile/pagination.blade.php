@@ -23,10 +23,7 @@
         </thead>
         <tbody>
             {{-- @if (count($attendanceData) > 0) --}}
-            @php
-                dd($dailyAttendance);
-
-            @endphp
+           
             {{ $dailyAttendanceSl = null }}
 
             @foreach ($attendanceData as $key => $dailyAttendance)
