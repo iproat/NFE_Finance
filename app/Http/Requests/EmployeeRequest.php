@@ -38,7 +38,7 @@ class EmployeeRequest extends FormRequest
                 'operation_manager_id' => 'required',
                 'supervisor_id' => 'required',
                 // 'work_shift'     => 'required',
-                // 'email'             => 'nullable|unique:employee,email,'.$this->employee.',employee_id',
+                'email'             => 'nullable|unique:employee,email,' . $this->employee . ',employee_id',
                 // 'phone'             => 'required',
                 'gender'         => 'required',
                 // 'date_of_birth'     => 'required',
@@ -69,7 +69,7 @@ class EmployeeRequest extends FormRequest
             'supervisor_id' => 'required',
             // 'work_hours' => 'required',
             // 'work_shift'       => 'required',
-            // 'email'               => 'nullable|unique:employee',
+            'email'               => 'nullable|unique:employee',
             // 'phone'               => 'required',
             'gender'         => 'required',
             // 'date_of_birth'       => 'required',
@@ -105,6 +105,7 @@ class EmployeeRequest extends FormRequest
             // 'hr_id*.required'           => 'The Hr Name field is required.',
             'operation_manager_id*.required'           => 'The Operation Manager field is required.',
             'supervisor_id*.required'           => 'The HOD field is required.',
+            'email*.required'           => 'The email field is required.',
         ];
     }
 }
