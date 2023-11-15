@@ -233,7 +233,8 @@
 
                                     <div class="form-group">
 
-                                        <label for="exampleInput">@lang('employee.supervisor')</label>
+                                        <label for="exampleInput">@lang('employee.supervisor')<span
+                                                class="validateRq">*</span></label>
 
                                         <select name="supervisor_id"
                                             class="form-control supervisor_id required select2">
@@ -354,7 +355,8 @@
 
                                     <div class="form-group">
 
-                                        <label for="exampleInput">@lang('employee.operation_manager')</label>
+                                        <label for="exampleInput">@lang('employee.operation_manager')<span
+                                                class="validateRq">*</span></label>
 
                                         <select name="operation_manager_id"
                                             class="form-control operation_manager_id required select2">
