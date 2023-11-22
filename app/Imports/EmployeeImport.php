@@ -162,7 +162,7 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
         $branch = Branch::where('branch_name', $row[6])->first();
 
 
-        if ($row[20] == 'No') {
+        if ($row[19] == 'No') {
             $usr_status = UserStatus::$INACTIVE;
         }
 
@@ -195,9 +195,9 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
                 'marital_status' => $row[16],
                 'address' => $row[17],
                 'emergency_contacts' => $row[18],
-                'incentive' => $incentive,
-                'salary_limit' => $salary_limit,
-                'work_shift' => $work_shift,
+                // 'incentive' => $incentive,
+                // 'salary_limit' => $salary_limit,
+                // 'work_shift' => $work_shift,
                 'status' => $usr_status,
                 'created_by' => auth()->user()->user_id,
                 'updated_by' => auth()->user()->user_id,
@@ -233,9 +233,9 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
                 'marital_status' => $row[16],
                 'address' => $row[17],
                 'emergency_contacts' => $row[18],
-                'incentive' => $incentive,
-                'salary_limit' => $salary_limit,
-                'work_shift' => $work_shift,
+                // 'incentive' => $incentive,
+                // 'salary_limit' => $salary_limit,
+                // 'work_shift' => $work_shift,
                 'status' => $usr_status,
                 'created_by' => auth()->user()->user_id,
                 'updated_by' => auth()->user()->user_id,
