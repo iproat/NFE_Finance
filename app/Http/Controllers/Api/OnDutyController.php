@@ -104,13 +104,14 @@ class OnDutyController extends Controller
             ], 200);
         } else {
             try {
+                // info(!23);
                 // DB::beginTransaction();
                 $checkOD = OnDuty::where('application_from_date', '>=', $input['application_from_date'])->where('application_to_date', '<=', $input['application_to_date'])
                     ->where('employee_id', $employee->employee_id)->where('status', '!=', 3)->where('manager_status', '!=', 3)->first();
 
                 if (!$checkOD) {
                     $data = OnDuty::create($input);
-                    info($data);
+                    // info($data);
                     $hod = Employee::where('employee_id', $employee->supervisor_id)->first();
                     $manager = Employee::where('employee_id', $employee->manager_id)->first();
                     if ($hod != '') {

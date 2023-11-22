@@ -472,7 +472,7 @@
                 <div class="white-box">
                     <h3 class="box-title">@lang('dashboard.recent_leave_application')</h3>
                     <hr>
-                    <div class="leaveApplication">
+                    <div class="leaveApplication" >
                         @foreach ($leaveApplication as $leaveApplication)
                             <div class="comment-center p-t-10 {{ $leaveApplication->leave_application_id }}">
                                 <div class="comment-body">
@@ -525,7 +525,7 @@
                 <div class="white-box">
                     <h3 class="box-title">@lang('dashboard.recent_permission_application')</h3>
                     <hr>
-                    <div class="permissionApplication">
+                    <div class="permissionApplication" style="max-height: 300px; overflow-y: auto;">
                         @foreach ($permissionApplication as $permissionApplication)
                             <div class="comment-center p-t-10 {{ $permissionApplication->leave_permission_id }}">
                                 <div class="comment-body">
@@ -578,7 +578,7 @@
                 <div class="white-box">
                     <h3 class="box-title">@lang('dashboard.recent_onduty_application')</h3>
                     <hr>
-                    <div class="OnDutyApplication">
+                    <div class="OnDutyApplication" style="max-height: 260px; overflow-y: auto;">
                         @foreach ($ondutyApplication as $ondutyApplication)
                             <div class="comment-center p-t-10 {{ $ondutyApplication->on_duty_id }}">
                                 <div class="comment-body">

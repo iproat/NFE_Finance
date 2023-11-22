@@ -50,7 +50,7 @@ class ApplyForOnDutyController extends Controller
     }
     public function store(Request $request)
     {
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
         try {
             $input = $request->all();
@@ -89,10 +89,10 @@ class ApplyForOnDutyController extends Controller
                 $hod = Employee::where('employee_id', $emp->supervisor_id)->first();
                 $operationManager = Employee::where('employee_id', $emp->operation_manager_id)->first();
                 if ($hod->email) {
-                    $maildata = Common::mail('emails/mail', $hod->email, 'OnDuty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for Permission (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    $maildata = Common::mail('emails/mail', $hod->email, 'OnDuty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for On-Duty (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
                 }
                 if ($operationManager->email) {
-                    $maildata = Common::mail('emails/mail', $operationManager->email, 'OnDuty Request Notification', ['head_name' => $operationManager->first_name . ' ' . $operationManager->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . 'have requested for Permission (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    $maildata = Common::mail('emails/mail', $operationManager->email, 'OnDuty Request Notification', ['head_name' => $operationManager->first_name . ' ' . $operationManager->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for On-Duty (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
                 }
             } catch (\Exception $ex) {
                 return redirect(route('applyForOnDuty.index'))->with('error',  'Something went wrong!' . $ex->getMessage());
@@ -100,9 +100,9 @@ class ApplyForOnDutyController extends Controller
 
             OnDuty::create($input);
             return redirect(route('applyForOnDuty.index'))->with('success', 'On Duty application sent successfully');
-            DB::commit();
+            // DB::commit();
         } catch (\Throwable $th) {
-            DB::rollBack();
+            // DB::rollBack();
 
             return redirect(route('applyForOnDuty.index'))->with('error',  'Something went wrong!' . $th->getMessage());
         }
