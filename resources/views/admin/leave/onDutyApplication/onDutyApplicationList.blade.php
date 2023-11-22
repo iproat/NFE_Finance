@@ -45,7 +45,7 @@
 
                                             <th>@lang('common.serial')</th>
                                             <th>@lang('common.employee_name')</th>
-                                            <th>@lang('leave.request_duration')</th>
+                                            <th>Onduty Duration</th>
                                             <th>@lang('leave.request_date')</th>
                                             <th>@lang('leave.number_of_day')</th>
                                             <th>@lang('leave.purpose')</th>
