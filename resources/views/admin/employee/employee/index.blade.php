@@ -84,7 +84,7 @@
                                 <div id="template1" class="btn btn-info btn-sm template1" value="Template"
                                     type="submit">
                                     <i class="fa fa-download" aria-hidden="true"></i><span>
-                                    download template</span>
+                                    Download Template</span>
                                 </div>
                             </a>
                             <div class="row hidden-xs hidden-sm">
@@ -105,7 +105,7 @@
                                             <div class="col-sm-1">
                                                 <button class="btn btn-success btn-sm" type="submit"><span><i
                                                             class="fa fa-upload" aria-hidden="true"></i></span>
-                                                    upload</button>
+                                                    Upload</button>
                                             </div>
                                         </div>
 
