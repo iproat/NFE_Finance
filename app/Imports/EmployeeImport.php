@@ -176,7 +176,6 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
                 'created_by' => auth()->user()->user_id,
                 'updated_by' => auth()->user()->user_id,
             ]);
-
             $employeeData = Employee::create([
                 'user_id' => $userData->user_id,
                 'finger_id' => $row[3],
