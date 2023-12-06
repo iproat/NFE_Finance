@@ -26,18 +26,18 @@ body {
   color: #ffffff;
 }
 .navbar-header {
-  background: #f33155;
+  background: #a0aec4;
 }
 .navbar-top-links > li > a {
   color: #ffffff;
 }
 /*Right panel*/
 .right-sidebar .rpanel-title {
-  background: #f33155;
+  background: #a0aec4;
 }
 /*Bread Crumb*/
 .bg-title .breadcrumb .active {
-  color: #f33155;
+  color: #a0aec4;
 }
 /*Sidebar*/
 .sidebar {
@@ -59,7 +59,7 @@ body {
   background: rgba(0, 0, 0, 0.07);
 }
 #side-menu > li > a.active {
-  background: #f33155;
+  background: #a0aec4;
   color: #ffffff;
   font-weight: 500;
 }
@@ -78,38 +78,38 @@ body {
   background-color: #707cd2 !important;
 }
 .bg-theme-dark {
-  background-color: #f33155 !important;
+  background-color: #a0aec4 !important;
 }
 /*Button*/
 .btn-custom {
-  background: #f33155;
-  border: 1px solid #f33155;
+  background: #a0aec4;
+  border: 1px solid #a0aec4;
   color: #ffffff;
 }
 .btn-custom:hover {
-  background: #f33155;
+  background: #a0aec4;
   opacity: 0.8;
   color: #ffffff;
-  border: 1px solid #f33155;
+  border: 1px solid #a0aec4;
 }
 /*Custom tab*/
 .customtab li.active a,
 .customtab li.active a:hover,
 .customtab li.active a:focus {
-  border-bottom: 2px solid #f33155;
-  color: #f33155;
+  border-bottom: 2px solid #a0aec4;
+  color: #a0aec4;
 }
 .tabs-vertical li.active a,
 .tabs-vertical li.active a:hover,
 .tabs-vertical li.active a:focus {
-  background: #f33155;
-  border-right: 2px solid #f33155;
+  background: #a0aec4;
+  border-right: 2px solid #a0aec4;
 }
 /*Nav-pills*/
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:focus,
 .nav-pills > li.active > a:hover {
-  background: #f33155;
+  background: #a0aec4;
   color: #ffffff;
 }
 /*Extra css*/
@@ -123,33 +123,30 @@ body {
 .fc th.fc-wed,
 .fc th.fc-fri,
 .fc-button {
-  background-color: #f33155 !important;
-}
-.bg-theme-alt {
-  background-color: #41b3f9 !important;
+  background-color: #a0aec4 !important;
 }
 .table tbody tr.advance-table-row.active,
 .fc-button {
-  border-color: #f33155;
+  border-color: #a0aec4;
 }
 .manage-users .tabs-style-iconbox nav {
-  background: #f33155;
+  background: #a0aec4;
 }
 .manage-users .tabs-style-iconbox nav li.tab-current a {
-  background: #f33155;
+  background: #a0aec4;
 }
 .manage-users .tabs-style-iconbox nav li.tab-current a:after {
-  border-top-color: #f33155;
+  border-top-color: #a0aec4;
 }
 .panel-themecolor,
 .panel-theme {
-  border-color: #f33155;
+  border-color: #a0aec4;
 }
 .panel-themecolor .panel-heading,
 .panel-theme .panel-heading {
-  border-color: #f33155;
+  border-color: #a0aec4;
   color: white;
-  background-color: #f33155;
+  background-color: #a0aec4;
 }
 .panel-themecolor .panel-heading a,
 .panel-theme .panel-heading a {
@@ -161,9 +158,9 @@ body {
 }
 .panel-themecolor a,
 .panel-theme a {
-  color: #f33155;
+  color: #a0aec4;
 }
 .panel-themecolor a:hover,
 .panel-theme a:hover {
-  color: #cc0c2f;
+  color: #7186a7;
 }

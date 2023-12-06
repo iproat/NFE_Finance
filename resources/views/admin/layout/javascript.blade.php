@@ -3,6 +3,7 @@
 
 <!-- Jquery Core JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+{{-- <script src="{!! asset('admin_assets/plugins/bower_components/jquery/dist/jquery.min.js') !!}"></script> --}}
 
 <!-- moment JavaScript -->
 <script src="{!! asset('admin_assets/js/moment.js') !!}"></script>
@@ -119,17 +120,14 @@
             }]
 
         });
-        
-        $('#myDataTableAlter').DataTable({
+ $('#myDataTableAlter').DataTable({
             ordering: false,
             processing: true,
             aLengthMenu: [
                 [10, 25, 50, 100, 200, -1],
                 [10, 25, 50, 100, 200, "All"]
             ],
-          
-           
-
+                    
         });
 
         var table = $('#myCustomDataTable').DataTable({
@@ -172,7 +170,7 @@
 
     function addMenuClass() {
         var segment3 = '{{ Request::segment(1) }}';
-        var url = base_url + segment3;
+        var url = "{{ url('/') }}" + segment3;
         // var navItem = $(this).find("[href='" + url + "']");
 
         $('a[href="' + url + '"]').parents('.treeview-menu').addClass('collapse in');

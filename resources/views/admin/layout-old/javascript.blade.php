@@ -1,5 +1,5 @@
 <!-- App js -->
-<script src="{!! asset('js/app.js') !!}"></script>
+{{-- <script src="{!! asset('js/app.js') !!}"></script> --}}
 
 <!-- Jquery Core JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -119,6 +119,7 @@
             }]
 
         });
+        
         $('#myDataTableAlter').DataTable({
             ordering: false,
             processing: true,
@@ -126,8 +127,8 @@
                 [10, 25, 50, 100, 200, -1],
                 [10, 25, 50, 100, 200, "All"]
             ],
-
-
+          
+           
 
         });
 

@@ -40,7 +40,7 @@
     }
 
     .navbar-header {
-        background: #fff;
+        background: #ffff;
     }
 
     .app-search .form-control,
@@ -49,7 +49,7 @@
     }
 
     .navbar-top-links>li>a {
-        color: #f1f2f7;
+        color: #000000;
     }
 
     .bg-title {
@@ -69,7 +69,7 @@
 
     /*Sidebar*/
     .sidebar {
-        background: #2f323e;
+        background: #fff;
         box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
         font-size: 13px;
     }
@@ -94,12 +94,13 @@
     }
 
     #side-menu li a {
-        color: #f1f2f7;
-        font-size: 13px;
+        color: #2f323e;
+        font-size: 14px;
+        font-weight: bolder;
     }
 
     #side-menu li a {
-        color: #f1f2f7;
+        color: #2f323e;
         border-left: 0px solid #2f323e;
     }
 
@@ -110,19 +111,17 @@
     }
 
     #side-menu>li>a.active {
-        background: #fff;
-        /* color: #fff;
-        font-weight: 500; */
         color: #7244cd !important;
         font-weight: 500;
     }
 
     #side-menu ul>li>a:hover {
-        color: #ffffff;
+        background: #e3d6fd;
+        color: #7244cd !important;
     }
 
     #side-menu ul>li>a.active {
-        color: #ffffff;
+        color: #7244cd !important;
         font-weight: 500;
     }
 

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="{!! asset('icon.png') !!}" type="image/x-icon" />
-    <!-- <link rel="shortcut icon" href="{!! asset('admin_assets/img/logo.png') !!}" type="image/x-icon" /> -->
+    <!-- <link rel="shortcut icon" href="{!! asset('admin_assets/img/oqic_logo.png') !!}" type="image/x-icon" /> -->
     <title>Pro-People Login</title>
     <!-- Bootstrap Core CSS -->
     <link href="{!! asset('admin_assets/bootstrap/dist/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -21,7 +21,7 @@
 
     <style>
         .white-box {
-            background: #fff;
+            background: #E8E8E8;
             padding: 25px;
             margin-bottom: 30px;
             box-shadow: 1px 1px 8px;
@@ -46,47 +46,51 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <div class="white-box">
-                        <h3 class="box-title m-b-0">LogIn</h3>
+                    <div class="white-box" style="background: #27333e">
+                        <h3 class="box-title m-b-0 text-white">Log In</h3>
                         <div class="login-logo" style="text-align: center">
                             <a href="{{ Url('/') }}"><img src="{!! asset('admin_assets/img/nfe_logo.png') !!}"
-                                    style="margin-top: 20px;background:white; width:260px;margin-bottom: 20px;" /></a>
+                                    style="margin-top: 12px;padding-top:12px;width: 90%;background: #27333e;
+                                    height: 80px;object-fit: contain;" /></a>
                         </div>
                         {!! Form::open(['url' => 'login', 'class' => 'form-horizontal new-lg-form', 'id' => 'loginform']) !!}
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                @foreach ($errors->all() as $error)
+                                    <strong>{!! $error !!}</strong><br>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger">
+                                <p>{!! session()->get('error') !!}</p>
+                            </div>
+                        @endif
+
                         @if (session()->has('success'))
                             <div class="alert alert-success">
                                 <p>{!! session()->get('success') !!}</p>
                             </div>
                         @endif
-                        @if ($message = Session::get('error'))
-                            <div class="alert alert-danger alert-block alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert">x</button>
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
-                        <div class="form-group  m-t-20">
+                        <div class="form-group  m-t-8">
                             <div class="col-xs-12">
                                 <label>User Name</label>
-                                <input type="text" name="user_name" class="form-control" placeholder="User Name"
-                                    value="{!! old('user_name') !!}" autofocus>
-                                @if ($errors->has('username'))
-                                    <span style="margin-left:8px"
-                                        class="text-danger">{{ $errors->first('username') }}</span>
-                                @endif
+                                <input type="text" name="user_name" class="form-control input"
+                                    placeholder="User Name " value="{!! old('user_name') !!}">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top: -24px">
                             <div class="col-xs-12">
                                 <label>Password</label>
-                                <input type="password" name="user_password" class="form-control"
+                                <input type="password" name="user_password" class="form-control input"
                                     placeholder="Password" />
-                                @if ($errors->has('password'))
-                                    <span style="margin-left:8px"
-                                        class="text-danger">{{ $errors->first('password') }}</span>
-                                @endif
                             </div>
                         </div>
-
+                        <!-- 	<div class="form-group">
+       <div class="col-md-12">
+        <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot password ?</a> </div>
+       </div> -->
                         <div class="form-group text-center m-t-20">
                             <div class="col-xs-12">
                                 <button class="btn btn-info btn-block text-uppercase waves-effect waves-light"
@@ -116,7 +120,8 @@
 
                             <div class="form-group text-center m-t-20">
                                 <div class="col-xs-12">
-                                    <button class="btn btn-lg btn-block text-uppercase waves-effect waves-light"
+                                    <button
+                                        class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light"
                                         type="submit">Reset</button>
                                 </div>
                             </div>

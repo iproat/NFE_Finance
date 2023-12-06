@@ -40,7 +40,7 @@
     }
 
     .navbar-header {
-        background: #ffff;
+        background: #2f323e;
     }
 
     .app-search .form-control,
@@ -49,7 +49,7 @@
     }
 
     .navbar-top-links>li>a {
-        color: #000000;
+        color: #f1f2f7;
     }
 
     .bg-title {
@@ -69,7 +69,7 @@
 
     /*Sidebar*/
     .sidebar {
-        background: #fff;
+        background: #2f323e;
         box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
         font-size: 13px;
     }
@@ -94,34 +94,32 @@
     }
 
     #side-menu li a {
-        color: #2f323e;
-        font-size: 14px;
-        font-weight: bolder;
+        color: #f1f2f7;
+        font-size: 13px;
     }
 
     #side-menu li a {
-        color: #2f323e;
+        color: #f1f2f7;
         border-left: 0px solid #2f323e;
     }
 
     #side-menu>li>a:hover,
     #side-menu>li>a:focus {
-        background: #e3d6fd;
-        color: #7244cd !important;
+        background: rgba(0, 0, 0, 0.07);
     }
 
     #side-menu>li>a.active {
-        color: #7244cd !important;
+        background: #41b3f9;
+        color: #ffffff;
         font-weight: 500;
     }
 
     #side-menu ul>li>a:hover {
-        background: #e3d6fd;
-        color: #7244cd !important;
+        color: #ffffff;
     }
 
     #side-menu ul>li>a.active {
-        color: #7244cd !important;
+        color: #ffffff;
         font-weight: 500;
     }
 

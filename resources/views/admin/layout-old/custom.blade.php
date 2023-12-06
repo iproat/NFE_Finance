@@ -3,7 +3,7 @@
         margin-left: 12px;
         padding: 5px 12px;
         font-weight: 400;
-        background: #95D870;
+        background: #7460ee;
         color: white;
         border: 1px solid  #EDF1F5;
         border-radius: 6px;
@@ -14,7 +14,7 @@
         font-weight: 400;
         background: #a1e67d;
         color: white;
-        border: 1px solid  #95D870;
+        border: 1px solid  #7460ee;
         border-radius: 6px;
     }
 
