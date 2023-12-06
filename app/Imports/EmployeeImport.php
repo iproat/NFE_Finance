@@ -215,7 +215,7 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
             ]);
 
             $employeeData = Employee::where('employee_id', $checkEmployee->employee_id)->update([
-                'user_id' => $userData->user_id,
+                'user_id' => $checkUser->user_id,
                 'finger_id' => $row[3],
                 'department_id' => $dept->department_id,
                 'designation_id' => $designation->designation_id,
