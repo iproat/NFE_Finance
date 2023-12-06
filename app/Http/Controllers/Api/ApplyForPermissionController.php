@@ -118,11 +118,10 @@ class ApplyForPermissionController extends Controller
             return $this->responseWithError('Permission To Time Not Given');
         }
         try {
-            // DB::beginTransaction();
             $employeeId = $request->employee_id;
             $requestedMonth = date('m', strtotime(dateConvertFormtoDB($request->permission_date)));
             $isManager = Employee::with('user')->where('employee_id', $employeeId)->first();
-            if ($isManager->user->role_id == 3) {
+            if (isset($isManager) && $isManager->user->role_id == 3) {
                 $countPermission = LeavePermission::where('employee_id', $employeeId)
                     ->whereMonth('leave_permission_date', $requestedMonth)
                     ->count();
@@ -154,9 +153,7 @@ class ApplyForPermissionController extends Controller
             } else {
                 return $this->responseWithError("Permission requests are available in the manager category.");
             }
-            // DB::commit();
         } catch (\Throwable $th) {
-            // DB::rollBack();
             return $this->responseWithError($th->getMessage());
         }
     }

@@ -104,26 +104,45 @@ class OnDutyController extends Controller
             ], 200);
         } else {
             try {
-                
-                $checkOD = OnDuty::where('application_from_date', '>=', $input['application_from_date'])->where('application_to_date', '<=', $input['application_to_date'])
-                    ->where('employee_id', $employee->employee_id)->where('status', '!=', 3)->where('manager_status', '!=', 3)->first();
+                $isemployeeIsManager = Employee::with('user')->Where('employee_id', $request->employee_id)->first();
+                if (isset($isemployeeIsManager) && $isemployeeIsManager->user->role_id == 3) {
+                    $ifExists = OnDuty::where('application_from_date', '>=', $input['application_from_date'])
+                        ->where('application_to_date', '<=', $input['application_to_date'])->where('employee_id', $input['employee_id'])->where('status', '!=', 3)
+                        ->first();
 
-                if (!$checkOD) {
-                    // $isemployeeIsManager =Employee::with('')
-                    $data = OnDuty::create($input);
-                    // info($data);
-                    // $hod = Employee::where('employee_id', $employee->supervisor_id)->first();
-                    $manager = Employee::where('employee_id', $employee->manager_id)->first();
-                    // if ($hod != '') {
-                    //     if ($hod->email) {
-                    //         $maildata = Common::mail('emails/mail', $hod->email, 'On Duty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ', have requested for on duty (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
-                    //     }
-                    // }
-                    if ($manager != '') {
-                        if ($manager->email) {
-                            $maildata = Common::mail('emails/mail', $manager->email, 'On Duty Request Notification', ['head_name' => $manager->first_name . ' ' . $manager->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ', have requested for on duty (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
-                        }
+                    if ($ifExists) {
+                        return response()->json([
+                            'message' => 'On Duty application already exists.',
+                            'status' => false,
+                        ], 200);
                     }
+                    $emp = Employee::find($request->employee_id);
+                    $hod = Employee::where('employee_id', $emp->supervisor_id)->first();
+                    if ($hod->email) {
+                        $maildata = Common::mail('emails/mail', $hod->email, 'OnDuty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for On-Duty (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    }
+                    $input['manager_status'] = 2;
+                } else {
+                    $ifExists = OnDuty::where('application_from_date', '>=', $input['application_from_date'])
+                        ->where('application_to_date', '<=', $input['application_to_date'])->where('employee_id', $input['employee_id'])->where('status', '!=', 3)
+                        ->where('manager_status', '!=', 3)->first();
+
+                    if ($ifExists) {
+                        return response()->json([
+                            'message' => 'On Duty application already exists.',
+                            'status' => false,
+                        ], 200);
+                    }
+                    $emp = Employee::find($request->employee_id);
+                    $operationManager = Employee::where('employee_id', $emp->operation_manager_id)->first();
+
+                    if ($operationManager->email) {
+                        $maildata = Common::mail('emails/mail', $operationManager->email, 'OnDuty Request Notification', ['head_name' => $operationManager->first_name . ' ' . $operationManager->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for On-Duty (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    }
+                }
+
+                if (!$ifExists) {
+                    $data = OnDuty::create($input);
 
                     if ($data) {
                         return response()->json([
@@ -138,10 +157,7 @@ class OnDutyController extends Controller
                         'status' => false,
                     ], 200);
                 }
-                // DB::commit();
             } catch (\Exception $e) {
-                info($e->getMessage());
-                // DB::rollBack();
                 return response()->json([
                     'message' => $e->getMessage(),
                     'status' => false,
