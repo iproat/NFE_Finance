@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Leave;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ApplyForPermissionRequest;
-use App\Model\LeavePermission;
-use App\Model\Employee;
-use App\Repositories\CommonRepository;
-use App\Repositories\LeaveRepository;
 use Carbon\Carbon;
+use App\Model\Employee;
+use App\Components\Common;
 use Illuminate\Http\Request;
+use App\Model\LeavePermission;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\LeaveRepository;
+use App\Repositories\CommonRepository;
+use App\Http\Requests\ApplyForPermissionRequest;
 
 class ApplyForPermissionController extends Controller
 {
@@ -79,12 +80,34 @@ class ApplyForPermissionController extends Controller
         $input['updated_at']      = date('Y-m-d H:i:s');
         $input['status'] = 1;
 
+        $isemployeeIsManager = Employee::with('user')->Where('employee_id', $request->employee_id)->first();
+        if (isset($isemployeeIsManager) && $isemployeeIsManager->user->role_id == 3) {
+            $if_exists = LeavePermission::where('employee_id', $request->employee_id)->where('leave_permission_date', dateConvertFormtoDB($request->permission_date))->first();
 
-        $if_exists = LeavePermission::where('employee_id', $request->employee_id)->where('leave_permission_date', dateConvertFormtoDB($request->permission_date))->first();
+            if ($if_exists) {
+                return redirect('applyForPermission')->with('error', 'Request Already Exist');
+            } 
+            $emp = Employee::find($request->employee_id);
+            $hod = Employee::where('employee_id', $emp->supervisor_id)->first();
+            if ($hod->email) {
+                $maildata = Common::mail('emails/mail', $hod->email, 'Permission Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for Permission (for ' . $request->purpose . ')Application Date ' . ' ' . dateConvertFormtoDB($request->permission_date) . ' fromTime ' . ' ' . $request->from_time . ' toTime ' . $request->from_time, 'status_info' => '']);
+            }
+            $input['manager_status'] =2;
+        }else{
+            $if_exists = LeavePermission::where('employee_id', $request->employee_id)->where('leave_permission_date', dateConvertFormtoDB($request->permission_date))->first();
 
-        if ($if_exists) {
-            return redirect('applyForPermission')->with('error', 'Request Already Exist');
-        } elseif (!$if_exists) {
+            if ($if_exists) {
+                return redirect('applyForPermission')->with('error', 'Request Already Exist');
+            } 
+            $emp = Employee::find($request->employee_id);
+            $hod = Employee::where('employee_id', $emp->supervisor_id)->first();
+            $operationManager = Employee::where('employee_id', $emp->operation_manager_id)->first();
+           
+            if ($operationManager->email) {
+                $maildata = Common::mail('emails/mail', $operationManager->email, 'Permission Request Notification', ['head_name' => $operationManager->first_name . ' ' . $operationManager->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for Permission (for ' . $request->purpose . ')Application Date ' . ' ' . dateConvertFormtoDB($request->permission_date) . ' fromTime ' . ' ' . $request->from_time . ' toTime ' . $request->from_time, 'status_info' => '']);
+            }
+        }
+       
 
             try {
                 LeavePermission::create($input);
@@ -99,7 +122,7 @@ class ApplyForPermissionController extends Controller
             } else {
                 return redirect('applyForPermission')->with('error', 'Something error found !, Please try again.');
             }
-        }
+        
     }
     public function permissionrequest()
     {

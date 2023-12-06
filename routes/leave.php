@@ -117,6 +117,12 @@ Route::group(['middleware' => ['preventbackbutton', 'auth']], function () {
     Route::post('approveOrRejectOnDutyApplication', 'Leave\requestedOnDutyApplicationController@approveOrRejectOnDutyApplication');
     Route::post('approveOrRejectManagerOnDutyApplication', 'Leave\requestedOnDutyApplicationController@approveOrRejectManagerOnDutyApplication');
 
+    Route::post('approveOrRejectLeaveApplication', 'Leave\RequestedApplicationController@approveOrRejectLeaveApplication');
+    Route::post('approveOrRejectManagerLeaveApplication', 'Leave\RequestedApplicationController@approveOrRejectManagerLeaveApplication');
+
+    Route::post('approveOrRejectPermissionApplication', 'Leave\RequestedPermissionApplicationController@approveOrRejectPermissionApplication');
+    Route::post('approveOrRejectManagerPermissionApplication', 'Leave\RequestedPermissionApplicationController@approveOrRejectManagerPermissionApplication');
+
     Route::post('approveOrRejectLeavePermissionByDepartmentHead', 'Leave\RequestedApplicationController@approveOrRejectLeavePermissionByDepartmentHead');
     // Route::group(['prefix' => 'requestedPaidLeaveApplication'], function () {
     //     Route::get('/', ['as' => 'requestedPaidLeaveApplication.index', 'uses' => 'Leave\RequestedPaidLeaveApplicationController@index']);

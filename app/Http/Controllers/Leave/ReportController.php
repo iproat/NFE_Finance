@@ -30,19 +30,14 @@ class ReportController extends Controller
     public function employeeLeaveReport(Request $request)
     {
 
-        //  dd(decrypt(session('logged_session_data')));
-
         if (decrypt(session('logged_session_data.role_id')) != 1 && decrypt(session('logged_session_data.role_id')) != 2) {
             $departmentList = Department::where('department_id', decrypt(session('logged_session_data.department_id')))->get();
-            //  $departmentList = Department::get();
-
         } else {
             $departmentList = Department::get();
         }
 
         $results = [];
 
-        // dd($departmentList);
 
         if ($_POST) {
 
@@ -69,7 +64,6 @@ class ReportController extends Controller
             }
         }
 
-        // dd($results);
 
         return view('admin.leave.report.employeeLeaveReport', ['results' => $results, 'departmentList' => $departmentList, 'department_id' => $request->department_id, 'from_date' => $request->from_date, 'to_date' => $request->to_date]);
     }

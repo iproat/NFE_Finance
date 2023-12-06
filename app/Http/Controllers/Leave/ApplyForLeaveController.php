@@ -145,31 +145,45 @@ class ApplyForLeaveController extends Controller
 
         $employee = Employee::where('employee_id', decrypt(session('logged_session_data.employee_id')))->first();
         $hod = Employee::where('employee_id', $employee->supervisor_id)->first();
+        $manager = Employee::where('employee_id', $employee->operation_manager_id)->first();
 
         try {
-            DB::beginTransaction();
+            $isemployeeIsManager = Employee::with('user')->Where('employee_id', $request->employee_id)->first();
+            if (isset($isemployeeIsManager) && $isemployeeIsManager->user->role_id == 3) {
+                $checkLeave = LeaveApplication::where('application_from_date', $input['application_from_date'])->where('application_to_date', $input['application_to_date'])
+                    ->where('employee_id', $input['employee_id'])->where('status', '!=', 3)->first();
 
-            $checkLeave = LeaveApplication::where('application_from_date', $input['application_from_date'])->where('application_to_date', $input['application_to_date'])
-                ->where('employee_id', $input['employee_id'])->where('status', '!=', 3)->first();
+                if (!$checkLeave) {
+                    $input['manager_status'] = 2;
+                    $data = LeaveApplication::create($input);
+                    $leaveType = LeaveType::where('leave_type_id', $input['leave_type_id'])->first();
 
-            if (!$checkLeave) {
-                $data = LeaveApplication::create($input);
-                $leaveType = LeaveType::where('leave_type_id', $input['leave_type_id'])->first();
-
-                if ($hod->email) {
-                    $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . '. have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    if ($hod->email) {
+                        $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . '. have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    }
                 }
-
-                $bug = 0;
             } else {
-                $bug = 3;
+                $checkLeave = LeaveApplication::where('application_from_date', $input['application_from_date'])->where('application_to_date', $input['application_to_date'])
+                    ->where('employee_id', $input['employee_id'])->where('status', '!=', 3)->first();
+
+                if (!$checkLeave) {
+                    $data = LeaveApplication::create($input);
+                    $leaveType = LeaveType::where('leave_type_id', $input['leave_type_id'])->first();
+
+                    // if ($hod->email) {
+                    //     $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . '. have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    // }
+                    if ($manager->email) {
+                        $maildata = Common::mail('emails/mail', $manager->email, 'Leave Request Notification', ['head_name' => $manager->first_name . ' ' . $manager->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . '. have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    }
+                }
             }
+            $bug = 0;
 
-
-            DB::commit();
+            // DB::commit();
         } catch (\Exception $e) {
             $bug = 1;
-            DB::rollback();
+            // DB::rollback();
         }
 
         if ($bug == 0) {

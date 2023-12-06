@@ -16,7 +16,7 @@ class LeaveApplication extends Model
 
   protected $fillable = [
     'leave_application_id', 'branch_id', 'employee_id', 'leave_type_id', 'application_from_date', 'application_to_date', 'application_date',
-    'number_of_day', 'approve_date', 'approve_by', 'reject_date', 'reject_by', 'purpose', 'remarks', 'status'
+    'number_of_day', 'approve_date', 'approve_by', 'reject_date', 'reject_by', 'purpose', 'remarks', 'status','manager_status'
   ];
 
   public function employee()

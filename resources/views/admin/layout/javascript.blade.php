@@ -119,6 +119,7 @@
             }]
 
         });
+        
         $('#myDataTableAlter').DataTable({
             ordering: false,
             processing: true,

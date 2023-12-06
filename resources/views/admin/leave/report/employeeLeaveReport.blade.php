@@ -116,6 +116,7 @@
                                 <tbody>
                                     {{ $sl = null }}
                                     @foreach ($results as $value)
+                                    
                                         <tr>
                                             <td>{{ ++$sl }}</td>
                                             <td>{{ $value->employee->first_name . ' ' . $value->employee->last_name }}
@@ -137,6 +138,7 @@
                                                 {{ dateConvertDBtoForm($value->application_to_date) }}
                                             </td>
                                             <td>
+                                                
                                                 @if ($value->approveBy->first_name)
                                                     {{ $value->approveBy->first_name }}
                                                     {{ $value->approveBy->last_name }}

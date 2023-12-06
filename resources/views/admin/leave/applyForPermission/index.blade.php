@@ -50,15 +50,14 @@
                                         <th>From Time</th>
                                         <th>To Time</th>
                                         <th>@lang('leave.approved_permission_count')</th>
-                                        <th>@lang('leave.permission_status')</th>
+                                        <th>@lang('common.headdepartmentstatus')</th>
+                                        <th>@lang('common.managerstatus')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {!! $sl = null !!}
                                     @foreach ($results as $value)
-                                        @php
-                                            // dd($value);
-                                        @endphp
+                                      
                                         <tr>
                                             <td style="width: 100px;">{!! ++$sl !!}</td>
                                             <td>
@@ -104,19 +103,26 @@
 
 
                                             </td>
-                                            @if ($value->status == 3)
-                                                <td style="width: 100px;">
-                                                    <span class="label label-danger">@lang('common.rejected')</span>
-                                                </td>
-                                            @elseif($value->status == 2)
-                                                <td style="width: 100px;">
+                                            <td style="width: 100px;">
+                                                @if ($value->status == 1)
+                                                    <span class="label label-warning">@lang('common.pending')</span>
+                                                @elseif ($value->status == 2)
                                                     <span class="label label-success">@lang('common.approved')</span>
-                                                </td>
-                                            @else
-                                                <td style="width: 100px;">
-                                                    <span class="label label-danger">@lang('common.pending')</span>
-                                                </td>
-                                            @endif
+                                                @else
+                                                    <span class="label label-danger">@lang('common.rejected')</span>
+                                                @endif
+                                            </td>
+
+                                            <td style="width: 100px;">
+                                                @if ($value->manager_status == 1)
+                                                    <span class="label label-warning">@lang('common.pending')</span>
+                                                @elseif ($value->manager_status == 2)
+                                                    <span class="label label-success">@lang('common.approved')</span>
+                                                @else
+                                                    <span class="label label-danger">@lang('common.rejected')</span>
+                                                @endif
+                                            </td>
+
 
 
 

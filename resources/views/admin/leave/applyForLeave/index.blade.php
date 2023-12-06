@@ -51,8 +51,8 @@
                                         <th>@lang('leave.number_of_day')</th>
                                         <th>@lang('leave.approve_status')</th>
                                         <th>@lang('leave.reject_status')</th>
-                                        <th>@lang('common.status')</th>
-                                        {{-- <th>Action</th> --}}
+                                        <th>@lang('common.headdepartmentstatus')</th>
+                                        <th>@lang('common.managerstatus')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,19 +95,26 @@
                                                 @endif
                                             </td>
 
-                                            @if ($value->status == 1)
-                                                <td style="width: 100px;">
+                                            <td style="width: 100px;">
+                                                @if ($value->status == 1)
                                                     <span class="label label-warning">@lang('common.pending')</span>
-                                                </td>
-                                            @elseif($value->status == 2)
-                                                <td style="width: 100px;">
+                                                @elseif ($value->status == 2)
                                                     <span class="label label-success">@lang('common.approved')</span>
-                                                </td>
-                                            @else
-                                                <td style="width: 100px;">
+                                                @else
                                                     <span class="label label-danger">@lang('common.rejected')</span>
-                                                </td>
-                                            @endif
+                                                @endif
+                                            </td>
+
+                                            <td style="width: 100px;">
+                                                @if ($value->manager_status == 1)
+                                                    <span class="label label-warning">@lang('common.pending')</span>
+                                                @elseif ($value->manager_status == 2)
+                                                    <span class="label label-success">@lang('common.approved')</span>
+                                                @else
+                                                    <span class="label label-danger">@lang('common.rejected')</span>
+                                                @endif
+                                            </td>
+
                                             <td>
                                                 {{-- <a  title="View Details" href="{{route('applyForLeave.show',$value->leave_application_id)}}" class="btn btn-primary btn-xs btnColor"> --}}
                                                 {{-- <i class="glyphicon glyphicon-th-large" aria-hidden="true"></i> --}}

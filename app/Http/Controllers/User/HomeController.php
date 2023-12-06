@@ -78,8 +78,107 @@ class HomeController extends Controller
 
             $ip_check_status = $ip_setting->ip_status;
         }
+        if (decrypt(session('logged_session_data.role_id')) == 3) {
+            $hasSupervisorWiseEmployee = $this->employee->select('employee_id')->where('operation_manager_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
+            if (count($hasSupervisorWiseEmployee) == 0) {
+                $leaveApplication = [];
+                $permissionApplication = [];
+                $ondutyApplication = [];
+            } else {
+                $leaveApplication = $this->leaveApplication->with(['employee', 'leaveType'])
+                    ->whereIn('employee_id', array_values($hasSupervisorWiseEmployee))
+                    ->where('status', 1)
+                    ->orderBy('status', 'asc')
+                    ->orderBy('leave_application_id', 'desc')
+                    ->get();
 
-        if (decrypt(session('logged_session_data.role_id')) != 1 && decrypt(session('logged_session_data.role_id')) != 2) {
+                $permissionApplication = LeavePermission::with(['employee'])
+                    ->where('status', 1)
+                    ->orderBy('status', 'asc')
+                    ->orderBy('leave_permission_id', 'desc')
+                    ->get();
+                $ondutyApplication = OnDuty::with(['employee'])
+                    ->where('status', 1)
+                    ->orderBy('status', 'asc')
+                    ->orderBy('on_duty_id', 'desc')
+                    ->get();
+            }
+            // $start_time = WorkShift::orderBy('start_time', 'ASC')->first()->start_time;
+            // $minTime = date('Y-m-d H:i:s', strtotime('-15 minutes', strtotime($start_time)));
+
+            // $attendanceData = MsSql::where('datetime', '>=', ($minTime))->where('type', 'IN')
+            //     ->groupBy('ms_sql.ID')->orderBy('ms_sql.datetime')->get();
+
+            // $dailyData = $this->employee->select('employee_id', 'first_name', 'finger_id')->get();
+
+            // $dailyAttendanceData = Employee::select("*")
+            //     ->leftJoin('department', 'department.department_id', '=', 'employee.department_id')
+            //     ->leftJoin('designation', 'designation.designation_id', '=', 'employee.designation_id')
+            //     ->whereNotIn('finger_id', $dailyData)->get();
+
+            // $totalEmployee = $this->employee->where('status', 1)->count();
+            // $totalDepartment = $this->department->count();
+
+            // $employeePerformance = $this->employeePerformance->select('employee_performance.*', DB::raw('AVG(employee_performance_details.rating) as rating'))
+            //     ->with(['employee' => function ($d) {
+            //         $d->with('department');
+            //     }])
+            //     ->join('employee_performance_details', 'employee_performance_details.employee_performance_id', '=', 'employee_performance.employee_performance_id')
+            //     ->where('month', function ($query) {
+            //         $query->select(DB::raw('MAX(`month`) AS month'))->from('employee_performance');
+            //     })->where('employee_performance.status', 1)->groupBy('employee_id')->get();
+
+            // $employeeAward = $this->employeeAward->with(['employee' => function ($d) {
+            //     $d->with('department');
+            // }])->limit(10)->orderBy('employee_award_id', 'DESC')->get();
+
+            // $employeePerformance = [];
+            // $dailyData = [];
+
+            // $notice = $this->notice->with('createdBy')->orderBy('notice_id', 'DESC')->where('status', 'Published')->get();
+
+            // date of birth in this month
+
+            $firstDayThisMonth = date('Y-m-d');
+            $lastDayThisMonth = date("Y-m-d", strtotime("+1 month", strtotime($firstDayThisMonth)));
+
+            $from_date_explode = explode('-', $firstDayThisMonth);
+            $from_day = $from_date_explode[2];
+            $from_month = $from_date_explode[1];
+            $concatFormDayAndMonth = $from_month . '-' . $from_day;
+
+            $to_date_explode = explode('-', $lastDayThisMonth);
+            $to_day = $to_date_explode[2];
+            $to_month = $to_date_explode[1];
+            $concatToDayAndMonth = $to_month . '-' . $to_day;
+
+            $upcoming_birtday = Employee::orderBy('date_of_birth', 'desc')->whereRaw("DATE_FORMAT(date_of_birth, '%m-%d') >= '" . $concatFormDayAndMonth . "' AND DATE_FORMAT(date_of_birth, '%m-%d') <= '" . $concatToDayAndMonth . "' ")->get();
+
+            $data = [
+                // 'attendanceData' => $attendanceData,
+                // 'totalEmployee' => $totalEmployee,
+                // 'totalDepartment' => $totalDepartment,
+                // 'totalAttendance' => count($attendanceData),
+                // 'totalAbsent' => $totalEmployee - count($attendanceData),
+                // 'employeePerformance' => $employeePerformance,
+                // 'employeeAward' => $employeeAward,
+                // 'notice' => $notice,
+                'leaveApplication' => $leaveApplication,
+                'permissionApplication' => $permissionApplication,
+                'ondutyApplication' => $ondutyApplication,
+                'upcoming_birtday' => $upcoming_birtday,
+                'ip_attendance_status' => $ip_attendance_status,
+                'ip_check_status' => $ip_check_status,
+                'count_user_login_today' => $count_user_login_today,
+                'dailyAttendanceData' => isset($dailyAttendanceData) ? $dailyAttendanceData : 0,
+                // 'dailyData' => $dailyData,
+                'last_log_date' => $last_log_date,
+                'setting_sync_live' => $setting_sync_live,
+                'notifications' => $notifications,
+            ];
+
+            return view('admin.managerhome', $data);
+        } elseif (decrypt(session('logged_session_data.role_id')) != 1 && decrypt(session('logged_session_data.role_id')) != 2) {
 
             $attendanceData = $this->attendanceRepository->getEmployeeMonthlyAttendance(date("Y-m-01"), date("Y-m-d"), decrypt(session('logged_session_data.employee_id')));
 
@@ -163,6 +262,7 @@ class HomeController extends Controller
             return view('admin.generalUserHome', $data);
         }
 
+
         $hasSupervisorWiseEmployee = $this->employee->select('employee_id')->where('supervisor_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
         if (count($hasSupervisorWiseEmployee) == 0) {
             $leaveApplication = [];
@@ -172,17 +272,20 @@ class HomeController extends Controller
             $leaveApplication = $this->leaveApplication->with(['employee', 'leaveType'])
                 ->whereIn('employee_id', array_values($hasSupervisorWiseEmployee))
                 ->where('status', 1)
+                ->where('manager_status', 2)
                 ->orderBy('status', 'asc')
                 ->orderBy('leave_application_id', 'desc')
                 ->get();
 
             $permissionApplication = LeavePermission::with(['employee'])
                 ->where('status', 1)
+                ->where('manager_status', 2)
                 ->orderBy('status', 'asc')
                 ->orderBy('leave_permission_id', 'desc')
                 ->get();
             $ondutyApplication = OnDuty::with(['employee'])
                 ->where('status', 1)
+                ->where('manager_status', 2)
                 ->orderBy('status', 'asc')
                 ->orderBy('on_duty_id', 'desc')
                 ->get();
@@ -263,6 +366,7 @@ class HomeController extends Controller
 
         return view('admin.adminhome', $data);
     }
+
 
     public function profile()
     {

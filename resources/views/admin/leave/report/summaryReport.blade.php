@@ -115,7 +115,7 @@
                             </h4>
                         @endif
                         <div class="table-responsive" style="font-size: 12px">
-                            <table id="myDataTable" class="table table-bordered">
+                            <table id="" class="table table-bordered">
                                 {{-- @if (count($results) > 0)
                                     <div class="grid-container table-bordered text-center"
                                         style="padding-top:12px;font-weight:500;color:#666666"
@@ -135,7 +135,7 @@
                                             <th class="text-center">{{ 'Name' }}</th>
                                             <th class="text-center">{{ 'Department' }}</th>
                                             @for ($i = 0; $i < count($leaveTypes) - 2; $i++)
-                                                <th class="text-center">#</th>
+                                            <th class="text-center">{{ 'Designation' }}</th>
                                             @endfor
                                         </tr>
                                         <tr>
@@ -143,7 +143,7 @@
                                             <th class="text-center">{{ $results[0]['full_name'] }}</th>
                                             <th class="text-center">{{ $results[0]['department_name'] }}</th>
                                             @for ($i = 0; $i < count($leaveTypes) - 2; $i++)
-                                                <th class="text-center">#</th>
+                                            <th class="text-center">{{ $results[0]['designation_name'] }}</th>
                                             @endfor
                                         </tr>
                                     @endif
