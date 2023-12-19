@@ -66,8 +66,13 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
             },
             '*.17' => 'nullable',
             '*.18' => 'nullable',
-            '*.19' => 'nullable|in:Active/In-Active',
-
+            '*.19' => function ($attribute, $value, $onFailure) {
+                $value = trim($value);
+                $arr = [null, 'Active', 'In-Active'];
+                if (!in_array($value, $arr)) {
+                    $onFailure('Employee Status is invalid, it should be Active/In-Active');
+                }
+            },
         ];
     }
 
@@ -95,7 +100,7 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
             '16.in' => 'Invalid Marital status ,can user only use Married/Unmarried/NoDisclosure',
             '17.nullable' => 'Address is required',
             '18.nullable' => 'Emergency Contact is required',
-            '19.in' => 'Invalid status ,can user only use Active/In-Active',
+            // '19.in' => 'Invalid status ,can user only use Active/In-Active',
 
             '1.unique' => 'Username should be unique',
             '1.regex' => 'Space not allowed in Username',
