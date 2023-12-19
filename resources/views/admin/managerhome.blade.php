@@ -323,8 +323,7 @@
 <link href="{!! asset('admin_assets/plugins/bower_components/news-Ticker-Plugin/css/site.css') !!}" rel="stylesheet" type="text/css" />
 <script src="{!! asset('admin_assets/plugins/bower_components/news-Ticker-Plugin/scripts/jquery.bootstrap.newsbox.min.js') !!}"></script>
 <script type="text/javascript">
-    $(document).on('click', '.remarksForLeave', function() {
-
+    $(document).on('click', '.remarksForManagerLeave', function() {
         var actionTo = "{{ URL::to('approveOrRejectManagerLeaveApplication') }}";
         var leave_application_id = $(this).attr('data-leave_application_id');
         var status = $(this).attr('data-status');

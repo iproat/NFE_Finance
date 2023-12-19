@@ -89,13 +89,7 @@
                             </div>
                         </div>
                         <hr>
-                        {{-- @if (count($results) > 0)
-                            <h4 class="text-right">
-                                <a class="btn btn-success" style="color: #fff"
-                                    href="{{ URL('downloadLeaveReport/?department_id=' . $department_id . '&from_date=' . $from_date . '&to_date=' . $to_date) }}"><i
-                                        class="fa fa-download fa-lg" aria-hidden="true"></i> @lang('common.download') PDF</a>
-                            </h4>
-                        @endif --}}
+                     
                         <div class="table-responsive" style="font-size: 12px;">
                             <table id="myDataTable" class="table table-bordered">
                                 <thead class="tr_header">
@@ -116,7 +110,10 @@
                                 <tbody>
                                     {{ $sl = null }}
                                     @foreach ($results as $value)
-                                    
+                                  {{-- @php
+                                    // dd($value);
+                                      
+                                  @endphp --}}
                                         <tr>
                                             <td>{{ ++$sl }}</td>
                                             <td>{{ $value->employee->first_name . ' ' . $value->employee->last_name }}
@@ -139,7 +136,7 @@
                                             </td>
                                             <td>
                                                 
-                                                @if ($value->approveBy->first_name)
+                                                @if ($value->approveBy->first_name !=NULL)
                                                     {{ $value->approveBy->first_name }}
                                                     {{ $value->approveBy->last_name }}
                                                 @endif
