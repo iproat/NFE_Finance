@@ -87,19 +87,19 @@ class HomeController extends Controller
             } else {
                 $leaveApplication = $this->leaveApplication->with(['employee', 'leaveType'])
                     ->whereIn('employee_id', array_values($hasSupervisorWiseEmployee))
-                    ->where('status', 1)
-                    ->orderBy('status', 'asc')
+                    ->where('manager_status', 1)
+                    ->orderBy('manager_status', 'asc')
                     ->orderBy('leave_application_id', 'desc')
                     ->get();
 
                 $permissionApplication = LeavePermission::with(['employee'])
-                    ->where('status', 1)
-                    ->orderBy('status', 'asc')
+                    ->where('manager_status', 1)
+                    ->orderBy('manager_status', 'asc')
                     ->orderBy('leave_permission_id', 'desc')
                     ->get();
                 $ondutyApplication = OnDuty::with(['employee'])
-                    ->where('status', 1)
-                    ->orderBy('status', 'asc')
+                    ->where('manager_status', 1)
+                    ->orderBy('manager_status', 'asc')
                     ->orderBy('on_duty_id', 'desc')
                     ->get();
             }
