@@ -15,6 +15,6 @@ return [
     'role_permission' => 'Role Permission',
     'page_permission' => 'Pages Permission',
     'select_all' => 'Select All',
-    'user_role' => 'User Roll',
+    'user_role' => 'User Role',
 
 ];

@@ -138,7 +138,8 @@ class HomeController extends Controller
             // $notice = $this->notice->with('createdBy')->orderBy('notice_id', 'DESC')->where('status', 'Published')->get();
 
             // date of birth in this month
-
+            $attendanceData = $this->attendanceRepository->getEmployeeMonthlyAttendance(date("Y-m-01"), date("Y-m-d"), decrypt(session('logged_session_data.employee_id')));
+            $employeeInfo = $this->employee->with('designation')->where('employee_id', decrypt(session('logged_session_data.employee_id')))->first();
             $firstDayThisMonth = date('Y-m-d');
             $lastDayThisMonth = date("Y-m-d", strtotime("+1 month", strtotime($firstDayThisMonth)));
 
@@ -155,7 +156,7 @@ class HomeController extends Controller
             $upcoming_birtday = Employee::orderBy('date_of_birth', 'desc')->whereRaw("DATE_FORMAT(date_of_birth, '%m-%d') >= '" . $concatFormDayAndMonth . "' AND DATE_FORMAT(date_of_birth, '%m-%d') <= '" . $concatToDayAndMonth . "' ")->get();
 
             $data = [
-                // 'attendanceData' => $attendanceData,
+                'attendanceData' => $attendanceData,
                 // 'totalEmployee' => $totalEmployee,
                 // 'totalDepartment' => $totalDepartment,
                 // 'totalAttendance' => count($attendanceData),
@@ -163,6 +164,7 @@ class HomeController extends Controller
                 // 'employeePerformance' => $employeePerformance,
                 // 'employeeAward' => $employeeAward,
                 // 'notice' => $notice,
+                'employeeInfo' => $employeeInfo,
                 'leaveApplication' => $leaveApplication,
                 'permissionApplication' => $permissionApplication,
                 'ondutyApplication' => $ondutyApplication,

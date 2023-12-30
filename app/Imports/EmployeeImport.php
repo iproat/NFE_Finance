@@ -44,8 +44,8 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
             '*.6' => 'required|exists:branch,branch_name',
             '*.7' => 'required|exists:user,user_name',
             '*.8' => 'required|exists:user,user_name',
-            '*.9' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            '*.10' => 'nullable|email',
+            '*.9' => 'nullable',
+            '*.10' =>'nullable',
             '*.11' => 'required',
             '*.12' => 'nullable',
             '*.13' => 'nullable',
@@ -88,10 +88,10 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
             '6.required' => 'Branch Name should be same as the name provided in Master',
             '7.required' => 'HOD Name should be same as the  user name provided in Master',
             '8.required' => 'Operation Manager Name should be same as the  user name provided in Master',
-            '9.required' => 'Phone No is required',
-            '9.min' => 'Phone No should be min 10 digits',
-            '9.regex' => 'Phone No is invalid',
-            '10.nullable' => 'Email is required',
+            // '9.required' => 'Phone No is required',
+            // '9.min' => 'Phone No should be min 10 digits',
+            // '9.regex' => 'Phone No is invalid',
+            // '10.nullable' => 'Email is required',
             '11.required' => 'Employee first name is required',
             '12.required' => 'Employee last name is required',
             '13.nullable' => 'Date of birth is required',
@@ -106,6 +106,7 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
             '1.regex' => 'Space not allowed in Username',
             '2.exists' => 'Role name doest not exists',
             '3.unique' => 'Finger Print should be unique',
+            // '10.unique' => 'Email ID should be unique',
             '4.exists' => 'Department name doest not exists',
             '5.exists' => 'Designation name doest not exists',
             '7.exists' => 'HOD user name doest not exists',
@@ -116,6 +117,7 @@ class EmployeeImport implements ToModel, WithValidation, WithStartRow, WithLimit
 
     public function model(array $row)
     {
+        // info($row[10]);
 
         $dataUpdate = false;
         $dataInsert = false;

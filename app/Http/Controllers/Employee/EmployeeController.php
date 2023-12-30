@@ -97,8 +97,20 @@ class EmployeeController extends Controller
         $designationList = Designation::get();
         $branchList = Branch::get();
         $workShiftList = WorkShift::get();
-        $supervisorList = Employee::where('status', 1)->get();
-        $operationManagerList = Employee::where('status', 1)->get();
+        $supervisorList = Employee::with('user')
+            ->whereHas('user', function ($query) {
+                $query->whereIn('role_id', [1, 2]);
+            })
+            ->where('status', 1)
+            ->get();
+
+        $operationManagerList = Employee::with('user')
+            ->whereHas('user', function ($query) {
+                $query->whereIn('role_id', [1, 2,3]);
+            })
+            ->where('status', 1)
+            ->get();
+
         $payGradeList = PayGrade::all();
         $hourlyPayGradeList = HourlySalary::all();
         $incentive = $this->employeeRepositories->incentive();
