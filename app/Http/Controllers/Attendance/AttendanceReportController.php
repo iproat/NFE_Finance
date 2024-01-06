@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers\Attendance;
 
-use App\Exports\MonthlyAttendanceReportExport;
-use App\Exports\SummaryAttendanceReportExport;
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\View\EmployeeAttendaceController;
-use App\Lib\Enumerations\UserStatus;
-use App\Model\Department;
+use DateTime;
+use App\Model\MsSql;
+use App\Model\Branch;
 use App\Model\Employee;
 use App\Model\LeaveType;
-use App\Model\ManualAttendance;
-use App\Model\MsSql;
-use App\Model\PrintHeadSetting;
-use App\Repositories\AttendanceRepository;
-use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\CarbonPeriod;
-use DateTime;
+use App\Model\Department;
 use Illuminate\Http\Request;
+use App\Model\ManualAttendance;
+use App\Model\PrintHeadSetting;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Http\Controllers\Controller;
+use App\Lib\Enumerations\UserStatus;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Repositories\AttendanceRepository;
+use App\Exports\AttendanceMusterReportExport;
+use App\Exports\MonthlyAttendanceReportExport;
+use App\Exports\SummaryAttendanceReportExport;
+use App\Http\Controllers\View\EmployeeAttendaceController;
 
 class AttendanceReportController extends Controller
 {
@@ -274,7 +276,107 @@ class AttendanceReportController extends Controller
 
         return $excelFile;
     }
+    public function attendanceMusterReport(Request $request)
+    {
+        \set_time_limit(0);
+        if ($request->from_date && $request->to_date) {
+            $month_from = date('Y-m', strtotime(dateConvertFormtoDB($request->from_date)));
+            $month_to = date('Y-m', strtotime(dateConvertFormtoDB($request->to_date)));
+            $start_date = dateConvertFormtoDB(dateConvertFormtoDB($request->from_date));
+            $end_date = dateConvertFormtoDB(dateConvertFormtoDB($request->to_date));
+        } else {
+            $month_from = date('Y-m');
+            $month_to = date('Y-m');
+            $start_date = $month_from . '-01';
+            $end_date = date("Y-m-t", strtotime($start_date));
+        }
 
+        $departmentList = Department::get();
+        $employeeList = Employee::with('department', 'branch', 'designation')->where('status', UserStatus::$ACTIVE)->get();
+        $branchList = Branch::get();
+
+        $monthAndYearFrom = explode('-', $month_from);
+        $monthAndYearTo = explode('-', $month_to);
+
+        $month_data_from = $monthAndYearFrom[1];
+        $month_data_to = $monthAndYearTo[1];
+        $dateObjFrom = DateTime::createFromFormat('!m', $month_data_from);
+        $dateObjTo = DateTime::createFromFormat('!m', $month_data_to);
+        $monthNameFrom = $dateObjFrom->format('F');
+        $monthNameTo = $dateObjTo->format('F');
+
+        $employeeInfo = Employee::with('department', 'branch', 'designation')->where('status', UserStatus::$ACTIVE)->where('employee_id', $request->employee_id)->first();
+
+        $monthToDate = findMonthFromToDate($start_date, $end_date);
+
+        if ($request->from_date && $request->to_date) {
+            $result = $this->attendanceRepository->findAttendanceMusterReport($start_date, $end_date, $request->employee_id, $request->department_id, $request->branch_id);
+        } else {
+            $result = [];
+        }
+
+        return view('admin.attendance.report.musterReport', [
+            'departmentList' => $departmentList, 'employeeInfo' => $employeeInfo, 'employeeList' => $employeeList, 'branchList' => $branchList,
+            'results' => $result, 'monthToDate' => $monthToDate, 'month_from' => $month_from, 'month_to' => $month_to, 'monthNameFrom' => $monthNameFrom,
+            'monthNameTo' => $monthNameTo, 'department_id' => $request->department_id, 'employee_id' => $request->employee_id, 'branch_id' => $request->branch_id,
+            'from_date' => $request->from_date, 'to_date' => $request->to_date, 'monthAndYearFrom' => $monthAndYearFrom, 'monthAndYearTo' => $monthAndYearTo,
+            'start_date' => $start_date, 'end_date' => $end_date,
+        ]);
+    }
+    public function musterExcelExportFromCollection(Request $request)
+    {
+        \set_time_limit(0);
+        \ini_set('memory_limit', '512M');
+
+        if ($request->from_date && $request->to_date) {
+            $month_from = date('Y-m', strtotime($request->from_date));
+            $month_to = date('Y-m', strtotime($request->to_date));
+            $start_date = dateConvertFormtoDB($request->from_date);
+            $end_date = dateConvertFormtoDB($request->to_date);
+        } else {
+            $month_from = date('Y-m');
+            $month_to = date('Y-m');
+            $start_date = $month_from . '-01';
+            $end_date = date("Y-m-t", strtotime($start_date));
+        }
+
+        $departmentList = Department::get();
+        $employeeList = Employee::with('department', 'branch', 'designation')->where('status', UserStatus::$ACTIVE)->get();
+        $branchList = Branch::get();
+
+        $monthAndYearFrom = explode('-', $month_from);
+        $monthAndYearTo = explode('-', $month_to);
+
+        $month_data_from = $monthAndYearFrom[1];
+        $month_data_to = $monthAndYearTo[1];
+        $dateObjFrom = DateTime::createFromFormat('!m', $month_data_from);
+        $dateObjTo = DateTime::createFromFormat('!m', $month_data_to);
+        $monthNameFrom = $dateObjFrom->format('F');
+        $monthNameTo = $dateObjTo->format('F');
+
+        $employeeInfo = Employee::with('department', 'branch', 'designation')->where('status', UserStatus::$ACTIVE)->where('employee_id', $request->employee_id)->first();
+
+        $monthToDate = findMonthFromToDate($start_date, $end_date);
+        //dd($monthToDate);
+        $dataset = $this->attendanceRepository->findAttendanceMusterReportExcelDump($start_date, $end_date, $request->employee_id, $request->department_id, $request->branch_id);
+        // dd($result);
+
+        $inner_head = ['Sl.No', 'BRANCH', 'EMPLOYEE ID', 'EMPLOYEE NAME', 'DEPARTMENT', 'TITLE'];
+        foreach ($monthToDate as $Day) {
+            $inner_head[] = $Day['day'];
+        }
+
+        $heading = [
+            [
+                'Attendance Detailed Report',
+            ],
+            $inner_head,
+        ];
+
+        $extraData = ['heading' => $heading];
+        // dd($dataset);
+        return Excel::download(new AttendanceMusterReportExport($dataset, $extraData), 'detailedReport' . date('Ymd', strtotime($request->date)) . date('His') . '.xlsx');
+    }
     public function attendanceRecord(Request $request)
     {
         set_time_limit(0);

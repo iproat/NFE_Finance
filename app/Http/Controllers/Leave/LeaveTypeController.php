@@ -8,13 +8,22 @@ use App\Http\Controllers\Controller;
 
 use App\Model\LeaveType;
 use App\Model\LeaveApplication;
-
+use App\Repositories\EmployeeRepository;
+use App\Repositories\LeaveRepository;
 use Illuminate\Http\Request;
 
 
 class LeaveTypeController extends Controller
 {
 
+    protected $employeeRepositories;
+    protected $leaveRepository;
+
+    public function __construct(EmployeeRepository $employeeRepositories, LeaveRepository $leaveRepository)
+    {
+        $this->employeeRepositories = $employeeRepositories;
+        $this->leaveRepository = $leaveRepository;
+    }
     public function index()
     {
         $results = LeaveType::OrderBy('leave_type_id', 'desc')->get();
@@ -24,7 +33,10 @@ class LeaveTypeController extends Controller
 
     public function create()
     {
-        return view('admin.leave.leaveType.form');
+        $nationality = $this->leaveRepository->nationality();
+        $religion = $this->leaveRepository->religion();
+        $gender = $this->leaveRepository->gender();
+        return view('admin.leave.leaveType.form', ['nationality' => $nationality, 'religion' => $religion, 'gender' => $gender]);
     }
 
 
@@ -41,7 +53,7 @@ class LeaveTypeController extends Controller
         if ($bug == 0) {
             return redirect('leaveType')->with('success', 'Leave Type successfully saved.');
         } else {
-            return redirect('leaveType')->with('error', 'Something Error Found !, Please try again.');
+            return redirect('leaveType')->with('error', $e->getMessage());
         }
     }
 
@@ -49,7 +61,10 @@ class LeaveTypeController extends Controller
     public function edit($id)
     {
         $editModeData = LeaveType::findOrFail($id);
-        return view('admin.leave.leaveType.form', ['editModeData' => $editModeData]);
+        $nationality = $this->leaveRepository->nationality();
+        $religion = $this->leaveRepository->religion();
+        $gender = $this->leaveRepository->gender();
+        return view('admin.leave.leaveType.form', ['editModeData' => $editModeData, 'nationality' => $nationality, 'religion' => $religion, 'gender' => $gender]);
     }
 
 
@@ -57,6 +72,7 @@ class LeaveTypeController extends Controller
     {
         $data   = LeaveType::findOrFail($id);
         $input  = $request->all();
+        // dd($input);
         try {
             $data->update($input);
             $bug = 0;

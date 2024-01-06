@@ -104,6 +104,7 @@ return [
     'employee_id' => 'Employee ID',
     'status' => 'Status',
     'hr' => 'HR',
+    'nationality' => 'Nationality',
     'operation_manager' => 'Operation Manager',
 
 ];

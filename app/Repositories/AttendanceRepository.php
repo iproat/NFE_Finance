@@ -137,6 +137,125 @@ class AttendanceRepository
 
         return $dataFormat;
     }
+    public function findAttendanceMusterReportExcelDump($start_date, $end_date, $employee_id, $department_id, $branch_id)
+    {
+        $data = findMonthFromToDate($start_date, $end_date);
+
+        $qry = '1 ';
+
+        if ($employee_id != '') {
+            $qry .= ' AND employee.employee_id=' . $employee_id;
+        }
+        if ($department_id != '') {
+            $qry .= ' AND employee.department_id=' . $department_id;
+        }
+        if ($branch_id != '') {
+            $qry .= ' AND employee.branch_id=' . $branch_id;
+        }
+
+        $employees = Employee::select(DB::raw('CONCAT(COALESCE(employee.first_name,\'\'),\' \',COALESCE(employee.last_name,\'\')) AS fullName'), 'designation_name', 'department_name', 'branch_name', 'finger_id', 'employee_id')
+            ->join('designation', 'designation.designation_id', 'employee.designation_id')
+            ->join('department', 'department.department_id', 'employee.department_id')
+            ->join('branch', 'branch.branch_id', 'employee.branch_id')->orderBy('branch.branch_name', 'ASC')->whereRaw($qry)
+            ->where('status', UserStatus::$ACTIVE)->get();
+
+        $attendance = DB::table('view_employee_in_out_data')->whereBetween('date', [$start_date, $end_date])->get();
+
+        $govtHolidays = DB::select(DB::raw('call SP_getHoliday("' . $start_date . '","' . $end_date . '")'));
+        $weeklyHolidays = DB::select(DB::raw('call SP_getWeeklyHoliday("' . $start_date . '","' . $end_date . '")'));
+
+        $dataFormat = [];
+        $tempArray = [];
+
+        foreach ($employees as $employee) {
+
+            $weeklyHolidaysDates = WeeklyHoliday::where('employee_id', $employee->employee_id)->where('month', date('Y-m', strtotime($start_date)))->first();
+
+            foreach ($data as $key => $value) {
+
+                $tempArray['employee_id'] = $employee->employee_id;
+                $tempArray['finger_id'] = $employee->finger_id;
+                $tempArray['fullName'] = $employee->fullName;
+                $tempArray['designation_name'] = $employee->designation_name;
+                $tempArray['department_name'] = $employee->department_name;
+                $tempArray['branch_name'] = $employee->branch_name;
+                $tempArray['date'] = $value['date'];
+                $tempArray['day'] = $value['day'];
+                $tempArray['day_name'] = $value['day_name'];
+
+                $hasAttendance = $this->hasEmployeeMusterAttendance($attendance, $employee->finger_id, $value['date']);
+
+                if ($hasAttendance) {
+
+                    $ifHoliday = $this->ifHoliday($govtHolidays, $value['date'], $employee->employee_id, $weeklyHolidays, $weeklyHolidaysDates);
+                    // dump($ifHoliday);
+                    if ($ifHoliday['govt_holiday'] == true) {
+                        $tempArray['attendance_status'] = 'present';
+                        $tempArray['shift_name'] = $hasAttendance['shift_name'];
+                        $tempArray['in_time'] = $hasAttendance['in_time'];
+                        $tempArray['out_time'] = $hasAttendance['out_time'];
+                        $tempArray['working_time'] = $hasAttendance['working_time'];
+                        $tempArray['over_time'] = $hasAttendance['over_time'];
+                        $tempArray['employee_attendance_id'] = $hasAttendance['employee_attendance_id'];
+                    } else {
+                        $tempArray['attendance_status'] = 'holiday';
+                        $tempArray['shift_name'] = $hasAttendance['shift_name'];
+                        $tempArray['in_time'] = $hasAttendance['in_time'];
+                        $tempArray['out_time'] = $hasAttendance['out_time'];
+                        $tempArray['working_time'] = $hasAttendance['working_time'];
+                        $tempArray['over_time'] = $hasAttendance['over_time'];
+                        $tempArray['employee_attendance_id'] = $hasAttendance['employee_attendance_id'];
+                    }
+                } else {
+
+                    $tempArray['attendance_status'] = 'absence';
+                    $tempArray['shift_name'] = '';
+                    $tempArray['in_time'] = '';
+                    $tempArray['out_time'] = '';
+                    $tempArray['over_time'] = '';
+                    $tempArray['working_time'] = '';
+                    $tempArray['employee_attendance_id'] = '';
+                }
+
+                $dataFormat[$employee->finger_id][] = $tempArray;
+            }
+        }
+
+        $excelFormat = [];
+        $days = [];
+        $sl = 1;
+        $dataset = [];
+
+        $sl = 0;
+        $emptyArr = ['', '', '', '', ''];
+
+        foreach ($dataFormat as $key => $data) {
+            $sl++;
+
+            $shiftInfo = ['SHIFT NAME'];
+            $inTimeInfo = ['IN TIME'];
+            $outTimeInfo = ['OUT TIME'];
+            $workingTimeInfo = ['WORKING TIME'];
+            $overTimeInfo = ['OVER TIME'];
+
+            for ($i = 0; $i < count($data); $i++) {
+                $employeeData = [$sl, $data[0]['branch_name'], $data[0]['finger_id'], $data[0]['fullName'], $data[0]['department_name']];
+                $shiftInfo[] = $data[$i]['shift_name'] != null ? $data[$i]['shift_name'] : 'NA';
+                $inTimeInfo[] = $data[$i]['in_time'] != null ? date('H:i', strtotime($data[$i]['in_time'])) : '00:00';
+                $outTimeInfo[] = $data[$i]['out_time'] != null ? date('H:i', strtotime($data[$i]['out_time'])) : '00:00';
+                $workingTimeInfo[] = $data[$i]['working_time'] != null ? date('H:i', strtotime($data[$i]['working_time'])) : '00:00';
+                $overTimeInfo[] = $data[$i]['over_time'] != null ? date('H:i', strtotime($data[$i]['over_time'])) : '00:00';
+            }
+
+            $excelFormat[] = array_merge($employeeData, $shiftInfo);
+            $excelFormat[] = array_merge($emptyArr, $inTimeInfo);
+            $excelFormat[] = array_merge($emptyArr, $outTimeInfo);
+            $excelFormat[] = array_merge($emptyArr, $workingTimeInfo);
+            $excelFormat[] = array_merge($emptyArr, $overTimeInfo);
+        }
+        // dd($excelFormat);
+        return $excelFormat;
+    }
     public function hasEmployeeMusterAttendance($attendance, $finger_print_id, $date)
     {
         $dataFormat = [];

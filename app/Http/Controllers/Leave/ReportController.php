@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\Leave;
 
+use Carbon\Carbon;
+use App\Model\OnDuty;
+use App\Model\Employee;
+use App\Model\LeaveType;
+use App\Model\Department;
+use Illuminate\Http\Request;
+use App\Model\LeavePermission;
+use App\Model\LeaveApplication;
+use App\Model\PrintHeadSetting;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\DB;
 use App\Exports\SummaryLeaveReport;
 use App\Http\Controllers\Controller;
-use App\Lib\Enumerations\LeaveStatus;
-use App\Model\Department;
-use App\Model\Employee;
-use App\Model\LeaveApplication;
-use App\Model\LeaveType;
-use App\Model\PrintHeadSetting;
-use App\Repositories\LeaveRepository;
-use Barryvdh\DomPDF\Facade as PDF;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Lib\Enumerations\LeaveStatus;
+use App\Repositories\LeaveRepository;
 
 class ReportController extends Controller
 {
@@ -40,7 +42,7 @@ class ReportController extends Controller
         if ($request->department_id != NULL) {
 
             $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy'])
-                ->join('employee', 'employee.employee_id', 'leave_application.employee_id')              
+                ->join('employee', 'employee.employee_id', 'leave_application.employee_id')
                 ->where('department_id', $request->department_id)
                 ->whereBetween('leave_application.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
                 ->where('leave_application.status', LeaveStatus::$APPROVE)
@@ -57,6 +59,68 @@ class ReportController extends Controller
 
 
         return view('admin.leave.report.employeeLeaveReport', ['results' => $results, 'departmentList' => $departmentList, 'department_id' => $request->department_id, 'from_date' => $request->from_date, 'to_date' => $request->to_date]);
+    }
+    public function employeePermissionReport(Request $request)
+    {
+        if ((decrypt(session('logged_session_data.role_id'))) != 1 && (decrypt(session('logged_session_data.role_id'))) != 2) {
+            $departmentList = Department::where('department_id', decrypt(session('logged_session_data.department_id')))->get();
+        } else {
+            $departmentList = Department::get();
+        }
+
+        $results = [];
+
+        if ($request->department_id != NULL) {
+
+            $results = LeavePermission::with(['employee', 'approveBy'])
+                ->join('employee', 'employee.employee_id', 'leave_permission.employee_id')
+                ->where('department_id', $request->department_id)
+                ->whereBetween('leave_permission.leave_permission_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
+                ->where('leave_permission.status', LeaveStatus::$APPROVE)
+                ->select('leave_permission.*')->orderBy('leave_permission_id', 'DESC')
+                ->get();
+        } else {
+            $results = LeavePermission::with(['employee', 'approveBy'])
+                ->join('employee', 'employee.employee_id', 'leave_permission.employee_id')
+                ->whereBetween('leave_permission.leave_permission_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
+                ->where('leave_permission.status', LeaveStatus::$APPROVE)
+                ->select('leave_permission.*')->orderBy('leave_permission_id', 'DESC')
+                ->get();
+        }
+// dd($results);
+
+        return view('admin.leave.report.employeePermissionReport', ['results' => $results, 'departmentList' => $departmentList, 'department_id' => $request->department_id, 'from_date' => $request->from_date, 'to_date' => $request->to_date]);
+    }
+    public function employeeOndutyReport(Request $request)
+    {
+        if ((decrypt(session('logged_session_data.role_id'))) != 1 && (decrypt(session('logged_session_data.role_id'))) != 2) {
+            $departmentList = Department::where('department_id', decrypt(session('logged_session_data.department_id')))->get();
+        } else {
+            $departmentList = Department::get();
+        }
+
+        $results = [];
+
+        if ($request->department_id != NULL) {
+
+            $results = OnDuty::with(['employee','approveBy'])
+                ->join('employee', 'employee.employee_id', 'on_duty.employee_id')
+                ->where('department_id', $request->department_id)
+                ->whereBetween('on_duty.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
+                ->where('on_duty.status', LeaveStatus::$APPROVE)
+                ->select('on_duty.*')->orderBy('on_duty_id', 'DESC')
+                ->get();
+        } else {
+            $results = OnDuty::with(['employee','approveBy'])
+                ->join('employee', 'employee.employee_id', 'on_duty.employee_id')
+                ->whereBetween('on_duty.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
+                ->where('on_duty.status', LeaveStatus::$APPROVE)
+                ->select('on_duty.*')->orderBy('on_duty_id', 'DESC')
+                ->get();
+        }
+
+
+        return view('admin.leave.report.employeeOndutyReport', ['results' => $results, 'departmentList' => $departmentList, 'department_id' => $request->department_id, 'from_date' => $request->from_date, 'to_date' => $request->to_date]);
     }
 
     public function downloadLeaveReport(Request $request)

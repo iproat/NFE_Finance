@@ -102,6 +102,7 @@ return [
     'headdepartmentstatus' => "HOD Status",
     'hrstatus' => "HR Status",
     'managerstatus' => "Manager Status",
+    'title' => "Title",
 
 
 

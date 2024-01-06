@@ -2,7 +2,6 @@
 
 namespace App\Model;
 
-use App\Traits\BranchTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class LeaveType extends Model
@@ -12,6 +11,6 @@ class LeaveType extends Model
     protected $primaryKey = 'leave_type_id';
 
     protected $fillable = [
-        'leave_type_id', 'branch_id', 'leave_type_name', 'num_of_day'
+        'leave_type_id', 'branch_id', 'leave_type_name', 'num_of_day','nationality','religion','gender'
     ];
 }

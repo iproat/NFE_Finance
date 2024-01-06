@@ -102,7 +102,7 @@ class ApplyForLeaveController extends Controller
 
         $employeeId = $request->employee_id;
         $leaveTypeId = $request->leave_type_id;
-        
+
         $number_of_day = $this->applyForTotalNumberOfDays($applicationFromDate, $applicationToDate, $employeeId);
         $leave_balance = $this->getEmployeeLeaveBalance($leaveTypeId, $employeeId);
         $leave_application = [
@@ -115,7 +115,175 @@ class ApplyForLeaveController extends Controller
             'purpose' => $request->purpose,
             'created_at' => date('Y-m-d H:i:s'),
         ];
+        $employee = Employee::where('employee_id', $request->employee_id)->first();
+        $leaveType = LeaveType::where('leave_type_id', $request->leave_type_id)->first();
+        if (
+            isset($employee) &&
+            isset($leaveType)
 
+
+        ) {
+            $religionStatus = 0;
+            $status = 0;
+            $genderStatus = 0;
+            $nationalityStatus = 0;
+            //Both...
+            if ($leaveType->nationality == 2 && $leaveType->religion == 2 && $leaveType->gender == 2) {
+                $status = true;
+                $nationalityStatus =  $religionStatus = $genderStatus = 1;
+                info('222');
+            } elseif ($leaveType->nationality == 2  && $leaveType->religion != 2 && $leaveType->gender != 2) {
+                $nationalityStatus = 1;
+                info('200');
+                if ($leaveType->religion != 2) {
+                    if ($leaveType->religion == $employee->religion) {
+                        $religionStatus = 1;
+                        $status = 1;
+                    }
+                }
+
+                if ($leaveType->gender != 2) {
+                    if ($leaveType->gender == $employee->gender) {
+                        $status = 1;
+                        $genderStatus = 1;
+                    }
+                }
+                if ($religionStatus == 1 && $genderStatus == 1 && $nationalityStatus == 1) {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+            } elseif ($leaveType->religion == 2 && $leaveType->nationality != 2 &&  $leaveType->gender != 2) {
+                $religionStatus = 1;
+                info('020');
+                info([$employee->nationality, $leaveType->nationality]);
+
+                if ($leaveType->nationality != 2) {
+                    if ($leaveType->nationality == $employee->nationality) {
+                        $nationalityStatus = 1;
+                        $status = 1;
+                    }
+                } else {
+                    $nationalityStatus = 0;
+                }
+                info("na" . $nationalityStatus);
+                if ($leaveType->gender != 2) {
+                    if ($leaveType->gender == $employee->gender) {
+                        $status = 1;
+                        $genderStatus = 1;
+                    }
+                } else {
+                    $nationalityStatus = 0;
+                }
+                if ($religionStatus == 1 && $genderStatus == 1 && $nationalityStatus == 1) {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+            } elseif ($leaveType->gender == 2 && $leaveType->religion != 2 && $leaveType->nationality != 2) {
+                info('002');
+
+                $genderStatus = 1;
+                if ($leaveType->religion != 2) {
+                    if ($leaveType->religion == $employee->religion) {
+                        $religionStatus = 1;
+                        $status = 1;
+                    }
+                }
+                if ($leaveType->nationality != 2) {
+                    if ($leaveType->nationality == $employee->nationality) {
+                        $nationalityStatus = 1;
+                        $status = 1;
+                    }
+                }
+                if ($religionStatus == 1 && $genderStatus == 1 && $nationalityStatus == 1) {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+            } elseif ($leaveType->nationality == 2 && $leaveType->religion == 2 && $leaveType->gender != 2) {
+                info('220');
+
+                $nationalityStatus = $religionStatus = 1;
+                if ($leaveType->gender == $employee->gender) {
+                    $genderStatus = 1;
+                } else {
+                    $genderStatus = 0;
+                }
+            } elseif ($leaveType->nationality == 2 && $leaveType->gender == 2 && $leaveType->religion != 2) {
+                info('202');
+                $nationalityStatus = $genderStatus = 1;
+                if ($leaveType->religion == $employee->religion) {
+                    $religionStatus = 1;
+                } else {
+                    $religionStatus = 0;
+                }
+            } elseif ($leaveType->religion == 2 && $leaveType->gender == 2 && $leaveType->nationality != 2) {
+                info('022');
+                $religionStatus = $genderStatus = 1;
+                if ($leaveType->nationality == $employee->nationality) {
+                    $nationalityStatus = 1;
+                } else {
+                    $nationalityStatus = 0;
+                }
+            } elseif ($leaveType->nationality != 2 && $leaveType->religion != 2 && $leaveType->gender != 2) {
+                // dd(123);
+                info('002');
+                if ($employee->nationality == $leaveType->nationality) {
+                    $nationalityStatus = 1;
+                    $status = 1;
+                } else {
+                    $nationalityStatus = 0;
+                }
+                if ($employee->religion == $leaveType->religion) {
+                    $religionStatus = 1;
+                    $status = 1;
+                } else {
+                    $religionStatus = 0;
+                }
+                if ($employee->gender == $leaveType->gender) {
+                    $genderStatus = 1;
+                    $status = 1;
+                } else {
+                    $genderStatus = 0;
+                }
+                if ($religionStatus == 1 && $genderStatus == 1 && $nationalityStatus == 1) {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+            }
+            info([$religionStatus, $nationalityStatus, $genderStatus]);
+
+            if ($religionStatus == 1 && $nationalityStatus == 1 && $genderStatus == 1) {
+
+                $status = 1;
+            } else {
+                $status = 0;
+            }
+            info($status);
+
+
+            if ($status == 1) {
+                $leave_type_id = $request->leave_type_id;
+                $employee_id = $request->employee_id;
+                if ($leave_type_id != '' && $employee_id != '') {
+                    $leave_balance = $this->leaveRepository->calculateEmployeeLeaveBalance($leave_type_id, $employee_id);
+                }
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'You are not eligible for selected leave type!',
+                    'leave_balance' => 0,
+                ]);
+            }
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Update the Fields in Employee(gender,religion,nationality)',
+                'leave_balance' => 0,
+            ]);
+        }
         if (strtotime($leave_application['application_date']) > strtotime($leave_application['application_from_date'])) {
             return $this->controller->custom_error("Leave cannot be applied for completed days.");
         }

@@ -134,6 +134,14 @@ Route::group(['middleware' => ['preventbackbutton', 'auth']], function () {
     Route::post('leaveReport', ['as' => 'leaveReport.leaveReport', 'uses' => 'Leave\ReportController@employeeLeaveReport']);
     Route::get('downloadLeaveReport', 'Leave\ReportController@downloadLeaveReport');
 
+    Route::get('permissionReport', ['as' => 'permissionReport.permissionReport', 'uses' => 'Leave\ReportController@employeePermissionReport']);
+    Route::post('permissionReport', ['as' => 'permissionReport.permissionReport', 'uses' => 'Leave\ReportController@employeePermissionReport']);
+    Route::get('downloadPermissionReport', 'Leave\ReportController@downloadPermissionReport');
+
+    Route::get('ondutyReport', ['as' => 'ondutyReport.ondutyReport', 'uses' => 'Leave\ReportController@employeeOndutyReport']);
+    Route::post('ondutyReport', ['as' => 'ondutyReport.ondutyReport', 'uses' => 'Leave\ReportController@employeeOndutyReport']);
+    Route::get('downloadondutyReport', 'Leave\ReportController@downloadOndutyReport');
+
     Route::get('summaryReport', ['as' => 'summaryReport.summaryReport', 'uses' => 'Leave\ReportController@summaryReport']);
     Route::post('summaryReport', ['as' => 'summaryReport.summaryReport', 'uses' => 'Leave\ReportController@summaryReport']);
 

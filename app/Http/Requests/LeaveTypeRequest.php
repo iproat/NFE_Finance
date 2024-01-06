@@ -26,12 +26,16 @@ class LeaveTypeRequest extends FormRequest
         if(isset($this->leaveType)){
             return [
                 'leave_type_name'  => 'required|unique:leave_type,leave_type_name,'.$this->leaveType.',leave_type_id',
-                'num_of_day'=>'required|numeric'
+                'num_of_day'=>'required|numeric',
+                'nationality'=>'required|integer',
+                'religion'=>'required|integer',
             ];
         }
         return [
             'leave_type_name'=>'required|unique:leave_type',
             'num_of_day'=>'required|numeric',
+            'nationality'=>'required|integer',
+            'religion'=>'required|integer',
         ];
     }
 }

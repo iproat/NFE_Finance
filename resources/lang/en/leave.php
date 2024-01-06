@@ -74,5 +74,12 @@ return [
     'application_date'         => 'Application Date',
     'total_duration'         => 'Total Duration',
     'department'         => 'Department',
+    'employee_permission_report'         => 'Employee Permission Report',
+    'employee_onduty_report'         => 'Employee OnDuty Report',
+    'duration'         => 'Duration',
+    'permission_duration'         => 'Permission Duration',
+    'od_duration'         => 'OnDuty Duration',
+    'nationality'=>'Nationality',
+    'religion'=>'Religion',
 
 ];

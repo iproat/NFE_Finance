@@ -8,6 +8,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('mobileAttendance', ['as' => 'mobileAttendance.mobileAttendance', 'uses' => 'Attendance\MobileAttendanceController@mobileAttendance']);
     Route::get('downloadMonthlyAttendanceExcel', 'Attendance\AttendanceReportController@monthlyExcel');
     Route::get('downloadSummaryAttendanceExcel', 'Attendance\AttendanceReportController@summaryExcel');
+    Route::get('downloadMusterAttendanceExcel', 'Attendance\AttendanceReportController@musterExcelExportFromCollection');
+    Route::get('downloadMusterAttendancePdf', 'Attendance\AttendanceReportController@musterPdfExportFromCollection');
 });
 
 Route::group(['middleware' => ['preventbackbutton', 'auth']], function () {
@@ -85,6 +87,8 @@ Route::group(['middleware' => ['preventbackbutton', 'auth']], function () {
     Route::get('downloadMonthlyAttendance', 'Attendance\AttendanceReportController@downloadMonthlyAttendance');
     Route::get('downloadMyAttendance', 'Attendance\AttendanceReportController@downloadMyAttendance');
     Route::get('downloadAttendanceSummaryReport/{date}', 'Attendance\AttendanceReportController@downloadAttendanceSummaryReport');
+    Route::get('attendanceMusterReport', ['as' => 'attendanceMusterReport.attendanceMusterReport', 'uses' => 'Attendance\AttendanceReportController@attendanceMusterReport']);
+    Route::post('attendanceMusterReport', ['as' => 'attendanceMusterReport.attendanceMusterReport', 'uses' => 'Attendance\AttendanceReportController@attendanceMusterReport']);
 
     // get attendance by ip
 

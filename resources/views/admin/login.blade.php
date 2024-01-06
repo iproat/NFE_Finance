@@ -87,19 +87,47 @@
                                     placeholder="Password" />
                             </div>
                         </div>
-                        <!-- 	<div class="form-group">
-       <div class="col-md-12">
-        <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot password ?</a> </div>
-       </div> -->
+
                         <div class="form-group text-center m-t-20">
                             <div class="col-xs-12">
                                 <button class="btn btn-info btn-block text-uppercase waves-effect waves-light"
                                     type="submit">Log In</button>
                             </div>
                         </div>
+                        <a class="btn-block waves-effect waves-light newPassword" style="color: white;">Forgot Password</a>
                         {!! Form::close() !!}
+                        {!! Form::open([
+                            'url' => 'newPassword',
+                            'class' => 'form-horizontal new-lg-form',
+                            'id' => 'newpasswordform',
+                            'method' => 'POST',
+                        ]) !!}
+                        <div class="form-group m-t-20">
+                            <div class="col-xs-12">
+                                <p class="text-muted"> The new password will be sent to admin email! </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" required="" name="user_name"
+                                    name="User Name" placeholder=" Enter your User Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <a style="color: white;" href="javascript:void(0)" id="closeForgetPassword" class="text-dark pull-right"><i
+                                        class="fa fa-arrow-left m-r-5" style="color: white;"></i> Back</a>
+                            </div>
+                        </div>
 
-                        <form class="form-horizontal" id="recoverform" action="index.html">
+                        <div class="form-group text-center">
+                            <div class="col-xs-12">
+                                <button class="btn btn-info btn-block text-uppercase waves-effect waves-light"
+                                    type="submit">New Password</button>
+                            </div>
+                        </div>
+                        {!! Form::close() !!}
+                        <form class="form-horizontal m-t-20" id="recoverform" action="">
                             <div class="form-group ">
                                 <div class="col-xs-12">
                                     <h3>Recover Password</h3>
@@ -108,17 +136,18 @@
                             </div>
                             <div class="form-group ">
                                 <div class="col-xs-12">
-                                    <input class="form-control" type="text" required="" placeholder="Email">
+                                    <input class="form-control" type="text" required="" placeholder="User ID">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <a href="javascript:void(0)" id="backToLogin" class="text-dark pull-right"><i
+                                    <a href="javascript:;" id="backToLogin"
+                                        class="text-dark pull-right back-to-login"><i
                                             class="fa fa-arrow-left m-r-5"></i> Back</a>
                                 </div>
                             </div>
 
-                            <div class="form-group text-center m-t-20">
+                            <div class="form-group text-center">
                                 <div class="col-xs-12">
                                     <button
                                         class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light"
@@ -134,33 +163,46 @@
 
 
 
-    </section>
-    <!-- jQuery -->
-    <script src="{!! asset('admin_assets/plugins/bower_components/jquery/dist/jquery.min.js') !!}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{!! asset('admin_assets/bootstrap/dist/js/bootstrap.min.js') !!}"></script>
-    <!-- Menu Plugin JavaScript -->
-    <script src="{!! asset('admin_assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js') !!}"></script>
+        <!-- jQuery -->
+        <script src="{!! asset('admin_assets/plugins/bower_components/jquery/dist/jquery.min.js') !!}"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{!! asset('admin_assets/bootstrap/dist/js/bootstrap.min.js') !!}"></script>
+        <!-- Menu Plugin JavaScript -->
+        <script src="{!! asset('admin_assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js') !!}"></script>
 
-    <!--slimscroll JavaScript -->
-    <script src="{!! asset('admin_assets/js/jquery.slimscroll.js') !!}"></script>
-    <!--Wave Effects -->
-    <script src="{!! asset('admin_assets/js/waves.js') !!}"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="{!! asset('admin_assets/js/custom.min.js') !!}"></script>
+        <!--slimscroll JavaScript -->
+        <script src="{!! asset('admin_assets/js/jquery.slimscroll.js') !!}"></script>
+        <!--Wave Effects -->
+        <script src="{!! asset('admin_assets/js/waves.js') !!}"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="{!! asset('admin_assets/js/custom.min.js') !!}"></script>
 
-    <script>
-        $(function() {
-            $(document).on("focus", "#backToLogin", function() {
-                $("#recoverform").fadeOut("slow", function() {
-                    $('#loginform').css('display', 'block');
+        <script>
+            $(function() {
+                $('#newpasswordform').css('display', 'none');
+                $(document).on("focus", "#backToLogin", function() {
+                    $("#recoverform").fadeOut("slow", function() {
+                        $('#newpasswordform').css('display', 'none');
+                    });
+                    $("#newPassword").fadeOut("slow", function() {});
+                });
+                $(document).on("click", ".newPassword", function() {
+                    $("#loginform").fadeOut("slow", function() {});
+                    $("#recoverform").fadeOut("slow", function() {
+                        $('#newpasswordform').css('display', 'block');
+                    });
 
                 });
-            });
+                $(document).on("click", "#closeForgetPassword", function() {
+                    $("#newPassword").fadeOut("slow", function() {});
+                    $('#newpasswordform').css('display', 'none');
+                    $("#loginform").fadeIn("slow", function() {});
+                });
 
-            $(".alert-success").delay(1000).fadeOut("slow");
-        });
-    </script>
+
+                $(".alert-success").delay(1000).fadeOut("slow");
+            });
+        </script>
 </body>
 
 </html>

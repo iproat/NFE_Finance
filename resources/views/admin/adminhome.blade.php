@@ -1,3 +1,7 @@
+
+<?php
+use App\Model\Employee;
+?>
 @extends('admin.master')
 @section('content')
 @section('title')
@@ -56,6 +60,13 @@
         /* background: url('../images/timer.gif') 50% 50% no-repeat rgb(249, 249, 249); */
         opacity: .8;
     }
+    .text-truncate {
+            max-width: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
 
     /* Hide scrollbar for Chrome, Safari and Opera */
     /* .scroll-hide::-webkit-scrollbar {
@@ -272,6 +283,7 @@
                                 <td class="text-center">#</td>
                                 <td>@lang('dashboard.photo')</td>
                                 <td>Employee Id</td>
+                                <td class="text-truncate">@lang('common.name')</td>
                                 <td>Date-Time</td>
                                 <td>Device</td>
                             </tr>
@@ -280,6 +292,9 @@
                             @if (count($attendanceData) > 0)
                                 {{ $dailyAttendanceSl = null }}
                                 @foreach ($attendanceData as $dailyAttendance)
+                                <?php
+                                $emp=Employee::where('finger_id',$dailyAttendance->ID)->first();
+                                ?>
                                     <tr>
                                         <td class="text-center">{{ ++$dailyAttendanceSl }}</td>
                                         <td>
@@ -292,6 +307,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $dailyAttendance->ID }}</td>
+                                        <td>{{ $emp->first_name." ".$emp->last_name }}</td>
                                         <td>{{ $dailyAttendance->datetime }}</td>
                                         <td>{{ $dailyAttendance->device_name }}</td>
                                     </tr>

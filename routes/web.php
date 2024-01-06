@@ -40,6 +40,7 @@ Route::get('admin/pushSwitch', function (Request $request) {
 
 Route::get('login', 'User\LoginController@index');
 Route::post('login', 'User\LoginController@Auth');
+Route::post('newPassword', 'User\ChangePasswordController@newPassword');
 
 Route::get('mail', 'User\HomeController@mail');
 

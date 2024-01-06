@@ -12,5 +12,6 @@ class AppConstant
     public static $HALF_DAY_HOUR = '04:00:00';
     public static $FULL_DAY_HOUR = '08:00:00';
     public static $INCENTIVE_HOUR = '12:00:00';
+    public static $PLANT = 'NFE';
 
 }

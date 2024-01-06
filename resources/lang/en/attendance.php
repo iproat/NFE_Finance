@@ -80,4 +80,5 @@ return [
   'shift_details' => 'Shift Detail',
   'comp_off' => 'Comp Off',
   'incentive' => 'Incentive',
+  'attendance_detailed_report' => 'Detailed Report',
 ];

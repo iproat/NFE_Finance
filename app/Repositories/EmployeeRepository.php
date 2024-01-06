@@ -48,7 +48,24 @@ class EmployeeRepository
 
         return $options;
     }
-
+    public function nationality()
+    {
+        $results = ['Omanis', 'Expats'];
+        $options = ['' => '---- Please select ----'];
+        foreach ($results as $key => $value) {
+            $options[$key] = $value;
+        }
+        return $options;
+    }
+    public function religion()
+    {
+        $results = ['Muslim', 'Non-Muslim'];
+        $options = ['' => '---- Please select ----'];
+        foreach ($results as $key => $value) {
+            $options[$key] = $value;
+        }
+        return $options;
+    }
     public function makeEmployeeAccountDataFormat($data, $action = false)
     {
 
@@ -113,8 +130,64 @@ class EmployeeRepository
         $employeeData['document_expiry5'] = $data['document_expiry5'];
         if (isset($data['document_file5'])) {
             $employeeData['document_name5'] = date('Y_m_d_H_i_s') . '_' . $data['document_file5']->getClientOriginalName();
+        }  $employeeData['document_title8'] = $data['document_title8'];
+
+        if (isset($data['document_file8'])) {
+            $employeeData['document_name8'] = date('Y_m_d_H_i_s') . '_' . $data['document_file8']->getClientOriginalName();
+        }
+        $employeeData['document_title9'] = $data['document_title9'];
+
+        if (isset($data['document_file9'])) {
+            $employeeData['document_name9'] = date('Y_m_d_H_i_s') . '_' . $data['document_file9']->getClientOriginalName();
+        }
+        $employeeData['document_title10'] = $data['document_title10'];
+
+        if (isset($data['document_file10'])) {
+            $employeeData['document_name10'] = date('Y_m_d_H_i_s') . '_' . $data['document_file10']->getClientOriginalName();
+        }
+        $employeeData['document_title11'] = $data['document_title11'];
+
+        if (isset($data['document_file11'])) {
+            $employeeData['document_name11'] = date('Y_m_d_H_i_s') . '_' . $data['document_file11']->getClientOriginalName();
+        }
+        $employeeData['document_title16'] = $data['document_title16'];
+
+        if (isset($data['document_file16'])) {
+            $employeeData['document_name16'] = date('Y_m_d_H_i_s') . '_' . $data['document_file16']->getClientOriginalName();
         }
 
+        $employeeData['document_title17'] = $data['document_title17'];
+
+        if (isset($data['document_file17'])) {
+            $employeeData['document_name17'] = date('Y_m_d_H_i_s') . '_' . $data['document_file17']->getClientOriginalName();
+        }
+
+        $employeeData['document_title18'] = $data['document_title18'];
+
+        if (isset($data['document_file18'])) {
+            $employeeData['document_name18'] = date('Y_m_d_H_i_s') . '_' . $data['document_file18']->getClientOriginalName();
+        }
+
+        $employeeData['document_title19'] = $data['document_title19'];
+
+        if (isset($data['document_file19'])) {
+            $employeeData['document_name19'] = date('Y_m_d_H_i_s') . '_' . $data['document_file19']->getClientOriginalName();
+        }
+
+        $employeeData['document_title20'] = $data['document_title20'];
+
+        if (isset($data['document_file20'])) {
+            $employeeData['document_name20'] = date('Y_m_d_H_i_s') . '_' . $data['document_file20']->getClientOriginalName();
+        }
+        $employeeData['expiry_date8'] = dateConvertFormtoDB($data['expiry_date8']);
+        $employeeData['expiry_date9'] = dateConvertFormtoDB($data['expiry_date9']);
+        $employeeData['expiry_date10'] = dateConvertFormtoDB($data['expiry_date10']);
+        $employeeData['expiry_date11'] = dateConvertFormtoDB($data['expiry_date11']);
+        $employeeData['expiry_date16'] = dateConvertFormtoDB($data['expiry_date16']);
+        $employeeData['expiry_date17'] = dateConvertFormtoDB($data['expiry_date17']);
+        $employeeData['expiry_date18'] = dateConvertFormtoDB($data['expiry_date18']);
+        $employeeData['expiry_date19'] = dateConvertFormtoDB($data['expiry_date19']);
+        $employeeData['expiry_date20'] = dateConvertFormtoDB($data['expiry_date20']);
         $employeeData['department_id'] = $data['department_id'];
 
         $employeeData['designation_id'] = $data['designation_id'];
@@ -151,9 +224,10 @@ class EmployeeRepository
 
         $employeeData['emergency_contacts'] = $data['emergency_contacts'];
 
-        $employeeData['gender'] = $data['gender'];
+        $employeeData['gender'] = $data['gender'] == 'Male' ? 0 : 1;
 
         $employeeData['religion'] = $data['religion'];
+        $employeeData['nationality'] = $data['nationality'];
         $employeeData['incentive'] = $data['incentive'];
         $employeeData['salary_limit'] = $data['salary_limit'];
 

@@ -265,11 +265,11 @@
 
                                         <a href="javacript:void(0)" data-status=2
                                             data-leave_application_id="{{ $leaveApplication->leave_application_id }}"
-                                            class="btn remarksForLeave btn btn-rounded btn-success btn-outline m-r-5"><i
+                                            class="btn remarksForManagerLeave btn btn-rounded btn-success btn-outline m-r-5"><i
                                                 class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
                                         <a href="javacript:void(0)" data-status=3
                                             data-leave_application_id="{{ $leaveApplication->leave_application_id }}"
-                                            class="btn-rounded remarksForLeave btn btn-danger btn-outline"><i
+                                            class="btn-rounded remarksForManagerLeave btn btn-danger btn-outline"><i
                                                 class="ti-close text-danger m-r-5"></i> @lang('common.reject')</a>
                                     </div>
                                 </div>

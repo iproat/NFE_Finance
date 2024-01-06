@@ -159,7 +159,33 @@ class LeaveRepository
 
         return $data;
     }
-
+    public function nationality()
+    {
+        $results = ['Omanis', 'Expats', 'Both'];
+        $options = ['' => '---- Please select ----'];
+        foreach ($results as $key => $value) {
+            $options[$key] = $value;
+        }
+        return $options;
+    }
+    public function religion()
+    {
+        $results = ['Muslim', 'Non-Muslim', 'Both'];
+        $options = ['' => '---- Please select ----'];
+        foreach ($results as $key => $value) {
+            $options[$key] = $value;
+        }
+        return $options;
+    }
+    public function gender()
+    {
+        $results = ['Male', 'Female', 'Both'];
+        $options = ['' => '---- Please select ----'];
+        foreach ($results as $key => $value) {
+            $options[$key] = $value;
+        }
+        return $options;
+    }
     public function calculateEmployeeLeaveBalanceArray($leave_type_id, $employee_id)
     {
 

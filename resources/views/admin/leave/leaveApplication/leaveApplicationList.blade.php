@@ -249,7 +249,6 @@
         var actionTo = "{{ URL::to('approveOrRejectManagerLeaveApplication') }}";
         var leave_application_id = $(this).attr('data-leave_application_id');
         var status = $(this).attr('data-status');
-        alert(leave_application_id);
         if (status == 2) {
             var statusText = "Are you want to approve Leave application?";
             var btnColor = "#2cabe3";

@@ -106,7 +106,7 @@ class EmployeeController extends Controller
 
         $operationManagerList = Employee::with('user')
             ->whereHas('user', function ($query) {
-                $query->whereIn('role_id', [1, 2,3]);
+                $query->whereIn('role_id', [1, 2, 3]);
             })
             ->where('status', 1)
             ->get();
@@ -116,6 +116,8 @@ class EmployeeController extends Controller
         $incentive = $this->employeeRepositories->incentive();
         $salaryLimit = $this->employeeRepositories->salaryLimit();
         $workShift = $this->employeeRepositories->workShift();
+        $nationality = $this->employeeRepositories->nationality();
+        $religion = $this->employeeRepositories->religion();
         // $workHours = $this->employeeRepositories->workHours();
         $data = [
             'userList' => $userList,
@@ -131,6 +133,8 @@ class EmployeeController extends Controller
             'incentive' => $incentive,
             'salaryLimit' => $salaryLimit,
             'workShift' => $workShift,
+            'nationality' => $nationality,
+            'religion' => $religion,
             // 'workHours' => $workHours,
 
         ];
@@ -140,13 +144,23 @@ class EmployeeController extends Controller
 
     public function store(EmployeeRequest $request)
     {
-        //  dd($request->all());
+        //   dd($request->all());
         $photo = $request->file('photo');
         $document = $request->file('document_file');
         $document2 = $request->file('document_file2');
         $document3 = $request->file('document_file3');
         $document4 = $request->file('document_file4');
         $document5 = $request->file('document_file5');
+        $document8 = $request->file('document_file8');
+        $document9 = $request->file('document_file9');
+        $document10 = $request->file('document_file10');
+        $document11 = $request->file('document_file11');
+        $document16 = $request->file('document_file16');
+        $document17 = $request->file('document_file17');
+        $document18 = $request->file('document_file18');
+        $document19 = $request->file('document_file19');
+        $document20 = $request->file('document_file20');
+        $document21 = $request->file('document_file21');
 
         if ($photo) {
             $imgName = md5(str_random(30) . time() . '_' . $request->file('photo')) . '.' . $request->file('photo')->getClientOriginalExtension();
@@ -177,6 +191,61 @@ class EmployeeController extends Controller
             $document_name5 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file5')->getClientOriginalName();
             $request->file('document_file5')->move('uploads/employeeDocuments/', $document_name5);
             $employeeDocument['document_file5'] = $document_name5;
+        }
+        if ($document8) {
+            $document_name8 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file8')->getClientOriginalName();
+            $request->file('document_file8')->move('uploads/employeeDocuments/', $document_name8);
+            $employeeDocument['document_file8'] = $document_name8;
+        }
+        if ($document9) {
+            $document_name9 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file9')->getClientOriginalName();
+            $request->file('document_file9')->move('uploads/employeeDocuments/', $document_name9);
+            $employeeDocument['document_file9'] = $document_name9;
+        }
+        if ($document10) {
+            $document_name10 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file10')->getClientOriginalName();
+            $request->file('document_file10')->move('uploads/employeeDocuments/', $document_name10);
+            $employeeDocument['document_file10'] = $document_name10;
+        }
+        if ($document11) {
+            $document_name11 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file11')->getClientOriginalName();
+            $request->file('document_file11')->move('uploads/employeeDocuments/', $document_name11);
+            $employeeDocument['document_file11'] = $document_name11;
+        }
+        if ($document16) {
+            $document_name16 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file16')->getClientOriginalName();
+            $request->file('document_file16')->move('uploads/employeeDocuments/', $document_name16);
+            $employeeDocument['document_file16'] = $document_name16;
+        }
+
+        if ($document17) {
+            $document_name17 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file17')->getClientOriginalName();
+            $request->file('document_file17')->move('uploads/employeeDocuments/', $document_name17);
+            $employeeDocument['document_file17'] = $document_name17;
+        }
+
+        if ($document18) {
+            $document_name18 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file18')->getClientOriginalName();
+            $request->file('document_file18')->move('uploads/employeeDocuments/', $document_name18);
+            $employeeDocument['document_file18'] = $document_name18;
+        }
+
+        if ($document19) {
+            $document_name19 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file19')->getClientOriginalName();
+            $request->file('document_file19')->move('uploads/employeeDocuments/', $document_name19);
+            $employeeDocument['document_file19'] = $document_name19;
+        }
+
+        if ($document20) {
+            $document_name20 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file20')->getClientOriginalName();
+            $request->file('document_file20')->move('uploads/employeeDocuments/', $document_name20);
+            $employeeDocument['document_file20'] = $document_name20;
+        }
+
+        if ($document21) {
+            $document_name21 = date('Y_m_d_H_i_s') . '_' . $request->file('document_file21')->getClientOriginalName();
+            $request->file('document_file21')->move('uploads/employeeDocuments/', $document_name21);
+            $employeeDocument['document_file21'] = $document_name21;
         }
 
         $employeeDataFormat = $this->employeeRepositories->makeEmployeePersonalInformationDataFormat($request->all());
@@ -232,8 +301,19 @@ class EmployeeController extends Controller
         $departmentList = Department::get();
         $designationList = Designation::get();
         $branchList = Branch::get();
-        $supervisorList = Employee::where('status', 1)->get();
-        $operationManagerList = Employee::where('status', 1)->get();
+        $supervisorList = Employee::with('user')
+            ->whereHas('user', function ($query) {
+                $query->whereIn('role_id', [1, 2]);
+            })
+            ->where('status', 1)
+            ->get();
+
+        $operationManagerList = Employee::with('user')
+            ->whereHas('user', function ($query) {
+                $query->whereIn('role_id', [1, 2, 3]);
+            })
+            ->where('status', 1)
+            ->get();
         // $hrList = Employee::where('status', 1)->get();
         $editModeData = Employee::findOrFail($id);
         $workShiftList = WorkShift::get();
@@ -243,6 +323,8 @@ class EmployeeController extends Controller
         $incentive = $this->employeeRepositories->incentive();
         $salaryLimit = $this->employeeRepositories->salaryLimit();
         $workShift = $this->employeeRepositories->workShift();
+        $nationality = $this->employeeRepositories->nationality();
+        $religion = $this->employeeRepositories->religion();
         // $workHours = $this->employeeRepositories->workHours();
 
         $employeeAccountEditModeData = User::where('user_id', $editModeData->user_id)->first();
@@ -268,6 +350,8 @@ class EmployeeController extends Controller
             'incentive' => $incentive,
             'salaryLimit' => $salaryLimit,
             'workShift' => $workShift,
+            'nationality' => $nationality,
+            'religion' => $religion,
             // 'workHours' => $workHours,
 
         ];
@@ -989,10 +1073,22 @@ class EmployeeController extends Controller
                 $Data->last_name,
                 $Data->date_of_birth,
                 $Data->date_of_joining,
-                $Data->gender,
+                $Data->gender == 0 ? 'Male' : 'Female',
                 $Data->marital_status,
                 $Data->address,
                 $Data->emergency_contacts,
+                $Data->religion = 0 ? 'Muslim' : 'Non-Muslim',
+                $Data->nationality = 0 ? 'Omanis' : 'Expats',
+                $Data->document_title8 ?? '',
+                $Data->expiry_date8 ?? '',
+                $Data->document_title9 ?? '',
+                $Data->expiry_date9 ?? '',
+                $Data->document_title10 ?? '',
+                $Data->expiry_date10 ?? '',
+                $Data->document_title11 ?? '',
+                $Data->expiry_date11 ?? '',
+                $Data->document_title16 ?? '',
+                $Data->expiry_date16 ?? '',
                 $Data->status == 0 ? 'No' : 'Yes',
 
             ];
@@ -1022,6 +1118,18 @@ class EmployeeController extends Controller
                 'MARITAL STATUS',
                 'ADDRESS',
                 'EMERGENCY CONTACT',
+                'RELIGION',
+                'NATIONALITY',
+                'PASSPORT NUMBER',
+                'PASSPORT EXPIRY DATE',
+                'VISA NUMBER',
+                'VISA EXPIRY DATE',
+                'DRIVINIG LICENCE NUMBER',
+                'DRIVINIG LICENCE EXPIRY DATE',
+                'RESIDENT CARD NUMBER',
+                'RESIDENT CARD EXPIRY DATE',
+                'CIVIL ID NUMBER',
+                'CIVIL ID EXPIRY DATE',
                 'STATUS',
             ],
         ];

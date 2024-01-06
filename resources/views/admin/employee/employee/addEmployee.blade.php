@@ -678,7 +678,21 @@
                                     </div>
 
                                 </div>
-
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="exampleInput">@lang('employee.religion')<span
+                                                class="validateRq">*</span></label>
+                                        {{ Form::select('religion', $religion, old('religion'), ['class' => 'form-control religion select2 required']) }}
+                                    </div>
+                                </div>
+                              
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="exampleInput">@lang('employee.nationality')<span
+                                                class="validateRq">*</span></label>
+                                        {{ Form::select('nationality', $nationality, old('nationality'), ['class' => 'form-control nationality select2 required']) }}
+                                    </div>
+                                </div>
 
                                 {{-- <div class="col-md-3" hidden>
 
@@ -705,6 +719,298 @@
                                 </div> --}}
                             </div>
 
+                        </div>
+                        <h3> Reminder Document Details</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Passport Number</label>
+                                    <input type="text" class="form-control" name="document_title8">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file8"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date8"
+                                            placeholder="Document Expiry" name="expiry_date8" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Visa Number</label>
+                                    <input type="text" class="form-control" name="document_title9">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file9"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date9"
+                                            placeholder="Document Expiry" name="expiry_date9" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Driving Licence Number</label>
+                                    <input type="text" class="form-control" name="document_title10">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file10"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date10"
+                                            placeholder="Document Expiry" name="expiry_date10" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Resident Card Number</label>
+                                    <input type="text" class="form-control" name="document_title11">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file11"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date11"
+                                            placeholder="Document Expiry" name="expiry_date11" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 5 Title</label>
+                                    <input type="text" class="form-control" name="document_title16">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file16"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 5 Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date16"
+                                            placeholder="Document Expiry" name="expiry_date16" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 6 Title</label>
+                                    <input type="text" class="form-control" name="document_title17">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file17"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 6 Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date17"
+                                            placeholder="Document Expiry" name="expiry_date17" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 7 Title</label>
+                                    <input type="text" class="form-control" name="document_title18">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file18"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 7 Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date18"
+                                            placeholder="Document Expiry" name="expiry_date18" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 8 Title</label>
+                                    <input type="text" class="form-control" name="document_title19">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file19"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 8 Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date19"
+                                            placeholder="Document Expiry" name="expiry_date19" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 9 Title</label>
+                                    <input type="text" class="form-control" name="document_title20">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file20"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 9 Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date20"
+                                            placeholder="Document Expiry" name="expiry_date20" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 10 Title</label>
+                                    <input type="text" class="form-control" name="document_title21">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Upload Document</label>
+                                    <input class="form-control photo" id="document-file"
+                                        accept="image/png, image/jpeg, application/pdf" name="document_file21"
+                                        type="file">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInput">Document 10 Expiry Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control dateField" readonly required id="expiry_date21"
+                                            placeholder="Document Expiry" name="expiry_date21" type="text"
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row" hidden>

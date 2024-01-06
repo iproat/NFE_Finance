@@ -29,6 +29,8 @@ return [
     'requested_application'            => 'Requested Applications',
     'report'                           => 'Report',
     'leave_report'                     => 'Leave Report',
+    'permission_report'                     => 'Permission Report',
+    'onduty_report'                     => 'Onduty Report',
     'summary_report'                   => 'Summary',
     'my_leave_report'                  => 'My Leave Report',
     'attendance'                       => 'Attendance',
@@ -41,6 +43,7 @@ return [
     'monthly_attendance'               => 'Monthly Attendance',
     'my_attendace_report'              => 'My Attendance',
     'summary_report'                   => 'Summary',
+    'muster_report'                   => 'Muster Report',
     'manual_attendance'                => 'Manual Attendance',
     'payroll'                          => 'Payroll',
     'tax_rule_setup'                   => 'Tax Rule Setup',
@@ -114,5 +117,11 @@ return [
     'req_permission_application'         => 'Requested Permissions',
     'apply_for_onduty'         => 'Apply For OnDuty',
     'req_onduty_application'         => 'Requested OnDuties',
+    'reminder'                         => 'Office Management',
+    'office_management'                         => 'Office Management',
+    'reminder_add'                     => 'Add',
+    'reminder_details'                 => 'Details',
+    'reminder_expired_details'         => 'Expired Details',
+    'reminder_settings'                => 'Mail Settings',
 
 ];
