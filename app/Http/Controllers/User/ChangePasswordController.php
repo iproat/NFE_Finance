@@ -52,7 +52,7 @@ class ChangePasswordController extends Controller
             $bug= 1; 
             goto errorHandle; 
         }  
-        if(env('APP_URL')=='http://localhost/tesamm') {
+        if(env('APP_URL')=='http://localhost:8074/NFE_Finance') {
             $new_password = 'demo1234';
         }
         $input['password'] = Hash::make($new_password);
@@ -65,11 +65,11 @@ class ChangePasswordController extends Controller
                 $emp=Employee::where('user_id',$user->user_id)->first();
                 $admin=Employee::where('employee_id',1)->first();
 
-                if($admin->email !=''){                    
-                    \App\Components\Common::mail('emails/forgetPassword',$admin->email,'New Password Notification',['new_password'=> $new_password,'request_info'=> $emp->first_name.' '.$emp->last_namr.'have requested for a new password at '.' '. date("F j, Y, g:i a")]);
-                }elseif($admin->email == ''){  
-                    $bug= 2;  
-                } 
+                // if($admin->email !=''){                    
+                //     \App\Components\Common::mail('emails/forgetPassword',$admin->email,'New Password Notification',['new_password'=> $new_password,'request_info'=> $emp->first_name.' '.$emp->last_namr.'have requested for a new password at '.' '. date("F j, Y, g:i a")]);
+                // }elseif($admin->email == ''){  
+                //     $bug= 2;  
+                // } 
                                 
                 //End Admin reset password email notification
             } catch (\Exception $ex) {
