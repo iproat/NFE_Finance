@@ -50,7 +50,7 @@
                             @endphp
 
                             @php
-                                if (decrypt(session('logged_session_data.role_id')) != 1 && decrypt(session('logged_session_data.role_id')) != 2) {
+                                if (decrypt(session('logged_session_data.role_id')) != 1 && decrypt(session('logged_session_data.role_id')) != 2 && decrypt(session('logged_session_data.role_id')) != 3) {
                                     $listStatus = [];
                                     $departmentList = [];
                                 }

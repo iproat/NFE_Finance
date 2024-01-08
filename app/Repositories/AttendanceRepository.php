@@ -24,7 +24,7 @@ class AttendanceRepository
         }
 
         $queryResults = DB::select("call `SP_DepartmentDailyAttendance`('" . $data . "', '" . $department_id . "','" . $attendance_status . "')");
-        // dd($queryResults);
+       
         $results = [];
 
         foreach ($queryResults as $value) {

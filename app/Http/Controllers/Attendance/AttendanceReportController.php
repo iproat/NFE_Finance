@@ -37,14 +37,18 @@ class AttendanceReportController extends Controller
     public function dailyAttendance(Request $request)
     {
         \set_time_limit(0);
-        $departmentList = Department::get();
+        if ((decrypt(session('logged_session_data.role_id'))) != 1 && (decrypt(session('logged_session_data.role_id'))) != 2) {
+            $departmentList = Department::where('department_id', decrypt(session('logged_session_data.department_id')))->get();
+        } else {
+            $departmentList = Department::get();
+        }
 
         $results = [];
 
         if ($_POST) {
 
             $results = $this->attendanceRepository->getEmployeeDailyAttendance($request->date, $request->department_id, $request->attendance_status);
-           
+
             // if (decrypt(session('logged_session_data.role_id')) == 1 || decrypt(session('logged_session_data.role_id')) == 2) {
             //     $results = $dailyAttendance;
             // }
@@ -81,6 +85,10 @@ class AttendanceReportController extends Controller
 
         if (decrypt(session('logged_session_data.role_id')) == 1 || decrypt(session('logged_session_data.role_id')) == 2) {
             $employeeList = Employee::get();
+        }
+        if (decrypt(session('logged_session_data.role_id')) == 3) {
+            $hasSupervisorWiseEmployee = Employee::select('employee_id')->where('operation_manager_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
+            $employeeList = Employee::whereIn('employee_id', array_values($hasSupervisorWiseEmployee))->get();
         }
 
         $results = [];
