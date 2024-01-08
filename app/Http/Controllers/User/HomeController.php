@@ -106,7 +106,7 @@ class HomeController extends Controller
             $start_time = WorkShift::orderBy('start_time', 'ASC')->first()->start_time;
             $minTime = date('Y-m-d H:i:s', strtotime('-15 minutes', strtotime($start_time)));
 
-            $attendanceData = MsSql::where('datetime', '>=', ($minTime))->where('type', 'IN')->whereIn('employee', array_values($hasSupervisorWiseEmployee))
+            $dailyData = MsSql::where('datetime', '>=', ($minTime))->where('type', 'IN')->whereIn('employee', array_values($hasSupervisorWiseEmployee))
                 ->groupBy('ms_sql.ID')->orderBy('ms_sql.datetime')->get();
 
             // $dailyData = $this->employee->select('employee_id', 'first_name', 'finger_id')->get();
@@ -173,7 +173,7 @@ class HomeController extends Controller
                 'ip_check_status' => $ip_check_status,
                 'count_user_login_today' => $count_user_login_today,
                 'dailyAttendanceData' => isset($dailyAttendanceData) ? $dailyAttendanceData : 0,
-                // 'dailyData' => $dailyData,
+                'dailyData' => $dailyData,
                 'last_log_date' => $last_log_date,
                 'setting_sync_live' => $setting_sync_live,
                 'notifications' => $notifications,
