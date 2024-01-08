@@ -197,10 +197,14 @@ class ReportController extends Controller
 
     public function summaryReport(Request $request)
     {
+        // dd($request->all())
         set_time_limit(0);
         if (decrypt(session('logged_session_data.role_id')) != 1 && decrypt(session('logged_session_data.role_id')) != 2) {
             $employeeList = Employee::where('status', 1)->where('employee.supervisor_id', decrypt(session('logged_session_data.employee_id')))
                 ->orwhere('employee.employee_id', decrypt(session('logged_session_data.employee_id')))->get();
+        }if ((decrypt(session('logged_session_data.role_id')) == 3)) {
+            $employeeList = Employee::where('status', 1)->where('employee.operation_manager_id', decrypt(session('logged_session_data.employee_id')))
+            ->orwhere('employee.employee_id', decrypt(session('logged_session_data.employee_id')))->get();
         } else {
             $employeeList = Employee::where('status', 1)->get();
         }

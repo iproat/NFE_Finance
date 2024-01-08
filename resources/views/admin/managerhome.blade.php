@@ -74,8 +74,61 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12" style="display:inline-table;">
+            <div class="panel">
+                <div class="panel-heading"><i class="mdi mdi-clipboard-text fa-fw"></i>
+                    @lang('dashboard.today_attendance')
+                </div>
+                <div class="table-responsive scroll-hide">
+                    <table class="table table-hover table-borderless manage-u-table">
+                        <thead>
+                            <tr>
+                                <td class="text-center">#</td>
+                                <td>@lang('dashboard.photo')</td>
+                                <td>Employee Id</td>
+                                <td class="text-truncate">@lang('common.name')</td>
+                                <td>Date-Time</td>
+                                <td>Device</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (count($attendanceData) > 0)
+                                {{ $dailyAttendanceSl = null }}
+                                @foreach ($attendanceData as $dailyAttendance)
+                                    <?php
+                                    $emp = Employee::where('finger_id', $dailyAttendance->ID)->first();
+                                    ?>
+                                    <tr>
+                                        <td class="text-center">{{ ++$dailyAttendanceSl }}</td>
+                                        <td>
+                                            @if (isset($dailyAttendance->photo) && $dailyAttendance->photo != '')
+                                                <img height="40" width="40" src="{!! asset('uploads/employeePhoto/' . $dailyAttendance->photo) !!}"
+                                                    alt="user-img" class="img-circle">
+                                            @else
+                                                <img height="40" width="40" src="{!! asset('admin_assets/img/default.png') !!}"
+                                                    alt="user-img" class="img-circle">
+                                            @endif
+                                        </td>
+                                        <td>{{ $dailyAttendance->ID }}</td>
+                                        <td>{{ $emp->first_name . ' ' . $emp->last_name }}</td>
+                                        <td>{{ $dailyAttendance->datetime }}</td>
+                                        <td>{{ $dailyAttendance->device_name }}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="8">@lang('common.no_data_available')</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
 
-        @if ($ip_attendance_status == 1)
+        {{-- @if ($ip_attendance_status == 1)
             <!-- employe attendance  -->
             @php
                 $logged_user = employeeInfo();
@@ -123,7 +176,7 @@
             </div>
 
             <!-- end attendance  -->
-        @endif
+        @endif --}}
 
         <div class="col-md-6">
             <div class="panel">
@@ -255,7 +308,8 @@
                                             class="time">{{ date(' d M Y h:i: a', $d) }}</span> <span
                                             class="label label-rouded label-info">PENDING</span>
                                         <br /><span class="mail-desc" style="max-height: none">
-                                            @lang('leave.leave_type') : {{ $leaveApplication->leaveType->leave_type_name }}<br>
+                                            @lang('leave.leave_type') :
+                                            {{ $leaveApplication->leaveType->leave_type_name }}<br>
                                             @lang('leave.request_duration') :
                                             {{ dateConvertDBtoForm($leaveApplication->application_from_date) }} To
                                             {{ dateConvertDBtoForm($leaveApplication->application_to_date) }}<br>
@@ -279,186 +333,184 @@
                 </div>
             </div>
         @endif
-       
+
         @if (count($permissionApplication) > 0)
-        <div class="col-md-6">
-            <div class="white-box">
-                <h3 class="box-title">@lang('dashboard.recent_permission_application')</h3>
-                <hr>
-                <div class="permissionApplication" style="max-height: 300px; overflow-y: auto;">
-                    @foreach ($permissionApplication as $permissionApplication)
-                        <div class="comment-center p-t-10 {{ $permissionApplication->leave_permission_id }}">
-                            <div class="comment-body">
-                                @if ($permissionApplication->employee->photo != '')
-                                    <div class="user-img"> <img src="{!! asset('uploads/employeePhoto/' . $permissionApplication->employee->photo) !!}" alt="user"
-                                            class="img-circle"></div>
-                                @else
-                                    <div class="user-img"> <img src="{!! asset('admin_assets/img/default.png') !!}" alt="user"
-                                            class="img-circle"></div>
-                                @endif
-                                <div class="mail-contnet">
-                                    @php
-                                        $d = strtotime($permissionApplication->created_at);
-                                    @endphp
-                                    <h5>{{ $permissionApplication->employee->first_name }}
-                                        {{ $permissionApplication->employee->last_name }}
-                                    </h5><span class="time">{{ date('d M Y h:i: a', $d) }}</span>
-                                    <span class="label label-rouded label-info">PENDING</span>
-                                    <br /><span class="mail-desc" style="max-height: none">
+            <div class="col-md-6">
+                <div class="white-box">
+                    <h3 class="box-title">@lang('dashboard.recent_permission_application')</h3>
+                    <hr>
+                    <div class="permissionApplication" style="max-height: 300px; overflow-y: auto;">
+                        @foreach ($permissionApplication as $permissionApplication)
+                            <div class="comment-center p-t-10 {{ $permissionApplication->leave_permission_id }}">
+                                <div class="comment-body">
+                                    @if ($permissionApplication->employee->photo != '')
+                                        <div class="user-img"> <img src="{!! asset('uploads/employeePhoto/' . $permissionApplication->employee->photo) !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @else
+                                        <div class="user-img"> <img src="{!! asset('admin_assets/img/default.png') !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @endif
+                                    <div class="mail-contnet">
+                                        @php
+                                            $d = strtotime($permissionApplication->created_at);
+                                        @endphp
+                                        <h5>{{ $permissionApplication->employee->first_name }}
+                                            {{ $permissionApplication->employee->last_name }}
+                                        </h5><span class="time">{{ date('d M Y h:i: a', $d) }}</span>
+                                        <span class="label label-rouded label-info">PENDING</span>
+                                        <br /><span class="mail-desc" style="max-height: none">
 
-                                        @lang('leave.request_duration') :
-                                        {{ $permissionApplication->from_time }}
-                                        To
-                                        {{ $permissionApplication->to_time }}<br>
-                                        @lang('leave.total_duration') :
-                                        {{ $permissionApplication->permission_duration }}
-                                        <br>
-                                        @lang('leave.purpose') :
-                                        {{ $permissionApplication->leave_permission_purpose }}
-                                    </span>
+                                            @lang('leave.request_duration') :
+                                            {{ $permissionApplication->from_time }}
+                                            To
+                                            {{ $permissionApplication->to_time }}<br>
+                                            @lang('leave.total_duration') :
+                                            {{ $permissionApplication->permission_duration }}
+                                            <br>
+                                            @lang('leave.purpose') :
+                                            {{ $permissionApplication->leave_permission_purpose }}
+                                        </span>
 
-                                    <a href="javacript:void(0)" data-status=2
-                                        data-leave_permission_id="{{ $permissionApplication->leave_permission_id }}"
-                                        class="btn remarksForManagerPermission btn btn-rounded btn-success btn-outline m-r-5"><i
-                                            class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
-                                    <a href="javacript:void(0)" data-status=3
-                                        data-leave_permission_id="{{ $permissionApplication->leave_permission_id }}"
-                                        class="btn-rounded remarksForManagerPermission btn btn-danger btn-outline"><i
-                                            class="ti-close text-danger m-r-5"></i>@lang('common.reject')</a>
+                                        <a href="javacript:void(0)" data-status=2
+                                            data-leave_permission_id="{{ $permissionApplication->leave_permission_id }}"
+                                            class="btn remarksForManagerPermission btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
+                                        <a href="javacript:void(0)" data-status=3
+                                            data-leave_permission_id="{{ $permissionApplication->leave_permission_id }}"
+                                            class="btn-rounded remarksForManagerPermission btn btn-danger btn-outline"><i
+                                                class="ti-close text-danger m-r-5"></i>@lang('common.reject')</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
-    @endif
-       
-    @if (count($ondutyApplication) > 0)
-    <div class="col-md-6">
-        <div class="white-box">
-            <h3 class="box-title">@lang('dashboard.recent_onduty_application')</h3>
-            <hr>
-            <div class="OnDutyApplication" style="max-height: 260px; overflow-y: auto;">
-                @foreach ($ondutyApplication as $ondutyApplication)
-                    <div class="comment-center p-t-10 {{ $ondutyApplication->on_duty_id }}">
-                        <div class="comment-body">
-                            @if ($ondutyApplication->employee->photo != '')
-                                <div class="user-img"> <img src="{!! asset('uploads/employeePhoto/' . $ondutyApplication->employee->photo) !!}" alt="user"
-                                        class="img-circle"></div>
-                            @else
-                                <div class="user-img"> <img src="{!! asset('admin_assets/img/default.png') !!}" alt="user"
-                                        class="img-circle"></div>
-                            @endif
-                            <div class="mail-contnet">
-                                @php
-                                    $d = strtotime($ondutyApplication->created_at);
-                                @endphp
-                                <h5>{{ $ondutyApplication->employee->first_name }}
-                                    {{ $ondutyApplication->employee->last_name }}
-                                </h5><span class="time">{{ date('d M Y h:i: a', $d) }}</span>
-                                <span class="label label-rouded label-info">PENDING</span>
-                                <br /><span class="mail-desc" style="max-height: none">
+        @endif
 
-                                    @lang('leave.request_duration') :
-                                    {{ dateConvertDBtoForm($ondutyApplication->application_from_date) }}
-                                    To
-                                    {{ dateConvertDBtoForm($ondutyApplication->application_to_date) }}<br>
-                                    @lang('leave.number_of_day') : {{ $ondutyApplication->no_of_days }}
-                                    <br>
-                                    @lang('leave.purpose') : {{ $ondutyApplication->purpose }}
-                                </span>
+        @if (count($ondutyApplication) > 0)
+            <div class="col-md-6">
+                <div class="white-box">
+                    <h3 class="box-title">@lang('dashboard.recent_onduty_application')</h3>
+                    <hr>
+                    <div class="OnDutyApplication" style="max-height: 260px; overflow-y: auto;">
+                        @foreach ($ondutyApplication as $ondutyApplication)
+                            <div class="comment-center p-t-10 {{ $ondutyApplication->on_duty_id }}">
+                                <div class="comment-body">
+                                    @if ($ondutyApplication->employee->photo != '')
+                                        <div class="user-img"> <img src="{!! asset('uploads/employeePhoto/' . $ondutyApplication->employee->photo) !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @else
+                                        <div class="user-img"> <img src="{!! asset('admin_assets/img/default.png') !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @endif
+                                    <div class="mail-contnet">
+                                        @php
+                                            $d = strtotime($ondutyApplication->created_at);
+                                        @endphp
+                                        <h5>{{ $ondutyApplication->employee->first_name }}
+                                            {{ $ondutyApplication->employee->last_name }}
+                                        </h5><span class="time">{{ date('d M Y h:i: a', $d) }}</span>
+                                        <span class="label label-rouded label-info">PENDING</span>
+                                        <br /><span class="mail-desc" style="max-height: none">
 
-                                <a href="javacript:void(0)" data-status=2
-                                    data-on_duty_id="{{ $ondutyApplication->on_duty_id }}"
-                                    class="btn remarksForManagerOnDuty btn btn-rounded btn-success btn-outline m-r-5"><i
-                                        class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
-                                <a href="javacript:void(0)" data-status=3
-                                    data-on_duty_id="{{ $ondutyApplication->on_duty_id }}"
-                                    class="btn-rounded remarksForManagerOnDuty btn btn-danger btn-outline"><i
-                                        class="ti-close text-danger m-r-5"></i>@lang('common.reject')</a>
+                                            @lang('leave.request_duration') :
+                                            {{ dateConvertDBtoForm($ondutyApplication->application_from_date) }}
+                                            To
+                                            {{ dateConvertDBtoForm($ondutyApplication->application_to_date) }}<br>
+                                            @lang('leave.number_of_day') : {{ $ondutyApplication->no_of_days }}
+                                            <br>
+                                            @lang('leave.purpose') : {{ $ondutyApplication->purpose }}
+                                        </span>
+
+                                        <a href="javacript:void(0)" data-status=2
+                                            data-on_duty_id="{{ $ondutyApplication->on_duty_id }}"
+                                            class="btn remarksForManagerOnDuty btn btn-rounded btn-success btn-outline m-r-5"><i
+                                                class="ti-check text-success m-r-5"></i>@lang('common.approve')</a>
+                                        <a href="javacript:void(0)" data-status=3
+                                            data-on_duty_id="{{ $ondutyApplication->on_duty_id }}"
+                                            class="btn-rounded remarksForManagerOnDuty btn btn-danger btn-outline"><i
+                                                class="ti-close text-danger m-r-5"></i>@lang('common.reject')</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
-        </div>
-    </div>
-@endif
-        
+        @endif
+
 
     </div>
 
     <div class="row">
         <!-- up comming birthday  -->
-        <div class="row">
-            @if (count($upcoming_birtday) > 0)
-                <div class="col-md-6 col-lg-6 col-sm-12">
-                    <div class="white-box">
-                        <h3 class="box-title">@lang('dashboard.upcoming_birthday')</h3>
-                        <hr>
-                        <div class="leaveApplication">
-                            @foreach ($upcoming_birtday as $employee_birthdate)
-                                <div class="comment-center p-t-10">
-                                    <div class="comment-body">
-                                        @if ($employee_birthdate->photo != '')
-                                            <div class="user-img"> <img src="{!! asset('uploads/employeePhoto/' . $employee_birthdate->photo) !!}" alt="user"
-                                                    class="img-circle"></div>
-                                        @else
-                                            <div class="user-img"> <img src="{!! asset('admin_assets/img/default.png') !!}" alt="user"
-                                                    class="img-circle"></div>
-                                        @endif
-                                        <div class="mail-contnet">
+        @if (count($upcoming_birtday) > 0)
+            <div class="col-md-6 col-lg-6 col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">@lang('dashboard.upcoming_birthday')</h3>
+                    <hr>
+                    <div class="leaveApplication">
+                        @foreach ($upcoming_birtday as $employee_birthdate)
+                            <div class="comment-center p-t-10">
+                                <div class="comment-body">
+                                    @if ($employee_birthdate->photo != '')
+                                        <div class="user-img"> <img src="{!! asset('uploads/employeePhoto/' . $employee_birthdate->photo) !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @else
+                                        <div class="user-img"> <img src="{!! asset('admin_assets/img/default.png') !!}" alt="user"
+                                                class="img-circle"></div>
+                                    @endif
+                                    <div class="mail-contnet">
 
-                                            @php
-                                                $date_of_birth = $employee_birthdate->date_of_birth;
-                                                $separate_date = explode('-', $date_of_birth);
+                                        @php
+                                            $date_of_birth = $employee_birthdate->date_of_birth;
+                                            $separate_date = explode('-', $date_of_birth);
 
-                                                $date_current_year = date('Y') . '-' . $separate_date[1] . '-' . $separate_date[2];
+                                            $date_current_year = date('Y') . '-' . $separate_date[1] . '-' . $separate_date[2];
 
-                                                $create_date = date_create($date_current_year);
-                                            @endphp
+                                            $create_date = date_create($date_current_year);
+                                        @endphp
 
-                                            <h5>{{ $employee_birthdate->first_name }}
-                                                {{ $employee_birthdate->last_name }}</h5><span
-                                                class="time">{{ date_format(date_create($employee_birthdate->date_of_birth), 'D dS F Y') }}</span>
-                                            <br />
+                                        <h5>{{ $employee_birthdate->first_name }}
+                                            {{ $employee_birthdate->last_name }}</h5><span
+                                            class="time">{{ date_format(date_create($employee_birthdate->date_of_birth), 'D dS F Y') }}</span>
+                                        <br />
 
-                                            <span class="mail-desc">
-                                                @if ($date_current_year == date('Y-m-d'))
-                                                    <b>Today is
-                                                        @if ($employee_birthdate->gender == 'Male')
-                                                            His
-                                                        @else
-                                                            Her
-                                                        @endif
-                                                        Birtday Wish
-                                                        @if ($employee_birthdate->gender == 'Male')
-                                                            Him
-                                                        @else
-                                                            Her
-                                                        @endif
-                                                    </b>
-                                                @else
-                                                    Wish
+                                        <span class="mail-desc">
+                                            @if ($date_current_year == date('Y-m-d'))
+                                                <b>Today is
+                                                    @if ($employee_birthdate->gender == 'Male')
+                                                        His
+                                                    @else
+                                                        Her
+                                                    @endif
+                                                    Birtday Wish
                                                     @if ($employee_birthdate->gender == 'Male')
                                                         Him
                                                     @else
                                                         Her
                                                     @endif
-                                                    on {{ date_format($create_date, 'D dS F Y') }}
+                                                </b>
+                                            @else
+                                                Wish
+                                                @if ($employee_birthdate->gender == 'Male')
+                                                    Him
+                                                @else
+                                                    Her
                                                 @endif
-                                            </span>
-                                        </div>
+                                                on {{ date_format($create_date, 'D dS F Y') }}
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-            @endif
-        </div>
+        @endif
     </div>
+</div>
 
 
 

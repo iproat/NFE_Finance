@@ -103,11 +103,11 @@ class HomeController extends Controller
                     ->orderBy('on_duty_id', 'desc')
                     ->get();
             }
-            // $start_time = WorkShift::orderBy('start_time', 'ASC')->first()->start_time;
-            // $minTime = date('Y-m-d H:i:s', strtotime('-15 minutes', strtotime($start_time)));
+            $start_time = WorkShift::orderBy('start_time', 'ASC')->first()->start_time;
+            $minTime = date('Y-m-d H:i:s', strtotime('-15 minutes', strtotime($start_time)));
 
-            // $attendanceData = MsSql::where('datetime', '>=', ($minTime))->where('type', 'IN')
-            //     ->groupBy('ms_sql.ID')->orderBy('ms_sql.datetime')->get();
+            $attendanceData = MsSql::where('datetime', '>=', ($minTime))->where('type', 'IN')->whereIn('employee', array_values($hasSupervisorWiseEmployee))
+                ->groupBy('ms_sql.ID')->orderBy('ms_sql.datetime')->get();
 
             // $dailyData = $this->employee->select('employee_id', 'first_name', 'finger_id')->get();
 
