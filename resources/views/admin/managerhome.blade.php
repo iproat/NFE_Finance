@@ -1,3 +1,6 @@
+<?php
+use App\Model\Employee;
+?>
 @extends('admin.master')
 @section('content')
 @section('title')
