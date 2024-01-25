@@ -93,6 +93,8 @@ class ApplyForPermissionController extends Controller
                 $maildata = Common::mail('emails/mail', $hod->email, 'Permission Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for Permission (for ' . $request->purpose . ')Application Date ' . ' ' . dateConvertFormtoDB($request->permission_date) . ' fromTime ' . ' ' . $request->from_time . ' toTime ' . $request->from_time, 'status_info' => '']);
             }
             $input['manager_status'] =2;
+            $input['manager_approve_date'] = date('Y-m-d');
+            $input['manager_approved_by'] = $request->employee_id;    
         }else{
             $if_exists = LeavePermission::where('employee_id', $request->employee_id)->where('leave_permission_date', dateConvertFormtoDB($request->permission_date))->first();
 

@@ -16,7 +16,7 @@ class LeaveApplication extends Model
 
   protected $fillable = [
     'leave_application_id', 'branch_id', 'employee_id', 'leave_type_id', 'application_from_date', 'application_to_date', 'application_date',
-    'number_of_day', 'approve_date', 'approve_by', 'reject_date', 'reject_by', 'purpose', 'remarks', 'status','manager_status'
+    'number_of_day', 'approve_date', 'approve_by', 'reject_date', 'reject_by', 'purpose', 'remarks', 'status','manager_status','manager_approved_by','manager_reject_by','manager_approve_date','manager_reject_date'
   ];
 
   public function employee()
@@ -42,6 +42,15 @@ class LeaveApplication extends Model
   public function rejectBy()
   {
     return $this->belongsTo(Employee::class, 'reject_by', 'employee_id');
+  }
+  public function managerApproveBy()
+  {
+    return $this->belongsTo(Employee::class, 'manager_approved_by', 'employee_id');
+  }
+
+  public function managerRejectBy()
+  {
+    return $this->belongsTo(Employee::class, 'manager_reject_by', 'employee_id');
   }
 
   public function leaveType()

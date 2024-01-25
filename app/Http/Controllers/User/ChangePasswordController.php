@@ -36,61 +36,74 @@ class ChangePasswordController extends Controller
     }
 
     public function newPassword(Request $request)
-    {
-        $bug= 0;
-        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-        $pass = array(); //remember to declare $pass as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < 8; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        $new_password = implode($pass); //turn the array into a string 
-       
-        $user = User::where('user_name', $request->user_name)->first();
-        if($user == ''){
-            $bug= 1; 
-            goto errorHandle; 
-        }  
-        if(env('APP_URL')=='http://localhost:8074/NFE_Finance') {
-            $new_password = 'demo1234';
-        }
-        $input['password'] = Hash::make($new_password);
-        $input['org_password'] = $new_password;
-        $userupdate = User::where('user_id', $user->user_id)->update($input);
-       
-        if($userupdate){
-            try{
-                //Admin reset password email notification 
-                $emp=Employee::where('user_id',$user->user_id)->first();
-                $admin=Employee::where('employee_id',1)->first();
+{
+    $bug = 0;
 
-                if($admin->email !=''){                    
-                    \App\Components\Common::mail('emails/forgetPassword',$admin->email,'New Password Notification',['new_password'=> $new_password,'request_info'=> $emp->first_name.' '.$emp->last_namr.'have requested for a new password at '.' '. date("F j, Y, g:i a")]);
-                }elseif($admin->email == ''){  
-                    $bug= 2;  
-                } 
-                                
-                //End Admin reset password email notification
-            } catch (\Exception $ex) {
-                return $ex;
-               $bug= 3;
-
-            } 
-        }
-        errorHandle:
-        if($bug == 0){
-            return redirect()->back()->with('success', 'New Password Sent To Admin Email.');
-        }elseif($bug == 1){
-            return redirect()->back()->with('error', 'Invalid User ID.');
-        }elseif($bug == 2){
-            return redirect()->back()->with('error', 'Admin Email Not Given.');
-        } else{
-            return redirect()->back()->with('error', 'Something Went Wrong.');
-        }
-          
-        
+    // Generate a random password
+    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+    $pass = [];
+    $alphaLength = strlen($alphabet) - 1;
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
     }
+    $new_password = implode($pass);
+
+    $user = User::where('user_name', $request->user_name)->first();
+    if (!$user) {
+        $bug = 1;
+        goto errorHandle;
+    }
+
+    if (env('APP_URL') == 'http://localhost:8074/NFE_Finance') {
+        // Use a default password for local development
+        $new_password = 'demo1234';
+    }
+
+    $input['password'] = Hash::make($new_password);
+    $input['org_password'] = $new_password;
+    $userupdate = User::where('user_id', $user->user_id)->update($input);
+
+    if ($userupdate) {
+        try {
+            // Admin reset password email notification
+            $emp = Employee::where('user_id', $user->user_id)->first();
+            $admin = Employee::where('employee_id', 1)->first();
+
+            if ($admin->email != '') {
+                \App\Components\Common::mail(
+                    'emails/forgetPassword',
+                    $admin->email,
+                    'New Password Notification',
+                    [
+                        'new_password' => $new_password,
+                        'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for a new password at ' . date("F j, Y, g:i a")
+                    ]
+                );
+            } elseif ($admin->email == '') {
+                $bug = 2;
+            }
+
+            // End Admin reset password email notification
+        } catch (\Exception $ex) {
+            // info($ex);
+            $bug = 3;
+        }
+    }
+
+    errorHandle:
+
+    if ($bug == 0) {
+        return redirect()->back()->with('success', 'New Password Sent To Admin Email.');
+    } elseif ($bug == 1) {
+        return redirect()->back()->with('error', 'Invalid User ID.');
+    } elseif ($bug == 2) {
+        return redirect()->back()->with('error', 'Admin Email Not Given.');
+    } else {
+        return redirect()->back()->with('error', 'Something Went Wrong.');
+    }
+}
+
 
 
 }

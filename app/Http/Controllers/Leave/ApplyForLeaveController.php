@@ -2,25 +2,18 @@
 
 namespace App\Http\Controllers\Leave;
 
-use App\User;
 use Carbon\Carbon;
 use App\Model\Employee;
 use App\Model\LeaveType;
 use App\Components\Common;
 use Illuminate\Http\Request;
 use App\Model\LeaveApplication;
-use App\Mail\LeaveApplicationMail;
-use Illuminate\Support\Facades\DB;
 use App\Model\PaidLeaveApplication;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use App\Repositories\LeaveRepository;
 use App\Repositories\CommonRepository;
-use App\Notifications\LeaveNotification;
 use App\Http\Requests\ApplyForLeaveRequest;
-use Illuminate\Support\Facades\Notification;
 
 class ApplyForLeaveController extends Controller
 {
@@ -46,9 +39,8 @@ class ApplyForLeaveController extends Controller
 
     public function create()
     {
-        $leaveTypeList = $this->commonRepository->leaveTypeList();
         $getEmployeeInfo = $this->commonRepository->getEmployeeInfo(Auth::user()->user_id);
-
+        $leaveTypeList = $this->commonRepository->leaveTypeList();
         $leaveType = LeaveType::sum('num_of_day');
         $totalPaidLeaveTaken = PaidLeaveApplication::where('employee_id', Auth::user()->user_id)->where('status', 2)->where('created_at', Carbon::now()->year)->pluck('number_of_day');
         $totalLeaveTaken = LeaveApplication::where('employee_id', Auth::user()->user_id)->where('status', 2)->whereYear('created_at', Carbon::now()->year)->pluck('number_of_day');
@@ -305,6 +297,8 @@ class ApplyForLeaveController extends Controller
 
                 if (!$checkLeave) {
                     $input['manager_status'] = 2;
+                    $input['manager_approved_by'] = $request->employee_id;
+                    $input['manager_approve_date'] = date('Y-m-d');
                     $data = LeaveApplication::create($input);
                     $leaveType = LeaveType::where('leave_type_id', $input['leave_type_id'])->first();
 
@@ -320,9 +314,7 @@ class ApplyForLeaveController extends Controller
                     $data = LeaveApplication::create($input);
                     $leaveType = LeaveType::where('leave_type_id', $input['leave_type_id'])->first();
 
-                    // if ($hod->email) {
-                    //     $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . '. have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
-                    // }
+                  
                     if ($manager->email) {
                         $maildata = Common::mail('emails/mail', $manager->email, 'Leave Request Notification', ['head_name' => $manager->first_name . ' ' . $manager->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . '. have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
                     }

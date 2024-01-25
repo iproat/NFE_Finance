@@ -32,8 +32,8 @@ return [
     'leave_summary_report' => 'Leave Summary Report',
     'my_leave_report' => 'My Leave Report',
     'applied_date' => 'Applied Date',
-    'approve_by' => 'Approve BY',
-    'approve_date' => 'Approve Date',
+    'approve_by' => 'ApprovalBy',
+    'approve_date' => 'ApprovalDate',
     'reject_date' => 'Reject Date',
     'purpose' => 'Purpose',
     'number_of_days' => 'Number of Days',
@@ -81,5 +81,11 @@ return [
     'od_duration'         => 'OnDuty Duration',
     'nationality'=>'Nationality',
     'religion'=>'Religion',
+    'manager_reject_date' => 'ManagerRejectionDate',
+    'manager_reject_by' => 'ManagerRejectionBy',
+    'manager_approve_by' => 'ManagerApprovalBy',
+    'manager_approve_date' => 'ManagerApprovalDate',    
+    'reject_date'=>'RejectionDate',
+    'reject_by'=>'RejectionBy',
 
 ];

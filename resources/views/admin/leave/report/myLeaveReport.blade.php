@@ -104,48 +104,109 @@
                             </h4>
                         @endif --}}
                         @if (!empty($results))
-                            <div class="table-responsive" style="font-size: 12px;">
-                                <table id="myDataTable" class="table table-bordered">
-                                    <thead class="tr_header">
+                        <div class="table-responsive" style="font-size: 12px;">
+                            <table id="myDataTable" class="table table-bordered">
+                                <thead class="tr_header">
+                                    <tr>
+                                        <th style="width:100px;">@lang('common.serial')</th>
+                                        <th>@lang('leave.employee')</th>
+                                        <th>@lang('leave.employee_id')</th>
+                                        <th>@lang('leave.department')</th>
+                                        <th>@lang('leave.leave_type')</th>
+                                        <th>@lang('leave.applied_date')</th>
+                                        <th>@lang('leave.request_duration')</th>
+                                        <th>@lang('leave.approve_by')</th>
+                                        <th>@lang('leave.approve_date')</th>
+                                        <th>@lang('leave.reject_by')</th>
+                                        <th>@lang('leave.reject_date')</th>
+                                        <th>@lang('leave.manager_approve_by')</th>
+                                        <th>@lang('leave.manager_approve_date')</th>
+                                        <th>@lang('leave.manager_reject_by')</th>
+                                        <th>@lang('leave.manager_reject_date')</th>
+                                        <th>@lang('leave.purpose')</th>
+                                        <th>@lang('leave.number_of_day')</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{ $sl = null }}
+                                    @foreach ($results as $value)
+                                        @php
+                                            // dd($value->managerApproveBy->first_name);
+                                        @endphp
                                         <tr>
-                                            <th style="width:100px;">@lang('common.serial')</th>
-                                            <th>@lang('leave.leave_type')</th>
-                                            <th>@lang('leave.applied_date')</th>
-                                            <th>@lang('leave.request_duration')</th>
-                                            <th>Approved BY</th>
-                                            <th>Approved Date</th>
-                                            <th>@lang('leave.purpose')</th>
-                                            <th>@lang('leave.number_of_day')</th>
+                                            <td>{{ ++$sl }}</td>
+                                            <td>{{ $value->employee->first_name . ' ' . $value->employee->last_name }}
+                                            </td>
+                                            <td>{{ $value->employee->finger_id }}</td>
+                                            @php
+                                                $dept = App\Model\Department::where('department_id', $value->employee->department_id)->first();
+                                            @endphp
+                                            <td>{{ $dept ? $dept->department_name : 'NA' }}
+                                            </td>
+                                            <td>
+                                                @if ($value->leaveType->leave_type_name)
+                                                    {{ $value->leaveType->leave_type_name }}
+                                                @endif
+                                            </td>
+                                            <td>{{ dateConvertDBtoForm($value->application_date) }}</td>
+                                            <td>{{ dateConvertDBtoForm($value->application_from_date) }}
+                                                <b>to</b>
+                                                {{ dateConvertDBtoForm($value->application_to_date) }}
+                                            </td>
+                                            <td>
 
+                                                @if ($value->approveBy->first_name != null)
+                                                    {{ $value->approveBy->first_name }}
+                                                    {{ $value->approveBy->last_name }}
+                                                @endif
+                                            </td>
+
+                                            <td>{{ dateConvertDBtoForm($value->approve_date) }}</td>
+                                            @if ($value->rejectBy != null)
+                                                <td>
+
+                                                    @if ($value->rejectBy->first_name != null)
+                                                        {{ $value->rejectBy->first_name }}
+                                                        {{ $value->rejectBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->reject_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
+                                            @if ($value->managerApproveBy != null)
+                                                <td>
+                                                    @if ($value->managerApproveBy->first_name != null)
+                                                        {{ $value->managerApproveBy->first_name }}
+                                                        {{ $value->managerApproveBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->manager_approve_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
+                                            @if ($value->managerRejectBy != null)
+                                                <td>
+
+                                                    @if ($value->managerRejectBy->first_name != null)
+                                                        {{ $value->managerRejectBy->first_name }}
+                                                        {{ $value->managerRejectBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->manager_reject_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
+                                            <td width="300px;word-wrap: break-word">{{ $value->purpose }}</td>
+                                            <td>{{ $value->number_of_day }}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{ $sl = null }}
-                                        @foreach ($results as $value)
-                                            <tr>
-                                                <td>{{ ++$sl }}</td>
-                                                <td>
-                                                    @if ($value->leaveType->leave_type_name)
-                                                        {{ $value->leaveType->leave_type_name }}
-                                                    @endif
-                                                </td>
-                                                <td>{{ dateConvertDBtoForm($value->application_date) }}</td>
-                                                <td>{{ dateConvertDBtoForm($value->application_from_date) }} <b>to</b>
-                                                    {{ dateConvertDBtoForm($value->application_to_date) }}</td>
-                                                <td>
-                                                    @if ($value->approveBy->first_name)
-                                                        {{ $value->approveBy->first_name }}
-                                                        {{ $value->approveBy->last_name }}
-                                                    @endif
-                                                </td>
-                                                <td>{{ dateConvertDBtoForm($value->approve_date) }}</td>
-                                                <td width="300px;word-wrap: break-word">{{ $value->purpose }}</td>
-                                                <td>{{ $value->number_of_day }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         @endif
                     </div>
                 </div>

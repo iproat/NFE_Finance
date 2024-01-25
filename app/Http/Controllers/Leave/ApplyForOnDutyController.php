@@ -92,6 +92,8 @@ class ApplyForOnDutyController extends Controller
                         $maildata = Common::mail('emails/mail', $hod->email, 'OnDuty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $emp->first_name . ' ' . $emp->last_name . ' have requested for On-Duty (for ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
                     }
                     $input['manager_status'] =2;
+                    $input['manager_approve_date'] = date('Y-m-d');
+                    $input['manager_approved_by'] = $request->employee_id;   
                 } else {
                     $ifExists = OnDuty::where('application_from_date', '>=', $input['application_from_date'])
                         ->where('application_to_date', '<=', $input['application_to_date'])->where('employee_id', $input['employee_id'])->where('status', '!=', 3)

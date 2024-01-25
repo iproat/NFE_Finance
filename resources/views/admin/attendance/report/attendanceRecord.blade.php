@@ -17,20 +17,7 @@
         height: 100%;
     }
 
-    /*
-  tbody {
-   display:block;
-   height:500px;
-   overflow:auto;
-  }
-  thead, tbody tr {
-   display:table;
-   width:100%;
-   table-layout:fixed;
-  }
-  thead {
-   width: calc( 100% - 1em )
-  }*/
+   
 </style>
 <script>
     jQuery(function() {
@@ -55,14 +42,7 @@
                 <div class="panel-heading"><i class="mdi mdi-table fa-fw"></i>@yield('title')</div>
                 <div class="panel-wrapper collapse in" aria-expanded="true">
                     <div class="panel-body">
-                        {{-- <p class="text-center">
-                            <b style="font-size: 12px"><span style="color: green">Attendance Devices -
-                                    Green,</span>
-                                <span style="color: blue">Mobile Devices - Blue,</span>
-                                <span style="color: red">Manual Correction - Red,</span>
-                                <span style="color: orange">Access Device - Orange.</span>
-                            </b>
-                        </p> --}}
+                        
                         <div class="row">
                             <div id="searchBox">
 
@@ -102,7 +82,7 @@
                                         @php
                                             $devices = allDevices();
                                         @endphp
-                                         <label class="control-label" for="device_name">@lang('common.device'):</label>
+                                        <label class="control-label" for="device_name">@lang('common.device'):</label>
                                         <div class="form-group">
                                             <select name="device_name" class="form-control device_name select2">
                                                 <option value="">--- All devices ---</option>
@@ -144,10 +124,10 @@
                                     @foreach ($results as $value)
                                         @php
                                             $deviceSerialNo = ['BRM9193360148', 'BRM9193360137', 'BRM9193360058', 'BRM9193360034', 'BRM9193360025', 'BRM9192960031', 'BRM9193360059', 'BRM9191060473', 'BRM9193360057', 'BRM9193360055'];
-                                            
+
                                             $mobile = ['Mobile'];
                                             $manual = ['Manual'];
-                                            
+
                                             $attReport = in_array($value['devuid'], $deviceSerialNo);
                                             $attManualReport = in_array($value['devuid'], $manual);
                                             $attMobileReport = in_array($value['devuid'], $mobile);

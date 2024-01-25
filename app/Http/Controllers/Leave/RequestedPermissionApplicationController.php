@@ -141,7 +141,7 @@ class RequestedPermissionApplicationController extends Controller
 
         if ($request->status == 2) {
             $input['approve_date'] = date('Y-m-d');
-            $input['approve_by'] = decrypt(session('logged_session_data.employee_id'));
+            $input['approved_by'] = decrypt(session('logged_session_data.employee_id'));
         } else {
             $input['reject_date'] = date('Y-m-d');
             $input['reject_by'] = decrypt(session('logged_session_data.employee_id'));
@@ -170,13 +170,22 @@ class RequestedPermissionApplicationController extends Controller
 
         if ($request->status == 2) {
             $input['manager_status'] = 2;
+            $input['manager_approve_date'] = date('Y-m-d');
+            $input['manager_approved_by'] = decrypt(session('logged_session_data.employee_id'));    
         } else {
             $input['manager_status'] = 3;
+            $input['manager_reject_date'] = date('Y-m-d');
+            $input['manager_reject_by'] = decrypt(session('logged_session_data.employee_id'));
         }
 
         try {
+            
             $data->update([
-                'manager_status' => $input['manager_status']
+                'manager_status' => $input['manager_status'],
+                'manager_reject_date' => $input['manager_reject_date'],
+                'manager_reject_by' => $input['manager_reject_by'],
+                'manager_approve_date' => $input['manager_approve_date'],
+                'manager_approved_by' => $input['manager_approved_by']
             ]);
             $bug = 0;
         } catch (\Exception $e) {

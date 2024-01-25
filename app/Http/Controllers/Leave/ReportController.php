@@ -41,7 +41,7 @@ class ReportController extends Controller
 
         if ($request->department_id != NULL) {
 
-            $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy'])
+            $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'leave_application.employee_id')
                 ->where('department_id', $request->department_id)
                 ->whereBetween('leave_application.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
@@ -49,7 +49,7 @@ class ReportController extends Controller
                 ->select('leave_application.*')->orderBy('leave_application_id', 'DESC')
                 ->get();
         } else {
-            $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy'])
+            $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'leave_application.employee_id')
                 ->whereBetween('leave_application.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
                 ->where('leave_application.status', LeaveStatus::$APPROVE)
@@ -72,7 +72,7 @@ class ReportController extends Controller
 
         if ($request->department_id != NULL) {
 
-            $results = LeavePermission::with(['employee', 'approveBy'])
+            $results = LeavePermission::with(['employee','approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'leave_permission.employee_id')
                 ->where('department_id', $request->department_id)
                 ->whereBetween('leave_permission.leave_permission_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
@@ -80,7 +80,7 @@ class ReportController extends Controller
                 ->select('leave_permission.*')->orderBy('leave_permission_id', 'DESC')
                 ->get();
         } else {
-            $results = LeavePermission::with(['employee', 'approveBy'])
+            $results = LeavePermission::with(['employee','approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'leave_permission.employee_id')
                 ->whereBetween('leave_permission.leave_permission_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
                 ->where('leave_permission.status', LeaveStatus::$APPROVE)
@@ -103,7 +103,7 @@ class ReportController extends Controller
 
         if ($request->department_id != NULL) {
 
-            $results = OnDuty::with(['employee','approveBy'])
+            $results = OnDuty::with(['employee','approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'on_duty.employee_id')
                 ->where('department_id', $request->department_id)
                 ->whereBetween('on_duty.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
@@ -111,7 +111,7 @@ class ReportController extends Controller
                 ->select('on_duty.*')->orderBy('on_duty_id', 'DESC')
                 ->get();
         } else {
-            $results = OnDuty::with(['employee','approveBy'])
+            $results = OnDuty::with(['employee','approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'on_duty.employee_id')
                 ->whereBetween('on_duty.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
                 ->where('on_duty.status', LeaveStatus::$APPROVE)
@@ -151,14 +151,14 @@ class ReportController extends Controller
     {
         $employeeList = Employee::where('status', 1)->where('employee_id', decrypt(session('logged_session_data.employee_id')))->get();
         if ($_POST) {
-            $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy'])
+            $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->where('status', LeaveStatus::$APPROVE)
                 ->where('employee_id', decrypt(session('logged_session_data.employee_id')))
                 ->whereBetween('application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
                 ->orderBy('leave_application_id', 'DESC')
                 ->get();
         } else {
-            $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy'])
+            $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->where('status', LeaveStatus::$APPROVE)
                 ->where('employee_id', decrypt(session('logged_session_data.employee_id')))
                 ->whereBetween('application_date', [date('Y-01-01'), date('Y-m-d')])

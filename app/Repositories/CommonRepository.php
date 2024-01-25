@@ -2,13 +2,14 @@
 
 namespace App\Repositories;
 
+use App\Model\Role;
 use App\Model\Employee;
 use App\Model\PayGrade;
-use App\Model\PerformanceCategory;
-use App\Model\Role;
-use App\Model\TrainingType;
 use App\Model\WorkShift;
+use App\Model\TrainingType;
+use App\Model\PerformanceCategory;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CommonRepository
 {
@@ -132,10 +133,136 @@ class CommonRepository
     public function leaveTypeList()
     {
         $results = DB::table('leave_type')->get();
+        $employee = Employee::where('employee_id', decrypt(session('logged_session_data.employee_id')))->first();
         $options = ['' => '---- Please select ----'];
-        foreach ($results as $key => $value) {
-            $options[$value->leave_type_id] = $value->leave_type_name;
+
+        foreach ($results as $leaveType) {
+            if ($leaveType->nationality == 2 && $leaveType->religion == 2 && $leaveType->gender == 2) {
+                $status = true;
+                $nationalityStatus =  $religionStatus = $genderStatus = 1;
+            } elseif ($leaveType->nationality == 2  && $leaveType->religion != 2 && $leaveType->gender != 2) {
+                $nationalityStatus = 1;
+                if ($leaveType->religion != 2) {
+                    if ($leaveType->religion == $employee->religion) {
+                        $religionStatus = 1;
+                        $status = 1;
+                    }
+                }
+
+                if ($leaveType->gender != 2) {
+                    if ($leaveType->gender == $employee->gender) {
+                        $status = 1;
+                        $genderStatus = 1;
+                    }
+                }
+                if ($religionStatus == 1 && $genderStatus == 1 && $nationalityStatus == 1) {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+            } elseif ($leaveType->religion == 2 && $leaveType->nationality != 2 &&  $leaveType->gender != 2) {
+                $religionStatus = 1;
+
+                if ($leaveType->nationality != 2) {
+                    if ($leaveType->nationality == $employee->nationality) {
+                        $nationalityStatus = 1;
+                        $status = 1;
+                    }
+                } else {
+                    $nationalityStatus = 0;
+                }
+                if ($leaveType->gender != 2) {
+                    if ($leaveType->gender == $employee->gender) {
+                        $status = 1;
+                        $genderStatus = 1;
+                    }
+                } else {
+                    $nationalityStatus = 0;
+                }
+                if ($religionStatus == 1 && $genderStatus == 1 && $nationalityStatus == 1) {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+            } elseif ($leaveType->gender == 2 && $leaveType->religion != 2 && $leaveType->nationality != 2) {
+
+                $genderStatus = 1;
+                if ($leaveType->religion != 2) {
+                    if ($leaveType->religion == $employee->religion) {
+                        $religionStatus = 1;
+                        $status = 1;
+                    }
+                }
+                if ($leaveType->nationality != 2) {
+                    if ($leaveType->nationality == $employee->nationality) {
+                        $nationalityStatus = 1;
+                        $status = 1;
+                    }
+                }
+                if ($religionStatus == 1 && $genderStatus == 1 && $nationalityStatus == 1) {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+            } elseif ($leaveType->nationality == 2 && $leaveType->religion == 2 && $leaveType->gender != 2) {
+
+                $nationalityStatus = $religionStatus = 1;
+                if ($leaveType->gender == $employee->gender) {
+                    $genderStatus = 1;
+                } else {
+                    $genderStatus = 0;
+                }
+            } elseif ($leaveType->nationality == 2 && $leaveType->gender == 2 && $leaveType->religion != 2) {
+                $nationalityStatus = $genderStatus = 1;
+                if ($leaveType->religion == $employee->religion) {
+                    $religionStatus = 1;
+                } else {
+                    $religionStatus = 0;
+                }
+            } elseif ($leaveType->religion == 2 && $leaveType->gender == 2 && $leaveType->nationality != 2) {
+                $religionStatus = $genderStatus = 1;
+                if ($leaveType->nationality == $employee->nationality) {
+                    $nationalityStatus = 1;
+                } else {
+                    $nationalityStatus = 0;
+                }
+            } elseif ($leaveType->nationality != 2 && $leaveType->religion != 2 && $leaveType->gender != 2) {
+                if ($employee->nationality == $leaveType->nationality) {
+                    $nationalityStatus = 1;
+                    $status = 1;
+                } else {
+                    $nationalityStatus = 0;
+                }
+                if ($employee->religion == $leaveType->religion) {
+                    $religionStatus = 1;
+                    $status = 1;
+                } else {
+                    $religionStatus = 0;
+                }
+                if ($employee->gender == $leaveType->gender) {
+                    $genderStatus = 1;
+                    $status = 1;
+                } else {
+                    $genderStatus = 0;
+                }
+                if ($religionStatus == 1 && $genderStatus == 1 && $nationalityStatus == 1) {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+            }
+
+            if ($religionStatus == 1 && $nationalityStatus == 1 && $genderStatus == 1) {
+
+                $status = 1;
+            } else {
+                $status = 0;
+            }
+            if ($status) {
+                $options[$leaveType->leave_type_id] = $leaveType->leave_type_name;
+            }
         }
+
         return $options;
     }
 
@@ -178,7 +305,7 @@ class CommonRepository
         }
         return $options;
     }
-    
+
     public function employeeFingerListWithFilter($field, $value)
     {
         $results = Employee::where('status', 1)->where($field, $value)->get();

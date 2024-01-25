@@ -193,11 +193,10 @@
                                             <td>{{ $value[0]['fullName'] }}</td>
                                             <td>{{ $value[0]['designation_name'] }}</td>
                                             <td>{{ $value[0]['department_name'] }}</td>
-                                            <td>{{ $value[0]['gender'] }}</td>
+                                            <td>{{ $value[0]['gender'] == 0 ? 'Male' : 'Female' }}</td>
                                             <td>{{ userStatus($value[0]['status']) }}</td>
                                             @foreach ($value as $v)
                                                 @php
-                                                    // dd($results['Karthikeyan Kannan']);
                                                     if ($sl == 1) {
                                                         $totalCol++;
                                                     }
@@ -208,7 +207,7 @@
                                                         } else {
                                                             $shiftName = 'NA';
                                                         }
-                                                    
+
                                                         if ($v['inout_status'] == 'O') {
                                                             echo "<td><span style='color:red ;font-weight:bold'>" . $v['inout_status'] . '' . $shiftName . '</span></td>';
                                                         } else {

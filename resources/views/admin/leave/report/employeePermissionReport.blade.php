@@ -100,7 +100,14 @@
                                         <th>@lang('leave.department')</th>
                                         <th>@lang('leave.applied_date')</th>
                                         <th>@lang('leave.permission_duration')</th>
+                                        <th>@lang('leave.approve_by')</th>
                                         <th>@lang('leave.approve_date')</th>
+                                        <th>@lang('leave.reject_by')</th>
+                                        <th>@lang('leave.reject_date')</th>
+                                        <th>@lang('leave.manager_approve_by')</th>
+                                        <th>@lang('leave.manager_approve_date')</th>
+                                        <th>@lang('leave.manager_reject_by')</th>
+                                        <th>@lang('leave.manager_reject_date')</th>
                                         <th>@lang('leave.purpose')</th>
                                         <th>@lang('leave.duration')</th>
                                     </tr>
@@ -128,8 +135,57 @@
                                                 <b>to</b>
                                                 {{ $value->to_time }}
                                             </td>
-                                           
+                                            @if ($value->approveBy != null)
+                                            <td>
+
+                                                @if ($value->approveBy->first_name != null)
+                                                    {{ $value->approveBy->first_name }}
+                                                    {{ $value->approveBy->last_name }}
+                                                @endif
+                                            </td>
+                                            @else
+                                            <td>{{ '--' }}</td>
+                                            <td>{{ '--' }}</td>
+                                        @endif
                                             <td>{{ dateConvertDBtoForm($value->approve_date) }}</td>
+                                            @if ($value->rejectBy != null)
+                                                <td>
+
+                                                    @if ($value->rejectBy->first_name != null)
+                                                        {{ $value->rejectBy->first_name }}
+                                                        {{ $value->rejectBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->reject_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
+                                            @if ($value->managerApproveBy != null)
+                                                <td>
+                                                    @if ($value->managerApproveBy->first_name != null)
+                                                        {{ $value->managerApproveBy->first_name }}
+                                                        {{ $value->managerApproveBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->manager_approve_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
+                                            @if ($value->managerRejectBy != null)
+                                                <td>
+
+                                                    @if ($value->managerRejectBy->first_name != null)
+                                                        {{ $value->managerRejectBy->first_name }}
+                                                        {{ $value->managerRejectBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->manager_reject_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
                                             <td width="300px;word-wrap: break-word">{{ $value->leave_permission_purpose }}</td>
                                             <td>{{ $value->permission_duration }}</td>
                                         </tr>

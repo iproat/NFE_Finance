@@ -22,8 +22,15 @@ class AttendanceRepository
         } else {
             $data = date("Y-m-d");
         }
-
-        $queryResults = DB::select("call `SP_DepartmentDailyAttendance`('" . $data . "', '" . $department_id . "','" . $attendance_status . "')");
+        $employee_id = decrypt(session('logged_session_data.employee_id'));
+        $queryResults = null;
+        
+        if (decrypt(session('logged_session_data.role_id')) == 3) {
+            $queryResults = DB::select("call `SP_ManagerDailyAttendance`('" . $data . "', '" . $department_id . "','" . $attendance_status . "','" . $employee_id . "')");
+        } else {
+            $queryResults = DB::select("call `SP_DepartmentDailyAttendance`('" . $data . "', '" . $department_id . "','" . $attendance_status . "')");
+        }
+        // $queryResults = DB::select("call `SP_DepartmentDailyAttendance`('" . $data . "', '" . $department_id . "','" . $attendance_status . "')");
        
         $results = [];
 
@@ -69,12 +76,23 @@ class AttendanceRepository
         if ($branch_id != '') {
             $qry .= ' AND employee.branch_id=' . $branch_id;
         }
-
-        $employees = Employee::select(DB::raw('CONCAT(COALESCE(employee.first_name,\'\'),\' \',COALESCE(employee.last_name,\'\')) AS fullName'), 'designation_name', 'department_name', 'branch_name', 'finger_id', 'employee_id')
+        if (decrypt(session('logged_session_data.role_id')) == 3) {
+            $hasSupervisorWiseEmployee = Employee::select('employee_id')->where('operation_manager_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
+            $employees = Employee::select(DB::raw('CONCAT(COALESCE(employee.first_name,\'\'),\' \',COALESCE(employee.last_name,\'\')) AS fullName'), 'designation_name', 'department_name', 'branch_name', 'finger_id', 'employee_id')
+            ->join('designation', 'designation.designation_id', 'employee.designation_id')
+            ->join('department', 'department.department_id', 'employee.department_id')
+            ->join('branch', 'branch.branch_id', 'employee.branch_id')->orderBy('branch.branch_name', 'ASC')->whereRaw($qry)
+            ->whereIn('employee_id', array_values($hasSupervisorWiseEmployee))
+            ->where('status', UserStatus::$ACTIVE)->get();
+        } else {
+        
+            $employees = Employee::select(DB::raw('CONCAT(COALESCE(employee.first_name,\'\'),\' \',COALESCE(employee.last_name,\'\')) AS fullName'), 'designation_name', 'department_name', 'branch_name', 'finger_id', 'employee_id')
             ->join('designation', 'designation.designation_id', 'employee.designation_id')
             ->join('department', 'department.department_id', 'employee.department_id')
             ->join('branch', 'branch.branch_id', 'employee.branch_id')->orderBy('branch.branch_name', 'ASC')->whereRaw($qry)
             ->where('status', UserStatus::$ACTIVE)->get();
+        }
+
 
         $attendance = DB::table('view_employee_in_out_data')->whereBetween('date', [$start_date, $end_date])->get();
 
@@ -108,7 +126,7 @@ class AttendanceRepository
                     $tempArray['out_time'] = $hasAttendance['out_time'];
                     $tempArray['working_time'] = $hasAttendance['working_time'];
                     $tempArray['over_time'] = $hasAttendance['over_time'];
-                    $tempArray['over_time_status'] = $hasAttendance['over_time_status'];
+                    // $tempArray['over_time_status'] = $hasAttendance['over_time_status'];
                     $tempArray['employee_attendance_id'] = $hasAttendance['employee_attendance_id'];
                 } elseif ($hasAttendance) {
                     $tempArray['attendance_status'] = 'present';
@@ -117,7 +135,7 @@ class AttendanceRepository
                     $tempArray['out_time'] = $hasAttendance['out_time'];
                     $tempArray['working_time'] = $hasAttendance['working_time'];
                     $tempArray['over_time'] = $hasAttendance['over_time'];
-                    $tempArray['over_time_status'] = $hasAttendance['over_time_status'];
+                    // $tempArray['over_time_status'] = $hasAttendance['over_time_status'];
                     $tempArray['employee_attendance_id'] = $hasAttendance['employee_attendance_id'];
                 } else {
 
@@ -127,7 +145,7 @@ class AttendanceRepository
                     $tempArray['out_time'] = '';
                     $tempArray['over_time'] = '';
                     $tempArray['working_time'] = '';
-                    $tempArray['over_time_status'] = '';
+                    // $tempArray['over_time_status'] = '';
                     $tempArray['employee_attendance_id'] = '';
                 }
 
@@ -263,7 +281,7 @@ class AttendanceRepository
         $dataFormat['out_time'] = '';
         $dataFormat['over_time'] = '';
         $dataFormat['working_time'] = '';
-        $dataFormat['over_time_status'] = '';
+        // $dataFormat['over_time_status'] = '';
         $dataFormat['shift_name'] = '';
         $dataFormat['employee_attendance_id'] = '';
 
@@ -275,7 +293,7 @@ class AttendanceRepository
                 $dataFormat['out_time'] = $val->out_time;
                 $dataFormat['over_time'] = $val->over_time;
                 $dataFormat['working_time'] = $val->working_time;
-                $dataFormat['over_time_status'] = $val->over_time_status;
+                // $dataFormat['over_time_status'] = $val->over_time_status;
                 $dataFormat['employee_attendance_id'] = $val->employee_attendance_id;
                 return $dataFormat;
             }
@@ -464,14 +482,25 @@ class AttendanceRepository
 
         $attendance = DB::table('view_employee_in_out_data')->select('finger_print_id', 'date', 'in_time', 'shift_name', 'inout_status', 'out_time', 'working_time')->whereBetween('date', [$start_date, $end_date])->get();
         $regularEmployeeIds = DB::table('view_employee_in_out_data')->select('finger_print_id')->whereBetween('date', [$start_date, $end_date])->groupBy('finger_print_id')->pluck('finger_print_id')->toArray();
-
-        $employees = Employee::select(DB::raw('CONCAT(COALESCE(employee.first_name,\'\'),\' \',COALESCE(employee.last_name,\'\')) AS fullName'), 'employee.updated_at', 'gender', 'status', 'department_name', 'branch_name', 'designation_name', 'finger_id', 'employee_id')
+        if (decrypt(session('logged_session_data.role_id')) == 3) {
+            $hasSupervisorWiseEmployee = Employee::select('employee_id')->where('operation_manager_id', decrypt(session('logged_session_data.employee_id')))->get()->toArray();
+            $employees = Employee::select(DB::raw('CONCAT(COALESCE(employee.first_name,\'\'),\' \',COALESCE(employee.last_name,\'\')) AS fullName'), 'employee.updated_at', 'gender', 'status', 'department_name', 'branch_name', 'designation_name', 'finger_id', 'employee_id')
             ->join('designation', 'designation.designation_id', 'employee.designation_id')
             ->join('department', 'department.department_id', 'employee.department_id')
             ->join('branch', 'branch.branch_id', 'employee.branch_id')
             ->orderBy('branch.branch_name', 'ASC')
-            // ->where('status', UserStatus::$ACTIVE)->get();
+             ->where('status', UserStatus::$ACTIVE)
+            ->whereIn('employee.employee_id', $hasSupervisorWiseEmployee)->get();
+        } else {
+            $employees = Employee::select(DB::raw('CONCAT(COALESCE(employee.first_name,\'\'),\' \',COALESCE(employee.last_name,\'\')) AS fullName'), 'employee.updated_at', 'gender', 'status', 'department_name', 'branch_name', 'designation_name', 'finger_id', 'employee_id')
+            ->join('designation', 'designation.designation_id', 'employee.designation_id')
+            ->join('department', 'department.department_id', 'employee.department_id')
+            ->join('branch', 'branch.branch_id', 'employee.branch_id')
+            ->orderBy('branch.branch_name', 'ASC')
+            ->where('status', UserStatus::$ACTIVE)
             ->whereIn('employee.finger_id', $regularEmployeeIds)->get();
+        }
+       
 
         $leave = LeaveApplication::select('application_from_date', 'application_to_date', 'employee_id', 'leave_type_name')
             ->join('leave_type', 'leave_type.leave_type_id', 'leave_application.leave_type_id')

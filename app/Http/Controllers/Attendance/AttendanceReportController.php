@@ -299,7 +299,11 @@ class AttendanceReportController extends Controller
             $end_date = date("Y-m-t", strtotime($start_date));
         }
 
-        $departmentList = Department::get();
+        if ((decrypt(session('logged_session_data.role_id'))) != 1 && (decrypt(session('logged_session_data.role_id'))) != 2) {
+            $departmentList = Department::where('department_id', decrypt(session('logged_session_data.department_id')))->get();
+        } else {
+            $departmentList = Department::get();
+        }
         $employeeList = Employee::with('department', 'branch', 'designation')->where('status', UserStatus::$ACTIVE)->get();
         $branchList = Branch::get();
 
@@ -389,27 +393,25 @@ class AttendanceReportController extends Controller
     {
         set_time_limit(0);
         $results = [];
-        $ms_sql = MsSql::with('employee:finger_id,first_name,last_name')->whereDate('datetime', date('Y-m-d'))->orderBy('ms_sql.datetime')->get()->toArray();
+        $ms_sql = MsSql::with('employee:finger_id,first_name,last_name')->whereDate('datetime', date('Y-m-d'))->orderBy('ms_sql.ID')->get()->toArray(); // ->orderBy('ms_sql.datetime')
         $manual_attendance = ManualAttendance::with('employee:finger_id,first_name,last_name')->whereDate('datetime', date('Y-m-d'))->orderBy('manual_attendance.datetime')->get()->toArray();
         $results = (object) array_merge($ms_sql, $manual_attendance);
 
         if ($_POST) {
 
-            // $from_date = dateConvertFormtoDB($request->from_date) . ' 00:00:00';
-            // $to_date = dateConvertFormtoDB($request->to_date) . ' 23:59:59';
             $from_date = dateConvertFormtoDB($request->from_date);
             $to_date = dateConvertFormtoDB($request->to_date);
 
             if ($request->device_name != null) {
-                $request->device_name = $request->device_name == 'N/A' ? null : $request->device_name;
-                $ms_sql = MsSql::where('device_name', $request->device_name)->whereDate('datetime', '>=', $from_date)->whereDate('datetime', '<=', $to_date)
-                    ->with('employee:finger_id,first_name,last_name')->get()->toArray();
-                $manual_attendance = ManualAttendance::where('device_name', $request->device_name)->whereDate('datetime', '>=', $from_date)->whereDate('datetime', '<=', $to_date)
+                $device_name = $request->device_name == 'N/A' ? null : $request->device_name;
+                $ms_sql = MsSql::where('device_name', $device_name)->whereDate('datetime', '>=', $from_date)->whereDate('datetime', '<=', $to_date)
+                    ->with('employee:finger_id,first_name,last_name')->orderBy('ms_sql.ID')->get()->toArray();
+                $manual_attendance = ManualAttendance::where('device_name', $device_name)->whereDate('datetime', '>=', $from_date)->whereDate('datetime', '<=', $to_date)
                     ->with('employee:finger_id,first_name,last_name')->get()->toArray();
                 $results = (object) array_merge($ms_sql, $manual_attendance);
             } elseif ($request->from_date && $request->to_date) {
                 $ms_sql = MsSql::whereDate('datetime', '>=', $from_date)->whereDate('datetime', '<=', $to_date)
-                    ->with('employee:finger_id,first_name,last_name')->get()->toArray();
+                    ->with('employee:finger_id,first_name,last_name')->orderBy('ms_sql.ID')->get()->toArray();
                 $manual_attendance = ManualAttendance::whereDate('datetime', '>=', $from_date)->whereDate('datetime', '<=', $to_date)
                     ->with('employee:finger_id,first_name,last_name')->get()->toArray();
                 $results = (object) array_merge($ms_sql, $manual_attendance);

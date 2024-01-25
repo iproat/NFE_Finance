@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <hr>
-                     
+
                         <div class="table-responsive" style="font-size: 12px;">
                             <table id="myDataTable" class="table table-bordered">
                                 <thead class="tr_header">
@@ -100,6 +100,14 @@
                                         <th>@lang('leave.department')</th>
                                         <th>@lang('leave.applied_date')</th>
                                         <th>@lang('leave.od_duration')</th>
+                                        <th>@lang('leave.approve_by')</th>
+                                        <th>@lang('leave.approve_date')</th>
+                                        <th>@lang('leave.reject_by')</th>
+                                        <th>@lang('leave.reject_date')</th>
+                                        <th>@lang('leave.manager_approve_by')</th>
+                                        <th>@lang('leave.manager_approve_date')</th>
+                                        <th>@lang('leave.manager_reject_by')</th>
+                                        <th>@lang('leave.manager_reject_date')</th>
                                         <th>@lang('leave.purpose')</th>
                                         <th>@lang('leave.number_of_day')</th>
                                     </tr>
@@ -107,7 +115,7 @@
                                 <tbody>
                                     {{ $sl = null }}
                                     @foreach ($results as $value)
-                                  {{-- @php
+                                        {{-- @php
                                     // dd($value);
                                       
                                   @endphp --}}
@@ -121,13 +129,63 @@
                                             @endphp
                                             <td>{{ $dept ? $dept->department_name : 'NA' }}
                                             </td>
-                                          
+
                                             <td>{{ dateConvertDBtoForm($value->application_date) }}</td>
                                             <td>{{ dateConvertDBtoForm($value->application_from_date) }}
                                                 <b>to</b>
                                                 {{ dateConvertDBtoForm($value->application_to_date) }}
                                             </td>
-                                           
+                                            @if ($value->approveBy != null)
+                                                <td>
+
+                                                    @if ($value->approveBy->first_name != null)
+                                                        {{ $value->approveBy->first_name }}
+                                                        {{ $value->approveBy->last_name }}
+                                                    @endif
+                                                </td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
+                                            <td>{{ dateConvertDBtoForm($value->approve_date) }}</td>
+                                            @if ($value->rejectBy != null)
+                                                <td>
+
+                                                    @if ($value->rejectBy->first_name != null)
+                                                        {{ $value->rejectBy->first_name }}
+                                                        {{ $value->rejectBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->reject_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
+                                            @if ($value->managerApproveBy != null)
+                                                <td>
+                                                    @if ($value->managerApproveBy->first_name != null)
+                                                        {{ $value->managerApproveBy->first_name }}
+                                                        {{ $value->managerApproveBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->manager_approve_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
+                                            @if ($value->managerRejectBy != null)
+                                                <td>
+
+                                                    @if ($value->managerRejectBy->first_name != null)
+                                                        {{ $value->managerRejectBy->first_name }}
+                                                        {{ $value->managerRejectBy->last_name }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ dateConvertDBtoForm($value->manager_reject_date) }}</td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
+                                            @endif
                                             {{-- <td>{{ dateConvertDBtoForm($value->approve_date) }}</td> --}}
                                             <td width="300px;word-wrap: break-word">{{ $value->purpose }}</td>
                                             <td>{{ $value->no_of_days }}</td>

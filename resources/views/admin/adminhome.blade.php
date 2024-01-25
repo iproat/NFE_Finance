@@ -1,6 +1,7 @@
 
 <?php
 use App\Model\Employee;
+use App\Model\Device;
 ?>
 @extends('admin.master')
 @section('content')
@@ -294,6 +295,7 @@ use App\Model\Employee;
                                 @foreach ($attendanceData as $dailyAttendance)
                                 <?php
                                 $emp=Employee::where('finger_id',$dailyAttendance->ID)->first();
+                                $dev=Device::where('id',$dailyAttendance->device)->first();
                                 ?>
                                     <tr>
                                         <td class="text-center">{{ ++$dailyAttendanceSl }}</td>
@@ -309,7 +311,7 @@ use App\Model\Employee;
                                         <td>{{ $dailyAttendance->ID }}</td>
                                         <td>{{ $emp->first_name." ".$emp->last_name }}</td>
                                         <td>{{ $dailyAttendance->datetime }}</td>
-                                        <td>{{ $dailyAttendance->device_name }}</td>
+                                        <td>{{ $dev->name }}</td>
                                     </tr>
                                 @endforeach
                             @else

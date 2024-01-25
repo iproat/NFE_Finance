@@ -60,7 +60,7 @@ class requestedOnDutyApplicationController extends Controller
             return response()->view('errors.404', [], 404);
         }
 
-        return view('admin.leave.onDutyApplication.onDutyDetails', ['leaveApplicationData' => $leaveApplicationData]);
+        return view('admin.leave.onDutyApplicatioin.onDutyDetails', ['leaveApplicationData' => $leaveApplicationData]);
     }
     public function update(Request $request, $id)
     {
@@ -100,26 +100,21 @@ class requestedOnDutyApplicationController extends Controller
 
     public function approveOrRejectOnDutyApplication(Request $request)
     {
-        // info($request->all());
         $data = OnDuty::findOrFail($request->on_duty_id);
         $input = $request->all();
-
         if ($request->status == 2) {
-            $input['status'] = 2;
-            // $input['remarks']    = $request->head_remark;
-            // $input['approve_date'] = date('Y-m-d');
-            // $input['approve_by'] = (session('logged_session_data.employee_id'));
+            $input['approve_date'] = date('Y-m-d');
+            $input['approved_by'] = decrypt(session('logged_session_data.employee_id'));
         } else {
-            // $input['remarks']     = $request->head_remark;
-            $input['status'] = 3;
-            // $input['reject_date'] = date('Y-m-d');
-            // $input['reject_by'] = (session('logged_session_data.employee_id'));
+            $input['reject_date'] = date('Y-m-d');
+            $input['reject_by'] = decrypt(session('logged_session_data.employee_id'));
         }
 
         try {
             $data->update($input);
             $bug = 0;
         } catch (\Exception $e) {
+            info($e);
             $bug = 1;
         }
         if ($bug == 0) {
@@ -140,8 +135,12 @@ class requestedOnDutyApplicationController extends Controller
 
         if ($request->status == 2) {
             $input['manager_status'] = 2;
+            $input['manager_approve_date'] = date('Y-m-d');
+            $input['manager_approved_by'] = decrypt(session('logged_session_data.employee_id'));   
         } else {
             $input['manager_status'] = 3;
+            $input['manager_reject_date'] = date('Y-m-d');
+            $input['manager_reject_by'] = decrypt(session('logged_session_data.employee_id'));
         }
 
         try {
