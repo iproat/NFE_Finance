@@ -395,20 +395,20 @@ class HomeController extends Controller
         return "Your email has been sent successfully";
     }
 
-    public function attendanceSummaryReport(Request $request)
-    {
+    // public function attendanceSummaryReport(Request $request)
+    // {
 
-        $month = date("Y-m");
+    //     $month = date("Y-m");
 
-        $monthAndYear = explode('-', $month);
-        $month_data = $monthAndYear[1];
-        $dateObj = DateTime::createFromFormat('!m', $month_data);
-        $monthName = $dateObj->format('F');
+    //     $monthAndYear = explode('-', $month);
+    //     $month_data = $monthAndYear[1];
+    //     $dateObj = DateTime::createFromFormat('!m', $month_data);
+    //     $monthName = $dateObj->format('F');
 
-        $monthToDate = findMonthToAllDate($month);
-        $leaveType = LeaveType::get();
-        $result = $this->attendanceRepository->findAttendanceSummaryReport($month);
+    //     $monthToDate = findMonthToAllDate($month);
+    //     $leaveType = LeaveType::get();
+    //     $result = $this->attendanceRepository->findAttendanceSummaryReport($month);
 
-        return ['results' => $result, 'monthToDate' => $monthToDate, 'month' => $month, 'leaveTypes' => $leaveType, 'monthName' => $monthName];
-    }
+    //     return ['results' => $result, 'monthToDate' => $monthToDate, 'month' => $month, 'leaveTypes' => $leaveType, 'monthName' => $monthName];
+    // }
 }
