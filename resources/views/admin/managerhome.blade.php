@@ -96,9 +96,9 @@ use App\Model\Device;
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($attendanceData) > 0)
+                            @if (count($dailyData) > 0)
                                 {{ $dailyAttendanceSl = null }}
-                                @foreach ($attendanceData as $dailyAttendance)
+                                @foreach ($dailyData as $dailyAttendance)
                                 <?php
                                 $emp=Employee::where('finger_id',$dailyAttendance->ID)->first();
                                 $dev=Device::where('id',$dailyAttendance->device)->first();

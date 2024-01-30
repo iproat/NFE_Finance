@@ -139,6 +139,7 @@ class HomeController extends Controller
 
             // date of birth in this month
             $attendanceData = $this->attendanceRepository->getEmployeeMonthlyAttendance(date("Y-m-01"), date("Y-m-d"), decrypt(session('logged_session_data.employee_id')));
+            // dd($attendanceData);
             $employeeInfo = $this->employee->with('designation')->where('employee_id', decrypt(session('logged_session_data.employee_id')))->first();
             $firstDayThisMonth = date('Y-m-d');
             $lastDayThisMonth = date("Y-m-d", strtotime("+1 month", strtotime($firstDayThisMonth)));

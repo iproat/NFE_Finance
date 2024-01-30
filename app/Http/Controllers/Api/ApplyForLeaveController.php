@@ -131,10 +131,8 @@ class ApplyForLeaveController extends Controller
             if ($leaveType->nationality == 2 && $leaveType->religion == 2 && $leaveType->gender == 2) {
                 $status = true;
                 $nationalityStatus =  $religionStatus = $genderStatus = 1;
-                info('222');
             } elseif ($leaveType->nationality == 2  && $leaveType->religion != 2 && $leaveType->gender != 2) {
                 $nationalityStatus = 1;
-                info('200');
                 if ($leaveType->religion != 2) {
                     if ($leaveType->religion == $employee->religion) {
                         $religionStatus = 1;
@@ -155,8 +153,6 @@ class ApplyForLeaveController extends Controller
                 }
             } elseif ($leaveType->religion == 2 && $leaveType->nationality != 2 &&  $leaveType->gender != 2) {
                 $religionStatus = 1;
-                info('020');
-                info([$employee->nationality, $leaveType->nationality]);
 
                 if ($leaveType->nationality != 2) {
                     if ($leaveType->nationality == $employee->nationality) {
@@ -166,7 +162,6 @@ class ApplyForLeaveController extends Controller
                 } else {
                     $nationalityStatus = 0;
                 }
-                info("na" . $nationalityStatus);
                 if ($leaveType->gender != 2) {
                     if ($leaveType->gender == $employee->gender) {
                         $status = 1;
@@ -181,7 +176,6 @@ class ApplyForLeaveController extends Controller
                     $status = 0;
                 }
             } elseif ($leaveType->gender == 2 && $leaveType->religion != 2 && $leaveType->nationality != 2) {
-                info('002');
 
                 $genderStatus = 1;
                 if ($leaveType->religion != 2) {
@@ -202,7 +196,6 @@ class ApplyForLeaveController extends Controller
                     $status = 0;
                 }
             } elseif ($leaveType->nationality == 2 && $leaveType->religion == 2 && $leaveType->gender != 2) {
-                info('220');
 
                 $nationalityStatus = $religionStatus = 1;
                 if ($leaveType->gender == $employee->gender) {
@@ -211,7 +204,6 @@ class ApplyForLeaveController extends Controller
                     $genderStatus = 0;
                 }
             } elseif ($leaveType->nationality == 2 && $leaveType->gender == 2 && $leaveType->religion != 2) {
-                info('202');
                 $nationalityStatus = $genderStatus = 1;
                 if ($leaveType->religion == $employee->religion) {
                     $religionStatus = 1;
@@ -219,7 +211,6 @@ class ApplyForLeaveController extends Controller
                     $religionStatus = 0;
                 }
             } elseif ($leaveType->religion == 2 && $leaveType->gender == 2 && $leaveType->nationality != 2) {
-                info('022');
                 $religionStatus = $genderStatus = 1;
                 if ($leaveType->nationality == $employee->nationality) {
                     $nationalityStatus = 1;
@@ -227,8 +218,6 @@ class ApplyForLeaveController extends Controller
                     $nationalityStatus = 0;
                 }
             } elseif ($leaveType->nationality != 2 && $leaveType->religion != 2 && $leaveType->gender != 2) {
-                // dd(123);
-                info('002');
                 if ($employee->nationality == $leaveType->nationality) {
                     $nationalityStatus = 1;
                     $status = 1;
@@ -253,7 +242,6 @@ class ApplyForLeaveController extends Controller
                     $status = 0;
                 }
             }
-            info([$religionStatus, $nationalityStatus, $genderStatus]);
 
             if ($religionStatus == 1 && $nationalityStatus == 1 && $genderStatus == 1) {
 
@@ -261,7 +249,6 @@ class ApplyForLeaveController extends Controller
             } else {
                 $status = 0;
             }
-            info($status);
 
 
             if ($status == 1) {
