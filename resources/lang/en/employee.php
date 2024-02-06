@@ -70,6 +70,7 @@ return [
     'salary_limit' => 'Salary Limit',
     'work_shift' => 'Work Shift',
     'work_hours' => 'Work Hour',
+    'category' => 'Employee Category',
 
     // new added
 

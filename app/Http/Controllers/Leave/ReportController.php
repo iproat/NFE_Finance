@@ -45,19 +45,19 @@ class ReportController extends Controller
                 ->join('employee', 'employee.employee_id', 'leave_application.employee_id')
                 ->where('department_id', $request->department_id)
                 ->whereBetween('leave_application.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
-                ->where('leave_application.status', LeaveStatus::$APPROVE)
+               // ->where('leave_application.status', LeaveStatus::$APPROVE)
                 ->select('leave_application.*')->orderBy('leave_application_id', 'DESC')
                 ->get();
         } else {
             $results = LeaveApplication::with(['employee', 'leaveType', 'approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'leave_application.employee_id')
                 ->whereBetween('leave_application.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
-                ->where('leave_application.status', LeaveStatus::$APPROVE)
+              //  ->where('leave_application.status', LeaveStatus::$APPROVE)
                 ->select('leave_application.*')->orderBy('leave_application_id', 'DESC')
                 ->get();
         }
 
-
+// dd($results);
         return view('admin.leave.report.employeeLeaveReport', ['results' => $results, 'departmentList' => $departmentList, 'department_id' => $request->department_id, 'from_date' => $request->from_date, 'to_date' => $request->to_date]);
     }
     public function employeePermissionReport(Request $request)
@@ -76,14 +76,14 @@ class ReportController extends Controller
                 ->join('employee', 'employee.employee_id', 'leave_permission.employee_id')
                 ->where('department_id', $request->department_id)
                 ->whereBetween('leave_permission.leave_permission_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
-                ->where('leave_permission.status', LeaveStatus::$APPROVE)
+               // ->where('leave_permission.status', LeaveStatus::$APPROVE)
                 ->select('leave_permission.*')->orderBy('leave_permission_id', 'DESC')
                 ->get();
         } else {
             $results = LeavePermission::with(['employee','approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'leave_permission.employee_id')
                 ->whereBetween('leave_permission.leave_permission_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
-                ->where('leave_permission.status', LeaveStatus::$APPROVE)
+              //  ->where('leave_permission.status', LeaveStatus::$APPROVE)
                 ->select('leave_permission.*')->orderBy('leave_permission_id', 'DESC')
                 ->get();
         }
@@ -107,14 +107,14 @@ class ReportController extends Controller
                 ->join('employee', 'employee.employee_id', 'on_duty.employee_id')
                 ->where('department_id', $request->department_id)
                 ->whereBetween('on_duty.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
-                ->where('on_duty.status', LeaveStatus::$APPROVE)
+               // ->where('on_duty.status', LeaveStatus::$APPROVE)
                 ->select('on_duty.*')->orderBy('on_duty_id', 'DESC')
                 ->get();
         } else {
             $results = OnDuty::with(['employee','approveBy','rejectBy','managerApproveBy','managerRejectBy'])
                 ->join('employee', 'employee.employee_id', 'on_duty.employee_id')
                 ->whereBetween('on_duty.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
-                ->where('on_duty.status', LeaveStatus::$APPROVE)
+              //  ->where('on_duty.status', LeaveStatus::$APPROVE)
                 ->select('on_duty.*')->orderBy('on_duty_id', 'DESC')
                 ->get();
         }

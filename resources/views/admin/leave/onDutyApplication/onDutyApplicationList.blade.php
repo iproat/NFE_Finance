@@ -158,10 +158,10 @@
         var status = $(this).attr('data-status');
 
         if (status == 2) {
-            var statusText = "Are you want to approve OnDuty application?";
+            var statusText = "Do you want to approve the OnDuty application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject OnDuty application?";
+            var statusText = "Do you want to reject the OnDuty application?";
             var btnColor = "red";
         }
 
@@ -229,10 +229,10 @@
         var status = $(this).attr('data-status');
 
         if (status == 2) {
-            var statusText = "Are you want to approve OnDuty application?";
+            var statusText = "Do you want to approve the OnDuty application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject OnDuty application?";
+            var statusText = "Do you want to reject the OnDuty application?";
             var btnColor = "red";
         }
 

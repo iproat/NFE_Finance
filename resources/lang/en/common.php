@@ -37,7 +37,7 @@ return [
     'employee_name' => 'Employee Name',
     'yes' => 'Yes',
     'no' => 'No',
-    'absence' => 'Absence',
+    'absence' => 'Absent',
     'present' => 'Present',
     'leave' => 'Leave',
     'download' => 'Download',

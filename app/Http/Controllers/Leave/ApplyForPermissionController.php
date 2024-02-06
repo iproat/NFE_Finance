@@ -81,6 +81,7 @@ class ApplyForPermissionController extends Controller
         $input['status'] = 1;
 
         $isemployeeIsManager = Employee::with('user')->Where('employee_id', $request->employee_id)->first();
+
         if (isset($isemployeeIsManager) && $isemployeeIsManager->user->role_id == 3) {
             $if_exists = LeavePermission::where('employee_id', $request->employee_id)->where('leave_permission_date', dateConvertFormtoDB($request->permission_date))->first();
 
@@ -112,9 +113,11 @@ class ApplyForPermissionController extends Controller
        
 
             try {
+
                 LeavePermission::create($input);
                 $bug = 0;
             } catch (\Exception $e) {
+
                 $bug = 1;
             }
 

@@ -13,7 +13,7 @@ class Employee extends Model
     protected $primaryKey = 'employee_id';
     protected $fillable = [
         'employee_id', 'branch_id', 'user_id', 'finger_id', 'department_id', 'incentive', 'salary_limit', 'designation_id', 'branch_id', 'work_shift', 'supervisor_id',
-        'work_shift_id', 'email', 'first_name',
+        'work_shift_id', 'email', 'first_name','employee_category',
         'last_name', 'date_of_birth', 'date_of_joining', 'date_of_leaving',
         'gender', 'marital_status', 'work_hours', 'hr_id', 'operation_manager_id', 'nationality',
         'document_title16', 'document_name16', 'expiry_date16',

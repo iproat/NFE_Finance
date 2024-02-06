@@ -164,10 +164,10 @@
         var status = $(this).attr('data-status');
 
         if (status == 2) {
-            var statusText = "Are you want to approve Permission application?";
+            var statusText = "Do you want to approve the Permission application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject Permission application?";
+            var statusText = "Do you want to reject the Permission application?";
             var btnColor = "red";
         }
 
@@ -235,10 +235,10 @@
         var status = $(this).attr('data-status');
 
         if (status == 2) {
-            var statusText = "Are you want to approve Permission application?";
+            var statusText = "Do you want to approve the Permission application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject Permission application?";
+            var statusText = "Do you want to reject the Permission application?";
             var btnColor = "red";
         }
 

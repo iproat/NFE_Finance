@@ -380,7 +380,7 @@ class AttendanceReportController extends Controller
 
         $heading = [
             [
-                'Attendance Detailed Report',
+                'Detailed Attendance Report',
             ],
             $inner_head,
         ];

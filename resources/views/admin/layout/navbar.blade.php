@@ -2,7 +2,7 @@
 <!-- Topbar header - style you can find in pages.scss -->
 <!-- ============================================================== -->
 @php
-use App\Model\Branch;
+    use App\Model\Branch;
 @endphp
 <nav class="navbar navbar-default navbar-static-top">
     <div class="navbar-header">
@@ -13,25 +13,21 @@ use App\Model\Branch;
                 <div class="logo-visiability hidden-xs" style="max-width: 240px;min-width:30px;padding:0 18px 0 8px">
                     <!-- Logo -->
                     <a class="logo" href="{{ url('dashboard') }}">
-                        <!-- Logo icon image, you can use a font icon as well -->
-                        <b>
-                            <!-- This is a dark logo icon -->
-                            <p style="object-fit: cover;" title="Home" class="dark-logo img-fluid img-responsive hidden">
-                                Home
-                            </p>
-                            <img src="{{ url('admin_assets/img/nfe_logo.png') }}" alt="Home" class="dark-logo img-fluid img-responsive hidden-xs" style="width: 200px; height: 60px; padding-top:5px;" />
-                            <!-- Set the width and height as per your requirements -->
+                        <!-- Logo icon image, you can use font-icon also --><b>
+                            <!--This is dark logo icon-->
+                            <img style="width: 200px;min-width:30px;height:60px;" src="{!! asset('admin_assets/img/mic_side_logo.png') !!}"
+                                alt="Home" class="dark-logo img-fluid img-responsive hidden-xs" />
                         </b>
-                        <!-- Logo text image - you can use text here -->
-                        <span class="hidden-xs">
-                            <!-- This is dark logo text -->
+                        <!-- Logo text image you can use text also --><span class="hidden-xs">
+                            <!--This is dark logo text-->
                         </span>
                     </a>
 
 
                 </div>
             </li>
-            <li><a href="javascript:void(0)" class="open-close waves-effect waves-light menuIcon"><i class="ti-menu tiMenu"></i></a>
+            <li><a href="javascript:void(0)" class="open-close waves-effect waves-light menuIcon"><i
+                        class="ti-menu tiMenu"></i></a>
             </li>
 
         </ul>
@@ -57,7 +53,8 @@ use App\Model\Branch;
                     <li role="separator" class="divider"></li>
                     <li><a href="{{ url('changePassword') }}"><i class="ti-settings"></i> @lang('common.change_password')</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="javascript:void(0);" onclick="logoutWithAjax()"><i class="fa fa-power-off"></i> @lang('common.logout')</a></li>
+                    <li><a href="javascript:void(0);" onclick="logoutWithAjax()"><i class="fa fa-power-off"></i>
+                            @lang('common.logout')</a></li>
                 </ul>
             </li>
         </ul>

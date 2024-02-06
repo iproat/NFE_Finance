@@ -13,8 +13,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{!! asset('icon.png') !!}" type="image/x-icon" />
     <!-- <link rel="shortcut icon" href="{!! asset('admin_assets/img/logo.png') !!}" type="image/x-icon" />  -->
-    <title>Pro-People</title>
-    <title>@yield('title')</title>
+    <title>@yield('title') - {{env('APP_NAME')}}</title>
 
     @include('admin.layout.css')
     @include('admin.layout.color')
@@ -67,12 +66,42 @@
             @yield('content')
         </div>
         <footer class="footer text-center" style="font-size: 12px">
-            {{ date('Y') }} &copy; <b style="padding-right: 4px;padding-left: 4px">
+            {{ date('Y') }} <span title="{{ session('logged_session_data.employee_id') .', '. session('logged_session_data.branch_id') }}">&copy;</span> <b style="padding-right: 4px;padding-left: 4px">
                 <a href="{{ url('dashboard') }}">PRO-PEOPLE</a>
             </b> All rights reserved.
         </footer>
     </div>
     @include('admin.layout.javascript')
+    <script>
+        var dateName = new Date();
+        dateName = '_' + dateName.getDate() + '-' + (dateName.getMonth() + 1) + '-' + dateName.getFullYear() + '_' + dateName.getHours(); // + '-' + dateName.getMinutes();
+        var title = "";
+        $(document).ready(function () {
+            title = "@yield('title')";
+            title = "'" + title.replace("  ", "") + "'";
+            title = title.replace("  ", "");
+            title = title.replace("  ", "");
+            fileName = title.replace(" ", "_") + dateName;
+            
+            let tableId = $('#newDataTable').length;
+            if(tableId) {
+                $('#newDataTable').DataTable({
+                    ordering: false,
+                    processing: true,
+                    aLengthMenu: [
+                        [10, 25, 50, 100, 200, -1],
+                        [10, 25, 50, 100, 200, 'All']
+                    ],
+                    dom: 'lBfrtip',
+                    buttons: [{
+                        extend: 'csv',
+                        text: 'Export CSV',
+                        filename: fileName
+                    }]
+                });
+            }
+        });
+    </script>
     @yield('page_scripts')
 </body>
 

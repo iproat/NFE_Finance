@@ -194,11 +194,11 @@ class RequestedPermissionApplicationController extends Controller
         if ($bug == 0) {
             if ($request->status == 2) {
                 $data = LeavePermission::findOrFail($request->leave_permission_id)->first();
-                $employee = Employee::where('employee_id', $data->employee_id)->select('supervisor_id')->first();
+                $employee = Employee::where('employee_id', $data->employee_id)->first();
                 $hod = Employee::where('employee_id', $employee->supervisor_id)->first();
                 if ($hod != '') {
                     if ($hod->email) {
-                        $maildata = Common::mail('emails/mail', $hod->email, 'Permission Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ' have requested for Permission (for ' . $request->purpose . ')Application Date ' . ' ' . dateConvertFormtoDB($request->permission_date) . ' fromTime ' . ' ' . $request->from_time . ' toTime ' . $request->from_time, 'status_info' => '']);
+                        $maildata = Common::mail('emails/mail', $hod->email, 'Permission Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ' have requested for Permission (for ' . $data->purpose . ')Application Date ' . ' ' . dateConvertFormtoDB($data->permission_date) . ' fromTime ' . ' ' . $data->from_time . ' toTime ' . $data->to_time, 'status_info' => '']);
                     }
                 }
                 echo "approve";

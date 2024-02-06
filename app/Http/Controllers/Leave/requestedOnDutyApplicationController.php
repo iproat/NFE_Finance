@@ -155,11 +155,11 @@ class requestedOnDutyApplicationController extends Controller
         if ($bug == 0) {
             if ($request->status == 2) {
                 $data = OnDuty::findOrFail($request->on_duty_id)->first();
-                $employee = Employee::where('employee_id', $data->employee_id)->select('supervisor_id')->first();
+                $employee = Employee::where('employee_id', $data->employee_id)->first();
                 $hod = Employee::where('employee_id', $employee->supervisor_id)->first();
                 if ($hod != '') {
                     if ($hod->email) {
-                        $maildata = Common::mail('emails/mail', $hod->email, 'On Duty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ', have requested for on duty (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                        $maildata = Common::mail('emails/mail', $hod->email, 'On Duty Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ', have requested for on duty (Purpose: ' . $data->purpose . ') from ' . ' ' . dateConvertFormtoDB($data->application_from_date) . ' to ' . dateConvertFormtoDB($data->application_to_date), 'status_info' => '']);
                     }
                 }
                 echo "approve";

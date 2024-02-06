@@ -174,6 +174,7 @@ class RequestedApplicationController extends Controller
     }
     public function approveOrRejectManagerLeaveApplication(Request $request)
     {
+
         $data = LeaveApplication::findOrFail($request->leave_application_id);
         $input = $request->all();
 
@@ -189,21 +190,19 @@ class RequestedApplicationController extends Controller
         }
 
         try {
-            $data->update([
-                'manager_status' => $input['manager_status']
-            ]);
+            $data->update($input);
             $bug = 0;
         } catch (\Exception $e) {
             $bug = 1;
         }
         if ($bug == 0) {
             if ($request->status == 2) {
-                $data = LeaveApplication::findOrFail($request->leave_application_id)->first();
-                $employee = Employee::where('employee_id', $data->employee_id)->select('supervisor_id')->first();
+                $data = LeaveApplication::where('leave_application_id',$request->leave_application_id)->first();
+                $employee = Employee::where('employee_id', $data->employee_id)->first();
                 $hod = Employee::where('employee_id', $employee->supervisor_id)->first();
                 if ($hod != '') {
                     if ($hod->email) {
-                        $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ', have requested for Leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                        $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee->first_name . ' ' . $employee->last_name . ', have requested for Leave (Purpose: ' . $data->purpose . ') from ' . ' ' . dateConvertFormtoDB($data->application_from_date) . ' to ' . dateConvertFormtoDB($data->application_to_date), 'status_info' => '']);
                     }
                 }
                 echo "approve";
