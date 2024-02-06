@@ -45,7 +45,7 @@ class ReportController extends Controller
                 ->join('employee', 'employee.employee_id', 'leave_application.employee_id')
                 ->where('department_id', $request->department_id)
                 ->whereBetween('leave_application.application_date', [dateConvertFormtoDB($request->from_date), dateConvertFormtoDB($request->to_date)])
-                ->where('leave_application.status', LeaveStatus::$APPROVE)
+                // ->where('leave_application.status', LeaveStatus::$APPROVE)
                 ->select('leave_application.*')->orderBy('leave_application_id', 'DESC')
                 ->get();
         } else {

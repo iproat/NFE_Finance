@@ -116,9 +116,6 @@
                                 <tbody>
                                     {{ $sl = null }}
                                     @foreach ($results as $value)
-                                        @php
-                                            // dd($value->managerApproveBy->first_name);
-                                        @endphp
                                         <tr>
                                             <td>{{ ++$sl }}</td>
                                             <td>{{ $value->employee->first_name . ' ' . $value->employee->last_name }}
@@ -127,30 +124,29 @@
                                             @php
                                                 $dept = App\Model\Department::where('department_id', $value->employee->department_id)->first();
                                             @endphp
-                                            <td>{{ $dept ? $dept->department_name : 'NA' }}
-                                            </td>
+                                            <td>{{ $dept ? $dept->department_name : 'NA' }}</td>
                                             <td>
                                                 @if ($value->leaveType->leave_type_name)
                                                     {{ $value->leaveType->leave_type_name }}
                                                 @endif
                                             </td>
                                             <td>{{ dateConvertDBtoForm($value->application_date) }}</td>
-                                            <td>{{ dateConvertDBtoForm($value->application_from_date) }}
-                                                <b>to</b>
-                                                {{ dateConvertDBtoForm($value->application_to_date) }}
-                                            </td>
-                                            <td>
+                                            <td>{{ dateConvertDBtoForm($value->application_from_date) }} <b>to</b>
+                                                {{ dateConvertDBtoForm($value->application_to_date) }}</td>
 
-                                                @if ($value->approveBy->first_name != null)
-                                                    {{ $value->approveBy->first_name }}
-                                                    {{ $value->approveBy->last_name }}
-                                                @endif
-                                            </td>
-
+                                            @if ($value->approveBy != null)
+                                                <td>
+                                                    @if ($value->approveBy->first_name != null)
+                                                        {{ $value->approveBy->first_name }}
+                                                        {{ $value->approveBy->last_name }}
+                                                    @endif
+                                                </td>
+                                            @else
+                                                <td>{{ '--' }}</td>
+                                            @endif
                                             <td>{{ dateConvertDBtoForm($value->approve_date) }}</td>
                                             @if ($value->rejectBy != null)
                                                 <td>
-
                                                     @if ($value->rejectBy->first_name != null)
                                                         {{ $value->rejectBy->first_name }}
                                                         {{ $value->rejectBy->last_name }}
@@ -175,7 +171,6 @@
                                             @endif
                                             @if ($value->managerRejectBy != null)
                                                 <td>
-
                                                     @if ($value->managerRejectBy->first_name != null)
                                                         {{ $value->managerRejectBy->first_name }}
                                                         {{ $value->managerRejectBy->last_name }}
@@ -190,6 +185,7 @@
                                             <td>{{ $value->number_of_day }}</td>
                                         </tr>
                                     @endforeach
+
                                 </tbody>
                             </table>
                         </div>

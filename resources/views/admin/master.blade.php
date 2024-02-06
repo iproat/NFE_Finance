@@ -66,14 +66,15 @@
         <div id="page-wrapper" style="border-bottom-right-radius: 6px;">
             @yield('content')
         </div>
-        <footer class="footer text-center" style="font-size: 12px">
+       
+    </div>
+    @include('admin.layout.javascript')
+    @yield('page_scripts')
+    <footer class="footer text-center" style="font-size: 12px">
             {{ date('Y') }} &copy; <b style="padding-right: 4px;padding-left: 4px">
                 <a href="{{ url('dashboard') }}">PRO-PEOPLE</a>
             </b> All rights reserved.
         </footer>
-    </div>
-    @include('admin.layout.javascript')
-    @yield('page_scripts')
 </body>
 
 </html>

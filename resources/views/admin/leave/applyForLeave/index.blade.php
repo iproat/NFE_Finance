@@ -94,16 +94,17 @@
                                                         {!! dateConvertDBtoForm($value->reject_date) !!}</span>
                                                 @endif
                                             </td>
-
-                                            <td style="width: 100px;">
-                                                @if ($value->status == 1)
-                                                    <span class="label label-warning">@lang('common.pending')</span>
-                                                @elseif ($value->status == 2)
-                                                    <span class="label label-success">@lang('common.approved')</span>
-                                                @else
-                                                    <span class="label label-danger">@lang('common.rejected')</span>
-                                                @endif
-                                            </td>
+                                            @if ($value->manager_status != 3)
+                                                <td style="width: 100px;">
+                                                    @if ($value->status == 1)
+                                                        <span class="label label-warning">@lang('common.pending')</span>
+                                                    @elseif ($value->status == 2)
+                                                        <span class="label label-success">@lang('common.approved')</span>
+                                                    @else
+                                                        <span class="label label-danger">@lang('common.rejected')</span>
+                                                    @endif
+                                                </td>
+                                            @endif
 
                                             <td style="width: 100px;">
                                                 @if ($value->manager_status == 1)

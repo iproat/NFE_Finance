@@ -180,10 +180,10 @@
         var leave_application_id = $(this).attr('data-leave_application_id');
         var status = $(this).attr('data-status');
         if (status == 2) {
-            var statusText = "Are you want to approve Leave application?";
+            var statusText = "Do you want to approve the Leave application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject Leave application?";
+            var statusText = "Do you want to reject the Leave application?";
             var btnColor = "red";
         }
 
@@ -250,10 +250,10 @@
         var leave_application_id = $(this).attr('data-leave_application_id');
         var status = $(this).attr('data-status');
         if (status == 2) {
-            var statusText = "Are you want to approve Leave application?";
+            var statusText = "Do you want to approve the Leave application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject Leave application?";
+            var statusText = "Do you want to reject the Leave application?";
             var btnColor = "red";
         }
 

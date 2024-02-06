@@ -289,25 +289,53 @@ class ApplyForLeaveController extends Controller
 
         try {
             if ($number_of_day <= $leave_balance) {
-                DB::table('leave_application')->insertGetID($leave_application);
+                $isManager = Employee::with('user')->where('employee_id', $employeeId)->first();
 
-                $employee_data = Employee::where('employee_id', $request->employee_id)->first();
-                $hod = Employee::where('employee_id', $employee_data->supervisor_id)->first();
+                if (isset($isManager) && $isManager->user->role_id == 3) {
+                    // Insert leave application
+                    $leave_application['manager_status'] =2;
+                    $leave_application['manager_approve_date'] = date('Y-m-d');
+                    $leave_application['manager_approved_by'] = $request->employee_id; 
+                    
+                    $leaveId = DB::table('leave_application')->insertGetID($leave_application);
 
-                if ($hod != '') {
-                    if ($hod->email) {
-                        $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', ['head_name' => $hod->first_name . ' ' . $hod->last_name, 'request_info' => $employee_data->first_name . ' ' . $employee_data->last_name . ', have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date), 'status_info' => '']);
+                    // Get employee and supervisor information
+                    $employee_data = Employee::where('employee_id', $request->employee_id)->first();
+                    $hod = Employee::where('employee_id', $employee_data->supervisor_id)->first();
+
+                    // Notify supervisor via email
+                    if ($hod && $hod->email) {
+                        $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', [
+                            'head_name' => $hod->first_name . ' ' . $hod->last_name,
+                            'request_info' => $employee_data->first_name . ' ' . $employee_data->last_name . ', have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date),
+                            'status_info' => '',
+                        ]);
                     }
+
+                    return $this->controller->success("Leave Application Sent Successfully!", $leaveId);
+                } else {
+                    // Insert leave application
+                    $leaveId = DB::table('leave_application')->insertGetID($leave_application);
+
+                    // Get employee and supervisor information
+                    $employee_data = Employee::where('employee_id', $request->employee_id)->first();
+                    $hod = Employee::where('employee_id', $employee_data->operation_manager_id)->first();
+
+                    // Notify supervisor via email
+                    if ($hod && $hod->email) {
+                        $maildata = Common::mail('emails/mail', $hod->email, 'Leave Request Notification', [
+                            'head_name' => $hod->first_name . ' ' . $hod->last_name,
+                            'request_info' => $employee_data->first_name . ' ' . $employee_data->last_name . ', have requested for leave (Purpose: ' . $request->purpose . ') from ' . ' ' . dateConvertFormtoDB($request->application_from_date) . ' to ' . dateConvertFormtoDB($request->application_to_date),
+                            'status_info' => '',
+                        ]);
+                    }
+
+                    return $this->controller->success("Leave Application Sent Successfully!", $leaveId);
                 }
-
-                // DB::commit();
-
-                return $this->controller->success("Leave Application Sent Successfully!", $leave_application);
             } else {
                 return $this->controller->custom_error("Leave balance does not exist for the selected leave type.");
             }
         } catch (\Throwable $e) {
-            // DB::rollback();
             $message = $e->getMessage();
             return $this->controller->custom_error($message);
         }
