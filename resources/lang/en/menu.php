@@ -31,7 +31,7 @@ return [
     'leave_report'                     => 'Leave Report',
     'permission_report'                     => 'Permission Report',
     'onduty_report'                     => 'Onduty Report',
-    'summary_report'                   => 'Summary',
+    'summary_report'                   => 'Leave Summary Report',
     'my_leave_report'                  => 'My Leave Report',
     'attendance'                       => 'Attendance',
 
@@ -42,7 +42,7 @@ return [
     'shift_details'                    => 'Shift Detail',
     'monthly_attendance'               => 'Monthly Attendance',
     'my_attendace_report'              => 'My Attendance',
-    'summary_report'                   => 'Summary',
+    'summary_report'                   => 'Leave Summary Report',
     'muster_report'                   => 'Muster Report',
     'manual_attendance'                => 'Manual Attendance',
     'payroll'                          => 'Payroll',

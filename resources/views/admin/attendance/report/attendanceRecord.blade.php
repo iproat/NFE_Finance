@@ -1,4 +1,8 @@
+@php
+use App\Model\Device;
+@endphp
 @extends('admin.master')
+
 @section('content')
 @section('title')
     @lang('attendance.attendance_record')
@@ -17,7 +21,20 @@
         height: 100%;
     }
 
-   
+    /*
+  tbody {
+   display:block;
+   height:500px;
+   overflow:auto;
+  }
+  thead, tbody tr {
+   display:table;
+   width:100%;
+   table-layout:fixed;
+  }
+  thead {
+   width: calc( 100% - 1em )
+  }*/
 </style>
 <script>
     jQuery(function() {
@@ -42,7 +59,14 @@
                 <div class="panel-heading"><i class="mdi mdi-table fa-fw"></i>@yield('title')</div>
                 <div class="panel-wrapper collapse in" aria-expanded="true">
                     <div class="panel-body">
-                        
+                        {{-- <p class="text-center">
+                            <b style="font-size: 12px"><span style="color: green">Attendance Devices -
+                                    Green,</span>
+                                <span style="color: blue">Mobile Devices - Blue,</span>
+                                <span style="color: red">Manual Correction - Red,</span>
+                                <span style="color: orange">Access Device - Orange.</span>
+                            </b>
+                        </p> --}}
                         <div class="row">
                             <div id="searchBox">
 
@@ -78,7 +102,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3" hidden>
                                         @php
                                             $devices = allDevices();
                                         @endphp
@@ -108,7 +132,7 @@
                         </div>
                         <br>
                         <div class="table-responsive">
-                            <table id="myDataTable" class="table table-bordered" style="font-size: 12px">
+                            <table id="newDataTable" class="table table-bordered" style="font-size: 12px">
                                 <thead class="tr_header">
                                     <tr>
                                         <th style="width:80px;">@lang('common.serial')</th>
@@ -162,8 +186,11 @@
                                                     </p>
                                                 </td>
                                                 <td>
+@php
+$dev = Device::where('id',$value['device'])->first();
+@endphp
                                                     <p style="color: black">
-                                                        {{ $value['device_name'] != '' ? $value['device_name'] : '-' }}
+                                                        {{ $dev->name != '' ? $dev->name : '-' }}
                                                     </p>
                                                 </td>
                                                 </td>

@@ -94,6 +94,7 @@
                                                         {!! dateConvertDBtoForm($value->reject_date) !!}</span>
                                                 @endif
                                             </td>
+
                                             @if ($value->manager_status != 3)
                                                 <td style="width: 100px;">
                                                     @if ($value->status == 1)
@@ -103,6 +104,11 @@
                                                     @else
                                                         <span class="label label-danger">@lang('common.rejected')</span>
                                                     @endif
+                                                </td>
+                                            @else
+                                                <td style="width: 100px;">
+
+
                                                 </td>
                                             @endif
 

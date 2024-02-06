@@ -423,16 +423,18 @@
                                         <label for="exampleInput">@lang('employee.gender')<span
                                                 class="validateRq">*</span></label>
 
-                                                <select name="gender" class="form-control gender select2">
-                                                    <option value="">--- @lang('common.please_select') ---</option>
-                                                    <option value="Male" @if ($editModeData->gender == '0') {{ 'selected' }} @endif>
-                                                        @lang('employee.male')
-                                                    </option>
-                                                    <option value="Female" @if ($editModeData->gender == '1') {{ 'selected' }} @endif>
-                                                        @lang('employee.female')
-                                                    </option>
-                                                </select>
-                                                
+                                        <select name="gender" class="form-control gender select2">
+                                            <option value="">--- @lang('common.please_select') ---</option>
+                                            <option value="Male"
+                                                @if ($editModeData->gender == '0') {{ 'selected' }} @endif>
+                                                @lang('employee.male')
+                                            </option>
+                                            <option value="Female"
+                                                @if ($editModeData->gender == '1') {{ 'selected' }} @endif>
+                                                @lang('employee.female')
+                                            </option>
+                                        </select>
+
 
                                     </div>
 
@@ -669,7 +671,7 @@
                                         {{ Form::select('religion', $religion, old('religion'), ['class' => 'form-control religion select2 required']) }}
                                     </div>
                                 </div>
-                              
+
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="exampleInput">@lang('employee.nationality')<span
@@ -700,6 +702,28 @@
                                     </div>
 
                                 </div> --}}
+
+                            </div>
+                            <div class="row">
+
+
+
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="exampleInput">@lang('employee.category')<span
+                                                class="validateRq">*</span></label>
+                                        <select name="employee_category" id=""
+                                            class="form-control nationality select2 required">
+                                            <option value="">Select Category</option>
+                                            <option {{ $editModeData->employee_category == 0 ? 'selected' : '' }}
+                                                value="0">Employee</option>
+                                            <option {{ $editModeData->employee_category == 1 ? 'selected' : '' }}
+                                                value="1">Chiefs'</option>
+                                        </select>
+                                    </div>
+                                </div>
+
 
                             </div>
 

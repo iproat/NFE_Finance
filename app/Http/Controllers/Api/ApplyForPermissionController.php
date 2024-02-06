@@ -134,7 +134,9 @@ class ApplyForPermissionController extends Controller
                 $if_exists = LeavePermission::where('employee_id', $request->employee_id)
                     ->where('leave_permission_date', dateConvertFormtoDB($request->permission_date))
                     ->first();
-
+             $input['manager_status'] =2;
+            $input['manager_approve_date'] = date('Y-m-d');
+            $input['manager_approved_by'] = $request->employee_id;  
                 if (!$if_exists) {
                     LeavePermission::create($input);
                     if ($hod != '') {

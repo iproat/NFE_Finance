@@ -188,8 +188,7 @@
                                                             </div>
                                                         </div>
                                                     @else
-                                                        <img class="" style="height: 100px"
-                                                        src="{!!  !!}">
+                                                        
                                                     @endif
                                                     <hr>
                                                     @if (isset($value['check_out']) && isset($value['lat_out']) && isset($value['lng_out']))
@@ -201,8 +200,7 @@
                                                             </div>
                                                         </div>
                                                     @else
-                                                        <img class="" style="height: 100px"
-                                                        src="{!!  !!}">
+                                                        
                                                     @endif
                                                 </td>
 

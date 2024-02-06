@@ -117,7 +117,7 @@ use App\Model\Device;
                                         <td>{{ $dailyAttendance->ID }}</td>
                                         <td>{{ $emp->first_name." ".$emp->last_name }}</td>
                                         <td>{{ $dailyAttendance->datetime }}</td>
-                                        <td>{{ $dev->name }}</td>
+                                        <td>{{ $dev->name ?? 'Mobile'}}</td>
                                     </tr>
                                 @endforeach
                             @else
@@ -437,13 +437,13 @@ use App\Model\Device;
                                         <span class="mail-desc">
                                             @if ($date_current_year == date('Y-m-d'))
                                                 <b>Today is
-                                                    @if ($employee_birthdate->gender == 'Male')
+                                                    @if ($employee_birthdate->gender == 0)
                                                         His
                                                     @else
                                                         Her
                                                     @endif
                                                     Birtday Wish
-                                                    @if ($employee_birthdate->gender == 'Male')
+                                                    @if ($employee_birthdate->gender == 0)
                                                         Him
                                                     @else
                                                         Her
@@ -451,7 +451,7 @@ use App\Model\Device;
                                                 </b>
                                             @else
                                                 Wish
-                                                @if ($employee_birthdate->gender == 'Male')
+                                                @if ($employee_birthdate->gender == 0)
                                                     Him
                                                 @else
                                                     Her
@@ -519,10 +519,10 @@ use App\Model\Device;
         var status = $(this).attr('data-status');
 
         if (status == 2) {
-            var statusText = "Are you want to approve leave application?";
+            var statusText = "Do you want to approve the leave application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject leave application?";
+            var statusText = "Do you want to reject the leave application?";
             var btnColor = "red";
         }
 
@@ -588,10 +588,10 @@ use App\Model\Device;
         var status = $(this).attr('data-status');
 
         if (status == 2) {
-            var statusText = "Are you want to approve Permission application?";
+            var statusText = "Do you want to approve the Permission application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject Permission application?";
+            var statusText = "Do you want to reject the Permission application?";
             var btnColor = "red";
         }
 
@@ -657,10 +657,10 @@ use App\Model\Device;
         var status = $(this).attr('data-status');
 
         if (status == 2) {
-            var statusText = "Are you want to approve OnDuty application?";
+            var statusText = "Do you want to approve the OnDuty application?";
             var btnColor = "#2cabe3";
         } else {
-            var statusText = "Are you want to reject OnDuty application?";
+            var statusText = "Do you want to reject the OnDuty application?";
             var btnColor = "red";
         }
 

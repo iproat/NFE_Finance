@@ -261,6 +261,7 @@ class EmployeeController extends Controller
             $parentData = User::create($employeeAccountDataFormat);
 
             $employeeData['user_id'] = $parentData->user_id;
+            $employeeData['employee_category'] = $request->employee_category;
             $childData = Employee::create($employeeData);
             Log::info($parentData->user_id);
             Log::info($childData->employee_id);
@@ -623,7 +624,7 @@ class EmployeeController extends Controller
             $employeeAccountDataFormat = $this->employeeRepositories->makeEmployeeAccountDataFormat($request->all(), 'update');
 
             User::where('user_id', $employee->user_id)->update($employeeAccountDataFormat);
-
+            $employeeData['employee_category'] = $request->employee_category;
             // Update Personal Information
             $employee->update($employeeData);
             $employee->save();

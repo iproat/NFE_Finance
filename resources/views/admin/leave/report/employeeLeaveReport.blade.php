@@ -141,10 +141,12 @@
                                                         {{ $value->approveBy->last_name }}
                                                     @endif
                                                 </td>
+                                                <td>{{ dateConvertDBtoForm($value->approve_date) }}</td>
                                             @else
                                                 <td>{{ '--' }}</td>
+                                                <td>{{ '--' }}</td>
                                             @endif
-                                            <td>{{ dateConvertDBtoForm($value->approve_date) }}</td>
+
                                             @if ($value->rejectBy != null)
                                                 <td>
                                                     @if ($value->rejectBy->first_name != null)
