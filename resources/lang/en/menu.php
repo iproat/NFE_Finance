@@ -42,7 +42,7 @@ return [
     'shift_details'                    => 'Shift Detail',
     'monthly_attendance'               => 'Monthly Attendance',
     'my_attendace_report'              => 'My Attendance',
-    'summary_report'                   => 'Leave Summary Report',
+    'attendance_summary_report'                   => 'Summary Report',
     'muster_report'                   => 'Muster Report',
     'manual_attendance'                => 'Manual Attendance',
     'payroll'                          => 'Payroll',
