@@ -152,6 +152,7 @@ class RequestedApplicationController extends Controller
             $input['approve_date'] = date('Y-m-d');
             $input['approve_by'] = decrypt(session('logged_session_data.employee_id'));
         } else {
+            $input['status'] = 3;
             $input['reject_date'] = date('Y-m-d');
             $input['reject_by'] = decrypt(session('logged_session_data.employee_id'));
         }

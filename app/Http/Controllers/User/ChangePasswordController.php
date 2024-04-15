@@ -84,9 +84,7 @@ class ChangePasswordController extends Controller
                 $bug = 2;
             }
 
-            // End Admin reset password email notification
         } catch (\Exception $ex) {
-            // info($ex);
             $bug = 3;
         }
     }

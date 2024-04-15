@@ -59,8 +59,7 @@ class ApplyForLeaveController extends Controller
 
     public function create(Request $request)
     {
-        // $request->validate(['employee_id' => 'required']);
-        // $auth_user_id = auth()->user()->user_id;
+       
         $auth_user_id = $request->employee_id;
         $leaveTypeList = $this->commonRepository->leaveTypeList();
         $getEmployeeInfo = $this->commonRepository->getLimitedEmployeeInfo($auth_user_id);

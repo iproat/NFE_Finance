@@ -451,6 +451,7 @@ class DeviceConfigurationController extends Controller
                     'employee' => $employee_data->employee_id,
                     'branch_id' => $employee_data->branch_id,
                     'device' => $device->id,
+                    'device_name' => $device->name,
                     'device_employee_id' => $eventLog->AccessControllerEvent->employeeNoString,
                     'status' => 0,
                 ];
