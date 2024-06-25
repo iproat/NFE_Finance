@@ -151,8 +151,7 @@
                                             $attributes = [
                                                 'class' => 'form-control permission_duration required',
                                                 'readonly' => 'readonly',
-                                                'min' => '00:00',
-                                                'max' => '03:00',
+                                               
                                                 'placeholder' => __('common.permission_duration'),
                                             ],
                                         ) !!}
