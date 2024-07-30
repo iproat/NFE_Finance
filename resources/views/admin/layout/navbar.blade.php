@@ -15,7 +15,7 @@
                     <a class="logo" href="{{ url('dashboard') }}">
                         <!-- Logo icon image, you can use font-icon also --><b>
                             <!--This is dark logo icon-->
-                            <img style="width: 200px;min-width:30px;height:60px;" src="{!! asset('admin_assets/img/mic_side_logo.png') !!}"
+                            <img style="width: 200px;min-width:30px;height:60px;" src="{!! asset('admin_assets/img/nfe_logo.png') !!}"
                                 alt="Home" class="dark-logo img-fluid img-responsive hidden-xs" />
                         </b>
                         <!-- Logo text image you can use text also --><span class="hidden-xs">

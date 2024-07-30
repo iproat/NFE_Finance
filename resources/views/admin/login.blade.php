@@ -41,7 +41,7 @@
     <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
     </div>
-    <section id="wrapper" class="new-login-register" style="background: #27333e; background-image: url('{!! asset('admin_assets/img/mic_logo.jpg') !!}'); background-size: cover; background-position: center;">
+    <section id="wrapper" class="new-login-register" style="background: #27333e;">
         <div class="container">
             <div class="row">
                 <div class="col-md-4"></div>
@@ -49,7 +49,7 @@
                     <div class="white-box" style="background: #27333e">
                         <h3 class="box-title m-b-0 text-white">Log In</h3>
                         <div class="login-logo" style="text-align: center">
-                            <a href="{{ url('/') }}"><img src="{!! asset('admin_assets/img/logo.png') !!}" style="background: #27333e;
+                            <a href="{{ url('/') }}"><img src="{!! asset('admin_assets/img/nfe_logo.png') !!}" style="background: #27333e;
                                 height: 80px;object-fit: contain;" /></a>
                         </div>
                         {!! Form::open(['url' => 'login', 'class' => 'form-horizontal new-lg-form', 'id' => 'loginform']) !!}
