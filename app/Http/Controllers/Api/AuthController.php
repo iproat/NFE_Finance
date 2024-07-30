@@ -40,8 +40,6 @@ class AuthController extends Controller
                 $is_checked_in = MsSql::where('ID', $employee->finger_id)->where('datetime', '>=', date('Y-m-d') . ' 00:00:00')->orderByDesc('datetime')
                     ->select('ms_sql.*', 'datetime as in_out_time')->first();
 
-                info($is_checked_in);
-
                 $user_data = [
                     "user_id" => Auth::user()->user_id,
                     "user_name" => $employee->first_name . ' ' . $employee->last_name,
@@ -49,8 +47,6 @@ class AuthController extends Controller
                     "employee_id" => $employee->employee_id,
                     "finger_id" => $employee->finger_id,
                 ];
-
-                info($user_data);
 
                 return response()->json([
                     'message' => "Login Successful !!!",
@@ -106,7 +102,6 @@ class AuthController extends Controller
             'supervisor_id' => $employeeRequest['supervisor_id'],
             'work_shift_id' => $employeeRequest['work_shift_id'],
             'pay_grade_id' => $employeeRequest['pay_grade_id'],
-            'work_shift_id' => $employeeRequest['work_shift_id'],
             'date_of_birth' => $employeeRequest['date_of_birth'],
             'date_of_joining' => $employeeRequest['date_of_joining'],
             'gender' => $employeeRequest['gender'],
@@ -147,8 +142,6 @@ class AuthController extends Controller
         $is_checked_in = MsSql::where('ID', $employee->finger_id)->where('datetime', '>=', date('Y-m-d') . ' 00:00:00')
             ->select('ms_sql.*', 'datetime as in_out_time')->orderByDesc('datetime')->first();
 
-        info($is_checked_in);
-
         $user_data = [
             "user_id" => Auth::user()->user_id,
             "user_name" => $employee->first_name . ' ' . $employee->last_name,
@@ -156,8 +149,6 @@ class AuthController extends Controller
             "employee_id" => $employee->employee_id,
             "finger_id" => $employee->finger_id,
         ];
-
-        info($user_data);
 
         return response()->json([
             'message' => "Authentication Successful !!!",
@@ -228,7 +219,6 @@ class AuthController extends Controller
                         ], 201);
                     }
                 } catch (\Exception $ex) {
-                    return $ex;
                     return response()->json([
                         'status' => false,
                         'message' => 'Something Went Wrong !',

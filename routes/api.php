@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AccessLogController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-
+Route::get('get-latest-log', [AccessLogController::class, 'index']);
+Route::post('insert-log', [AccessLogController::class, 'store']);
