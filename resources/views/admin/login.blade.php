@@ -41,7 +41,7 @@
     <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
     </div>
-    <section id="wrapper" class="new-login-register" style="background: #27333e;">
+    <section id="wrapper" class="new-login-register">
         <div class="container">
             <div class="row">
                 <div class="col-md-4"></div>
