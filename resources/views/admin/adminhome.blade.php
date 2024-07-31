@@ -1,4 +1,3 @@
-
 <?php
 use App\Model\Employee;
 use App\Model\Device;
@@ -61,12 +60,13 @@ use App\Model\Device;
         /* background: url('../images/timer.gif') 50% 50% no-repeat rgb(249, 249, 249); */
         opacity: .8;
     }
+
     .text-truncate {
-            max-width: 50px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
+        max-width: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
 
     /* Hide scrollbar for Chrome, Safari and Opera */
@@ -293,26 +293,28 @@ use App\Model\Device;
                             @if (count($attendanceData) > 0)
                                 {{ $dailyAttendanceSl = null }}
                                 @foreach ($attendanceData as $dailyAttendance)
-                                <?php
-                                $emp=Employee::where('finger_id',$dailyAttendance->ID)->first();
-                                $dev=Device::where('id',$dailyAttendance->device)->first();
-                                ?>
-                                    <tr>
-                                        <td class="text-center">{{ ++$dailyAttendanceSl }}</td>
-                                        <td>
-                                            @if (isset($dailyAttendance->photo) && $dailyAttendance->photo != '')
-                                                <img height="40" width="40" src="{!! asset('uploads/employeePhoto/' . $dailyAttendance->photo) !!}"
-                                                    alt="user-img" class="img-circle">
-                                            @else
-                                                <img height="40" width="40" src="{!! asset('admin_assets/img/default.png') !!}"
-                                                    alt="user-img" class="img-circle">
-                                            @endif
-                                        </td>
-                                        <td>{{ $dailyAttendance->ID }}</td>
-                                        <td>{{ $emp->first_name." ".$emp->last_name }}</td>
-                                        <td>{{ $dailyAttendance->datetime }}</td>
-                                        <td>{{ $dev->name ?? 'Mobile' }}</td>
-                                    </tr>
+                                    <?php
+                                    $emp = Employee::where('finger_id', $dailyAttendance->ID)->first();
+                                    $dev = Device::where('id', $dailyAttendance->device)->first();
+                                    ?>
+                                    @if ($emp && $dev)
+                                        <tr>
+                                            <td class="text-center">{{ ++$dailyAttendanceSl }}</td>
+                                            <td>
+                                                @if (isset($dailyAttendance->photo) && $dailyAttendance->photo != '')
+                                                    <img height="40" width="40" src="{!! asset('uploads/employeePhoto/' . $dailyAttendance->photo) !!}"
+                                                        alt="user-img" class="img-circle">
+                                                @else
+                                                    <img height="40" width="40" src="{!! asset('admin_assets/img/default.png') !!}"
+                                                        alt="user-img" class="img-circle">
+                                                @endif
+                                            </td>
+                                            <td>{{ $dailyAttendance->ID }}</td>
+                                            <td>{{ $emp->first_name . ' ' . $emp->last_name }}</td>
+                                            <td>{{ $dailyAttendance->datetime }}</td>
+                                            <td>{{ $dev->name ?? 'Mobile' }}</td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             @else
                                 <tr>
@@ -441,7 +443,8 @@ use App\Model\Device;
                                             $date_of_birth = $employee_birthdate->date_of_birth;
                                             $separate_date = explode('-', $date_of_birth);
 
-                                            $date_current_year = date('Y') . '-' . $separate_date[1] . '-' . $separate_date[2];
+                                            $date_current_year =
+                                                date('Y') . '-' . $separate_date[1] . '-' . $separate_date[2];
 
                                             $create_date = date_create($date_current_year);
                                         @endphp
@@ -490,7 +493,7 @@ use App\Model\Device;
                 <div class="white-box">
                     <h3 class="box-title">@lang('dashboard.recent_leave_application')</h3>
                     <hr>
-                    <div class="leaveApplication" >
+                    <div class="leaveApplication">
                         @foreach ($leaveApplication as $leaveApplication)
                             <div class="comment-center p-t-10 {{ $leaveApplication->leave_application_id }}">
                                 <div class="comment-body">
