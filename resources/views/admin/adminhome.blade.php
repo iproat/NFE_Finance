@@ -310,7 +310,8 @@ use App\Model\Device;
                                                 @endif
                                             </td>
                                             <td>{{ $dailyAttendance->ID }}</td>
-                                            <td>{{ $emp->first_name . ' ' . $emp->last_name }}</td>
+                                            <td>{{ ($emp->first_name ?? 'Unknown') . ' ' . ($emp->last_name ?? 'Name') }}
+                                            </td>
                                             <td>{{ $dailyAttendance->datetime }}</td>
                                             <td>{{ $dev->name ?? 'Mobile' }}</td>
                                         </tr>
