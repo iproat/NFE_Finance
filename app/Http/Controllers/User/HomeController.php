@@ -343,7 +343,7 @@ class HomeController extends Controller
         $concatToDayAndMonth = $to_month . '-' . $to_day;
 
         $upcoming_birtday = Employee::orderBy('date_of_birth', 'desc')->whereRaw("DATE_FORMAT(date_of_birth, '%m-%d') >= '" . $concatFormDayAndMonth . "' AND DATE_FORMAT(date_of_birth, '%m-%d') <= '" . $concatToDayAndMonth . "' ")->get();
-        $totalPresent = MsSql::whereHas('employee')->groupBy('ID')->where('date', date('Y-m-d'))->count();
+        $totalPresent = MsSql::whereHas('employee')->groupBy('ID')->whereDate('datetime', date('Y-m-d'))->count();
 
         $data = [
             'attendanceData' => $attendanceData,
