@@ -293,29 +293,23 @@ use App\Model\Device;
                             @if (count($attendanceData) > 0)
                                 {{ $dailyAttendanceSl = null }}
                                 @foreach ($attendanceData as $dailyAttendance)
-                                    <?php
-                                    $emp = Employee::where('finger_id', $dailyAttendance->ID)->first();
-                                    $dev = Device::where('id', $dailyAttendance->device)->first();
-                                    ?>
-                                    @if ($emp && $dev)
-                                        <tr>
-                                            <td class="text-center">{{ ++$dailyAttendanceSl }}</td>
-                                            <td>
-                                                @if (isset($dailyAttendance->photo) && $dailyAttendance->photo != '')
-                                                    <img height="40" width="40" src="{!! asset('uploads/employeePhoto/' . $dailyAttendance->photo) !!}"
-                                                        alt="user-img" class="img-circle">
-                                                @else
-                                                    <img height="40" width="40" src="{!! asset('admin_assets/img/default.png') !!}"
-                                                        alt="user-img" class="img-circle">
-                                                @endif
-                                            </td>
-                                            <td>{{ $dailyAttendance->ID }}</td>
-                                            <td>{{ ($emp->first_name ?? 'Unknown') . ' ' . ($emp->last_name ?? 'Name') }}
-                                            </td>
-                                            <td>{{ $dailyAttendance->datetime }}</td>
-                                            <td>{{ $dev->name ?? 'Mobile' }}</td>
-                                        </tr>
-                                    @endif
+                                    <tr>
+                                        <td class="text-center">{{ ++$dailyAttendanceSl }}</td>
+                                        <td>
+                                            @if (isset($dailyAttendance->photo) && $dailyAttendance->photo != '')
+                                                <img height="40" width="40" src="{!! asset('uploads/employeePhoto/' . $dailyAttendance->photo) !!}"
+                                                    alt="user-img" class="img-circle">
+                                            @else
+                                                <img height="40" width="40" src="{!! asset('admin_assets/img/default.png') !!}"
+                                                    alt="user-img" class="img-circle">
+                                            @endif
+                                        </td>
+                                        <td>{{ $dailyAttendance->ID }}</td>
+                                        <td>{{ ($dailyAttendance->employee->first_name ?? 'Unknown') . ' ' . ($dailyAttendance->employee->last_name ?? 'Name') }}
+                                        </td>
+                                        <td>{{ $dailyAttendance->datetime }}</td>
+                                        <td>{{ $dailyAttendance->device_name ?? 'Mobile' }}</td>
+                                    </tr>
                                 @endforeach
                             @else
                                 <tr>

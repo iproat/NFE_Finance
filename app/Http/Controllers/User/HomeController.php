@@ -293,10 +293,11 @@ class HomeController extends Controller
                 ->orderBy('on_duty_id', 'desc')
                 ->get();
         }
-        $start_time = WorkShift::orderBy('start_time', 'ASC')->first()->start_time;
-        $minTime = date('Y-m-d H:i:s', strtotime('-15 minutes', strtotime($start_time)));
 
-        $attendanceData = MsSql::where('datetime', '>=', ($minTime))->where('type', 'IN')
+        $start_time = WorkShift::orderBy('start_time', 'ASC')->first()->start_time;
+        $minTime = date('Y-m-d H:i:s', strtotime('-120 minutes', strtotime($start_time)));
+
+        $attendanceData = MsSql::whereHas('employee')->with('employee')->where('datetime', '>=', ($minTime))->where('type', 'IN')
             ->groupBy('ms_sql.ID')->orderBy('ms_sql.datetime')->get();
 
         $dailyData = $this->employee->select('employee_id', 'first_name', 'finger_id')->get();
@@ -343,14 +344,13 @@ class HomeController extends Controller
         $concatToDayAndMonth = $to_month . '-' . $to_day;
 
         $upcoming_birtday = Employee::orderBy('date_of_birth', 'desc')->whereRaw("DATE_FORMAT(date_of_birth, '%m-%d') >= '" . $concatFormDayAndMonth . "' AND DATE_FORMAT(date_of_birth, '%m-%d') <= '" . $concatToDayAndMonth . "' ")->get();
-        $totalPresent = MsSql::whereHas('employee')->groupBy('ID')->whereDate('datetime', date('Y-m-d'))->count();
 
         $data = [
             'attendanceData' => $attendanceData,
             'totalEmployee' => $totalEmployee,
             'totalDepartment' => $totalDepartment,
-            'totalAttendance' => $totalPresent,
-            'totalAbsent' => $totalEmployee - $totalPresent,
+            'totalAttendance' => count($attendanceData),
+            'totalAbsent' => $totalEmployee - count($attendanceData),
             'employeePerformance' => $employeePerformance,
             'employeeAward' => $employeeAward,
             'notice' => $notice,
