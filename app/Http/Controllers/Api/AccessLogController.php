@@ -38,12 +38,14 @@ class AccessLogController extends Controller
             $device = Device::where('name', $request->terminal_sn)->first();
 
             if (!$device) {
+                info("$request->terminal_sn - Device not found, failed to store access log.");
                 return response()->json(['status' => false, 'message' => 'Device not found, failed to store access log.'], 200);
             }
 
             $employee = Employee::where('finger_id', $request->emp_code)->first();
 
             if (!$employee) {
+                info("$request->emp_code - Employee not found, failed to store access log.");
                 return response()->json(['status' => false, 'message' => 'Employee not found, failed to store access log.'], 200);
             }
 
