@@ -124,18 +124,6 @@
                                 <tbody>
                                     {{ $serial = null }}
                                     @foreach ($results as $value)
-                                        @php
-                                            $deviceSerialNo = ['BRM9193360148', 'BRM9193360137', 'BRM9193360058', 'BRM9193360034', 'BRM9193360025', 'BRM9192960031', 'BRM9193360059', 'BRM9191060473', 'BRM9193360057', 'BRM9193360055'];
-
-                                            $mobile = ['Mobile'];
-                                            $manual = ['Manual'];
-
-                                            $attReport = in_array($value['devuid'], $deviceSerialNo);
-                                            $attManualReport = in_array($value['devuid'], $manual);
-                                            $attMobileReport = in_array($value['devuid'], $mobile);
-                                            $color = '#000';
-                                        @endphp
-
                                         @if (isset($value['employee']))
                                             <tr>
                                                 <td style="width:100px;">
@@ -164,12 +152,9 @@
                                                     </p>
                                                 </td>
                                                 <td>
-                                                    @php
-                                                        $dev = Device::where('id', $value['device'])->first();
-                                                    @endphp
-                                                    <p style="color: black">
-                                                        {{ $dev->name != '' ? $dev->name : '-' }}
-                                                    </p>
+                                                    <span style="color: black">
+                                                        {{ $value['device_name'] }}
+                                                    </span>
                                                 </td>
                                                 </td>
                                             </tr>

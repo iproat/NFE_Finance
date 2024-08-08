@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Model\MsSql;
+use App\Model\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Model\Device;
 
 class AccessLogController extends Controller
 {
@@ -33,6 +35,18 @@ class AccessLogController extends Controller
         try {
             DB::beginTransaction();
 
+            $device = Device::where('name', $request->terminal_sn)->first();
+
+            if (!$device) {
+                return response()->json(['status' => false, 'message' => 'Device not found, failed to store access log.'], 200);
+            }
+
+            $employee = Employee::where('finger_id', $request->emp_code)->first();
+
+            if (!$employee) {
+                return response()->json(['status' => false, 'message' => 'Employee not found, failed to store access log.'], 200);
+            }
+
             $last_record = DB::table('ms_sql')
                 ->where('ID', $request->emp_code)
                 ->orderBy('datetime', 'desc')
@@ -46,9 +60,11 @@ class AccessLogController extends Controller
 
             $log = new MsSql;
             $log->local_primary_id = $request->id;
+            $log->employee = $employee->employee_id;
             $log->ID = $request->emp_code;
             $log->type = $type;
             $log->datetime = $request->punch_time;
+            $log->device = $device->id;
             $log->device_name = $request->terminal_sn;
             $log->punching_time = $request->upload_time;
             $log->created_at = now();
