@@ -308,7 +308,7 @@ use App\Model\Device;
                                         <td>{{ ($dailyAttendance->employee->first_name ?? 'Unknown') . ' ' . ($dailyAttendance->employee->last_name ?? 'Name') }}
                                         </td>
                                         <td>{{ $dailyAttendance->datetime }}</td>
-                                        <td>{{ $dailyAttendance->device_name ?? 'Mobile' }}</td>
+                                        <td>{{ $dailyAttendance->device_name ?? '' }}</td>
                                     </tr>
                                 @endforeach
                             @else
