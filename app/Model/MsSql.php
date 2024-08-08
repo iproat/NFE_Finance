@@ -38,4 +38,9 @@ class MsSql extends Model
     {
         return $this->hasOne(Employee::class, 'finger_id', 'ID')->with('department');
     }
+
+    public function employeeData()
+    {
+        return $this->hasOne(Employee::class, 'finger_id', 'ID')->with('department');
+    }
 }

@@ -305,7 +305,7 @@ use App\Model\Device;
                                             @endif
                                         </td>
                                         <td>{{ $dailyAttendance->ID }}</td>
-                                        <td>{{ ($dailyAttendance->employee->first_name ?? 'Unknown') . ' ' . ($dailyAttendance->employee->last_name ?? 'Name') }}
+                                        <td>{{ ($dailyAttendance->employeeData->first_name ?? 'Unknown') . ' ' . ($dailyAttendance->employeeData->last_name ?? 'Name') }}
                                         </td>
                                         <td>{{ $dailyAttendance->datetime }}</td>
                                         <td>{{ $dailyAttendance->device_name ?? '' }}</td>
